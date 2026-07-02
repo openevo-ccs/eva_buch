@@ -10,13 +10,14 @@ import warnings
 import importlib.util
 from pathlib import Path
 from collections import Counter
+import traceback
 
 import numpy as np
 import pandas as pd
 import pickle
 import re
 
-from sentence_transformers import SentenceTransformer
+
 from bertopic import BERTopic
 from umap import UMAP
 from hdbscan import HDBSCAN
@@ -28,8 +29,9 @@ from utils import log, load_keywords
 from utils import CACHE_DIR, OUTPUT_DIR, CSV_PATH, DATA_DIR
 from viz_umap_2d import plot_concept_2d
 
-EMBEDDING_MODEL = SentenceTransformer("all-MiniLM-L6-v2")
+
 KEYWORD_PATH = DATA_DIR / "keywords.txt"
+EMBEDDING_MODEL = "all-MiniLM-L6-v2"
 
 warnings.filterwarnings("ignore")
 logging.basicConfig(
@@ -89,54 +91,26 @@ def load_csv(csv_path: Path) -> pd.DataFrame:
 
 
 def get_documents(df: pd.DataFrame, keyword: str) -> tuple[list[str], pd.DataFrame]:
-    # docs_cache = CACHE_DIR / keyword / f"documents_{keyword}.csv"
+    docs_dir = OUTPUT_DIR / keyword / f"documents_{keyword}.csv"
     # try:
     #     docs = pd.read_csv(docs_cache)
     #     log.info(f"  Loaded {len(docs):,} cached documents.")
     # except Exception as e:
     #     log.error(f"Failed to load docs from {docs_cache}: {e}")
 
-    docs_df = df.loc[df["search_term"] == keyword, ["text_excerpt", "state","school type","grade","year","subject"]]
+    docs_df = df.loc[df["search_term"] == keyword, ["text_excerpt", "search_term", "match_term","state","school type","grade","year","subject"]]
     texts = list(docs_df["text_excerpt"])
     docs_df['doc_id'] = docs_df.index
-    #docs_df.to_csv(docs_cache)
-    
-    #log.info("  Documents cached.")
-    log.info(f"{len(docs_df)} documents")
+    docs_df.to_csv(docs_dir)
+
+    log.info(f"{len(docs_df)} documents saved for concept {keyword}.")
     
     return texts, docs_df
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# 4.  EMBEDDINGS
+# 4.  ALL EMBEDDINGS
 # ─────────────────────────────────────────────────────────────────────────────
-
-# def get_embeddings(docs: list[str], keyword: str) -> np.ndarray:
-
-#     embed_path = CACHE_DIR / keyword / f"embeddings_{keyword}.npy"
-#     if embed_path.exists():
-#         log.info("Loading embeddings from cache …")
-#         embeddings = np.load(embed_path)
-#         log.info(f"  Loaded embeddings: shape {embeddings.shape}")
-#         return embeddings
-
-#     log.info(f"No embeddings found at {embed_path}")
-#     log.info(f"Generating embeddings with {EMBEDDING_MODEL} …")
-    
-
-    
-#     embeddings = EMBEDDING_MODEL.encode(
-#         docs, 
-#         batch_size=256,
-#         show_progress_bar=True,
-#         normalize_embeddings=True,
-#         convert_to_numpy=True,
-#     )
-
-#     np.save(embed_path, embeddings)
-#     log.info(f"  Embeddings saved: shape {embeddings.shape}")
-
-#     return embeddings
 
 
 def get_embeddings_all(docs: list[str]) -> np.ndarray:
@@ -149,12 +123,19 @@ def get_embeddings_all(docs: list[str]) -> np.ndarray:
         return embeddings
 
     log.info(f"No embeddings found at {embed_path}")
+    try:
+        from sentence_transformers import SentenceTransformer
+        emedding_model = SentenceTransformer(EMBEDDING_MODEL)
+        log.info(f"Generating embeddings with {EMBEDDING_MODEL} …")
+    except Exception as e:
+        log.error(f"Error loading sentence transformer: {e}")
     
-    log.info("Generating embeddings with all-MiniLM-L6-v2 …")
+    
+    
     
 
     
-    embeddings = EMBEDDING_MODEL.encode(
+    embeddings =  emedding_model.encode(
         docs, 
         batch_size=256,
         show_progress_bar=True,
@@ -179,79 +160,84 @@ def run_bertopic(
     keyword:      str,
     ) -> tuple:
     topic_cache = CACHE_DIR / keyword / f"topic_model_{keyword}.pkl"
-    meta_path = CACHE_DIR / keyword / f"documents_{keyword}.csv"
-    log.info(f"Attempting to load topic model from {topic_cache}")
+    #meta_path = CACHE_DIR / keyword / f"documents_{keyword}.csv"
+    docs_dir = OUTPUT_DIR / keyword / f"documents_{keyword}.csv"
+    
 
     if topic_cache.exists():
         log.info("Loading BERTopic model from cache …")
         with open(topic_cache, "rb") as f:
             cached = pickle.load(f)
-            topic_model, topics, probs = cached["model"], cached["topics"], cached["probs"],
-    
+            topic_model, topics, probs = (cached["model"], cached["topics"], cached["probs"])
+            
+            meta_df["bertopic_topic"] = topics
+            meta_df.to_csv(docs_dir)
+            
+            return topic_model, topics, probs
+   
+    log.info("Running Guided BERTopic …")
+    log.info(f"Length embeddings: {len(embeddings)}")
+    log.info(f"Length docs: {len(docs)}")
+
+    if len(docs) < 200:
+        min_df, max_df, min_cluster_size = 1, 1, 10
     else:
-        log.info("Running Guided BERTopic …")
-        log.info(f"Length embeddings: {len(embeddings)}")
-        log.info(f"Length docs: {len(docs)}")
-
-        if len(docs) < 200:
-            min_df, max_df, min_cluster_size = 1, 1, 10
-        else:
-            min_df, max_df, min_cluster_size = 3, 0.8, 15
-        
-
-        umap_model = UMAP(
-            n_neighbors=15,
-            n_components=5,
-            min_dist=0.0,
-            metric="cosine",
-            random_state=42,
-            low_memory=False,
-        )
-        hdbscan_model = HDBSCAN(
-            min_cluster_size=15,
-            min_samples=5,
-            metric="euclidean",
-            cluster_selection_method="eom",
-            prediction_data=True,
-        )
-        german_stop_words = stopwords.words('german') + ["gv", "lt", "bzw", "std", "ca", "tf", "ak", "le", "sowie", "schlerinnen","schler","fr"]
-        
-        
-        
-        vectorizer = CountVectorizer(
-            stop_words=german_stop_words,
-            min_df=min_df,
-            max_df=max_df,
-            ngram_range=(1, 2),
-            token_pattern=r"(?u)\b[a-zA-ZäöüÄÖÜß\w]{3,}\b",
-        )
-
-        topic_model = BERTopic(
-            umap_model=umap_model,
-            hdbscan_model=hdbscan_model,
-            vectorizer_model=vectorizer,
-            top_n_words=20,
-            verbose=True,
-            calculate_probabilities=False,
-            nr_topics=11,
-        )
-
-        topics, probs = topic_model.fit_transform(docs, embeddings)
-        log.info(f"  Topics found: {len(set(topics))}")
-
-        with open(topic_cache, "wb") as f:
-            pickle.dump({
-                "keyword":       keyword,
-                "model":         topic_model,
-                "topics":        topics,
-                "probs":         probs,
-            }, f)
+        min_df, max_df, min_cluster_size = 3, 0.8, 15
     
-    topic_df = pd.DataFrame({
-        "global_doc_id" : meta_df.index,
-        "bertopic_topic": topics
-    })
-    topic_df.to_csv(OUTPUT_DIR / keyword / f"document_topics_{keyword}.csv")
+
+    umap_model = UMAP(
+        n_neighbors=15,
+        n_components=5,
+        min_dist=0.0,
+        metric="cosine",
+        random_state=42,
+        low_memory=False,
+    )
+    hdbscan_model = HDBSCAN(
+        min_cluster_size=15,
+        min_samples=5,
+        metric="euclidean",
+        cluster_selection_method="eom",
+        prediction_data=True,
+    )
+    german_stop_words = stopwords.words('german') + ["gv", "lt", "bzw", "std", "ca", "tf", "ak", "le", "sowie", "schlerinnen","schler","fr"]
+    
+    
+    
+    vectorizer = CountVectorizer(
+        stop_words=german_stop_words,
+        min_df=min_df,
+        max_df=max_df,
+        ngram_range=(1, 2),
+        token_pattern=r"(?u)\b[a-zA-ZäöüÄÖÜß\w]{3,}\b",
+    )
+
+    topic_model = BERTopic(
+        umap_model=umap_model,
+        hdbscan_model=hdbscan_model,
+        vectorizer_model=vectorizer,
+        top_n_words=20,
+        verbose=True,
+        calculate_probabilities=False,
+        nr_topics=11,
+    )
+
+    topics, probs = topic_model.fit_transform(docs, embeddings)
+    log.info(f"  Topics found: {len(set(topics))}")
+
+    with open(topic_cache, "wb") as f:
+        pickle.dump({
+            "keyword":       keyword,
+            "model":         topic_model,
+            "topics":        topics,
+            "probs":         probs,
+        }, f)
+    meta_df["bertopic_topic"] = topics
+    # topic_df = pd.DataFrame({
+    #     "global_doc_id" : meta_df.index,
+    #     "bertopic_topic": topics
+    # })
+    meta_df.to_csv(docs_dir)
 
     return topic_model, topics, probs
 
@@ -347,14 +333,11 @@ def analyze_topic_subject_distribution(df, topic_model, keyword):
     topic_info.to_csv(keyword_out_dir / filename_topic_info, index=False)
 
     # --- Build a working dataframe ---
-    tdf_path = OUTPUT_DIR / keyword / f"document_topics_{keyword}.csv"
+    tdf_path = OUTPUT_DIR / keyword / f"documents_{keyword}.csv"
     tdf = pd.read_csv(tdf_path)
-    log.info(f"Topic df of length {len(tdf)}")
+    log.info(f"Document df of length {len(tdf)}")
 
-    work = df[["subject"]].copy()
-    work["bertopic_topic"] = list(tdf["bertopic_topic"])
-
-    log.info(f"Work df of length {len(work)}")
+    work = df[["subject", "bertopic_topic"]].copy()
 
 
     id_to_name = dict(zip(topic_info["Topic"], topic_info["Name"]))
@@ -375,15 +358,21 @@ def analyze_topic_subject_distribution(df, topic_model, keyword):
     )
     counts = topics_over_subjects.copy()
     topics_over_subjects = topics_over_subjects.div(counts.sum(axis=1), axis=0)
-    
     topics_over_subjects["entropy"] = topics_over_subjects.apply(
         lambda row: entropy(row, base=2), axis=1
     )
     topics_over_subjects["topic_total"] = counts.sum(axis=1)
-    
-    topics_over_subjects["topic_proportion"] =  topics_over_subjects["topic_total"]/sum_docs
-    topics_over_subjects = topics_over_subjects.round(4)
+    topics_over_subjects["topic_proportion"] = topics_over_subjects["topic_total"] / sum_docs
 
+    # total row: distribution across subject areas + totals
+    subject_totals = counts.sum(axis=0)
+    total_row_1 = (subject_totals / subject_totals.sum()).to_dict()
+    total_row_1["entropy"]           = entropy(list(subject_totals / subject_totals.sum()), base=2)
+    total_row_1["topic_total"]       = int(subject_totals.sum())
+    total_row_1["topic_proportion"]  = 1.0
+    topics_over_subjects.loc["TOTAL"] = total_row_1
+
+    topics_over_subjects = topics_over_subjects.round(4)
     filename_1 = f"dist_topics_over_subjects_{keyword}.csv"
     topics_over_subjects.to_csv(keyword_out_dir / filename_1)
 
@@ -397,10 +386,18 @@ def analyze_topic_subject_distribution(df, topic_model, keyword):
     subjects_over_topics["entropy"] = subjects_over_topics.apply(
         lambda row: entropy(row, base=2), axis=1
     )
-    subjects_over_topics["subject_total"] = subjects_over_topics_counts.sum(axis=1)
-    subjects_over_topics["subject_proportion"] = subjects_over_topics["subject_total"]/sum_docs
+    subjects_over_topics["subject_total"]      = subjects_over_topics_counts.sum(axis=1)
+    subjects_over_topics["subject_proportion"] = subjects_over_topics["subject_total"] / sum_docs
+
+    # total row: distribution across topics + totals
+    topic_totals = subjects_over_topics_counts.sum(axis=0)
+    total_row_2 = (topic_totals / topic_totals.sum()).to_dict()
+    total_row_2["entropy"]             = entropy(list(topic_totals / topic_totals.sum()), base=2)
+    total_row_2["subject_total"]       = int(topic_totals.sum())
+    total_row_2["subject_proportion"]  = 1.0
+    subjects_over_topics.loc["TOTAL"]  = total_row_2
+
     subjects_over_topics = subjects_over_topics.round(4)
-    
     filename_2 = f"dist_subjects_over_topics_{keyword}.csv"
     subjects_over_topics.to_csv(keyword_out_dir / filename_2)
     
@@ -410,7 +407,7 @@ def analyze_topic_subject_distribution(df, topic_model, keyword):
     lines = []
     for subject, group in work.groupby("subject"):
         n = len(group)
-        topic_counts = Counter(group["topic_name"]).most_common(5)
+        topic_counts = Counter(group["topic_name"]).most_common()
 
         lines.append(f"{subject} (n={n})")
         lines.append(f"{'count':<8} | topic name")
@@ -425,12 +422,16 @@ def analyze_topic_subject_distribution(df, topic_model, keyword):
         f.write("\n".join(lines))
 
     df = pd.DataFrame()
-    for i in range(-1, len(topic_info)-1):
+    topics = sorted(set(topic_model.topics_))
+    
+    for i in topics:
+        
         topic_terms = topic_model.get_topic(topic=i)
-        terms = [t[0] for t in topic_terms]
-        values = [t[1] for t in topic_terms]
-        df[f"Topic {i} terms"] = terms
-        df[f"Topic {i} probabilities"] = values
+        if topic_terms:
+            terms = [t[0] for t in topic_terms]
+            values = [t[1] for t in topic_terms]
+            df[f"Topic {i} terms"] = terms
+            df[f"Topic {i} probabilities"] = values
     df = df.round(4)
     filename_4 = f"topic_terms_{keyword}.csv"
     df.to_csv(OUTPUT_DIR / keyword / filename_4)
@@ -493,12 +494,15 @@ def main():
             # 9. Plot
             for var in ["topic", "subject"]:
                 # local
-                plot_concept_2d(df, umap_embeddings=None, concept=keyword, color_by=var)
+                plot_concept_2d(umap_embeddings=None, concept=keyword, color_by=var)
                 # global
-                plot_concept_2d(df, umap_embeddings=umap_2d_all, concept=keyword, color_by=var)
+                plot_concept_2d(umap_embeddings=umap_2d_all, concept=keyword, color_by=var)
 
         except Exception as e:
-            log.error(f"An error occurred on keyword {keyword}: {e}")
+            
+            log.error(f"An error occurred on keyword {keyword}")
+            log.error(traceback.format_exc())
+            
 
 
 if __name__ == "__main__":

@@ -21,7 +21,7 @@ import matplotlib.colors as mcolors
 from matplotlib.lines import Line2D
 from tqdm import tqdm
 
-from src.utils import CACHE_DIR, log, OUTPUT_DIR, CSV_PATH
+from src.utils import CACHE_DIR, log, OUTPUT_DIR, load_umap_all
 
 
 
@@ -80,7 +80,7 @@ def load_umap2d_coords(umap_path: Path):
         return
 
 
-def plot_concept_2d(doc_df: pd.DataFrame, umap_embeddings: np.ndarray | None, concept: str, color_by: str = "topic") -> None:
+def plot_concept_2d(umap_embeddings: np.ndarray | None, concept: str, color_by: str = "topic") -> None:
     """2D scatter plot coloured by BERTopic topic for a single concept."""
     #topic_model_path = CACHE_DIR / concept / f"topic_model_{concept}.pkl"
     #topic_info_path = OUTPUT_DIR / concept / f"topic_info_{concept}.csv"
@@ -88,22 +88,23 @@ def plot_concept_2d(doc_df: pd.DataFrame, umap_embeddings: np.ndarray | None, co
         log.error("Pick subject or topic as color mode")
         return
     
-    tdf_path = OUTPUT_DIR / concept / f"document_topics_{concept}.csv"
-    doc_path = CACHE_DIR / concept / f"documents_{concept}.csv"
-    umap_path        = CACHE_DIR / concept / f"umap2d_{concept}.npy"
+    #tdf_path = OUTPUT_DIR / concept / f"document_topics_{concept}.csv"
+    doc_path = OUTPUT_DIR / concept / f"documents_{concept}.csv"
+    umap_path = CACHE_DIR / concept / f"umap2d_{concept}.npy"
 
     
 
     try:
-        # docs = pd.read_csv(doc_path)[["doc_id", "subject"]].copy()
-        # log.info(f"Loaded {len(docs)} documents")
+        docs = pd.read_csv(doc_path)[["doc_id", "subject", "bertopic_topic"]].copy()
+        log.info(f"Loaded {len(docs)} documents")
+        topics = list(docs["bertopic_topic"])
         
-        tdf = pd.read_csv(tdf_path)
-        topics = list(tdf["bertopic_topic"])
+        # tdf = pd.read_csv(tdf_path)
+        # topics = list(tdf["bertopic_topic"])
         
-        merged_df = pd.merge(doc_df, tdf, left_index=True, right_on="global_doc_id")
-        print(merged_df.head(10))
-        log.info(f"Loaded {len(merged_df)} documents")
+        # merged_df = pd.merge(doc_df, tdf, left_index=True, right_on="global_doc_id")
+        # print(merged_df.head(10))
+        # log.info(f"Loaded {len(merged_df)} documents")
 
     
         # topic_info = pd.read_csv(topic_info_path)[["Topic", "Name"]].copy()
@@ -125,11 +126,11 @@ def plot_concept_2d(doc_df: pd.DataFrame, umap_embeddings: np.ndarray | None, co
     else:
         embedding_mode = "global"
         log.info(f"Getting coordinates from global embeddings ...")
-        coords = umap_embeddings[merged_df["global_doc_id"]]   
-        print(merged_df.index)
+        coords = umap_embeddings[docs["doc_id"]]   
+        print(docs.index)
         log.info(f"Umap coords of shape {coords.shape}")
 
-    assert len(topics) == len(coords) == len(merged_df), f"Length mismatch: {len(topics)} topics vs {len(coords)} coords vs {len(docs)} docs"
+    assert len(coords) == len(docs), f"Length mismatch: {len(coords)} coords vs {len(docs)} docs"
 
 
 
@@ -157,7 +158,7 @@ def plot_concept_2d(doc_df: pd.DataFrame, umap_embeddings: np.ndarray | None, co
     elif color_by == "subject":
         
         var_name = "Subject"
-        subjects = merged_df["subject"].fillna("Unknown").unique()
+        subjects = docs["subject"].fillna("Unknown").unique()
         n = len(subjects)
         
         # from utils.color_utils import generate_palette
@@ -168,7 +169,7 @@ def plot_concept_2d(doc_df: pd.DataFrame, umap_embeddings: np.ndarray | None, co
         
         
         for subj in sorted(subjects):
-            mask = merged_df["subject"].fillna("Unknown") == subj
+            mask = docs["subject"].fillna("Unknown") == subj
             ax.scatter(coords[mask, 0], coords[mask, 1],
                     c=color_map[subj], s=7, alpha=0.75, label=subj,
                     linewidths=0, rasterized=True)
@@ -278,9 +279,9 @@ def main():
     #     except Exception as e:
     #         LOG.error(f"  Error {concept}: {e}", exc_info=True)
     concept = "Konkurrenz"
-    df = pd.read_csv(CSV_PATH)
+    umap_all = load_umap_all()
     make_dir_if_necessary(concept)
-    plot_concept_2d(df, None, concept)
+    plot_concept_2d(umap_embeddings=umap_all, concept=concept, color_by="subject")
         
 
     log.info("=== Step 08a complete ===")
