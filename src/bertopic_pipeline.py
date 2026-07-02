@@ -181,84 +181,77 @@ def run_bertopic(
     topic_cache = CACHE_DIR / keyword / f"topic_model_{keyword}.pkl"
     meta_path = CACHE_DIR / keyword / f"documents_{keyword}.csv"
     log.info(f"Attempting to load topic model from {topic_cache}")
-    # if topic_cache.exists():
-    #     log.info("Loading BERTopic model from cache …")
-    #     with open(topic_cache, "rb") as f:
-    #         cached = pickle.load(f)
-    #     return (
-            
-    #         cached["model"],
-    #         cached["topics"],
-    #         cached["probs"],
-    #     )
-    
-    log.info("Running Guided BERTopic …")
-    log.info(f"Length embeddings: {len(embeddings)}")
-    log.info(f"Length docs: {len(docs)}")
 
-    if len(docs) < 200:
-        min_df, max_df, min_cluster_size = 1, 1, 10
+    if topic_cache.exists():
+        log.info("Loading BERTopic model from cache …")
+        with open(topic_cache, "rb") as f:
+            cached = pickle.load(f)
+            topic_model, topics, probs = cached["model"], cached["topics"], cached["probs"],
+    
     else:
-        min_df, max_df, min_cluster_size = 3, 0.8, 15
-    
+        log.info("Running Guided BERTopic …")
+        log.info(f"Length embeddings: {len(embeddings)}")
+        log.info(f"Length docs: {len(docs)}")
 
-    umap_model = UMAP(
-        n_neighbors=15,
-        n_components=5,
-        min_dist=0.0,
-        metric="cosine",
-        random_state=42,
-        low_memory=False,
-    )
-    hdbscan_model = HDBSCAN(
-        min_cluster_size=15,
-        min_samples=5,
-        metric="euclidean",
-        cluster_selection_method="eom",
-        prediction_data=True,
-    )
-    german_stop_words = stopwords.words('german') + ["gv", "lt", "bzw", "std", "ca", "tf", "ak", "le", "sowie", "schlerinnen","schler","fr"]
-    
-    
-    
-    vectorizer = CountVectorizer(
-        stop_words=german_stop_words,
-        min_df=min_df,
-        max_df=max_df,
-        ngram_range=(1, 2),
-        token_pattern=r"(?u)\b[a-zA-ZäöüÄÖÜß\w]{2,}\b",
-    )
+        if len(docs) < 200:
+            min_df, max_df, min_cluster_size = 1, 1, 10
+        else:
+            min_df, max_df, min_cluster_size = 3, 0.8, 15
+        
 
-    topic_model = BERTopic(
-        umap_model=umap_model,
-        hdbscan_model=hdbscan_model,
-        vectorizer_model=vectorizer,
-        top_n_words=20,
-        verbose=True,
-        calculate_probabilities=False,
-        nr_topics=11,
-    )
+        umap_model = UMAP(
+            n_neighbors=15,
+            n_components=5,
+            min_dist=0.0,
+            metric="cosine",
+            random_state=42,
+            low_memory=False,
+        )
+        hdbscan_model = HDBSCAN(
+            min_cluster_size=15,
+            min_samples=5,
+            metric="euclidean",
+            cluster_selection_method="eom",
+            prediction_data=True,
+        )
+        german_stop_words = stopwords.words('german') + ["gv", "lt", "bzw", "std", "ca", "tf", "ak", "le", "sowie", "schlerinnen","schler","fr"]
+        
+        
+        
+        vectorizer = CountVectorizer(
+            stop_words=german_stop_words,
+            min_df=min_df,
+            max_df=max_df,
+            ngram_range=(1, 2),
+            token_pattern=r"(?u)\b[a-zA-ZäöüÄÖÜß\w]{3,}\b",
+        )
 
-    topics, probs = topic_model.fit_transform(docs, embeddings)
-    log.info(f"  Topics found: {len(set(topics))}")
+        topic_model = BERTopic(
+            umap_model=umap_model,
+            hdbscan_model=hdbscan_model,
+            vectorizer_model=vectorizer,
+            top_n_words=20,
+            verbose=True,
+            calculate_probabilities=False,
+            nr_topics=11,
+        )
+
+        topics, probs = topic_model.fit_transform(docs, embeddings)
+        log.info(f"  Topics found: {len(set(topics))}")
+
+        with open(topic_cache, "wb") as f:
+            pickle.dump({
+                "keyword":       keyword,
+                "model":         topic_model,
+                "topics":        topics,
+                "probs":         probs,
+            }, f)
     
     topic_df = pd.DataFrame({
         "global_doc_id" : meta_df.index,
         "bertopic_topic": topics
     })
     topic_df.to_csv(OUTPUT_DIR / keyword / f"document_topics_{keyword}.csv")
-    
-    
-
-    with open(topic_cache, "wb") as f:
-        pickle.dump({
-            "keyword":       keyword,
-            "model":         topic_model,
-            "topics":        topics,
-            "probs":         probs,
-        }, f)
-
-    
 
     return topic_model, topics, probs
 
@@ -468,9 +461,13 @@ def main():
     df = load_csv(CSV_PATH)
     # 3. All embeddings
     embeddings_all = get_embeddings_all(list(df["text_excerpt"]))
-    
+
+    umap_2d_all = get_umap2d_all(embeddings_all)
+
+
     for keyword in keywords:
-        
+        # if keyword != "Konkurrenz":
+        #     continue
         log.info("=" * 70)
         log.info(f"  Concept {keyword}")
         log.info("=" * 70)
@@ -494,8 +491,12 @@ def main():
             analyze_topic_subject_distribution(keyword_df, topic_model, keyword)
 
             # 9. Plot
-            plot_concept_2d(df, keyword, by_topic=True)
-            plot_concept_2d(df, keyword, by_topic=False)
+            for var in ["topic", "subject"]:
+                # local
+                plot_concept_2d(df, umap_embeddings=None, concept=keyword, color_by=var)
+                # global
+                plot_concept_2d(df, umap_embeddings=umap_2d_all, concept=keyword, color_by=var)
+
         except Exception as e:
             log.error(f"An error occurred on keyword {keyword}: {e}")
 

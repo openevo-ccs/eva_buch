@@ -80,13 +80,18 @@ def load_umap2d_coords(umap_path: Path):
         return
 
 
-def plot_concept_2d(doc_df: pd.DataFrame, concept: str, by_topic: bool = True) -> None:
+def plot_concept_2d(doc_df: pd.DataFrame, umap_embeddings: np.ndarray | None, concept: str, color_by: str = "topic") -> None:
     """2D scatter plot coloured by BERTopic topic for a single concept."""
     #topic_model_path = CACHE_DIR / concept / f"topic_model_{concept}.pkl"
     #topic_info_path = OUTPUT_DIR / concept / f"topic_info_{concept}.csv"
+    if color_by not in ["subject", "topic"]:
+        log.error("Pick subject or topic as color mode")
+        return
+    
     tdf_path = OUTPUT_DIR / concept / f"document_topics_{concept}.csv"
     doc_path = CACHE_DIR / concept / f"documents_{concept}.csv"
     umap_path        = CACHE_DIR / concept / f"umap2d_{concept}.npy"
+
     
 
     try:
@@ -97,19 +102,32 @@ def plot_concept_2d(doc_df: pd.DataFrame, concept: str, by_topic: bool = True) -
         topics = list(tdf["bertopic_topic"])
         
         merged_df = pd.merge(doc_df, tdf, left_index=True, right_on="global_doc_id")
+        print(merged_df.head(10))
         log.info(f"Loaded {len(merged_df)} documents")
 
-        coords = np.load(umap_path)
-        log.info(f"Loaded umap coords of shape {coords.shape}")
     
-
         # topic_info = pd.read_csv(topic_info_path)[["Topic", "Name"]].copy()
         # log.info(f"Loaded {len(topic_info)} unique topics")
-        
         
     except Exception as e:
         log.error(f"An error occured: {e}")
         return
+    
+    if umap_embeddings is None:
+        embedding_mode = "local"
+        log.info(f"No UMAP embeddings provided, loading from {umap_path} ...")
+        try:
+            coords = np.load(umap_path)
+            log.info(f"Loaded umap coords of shape {coords.shape}")
+        except Exception as e:
+            log.error(f"An error occured: {e}")
+            return
+    else:
+        embedding_mode = "global"
+        log.info(f"Getting coordinates from global embeddings ...")
+        coords = umap_embeddings[merged_df["global_doc_id"]]   
+        print(merged_df.index)
+        log.info(f"Umap coords of shape {coords.shape}")
 
     assert len(topics) == len(coords) == len(merged_df), f"Length mismatch: {len(topics)} topics vs {len(coords)} coords vs {len(docs)} docs"
 
@@ -118,9 +136,9 @@ def plot_concept_2d(doc_df: pd.DataFrame, concept: str, by_topic: bool = True) -
     fig, ax = dark_fig(FIG_SIZE_SQUARE)
 
     # color by topic
-    if by_topic:
+    if color_by == "topic":
         # color map
-        var = "topic"
+        
         var_name = "Topic"
         topics       = np.array(topics)
         unique_topics = sorted(set(topics))
@@ -136,8 +154,8 @@ def plot_concept_2d(doc_df: pd.DataFrame, concept: str, by_topic: bool = True) -
                     linewidths=0, rasterized=True)
     
     # color by subject    
-    else:
-        var = "subject"
+    elif color_by == "subject":
+        
         var_name = "Subject"
         subjects = merged_df["subject"].fillna("Unknown").unique()
         n = len(subjects)
@@ -165,7 +183,7 @@ def plot_concept_2d(doc_df: pd.DataFrame, concept: str, by_topic: bool = True) -
     fig.tight_layout()
 
     #for suffix in ["png","svg","tiff"]:
-    out_path = OUTPUT_DIR / concept / f"umap2d_{concept}_{var}.png"
+    out_path = OUTPUT_DIR / concept / f"umap2d_{concept}_{color_by}_{embedding_mode}.png"
     fig.savefig(out_path, dpi=FIGURE_DPI, facecolor=PLOT_BGCOLOR)
     plt.close(fig)
     log.info(f"  Saved: {out_path}")
@@ -262,8 +280,7 @@ def main():
     concept = "Konkurrenz"
     df = pd.read_csv(CSV_PATH)
     make_dir_if_necessary(concept)
-    plot_concept_2d(df, concept, by_topic=True)
-    plot_concept_2d(df, concept, by_topic=False)
+    plot_concept_2d(df, None, concept)
         
 
     log.info("=== Step 08a complete ===")
