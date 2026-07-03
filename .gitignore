@@ -1,0 +1,35 @@
+# Virtual environment
+.venv/
+bertopic-env/
+venv/
+env/
+
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+
+# Environment variables (secrets)
+.env
+
+# Data files (often large — adjust as needed)
+bertopic/cache/
+bertopic/notebooks/
+data/
+keyword_search/
+lda_topic_modelling/
+
+
+# macOS
+.DS_Store
+
+# VSCode — remove this line if you want to share settings with your team
+# .vscode/
