@@ -312,7 +312,7 @@ def run_bertopic(
             min_df=min_df,
             max_df=max_df,
             ngram_range=(1, 2),
-            token_pattern=r"(?u)\b[a-zA-ZäöüÄÖÜß\w]{3,}\b",
+            token_pattern=r"(?u)\b[a-zA-ZäöüÄÖÜß\w]{3,}\b", # minimum length of 3 letters including umlaute => fails to preserve umlaute because CountVectorizer strips them beforehand
         )
         topic_model = BERTopic(
             umap_model=umap_model,
