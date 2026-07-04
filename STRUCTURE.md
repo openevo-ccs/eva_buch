@@ -1,3 +1,4 @@
+```
 eva_buch/
 ├── .git/                        
 ├── .vscode/
@@ -40,6 +41,7 @@ eva_buch/
 │   ├── requirements.txt            # BERTopic environment  
 ├── .gitignore
 ├── environment.yaml                # Keyword search + LDA environment (conda)
-├── requirements_2.txt              # Keyword search + LDA environment (pip)
+├── requirements.txt                # Keyword search + LDA environment (pip)
 ├── LICENSE
 ├── README.md
+```

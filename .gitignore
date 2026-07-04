@@ -3,6 +3,7 @@
 bertopic/bertopic-env/
 venv/
 env/
+bertopic/requirements.in
 
 # Python
 __pycache__/
@@ -24,6 +25,7 @@ bertopic/cache/
 bertopic/notebooks/
 keyword_search/
 # lda_topic_modelling/
+rm/
 
 # macOS
 .DS_Store
