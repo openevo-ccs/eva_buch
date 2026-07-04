@@ -1,0 +1,18 @@
+name: graphReason
+channels:
+  - defaults
+dependencies:
+  - python=3.12
+  - numpy
+  - pandas
+  - requests
+  - ipykernel
+  - langchain-community
+  - pyarrow
+  - fastparquet
+  - wordcloud
+  - spacy
+  - openpyxl
+  - pyldavis
+  - openai
+prefix: /opt/miniconda3/envs/graphReason
