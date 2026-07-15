@@ -1,0 +1,250 @@
+14:21:10 [INFO   ] ==============================================================================
+14:21:10 [INFO   ]   Evo-Buch Curriculum-Atlas — BERTopic Data Generation Pipeline
+14:21:10 [INFO   ] ==============================================================================
+14:21:10 [INFO   ] CSV:          data_raw\results.csv
+14:21:10 [INFO   ] Web data dir: D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data
+14:21:10 [INFO   ] Cache dir:    D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\cache
+14:21:10 [INFO   ] Out dir:      D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\out
+14:21:10 [INFO   ] Concepts:     22 -> ['Anpassung', 'Anthropologie', 'Bedürfnis', 'Emotion', 'Evolution', 'Freiheit', 'Gefühl', 'Gen', 'Gerechtigkeit', 'Glück', 'Handeln', 'Konkurrenz', 'Kooperation', 'Kultur', 'Mensch', 'Moral', 'Norm', 'Rationalität', 'Ursache', 'Verhalten', 'Vorurteil', 'Wert']
+15:16:59 [INFO   ] ==============================================================================
+15:16:59 [INFO   ]   Evo-Buch Curriculum-Atlas — BERTopic Data Generation Pipeline
+15:16:59 [INFO   ] ==============================================================================
+15:16:59 [INFO   ] CSV:          ..\..\keyword_search\out\results.csv
+15:16:59 [INFO   ] Web data dir: D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data
+15:16:59 [INFO   ] Cache dir:    D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\cache
+15:16:59 [INFO   ] Out dir:      D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\out
+15:16:59 [INFO   ] Concepts:     22 -> ['Anpassung', 'Anthropologie', 'Bedürfnis', 'Emotion', 'Evolution', 'Freiheit', 'Gefühl', 'Gen', 'Gerechtigkeit', 'Glück', 'Handeln', 'Konkurrenz', 'Kooperation', 'Kultur', 'Mensch', 'Moral', 'Norm', 'Rationalität', 'Ursache', 'Verhalten', 'Vorurteil', 'Wert']
+15:16:59 [INFO   ] Source CSV checksum (MD5): 45b9eb3e05e0babc6ed619943bf5c325
+15:16:59 [INFO   ] Loading source CSV from ..\..\keyword_search\out\results.csv …
+15:17:00 [INFO   ]   Loaded 35,893 rows × 11 columns.
+15:17:00 [INFO   ] No topic-label override file at D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\topic_label_overrides.json (using auto-labels only).
+15:17:00 [INFO   ] Encoding 35,893 documents with 'all-MiniLM-L6-v2' …
+15:34:10 [INFO   ]   Saved embeddings cache: shape (35893, 384) -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\cache\embeddings_all.npy
+15:34:10 [INFO   ] ------------------------------------------------------------------------------
+15:34:10 [INFO   ] CONCEPT: Anpassung
+15:34:10 [INFO   ] ------------------------------------------------------------------------------
+15:34:10 [INFO   ] [Anpassung] 738 matching documents.
+15:34:10 [INFO   ]   [Anpassung] Fitting BERTopic on 738 documents …
+15:34:24 [INFO   ]   [Anpassung] Fitted 16 topic(s) (82 outlier docs).
+15:34:25 [INFO   ]   Fitted + cached UMAP (2D): shape (738, 2) -> umap2d_Anpassung.npy
+15:34:27 [INFO   ]   Fitted + cached UMAP (3D): shape (738, 3) -> umap3d_Anpassung.npy
+15:34:27 [INFO   ]   [Anpassung] Saved topic/subject distribution diagnostics.
+15:34:27 [INFO   ]   [Anpassung] Wrote 738 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Anpassung.json
+15:34:27 [INFO   ] ------------------------------------------------------------------------------
+15:34:27 [INFO   ] CONCEPT: Anthropologie
+15:34:27 [INFO   ] ------------------------------------------------------------------------------
+15:34:27 [INFO   ] [Anthropologie] 312 matching documents.
+15:34:27 [INFO   ]   [Anthropologie] Fitting BERTopic on 312 documents …
+15:34:28 [INFO   ]   [Anthropologie] Fitted 7 topic(s) (84 outlier docs).
+15:34:28 [INFO   ]   Fitted + cached UMAP (2D): shape (312, 2) -> umap2d_Anthropologie.npy
+15:34:29 [INFO   ]   Fitted + cached UMAP (3D): shape (312, 3) -> umap3d_Anthropologie.npy
+15:34:29 [INFO   ]   [Anthropologie] Saved topic/subject distribution diagnostics.
+15:34:29 [INFO   ]   [Anthropologie] Wrote 312 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Anthropologie.json
+15:34:29 [INFO   ] ------------------------------------------------------------------------------
+15:34:29 [INFO   ] CONCEPT: Bedürfnis
+15:34:29 [INFO   ] ------------------------------------------------------------------------------
+15:34:29 [INFO   ] [Bedürfnis] 640 matching documents.
+15:34:29 [INFO   ]   [Bedürfnis] Fitting BERTopic on 640 documents …
+15:34:30 [INFO   ]   [Bedürfnis] Fitted 16 topic(s) (130 outlier docs).
+15:34:32 [INFO   ]   Fitted + cached UMAP (2D): shape (640, 2) -> umap2d_Bedürfnis.npy
+15:34:33 [INFO   ]   Fitted + cached UMAP (3D): shape (640, 3) -> umap3d_Bedürfnis.npy
+15:34:33 [INFO   ]   [Bedürfnis] Saved topic/subject distribution diagnostics.
+15:34:33 [INFO   ]   [Bedürfnis] Wrote 640 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Bedürfnis.json
+15:34:33 [INFO   ] ------------------------------------------------------------------------------
+15:34:33 [INFO   ] CONCEPT: Emotion
+15:34:33 [INFO   ] ------------------------------------------------------------------------------
+15:34:33 [INFO   ] [Emotion] 267 matching documents.
+15:34:33 [INFO   ]   [Emotion] Fitting BERTopic on 267 documents …
+15:34:34 [WARNING]   [Emotion] Primary vectoriser failed (max_df corresponds to < documents than min_df); retrying with unconstrained vocabulary …
+15:34:34 [INFO   ]   [Emotion] Fitted 3 topic(s) (12 outlier docs).
+15:34:35 [INFO   ]   Fitted + cached UMAP (2D): shape (267, 2) -> umap2d_Emotion.npy
+15:34:35 [INFO   ]   Fitted + cached UMAP (3D): shape (267, 3) -> umap3d_Emotion.npy
+15:34:35 [INFO   ]   [Emotion] Saved topic/subject distribution diagnostics.
+15:34:35 [INFO   ]   [Emotion] Wrote 267 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Emotion.json
+15:34:35 [INFO   ] ------------------------------------------------------------------------------
+15:34:35 [INFO   ] CONCEPT: Evolution
+15:34:35 [INFO   ] ------------------------------------------------------------------------------
+15:34:35 [INFO   ] [Evolution] 1,085 matching documents.
+15:34:35 [INFO   ]   [Evolution] Fitting BERTopic on 1,085 documents …
+15:34:38 [INFO   ]   [Evolution] Fitted 23 topic(s) (242 outlier docs).
+15:34:41 [INFO   ]   Fitted + cached UMAP (2D): shape (1085, 2) -> umap2d_Evolution.npy
+15:34:44 [INFO   ]   Fitted + cached UMAP (3D): shape (1085, 3) -> umap3d_Evolution.npy
+15:34:44 [INFO   ]   [Evolution] Saved topic/subject distribution diagnostics.
+15:34:44 [INFO   ]   [Evolution] Wrote 1,085 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Evolution.json
+15:34:44 [INFO   ] ------------------------------------------------------------------------------
+15:34:44 [INFO   ] CONCEPT: Freiheit
+15:34:44 [INFO   ] ------------------------------------------------------------------------------
+15:34:44 [INFO   ] [Freiheit] 1,236 matching documents.
+15:34:44 [INFO   ]   [Freiheit] Fitting BERTopic on 1,236 documents …
+15:34:47 [INFO   ]   [Freiheit] Fitted 13 topic(s) (231 outlier docs).
+15:34:50 [INFO   ]   Fitted + cached UMAP (2D): shape (1236, 2) -> umap2d_Freiheit.npy
+15:34:53 [INFO   ]   Fitted + cached UMAP (3D): shape (1236, 3) -> umap3d_Freiheit.npy
+15:34:53 [INFO   ]   [Freiheit] Saved topic/subject distribution diagnostics.
+15:34:53 [INFO   ]   [Freiheit] Wrote 1,236 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Freiheit.json
+15:34:53 [INFO   ] ------------------------------------------------------------------------------
+15:34:53 [INFO   ] CONCEPT: Gefühl
+15:34:53 [INFO   ] ------------------------------------------------------------------------------
+15:34:53 [INFO   ] [Gefühl] 354 matching documents.
+15:34:53 [INFO   ]   [Gefühl] Fitting BERTopic on 354 documents …
+15:34:54 [INFO   ]   [Gefühl] Fitted 10 topic(s) (63 outlier docs).
+15:34:55 [INFO   ]   Fitted + cached UMAP (2D): shape (354, 2) -> umap2d_Gefühl.npy
+15:34:55 [INFO   ]   Fitted + cached UMAP (3D): shape (354, 3) -> umap3d_Gefühl.npy
+15:34:55 [INFO   ]   [Gefühl] Saved topic/subject distribution diagnostics.
+15:34:55 [INFO   ]   [Gefühl] Wrote 354 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Gefühl.json
+15:34:55 [INFO   ] ------------------------------------------------------------------------------
+15:34:55 [INFO   ] CONCEPT: Gen
+15:34:55 [INFO   ] ------------------------------------------------------------------------------
+15:34:55 [INFO   ] [Gen] 991 matching documents.
+15:34:55 [INFO   ]   [Gen] Fitting BERTopic on 991 documents …
+15:34:58 [INFO   ]   [Gen] Fitted 21 topic(s) (218 outlier docs).
+15:35:00 [INFO   ]   Fitted + cached UMAP (2D): shape (991, 2) -> umap2d_Gen.npy
+15:35:02 [INFO   ]   Fitted + cached UMAP (3D): shape (991, 3) -> umap3d_Gen.npy
+15:35:02 [INFO   ]   [Gen] Saved topic/subject distribution diagnostics.
+15:35:03 [INFO   ]   [Gen] Wrote 991 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Gen.json
+15:35:03 [INFO   ] ------------------------------------------------------------------------------
+15:35:03 [INFO   ] CONCEPT: Gerechtigkeit
+15:35:03 [INFO   ] ------------------------------------------------------------------------------
+15:35:03 [INFO   ] [Gerechtigkeit] 1,343 matching documents.
+15:35:03 [INFO   ]   [Gerechtigkeit] Fitting BERTopic on 1,343 documents …
+15:35:06 [INFO   ]   [Gerechtigkeit] Fitted 31 topic(s) (385 outlier docs).
+15:35:10 [INFO   ]   Fitted + cached UMAP (2D): shape (1343, 2) -> umap2d_Gerechtigkeit.npy
+15:35:13 [INFO   ]   Fitted + cached UMAP (3D): shape (1343, 3) -> umap3d_Gerechtigkeit.npy
+15:35:13 [INFO   ]   [Gerechtigkeit] Saved topic/subject distribution diagnostics.
+15:35:14 [INFO   ]   [Gerechtigkeit] Wrote 1,343 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Gerechtigkeit.json
+15:35:14 [INFO   ] ------------------------------------------------------------------------------
+15:35:14 [INFO   ] CONCEPT: Glück
+15:35:14 [INFO   ] ------------------------------------------------------------------------------
+15:35:14 [INFO   ] [Glück] 661 matching documents.
+15:35:14 [INFO   ]   [Glück] Fitting BERTopic on 661 documents …
+15:35:15 [INFO   ]   [Glück] Fitted 18 topic(s) (134 outlier docs).
+15:35:16 [INFO   ]   Fitted + cached UMAP (2D): shape (661, 2) -> umap2d_Glück.npy
+15:35:18 [INFO   ]   Fitted + cached UMAP (3D): shape (661, 3) -> umap3d_Glück.npy
+15:35:18 [INFO   ]   [Glück] Saved topic/subject distribution diagnostics.
+15:35:18 [INFO   ]   [Glück] Wrote 661 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Glück.json
+15:35:18 [INFO   ] ------------------------------------------------------------------------------
+15:35:18 [INFO   ] CONCEPT: Handeln
+15:35:18 [INFO   ] ------------------------------------------------------------------------------
+15:35:18 [INFO   ] [Handeln] 3,849 matching documents.
+15:35:18 [INFO   ]   [Handeln] Fitting BERTopic on 3,849 documents …
+15:35:38 [INFO   ]   [Handeln] Fitted 84 topic(s) (1173 outlier docs).
+15:35:57 [INFO   ]   Fitted + cached UMAP (2D): shape (3849, 2) -> umap2d_Handeln.npy
+15:36:15 [INFO   ]   Fitted + cached UMAP (3D): shape (3849, 3) -> umap3d_Handeln.npy
+15:36:15 [INFO   ]   [Handeln] Saved topic/subject distribution diagnostics.
+15:36:16 [INFO   ]   [Handeln] Wrote 3,849 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Handeln.json
+15:36:16 [INFO   ] ------------------------------------------------------------------------------
+15:36:16 [INFO   ] CONCEPT: Konkurrenz
+15:36:16 [INFO   ] ------------------------------------------------------------------------------
+15:36:16 [INFO   ] [Konkurrenz] 268 matching documents.
+15:36:16 [INFO   ]   [Konkurrenz] Fitting BERTopic on 268 documents …
+15:36:16 [WARNING]   [Konkurrenz] Primary vectoriser failed (max_df corresponds to < documents than min_df); retrying with unconstrained vocabulary …
+15:36:17 [INFO   ]   [Konkurrenz] Fitted 3 topic(s) (7 outlier docs).
+15:36:17 [INFO   ]   Fitted + cached UMAP (2D): shape (268, 2) -> umap2d_Konkurrenz.npy
+15:36:18 [INFO   ]   Fitted + cached UMAP (3D): shape (268, 3) -> umap3d_Konkurrenz.npy
+15:36:18 [INFO   ]   [Konkurrenz] Saved topic/subject distribution diagnostics.
+15:36:18 [INFO   ]   [Konkurrenz] Wrote 268 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Konkurrenz.json
+15:36:18 [INFO   ] ------------------------------------------------------------------------------
+15:36:18 [INFO   ] CONCEPT: Kooperation
+15:36:18 [INFO   ] ------------------------------------------------------------------------------
+15:36:18 [INFO   ] [Kooperation] 569 matching documents.
+15:36:18 [INFO   ]   [Kooperation] Fitting BERTopic on 569 documents …
+15:36:19 [INFO   ]   [Kooperation] Fitted 13 topic(s) (170 outlier docs).
+15:36:20 [INFO   ]   Fitted + cached UMAP (2D): shape (569, 2) -> umap2d_Kooperation.npy
+15:36:22 [INFO   ]   Fitted + cached UMAP (3D): shape (569, 3) -> umap3d_Kooperation.npy
+15:36:22 [INFO   ]   [Kooperation] Saved topic/subject distribution diagnostics.
+15:36:22 [INFO   ]   [Kooperation] Wrote 569 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Kooperation.json
+15:36:22 [INFO   ] ------------------------------------------------------------------------------
+15:36:22 [INFO   ] CONCEPT: Kultur
+15:36:22 [INFO   ] ------------------------------------------------------------------------------
+15:36:22 [INFO   ] [Kultur] 1,466 matching documents.
+15:36:22 [INFO   ]   [Kultur] Fitting BERTopic on 1,466 documents …
+15:36:26 [INFO   ]   [Kultur] Fitted 31 topic(s) (408 outlier docs).
+15:36:30 [INFO   ]   Fitted + cached UMAP (2D): shape (1466, 2) -> umap2d_Kultur.npy
+15:36:34 [INFO   ]   Fitted + cached UMAP (3D): shape (1466, 3) -> umap3d_Kultur.npy
+15:36:34 [INFO   ]   [Kultur] Saved topic/subject distribution diagnostics.
+15:36:34 [INFO   ]   [Kultur] Wrote 1,466 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Kultur.json
+15:36:34 [INFO   ] ------------------------------------------------------------------------------
+15:36:34 [INFO   ] CONCEPT: Mensch
+15:36:34 [INFO   ] ------------------------------------------------------------------------------
+15:36:34 [INFO   ] [Mensch] 4,852 matching documents.
+15:36:34 [INFO   ]   [Mensch] Fitting BERTopic on 4,852 documents …
+15:37:01 [INFO   ]   [Mensch] Fitted 86 topic(s) (1051 outlier docs).
+15:37:23 [INFO   ]   Fitted + cached UMAP (2D): shape (4852, 2) -> umap2d_Mensch.npy
+15:37:31 [INFO   ]   Fitted + cached UMAP (3D): shape (4852, 3) -> umap3d_Mensch.npy
+15:37:31 [INFO   ]   [Mensch] Saved topic/subject distribution diagnostics.
+15:37:32 [INFO   ]   [Mensch] Wrote 4,852 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Mensch.json
+15:37:32 [INFO   ] ------------------------------------------------------------------------------
+15:37:32 [INFO   ] CONCEPT: Moral
+15:37:32 [INFO   ] ------------------------------------------------------------------------------
+15:37:32 [INFO   ] [Moral] 1,265 matching documents.
+15:37:32 [INFO   ]   [Moral] Fitting BERTopic on 1,265 documents …
+15:37:36 [INFO   ]   [Moral] Fitted 26 topic(s) (314 outlier docs).
+15:37:39 [INFO   ]   Fitted + cached UMAP (2D): shape (1265, 2) -> umap2d_Moral.npy
+15:37:42 [INFO   ]   Fitted + cached UMAP (3D): shape (1265, 3) -> umap3d_Moral.npy
+15:37:42 [INFO   ]   [Moral] Saved topic/subject distribution diagnostics.
+15:37:42 [INFO   ]   [Moral] Wrote 1,265 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Moral.json
+15:37:42 [INFO   ] ------------------------------------------------------------------------------
+15:37:42 [INFO   ] CONCEPT: Norm
+15:37:42 [INFO   ] ------------------------------------------------------------------------------
+15:37:42 [INFO   ] [Norm] 1,134 matching documents.
+15:37:42 [INFO   ]   [Norm] Fitting BERTopic on 1,134 documents …
+15:37:45 [INFO   ]   [Norm] Fitted 26 topic(s) (320 outlier docs).
+15:37:48 [INFO   ]   Fitted + cached UMAP (2D): shape (1134, 2) -> umap2d_Norm.npy
+15:37:51 [INFO   ]   Fitted + cached UMAP (3D): shape (1134, 3) -> umap3d_Norm.npy
+15:37:51 [INFO   ]   [Norm] Saved topic/subject distribution diagnostics.
+15:37:51 [INFO   ]   [Norm] Wrote 1,134 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Norm.json
+15:37:51 [INFO   ] ------------------------------------------------------------------------------
+15:37:51 [INFO   ] CONCEPT: Rationalität
+15:37:51 [INFO   ] ------------------------------------------------------------------------------
+15:37:51 [INFO   ] [Rationalität] 283 matching documents.
+15:37:51 [INFO   ]   [Rationalität] Fitting BERTopic on 283 documents …
+15:37:51 [INFO   ]   [Rationalität] Fitted 6 topic(s) (21 outlier docs).
+15:37:52 [INFO   ]   Fitted + cached UMAP (2D): shape (283, 2) -> umap2d_Rationalität.npy
+15:37:52 [INFO   ]   Fitted + cached UMAP (3D): shape (283, 3) -> umap3d_Rationalität.npy
+15:37:52 [INFO   ]   [Rationalität] Saved topic/subject distribution diagnostics.
+15:37:52 [INFO   ]   [Rationalität] Wrote 283 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Rationalität.json
+15:37:52 [INFO   ] ------------------------------------------------------------------------------
+15:37:52 [INFO   ] CONCEPT: Ursache
+15:37:52 [INFO   ] ------------------------------------------------------------------------------
+15:37:52 [INFO   ] [Ursache] 1,277 matching documents.
+15:37:52 [INFO   ]   [Ursache] Fitting BERTopic on 1,277 documents …
+15:37:56 [INFO   ]   [Ursache] Fitted 35 topic(s) (249 outlier docs).
+15:37:59 [INFO   ]   Fitted + cached UMAP (2D): shape (1277, 2) -> umap2d_Ursache.npy
+15:38:03 [INFO   ]   Fitted + cached UMAP (3D): shape (1277, 3) -> umap3d_Ursache.npy
+15:38:03 [INFO   ]   [Ursache] Saved topic/subject distribution diagnostics.
+15:38:03 [INFO   ]   [Ursache] Wrote 1,277 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Ursache.json
+15:38:03 [INFO   ] ------------------------------------------------------------------------------
+15:38:03 [INFO   ] CONCEPT: Verhalten
+15:38:03 [INFO   ] ------------------------------------------------------------------------------
+15:38:03 [INFO   ] [Verhalten] 1,155 matching documents.
+15:38:03 [INFO   ]   [Verhalten] Fitting BERTopic on 1,155 documents …
+15:38:06 [INFO   ]   [Verhalten] Fitted 4 topic(s) (0 outlier docs).
+15:38:09 [INFO   ]   Fitted + cached UMAP (2D): shape (1155, 2) -> umap2d_Verhalten.npy
+15:38:12 [INFO   ]   Fitted + cached UMAP (3D): shape (1155, 3) -> umap3d_Verhalten.npy
+15:38:12 [INFO   ]   [Verhalten] Saved topic/subject distribution diagnostics.
+15:38:12 [INFO   ]   [Verhalten] Wrote 1,155 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Verhalten.json
+15:38:12 [INFO   ] ------------------------------------------------------------------------------
+15:38:12 [INFO   ] CONCEPT: Vorurteil
+15:38:12 [INFO   ] ------------------------------------------------------------------------------
+15:38:12 [INFO   ] [Vorurteil] 285 matching documents.
+15:38:12 [INFO   ]   [Vorurteil] Fitting BERTopic on 285 documents …
+15:38:12 [WARNING]   [Vorurteil] Primary vectoriser failed (max_df corresponds to < documents than min_df); retrying with unconstrained vocabulary …
+15:38:13 [INFO   ]   [Vorurteil] Fitted 2 topic(s) (0 outlier docs).
+15:38:13 [INFO   ]   Fitted + cached UMAP (2D): shape (285, 2) -> umap2d_Vorurteil.npy
+15:38:14 [INFO   ]   Fitted + cached UMAP (3D): shape (285, 3) -> umap3d_Vorurteil.npy
+15:38:14 [INFO   ]   [Vorurteil] Saved topic/subject distribution diagnostics.
+15:38:14 [INFO   ]   [Vorurteil] Wrote 285 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Vorurteil.json
+15:38:14 [INFO   ] ------------------------------------------------------------------------------
+15:38:14 [INFO   ] CONCEPT: Wert
+15:38:14 [INFO   ] ------------------------------------------------------------------------------
+15:38:14 [INFO   ] [Wert] 2,135 matching documents.
+15:38:14 [INFO   ]   [Wert] Fitting BERTopic on 2,135 documents …
+15:38:22 [INFO   ]   [Wert] Fitted 49 topic(s) (556 outlier docs).
+15:38:29 [INFO   ]   Fitted + cached UMAP (2D): shape (2135, 2) -> umap2d_Wert.npy
+15:38:36 [INFO   ]   Fitted + cached UMAP (3D): shape (2135, 3) -> umap3d_Wert.npy
+15:38:36 [INFO   ]   [Wert] Saved topic/subject distribution diagnostics.
+15:38:36 [INFO   ]   [Wert] Wrote 2,135 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Wert.json
+15:38:36 [INFO   ] Wrote manifest -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\manifest.json
+15:38:36 [WARNING] 3 unmapped state value(s) logged -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\out\unmapped_states.txt
+15:38:36 [INFO   ] ==============================================================================
+15:38:36 [INFO   ] DONE. Succeeded: 22/22 concept(s).
+15:38:36 [INFO   ] ==============================================================================

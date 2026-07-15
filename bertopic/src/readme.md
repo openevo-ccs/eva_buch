@@ -9,7 +9,7 @@
 
 **Suggested run order for a fresh setup:**
 ```bash
-python bertopic_pipeline.py --csv data_raw/results.csv
+python bertopic_pipeline_v2.py --csv data_raw/results.csv
 python viz_umap_2d.py            # also generates data/color_maps.json
 python viz_umap_3d.py
 # then just open/deploy curriculum_atlas.html (with data/ alongside it)

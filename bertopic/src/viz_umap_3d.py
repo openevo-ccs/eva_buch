@@ -80,7 +80,7 @@ except ImportError as e:
 # import rather than duplicate, so all three visual outputs (2D static,
 # 3D static, interactive web app) draw from one authoritative implementation.
 try:
-    from viz_umap_2d import (
+    from viz_umap_2d_v2 import (
         THEMES,
         NEUTRAL_GRAY,
         GOLDEN_ANGLE_DEG,
@@ -92,7 +92,7 @@ try:
         cap_legend_categories,
     )
 except ImportError as e:
-    sys.exit(f"[FATAL] Could not import viz_umap_2d.py (must be in the same "
+    sys.exit(f"[FATAL] Could not import viz_umap_2d_v2.py (must be in the same "
               f"directory): {e}")
 
 

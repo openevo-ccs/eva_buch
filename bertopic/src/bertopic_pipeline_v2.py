@@ -261,8 +261,12 @@ def parse_args(argv: Optional[list[str]] = None) -> RunConfig:
         description="Evo-Buch Curriculum-Atlas: BERTopic data generation pipeline.",
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
-    p.add_argument("--csv", type=Path, default=base_dir / "data_raw" / "results.csv",
-                    help="Path to the raw source CSV.")
+    default_csv = base_dir / "data_raw" / "results.csv"
+    if not default_csv.exists():
+        default_csv = base_dir.parent.parent / "keyword_search" / "out" / "results.csv"
+    p.add_argument("--csv", type=Path, default=default_csv,
+                    help="Path to the raw source CSV. Defaults to data_raw/results.csv, "
+                         "or keyword_search/out/results.csv if the former is absent.")
     p.add_argument("--web-data-dir", type=Path, default=base_dir / "data",
                     help="Output dir for JSON consumed by curriculum_atlas.html.")
     p.add_argument("--cache-dir", type=Path, default=base_dir / "cache",
