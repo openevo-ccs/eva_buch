@@ -1,0 +1,2173 @@
+<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evo-Buch Curriculum-Atlas</title>
+<meta name="description" content="Interaktiver UMAP-Atlas deutscher Lehrplantexte, verortet zu evolutionsanthropologischen Kernkonzepten." />
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     EXTERNAL DEPENDENCIES (CDN)
+     - Tailwind Play CDN: JIT utility-class compiler, no build step required.
+     - Plotly.js: pinned version for reproducible rendering across visits.
+     - Inter: clean, highly legible UI typeface at small sizes (sidebar/legend).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Minimal Tailwind config — most theming is done via CSS custom properties
+  // (see <style> below) so the app can switch dark/light instantly without
+  // duplicating every utility class with `dark:` variants.
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     STYLES
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Theme tokens ──────────────────────────────────────────────────────
+     Every color used outside of Plotly's own canvas is driven by these
+     custom properties. Switching [data-theme] on <html> re-themes the
+     entire chrome instantly; Plotly canvases are re-themed separately via
+     JS (see themeRelayoutPatch()) because Plotly cannot read CSS vars. */
+  :root[data-theme="dark"] {
+    --bg: #0b1220;
+    --surface: #111827;
+    --surface-2: #1a2436;
+    --surface-hover: #22304a;
+    --border: #2a3852;
+    --fg: #e5eaf3;
+    --fg-muted: #93a2ba;
+    --fg-faint: #5b6b85;
+    --accent: #38bdf8;
+    --accent-2: #a78bfa;
+    --danger: #f87171;
+    --success: #4ade80;
+    --shadow: 0 20px 45px -15px rgba(0,0,0,.55);
+    --plot-bg: #0f172a;
+    --plot-grid: #253248;
+    --plot-fg: #e2e8f0;
+    --plot-fg-muted: #7e8fa8;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --surface-2: #f3f5f8;
+    --surface-hover: #e9edf3;
+    --border: #e1e6ee;
+    --fg: #1c2536;
+    --fg-muted: #5b6780;
+    --fg-faint: #97a2b8;
+    --accent: #0284c7;
+    --accent-2: #7c3aed;
+    --danger: #dc2626;
+    --success: #16a34a;
+    --shadow: 0 20px 45px -15px rgba(30,40,60,.18);
+    --plot-bg: #fbfcfe;
+    --plot-grid: #e3e8ef;
+    --plot-fg: #1e293b;
+    --plot-fg-muted: #7d8aa0;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    overflow: hidden; /* the app is a fixed-viewport SPA shell */
+    transition: background-color .25s ease, color .25s ease;
+  }
+
+  /* ── Scrollbars (webkit) ─────────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--fg-faint); }
+
+  /* ── App shell layout ──────────────────────────────────────────────────
+     header (fixed height) on top; below it a flex row of
+     sidebar | main-grid | legend, each independently scrollable. */
+  #app-header {
+    height: 56px; flex: 0 0 56px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  #app-body { height: calc(100% - 56px); }
+
+  #sidebar, #legend-panel {
+    background: var(--surface);
+    flex: 0 0 auto;
+    transition: transform .25s ease, background-color .25s ease;
+  }
+  #sidebar { width: 320px; border-right: 1px solid var(--border); }
+  #legend-panel { width: 300px; border-left: 1px solid var(--border); }
+
+  @media (max-width: 1180px) {
+    #sidebar, #legend-panel {
+      position: fixed; top: 56px; bottom: 0; z-index: 40;
+      box-shadow: var(--shadow);
+    }
+    #sidebar { left: 0; transform: translateX(-105%); }
+    #sidebar.open { transform: translateX(0); }
+    #legend-panel { right: 0; transform: translateX(105%); }
+    #legend-panel.open { transform: translateX(0); }
+    #scrim { display: none; position: fixed; inset: 56px 0 0 0; background: rgba(0,0,0,.45); z-index: 30; }
+    #scrim.open { display: block; }
+  }
+  @media (min-width: 1181px) {
+    #mobile-toggle-sidebar, #mobile-toggle-legend { display: none !important; }
+  }
+
+  /* ── Sidebar section styling ───────────────────────────────────────── */
+  .side-section { border-bottom: 1px solid var(--border); padding: 16px; }
+  .side-section:last-child { border-bottom: none; }
+  .side-heading {
+    font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--fg-muted); margin-bottom: 10px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .side-heading .hint { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--fg-faint); font-size: 10.5px; }
+
+  /* ── Concept picker grid ───────────────────────────────────────────── */
+  #concept-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 7px;
+  }
+  .concept-btn {
+    position: relative;
+    text-align: left;
+    padding: 8px 9px 8px 26px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--fg);
+    font-size: 12.2px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, transform .1s ease;
+    line-height: 1.25;
+  }
+  .concept-btn:hover:not(:disabled) { background: var(--surface-hover); transform: translateY(-1px); }
+  .concept-btn:active:not(:disabled) { transform: translateY(0); }
+  .concept-btn .dot {
+    position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .concept-btn .n-docs { display: block; font-size: 10px; color: var(--fg-faint); font-weight: 400; margin-top: 1px; }
+  .concept-btn.selected {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 16%, var(--surface-2));
+  }
+  .concept-btn.selected .badge-num {
+    position: absolute; right: 6px; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); color: #06202e;
+    font-size: 9.5px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .concept-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .concept-btn.unavailable { opacity: .3; cursor: not-allowed; text-decoration: line-through; }
+
+  /* ── Generic form controls ─────────────────────────────────────────── */
+  .radio-row { display: flex; gap: 8px; }
+  .radio-pill {
+    flex: 1; text-align: center; padding: 7px 8px; border-radius: 9px;
+    border: 1px solid var(--border); background: var(--surface-2);
+    font-size: 12.5px; font-weight: 600; cursor: pointer; color: var(--fg-muted);
+    transition: all .15s ease;
+  }
+  .radio-pill.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, var(--surface-2)); color: var(--fg); }
+
+  select, .select-like {
+    width: 100%; padding: 8px 10px; border-radius: 9px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    color: var(--fg); font-size: 12.5px; font-family: inherit;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none; width: 100%; height: 4px; border-radius: 4px;
+    background: var(--border); outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 15px; height: 15px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  input[type="range"]:disabled { opacity: .35; }
+  input[type="range"]:disabled::-webkit-slider-thumb { cursor: not-allowed; }
+
+  .slider-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; font-size: 12px; color: var(--fg-muted); }
+  .slider-val { font-variant-numeric: tabular-nums; color: var(--fg); font-weight: 600; }
+
+  /* Toggle switch (checkbox styled as a pill) */
+  .switch-row { display: flex; align-items: center; justify-content: space-between; }
+  .switch { position: relative; width: 38px; height: 21px; flex: 0 0 auto; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .track {
+    position: absolute; inset: 0; background: var(--border); border-radius: 999px;
+    cursor: pointer; transition: background-color .2s ease;
+  }
+  .switch .track::before {
+    content: ""; position: absolute; width: 15px; height: 15px; left: 3px; top: 3px;
+    background: #fff; border-radius: 50%; transition: transform .2s ease;
+  }
+  .switch input:checked + .track { background: var(--accent); }
+  .switch input:checked + .track::before { transform: translateX(17px); }
+
+  .btn {
+    padding: 8px 12px; border-radius: 9px; border: 1px solid var(--border);
+    background: var(--surface-2); color: var(--fg); font-size: 12.5px; font-weight: 600;
+    cursor: pointer; transition: all .15s ease; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { background: var(--surface-hover); }
+  .btn.primary { background: var(--accent); color: #06202e; border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .btn.full { width: 100%; justify-content: center; }
+
+  /* ── Plot grid & panels ─────────────────────────────────────────────── */
+  #plot-grid-wrap { height: 100%; padding: 12px; }
+  #plot-grid { height: 100%; }
+  .panel {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; min-height: 0; min-width: 0;
+    box-shadow: var(--shadow);
+  }
+  .panel-header {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--surface-2);
+  }
+  .panel-header .title { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .panel-header .accent-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+  .panel-header .name { font-weight: 700; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .panel-header .count { font-size: 10.5px; color: var(--fg-faint); white-space: nowrap; }
+  .panel-header .close-btn {
+    background: none; border: none; color: var(--fg-faint); cursor: pointer;
+    font-size: 16px; line-height: 1; padding: 2px 5px; border-radius: 6px;
+  }
+  .panel-header .close-btn:hover { background: var(--surface-hover); color: var(--danger); }
+  .plot-container { flex: 1 1 auto; min-height: 0; }
+
+  .panel-overlay {
+    position: absolute; inset: 0; top: 37px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 10px;
+    background: var(--surface); z-index: 5; text-align: center; padding: 20px;
+  }
+  .spinner {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 3px solid var(--border); border-top-color: var(--accent);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .panel-overlay .msg { font-size: 12.5px; color: var(--fg-muted); max-width: 260px; }
+
+  .ghost-panel {
+    border: 2px dashed var(--border); border-radius: 14px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; cursor: pointer; color: var(--fg-faint); transition: all .15s ease;
+  }
+  .ghost-panel:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .ghost-panel .plus { font-size: 26px; font-weight: 300; line-height: 1; }
+
+  .welcome-panel {
+    grid-column: 1 / -1; grid-row: 1 / -1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; gap: 14px; color: var(--fg-muted); padding: 40px;
+  }
+  .welcome-panel h2 { color: var(--fg); font-size: 22px; font-weight: 800; margin: 0; }
+  .welcome-panel p { max-width: 440px; font-size: 13.5px; line-height: 1.6; margin: 0; }
+
+  /* ── Floating tooltip overlay ───────────────────────────────────────── */
+  #tooltip {
+    display: none; position: fixed; z-index: 1000; max-width: 340px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow); padding: 12px 14px; pointer-events: none;
+    font-size: 12px; color: var(--fg);
+  }
+  .tooltip-header { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; flex-wrap: wrap; }
+  .tooltip-badge {
+    font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 999px; color: #06202e;
+    text-transform: uppercase; letter-spacing: .03em;
+  }
+  .tooltip-subject { font-weight: 700; font-size: 13px; }
+  .tooltip-meta { display: flex; gap: 6px; flex-wrap: wrap; color: var(--fg-muted); font-size: 10.8px; margin-bottom: 8px; }
+  .tooltip-meta span.sep { color: var(--fg-faint); }
+  .tooltip-excerpt {
+    font-size: 12.3px; line-height: 1.5; color: var(--fg);
+    font-style: italic; border-top: 1px dashed var(--border); padding-top: 8px;
+    display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ── Legend card ────────────────────────────────────────────────────── */
+  #legend-scroll { overflow-y: auto; height: 100%; padding: 14px; }
+  .legend-title { font-size: 13px; font-weight: 800; margin-bottom: 3px; }
+  .legend-sub { font-size: 11px; color: var(--fg-faint); margin-bottom: 12px; }
+  .legend-row {
+    width: 100%; display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+    border-radius: 8px; background: none; border: 1px solid transparent; cursor: pointer;
+    text-align: left; color: var(--fg); font-size: 12px; transition: background-color .12s ease;
+  }
+  .legend-row:hover { background: var(--surface-2); }
+  .legend-row.dimmed { opacity: .38; }
+  .legend-row.active-only { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .legend-swatch { width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; }
+  .legend-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { font-size: 10.5px; color: var(--fg-faint); font-variant-numeric: tabular-nums; }
+  .legend-group summary {
+    cursor: pointer; font-size: 12px; font-weight: 700; padding: 6px 2px;
+    list-style: none; display: flex; align-items: center; justify-content: space-between;
+    color: var(--fg-muted);
+  }
+  .legend-group summary::-webkit-details-marker { display: none; }
+  .legend-group summary::after { content: '▾'; transition: transform .15s ease; color: var(--fg-faint); }
+  .legend-group[open] summary::after { transform: rotate(180deg); }
+  .legend-group { border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 6px; }
+  .legend-group:last-child { border-bottom: none; }
+
+  /* ── Toasts ─────────────────────────────────────────────────────────── */
+  #toast-stack { position: fixed; top: 66px; right: 16px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
+  .toast {
+    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+    border-radius: 10px; box-shadow: var(--shadow); padding: 10px 14px; font-size: 12.5px;
+    max-width: 300px; animation: toast-in .2s ease;
+  }
+  .toast.warn { border-left-color: #f59e0b; }
+  .toast.error { border-left-color: var(--danger); }
+  @keyframes toast-in { from { opacity:0; transform: translateY(-6px);} to {opacity:1; transform:none;} }
+
+  .fade-in { animation: fade-in .25s ease; }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+  #fatal-error {
+    display: none; position: fixed; inset: 0; z-index: 3000; background: var(--bg);
+    align-items: center; justify-content: center; flex-direction: column; gap: 14px; padding: 40px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     APP SHELL MARKUP
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="app" class="flex flex-col h-full">
+
+  <!-- Header -->
+  <header id="app-header" class="flex items-center justify-between px-4">
+    <div class="flex items-center gap-3 min-w-0">
+      <button id="mobile-toggle-sidebar" class="btn" aria-label="Menü öffnen">☰</button>
+      <div class="min-w-0">
+        <h1 class="text-sm font-extrabold tracking-tight truncate">🧬 Evo-Buch Curriculum-Atlas</h1>
+        <p id="header-subtitle" class="text-[10.5px] text-[var(--fg-faint)] truncate leading-none mt-0.5">Lade<!DOCTYPE html>
+<html lang="de" data-theme="dark">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Evo-Buch Curriculum-Atlas</title>
+<meta name="description" content="Interaktiver UMAP-Atlas deutscher Lehrplantexte, verortet zu evolutionsanthropologischen Kernkonzepten." />
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     EXTERNAL DEPENDENCIES (CDN)
+     - Tailwind Play CDN: JIT utility-class compiler, no build step required.
+     - Plotly.js: pinned version for reproducible rendering across visits.
+     - Inter: clean, highly legible UI typeface at small sizes (sidebar/legend).
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  // Minimal Tailwind config — most theming is done via CSS custom properties
+  // (see <style> below) so the app can switch dark/light instantly without
+  // duplicating every utility class with `dark:` variants.
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+      },
+    },
+  };
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     STYLES
+     ═══════════════════════════════════════════════════════════════════════ -->
+<style>
+  /* ── Theme tokens ──────────────────────────────────────────────────────
+     Every color used outside of Plotly's own canvas is driven by these
+     custom properties. Switching [data-theme] on <html> re-themes the
+     entire chrome instantly; Plotly canvases are re-themed separately via
+     JS (see themeRelayoutPatch()) because Plotly cannot read CSS vars. */
+  :root[data-theme="dark"] {
+    --bg: #0b1220;
+    --surface: #111827;
+    --surface-2: #1a2436;
+    --surface-hover: #22304a;
+    --border: #2a3852;
+    --fg: #e5eaf3;
+    --fg-muted: #93a2ba;
+    --fg-faint: #5b6b85;
+    --accent: #38bdf8;
+    --accent-2: #a78bfa;
+    --danger: #f87171;
+    --success: #4ade80;
+    --shadow: 0 20px 45px -15px rgba(0,0,0,.55);
+    --plot-bg: #0f172a;
+    --plot-grid: #253248;
+    --plot-fg: #e2e8f0;
+    --plot-fg-muted: #7e8fa8;
+  }
+  :root[data-theme="light"] {
+    --bg: #f4f6f9;
+    --surface: #ffffff;
+    --surface-2: #f3f5f8;
+    --surface-hover: #e9edf3;
+    --border: #e1e6ee;
+    --fg: #1c2536;
+    --fg-muted: #5b6780;
+    --fg-faint: #97a2b8;
+    --accent: #0284c7;
+    --accent-2: #7c3aed;
+    --danger: #dc2626;
+    --success: #16a34a;
+    --shadow: 0 20px 45px -15px rgba(30,40,60,.18);
+    --plot-bg: #fbfcfe;
+    --plot-grid: #e3e8ef;
+    --plot-fg: #1e293b;
+    --plot-fg-muted: #7d8aa0;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    overflow: hidden; /* the app is a fixed-viewport SPA shell */
+    transition: background-color .25s ease, color .25s ease;
+  }
+
+  /* ── Scrollbars (webkit) ─────────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 8px; height: 8px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 8px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--fg-faint); }
+
+  /* ── App shell layout ──────────────────────────────────────────────────
+     header (fixed height) on top; below it a flex row of
+     sidebar | main-grid | legend, each independently scrollable. */
+  #app-header {
+    height: 56px; flex: 0 0 56px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+  }
+  #app-body { height: calc(100% - 56px); }
+
+  #sidebar, #legend-panel {
+    background: var(--surface);
+    flex: 0 0 auto;
+    transition: transform .25s ease, background-color .25s ease;
+  }
+  #sidebar { width: 320px; border-right: 1px solid var(--border); }
+  #legend-panel { width: 300px; border-left: 1px solid var(--border); }
+
+  @media (max-width: 1180px) {
+    #sidebar, #legend-panel {
+      position: fixed; top: 56px; bottom: 0; z-index: 40;
+      box-shadow: var(--shadow);
+    }
+    #sidebar { left: 0; transform: translateX(-105%); }
+    #sidebar.open { transform: translateX(0); }
+    #legend-panel { right: 0; transform: translateX(105%); }
+    #legend-panel.open { transform: translateX(0); }
+    #scrim { display: none; position: fixed; inset: 56px 0 0 0; background: rgba(0,0,0,.45); z-index: 30; }
+    #scrim.open { display: block; }
+  }
+  @media (min-width: 1181px) {
+    #mobile-toggle-sidebar, #mobile-toggle-legend { display: none !important; }
+  }
+
+  /* ── Sidebar section styling ───────────────────────────────────────── */
+  .side-section { border-bottom: 1px solid var(--border); padding: 16px; }
+  .side-section:last-child { border-bottom: none; }
+  .side-heading {
+    font-size: 11px; font-weight: 700; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--fg-muted); margin-bottom: 10px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .side-heading .hint { font-weight: 500; text-transform: none; letter-spacing: 0; color: var(--fg-faint); font-size: 10.5px; }
+
+  /* ── Concept picker grid ───────────────────────────────────────────── */
+  #concept-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 7px;
+  }
+  .concept-btn {
+    position: relative;
+    text-align: left;
+    padding: 8px 9px 8px 26px;
+    border-radius: 9px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    color: var(--fg);
+    font-size: 12.2px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .15s ease, border-color .15s ease, transform .1s ease;
+    line-height: 1.25;
+  }
+  .concept-btn:hover:not(:disabled) { background: var(--surface-hover); transform: translateY(-1px); }
+  .concept-btn:active:not(:disabled) { transform: translateY(0); }
+  .concept-btn .dot {
+    position: absolute; left: 9px; top: 50%; transform: translateY(-50%);
+    width: 8px; height: 8px; border-radius: 50%;
+  }
+  .concept-btn .n-docs { display: block; font-size: 10px; color: var(--fg-faint); font-weight: 400; margin-top: 1px; }
+  .concept-btn.selected {
+    border-color: var(--accent);
+    background: color-mix(in srgb, var(--accent) 16%, var(--surface-2));
+  }
+  .concept-btn.selected .badge-num {
+    position: absolute; right: 6px; top: 6px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); color: #06202e;
+    font-size: 9.5px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .concept-btn:disabled { opacity: .35; cursor: not-allowed; }
+  .concept-btn.unavailable { opacity: .3; cursor: not-allowed; text-decoration: line-through; }
+
+  /* ── Generic form controls ─────────────────────────────────────────── */
+  .radio-row { display: flex; gap: 8px; }
+  .radio-pill {
+    flex: 1; text-align: center; padding: 7px 8px; border-radius: 9px;
+    border: 1px solid var(--border); background: var(--surface-2);
+    font-size: 12.5px; font-weight: 600; cursor: pointer; color: var(--fg-muted);
+    transition: all .15s ease;
+  }
+  .radio-pill.active { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 18%, var(--surface-2)); color: var(--fg); }
+
+  select, .select-like {
+    width: 100%; padding: 8px 10px; border-radius: 9px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    color: var(--fg); font-size: 12.5px; font-family: inherit;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none; width: 100%; height: 4px; border-radius: 4px;
+    background: var(--border); outline: none;
+  }
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 15px; height: 15px; border-radius: 50%;
+    background: var(--accent); cursor: pointer; border: 3px solid var(--surface);
+    box-shadow: 0 0 0 1px var(--accent);
+  }
+  input[type="range"]:disabled { opacity: .35; }
+  input[type="range"]:disabled::-webkit-slider-thumb { cursor: not-allowed; }
+
+  .slider-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 4px; font-size: 12px; color: var(--fg-muted); }
+  .slider-val { font-variant-numeric: tabular-nums; color: var(--fg); font-weight: 600; }
+
+  /* Toggle switch (checkbox styled as a pill) */
+  .switch-row { display: flex; align-items: center; justify-content: space-between; }
+  .switch { position: relative; width: 38px; height: 21px; flex: 0 0 auto; }
+  .switch input { opacity: 0; width: 0; height: 0; }
+  .switch .track {
+    position: absolute; inset: 0; background: var(--border); border-radius: 999px;
+    cursor: pointer; transition: background-color .2s ease;
+  }
+  .switch .track::before {
+    content: ""; position: absolute; width: 15px; height: 15px; left: 3px; top: 3px;
+    background: #fff; border-radius: 50%; transition: transform .2s ease;
+  }
+  .switch input:checked + .track { background: var(--accent); }
+  .switch input:checked + .track::before { transform: translateX(17px); }
+
+  .btn {
+    padding: 8px 12px; border-radius: 9px; border: 1px solid var(--border);
+    background: var(--surface-2); color: var(--fg); font-size: 12.5px; font-weight: 600;
+    cursor: pointer; transition: all .15s ease; display: inline-flex; align-items: center; gap: 6px;
+  }
+  .btn:hover { background: var(--surface-hover); }
+  .btn.primary { background: var(--accent); color: #06202e; border-color: var(--accent); }
+  .btn.primary:hover { filter: brightness(1.08); }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .btn.full { width: 100%; justify-content: center; }
+
+  /* ── Plot grid & panels ─────────────────────────────────────────────── */
+  #plot-grid-wrap { height: 100%; padding: 12px; }
+  #plot-grid { height: 100%; }
+  .panel {
+    position: relative; display: flex; flex-direction: column;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; overflow: hidden; min-height: 0; min-width: 0;
+    box-shadow: var(--shadow);
+  }
+  .panel-header {
+    flex: 0 0 auto; display: flex; align-items: center; justify-content: space-between;
+    padding: 8px 10px; border-bottom: 1px solid var(--border); background: var(--surface-2);
+  }
+  .panel-header .title { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .panel-header .accent-dot { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 auto; }
+  .panel-header .name { font-weight: 700; font-size: 13px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .panel-header .count { font-size: 10.5px; color: var(--fg-faint); white-space: nowrap; }
+  .panel-header .close-btn {
+    background: none; border: none; color: var(--fg-faint); cursor: pointer;
+    font-size: 16px; line-height: 1; padding: 2px 5px; border-radius: 6px;
+  }
+  .panel-header .close-btn:hover { background: var(--surface-hover); color: var(--danger); }
+  .plot-container { flex: 1 1 auto; min-height: 0; }
+
+  .panel-overlay {
+    position: absolute; inset: 0; top: 37px; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; gap: 10px;
+    background: var(--surface); z-index: 5; text-align: center; padding: 20px;
+  }
+  .spinner {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 3px solid var(--border); border-top-color: var(--accent);
+    animation: spin 0.8s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .panel-overlay .msg { font-size: 12.5px; color: var(--fg-muted); max-width: 260px; }
+
+  .ghost-panel {
+    border: 2px dashed var(--border); border-radius: 14px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 8px; cursor: pointer; color: var(--fg-faint); transition: all .15s ease;
+  }
+  .ghost-panel:hover { border-color: var(--accent); color: var(--accent); background: color-mix(in srgb, var(--accent) 6%, transparent); }
+  .ghost-panel .plus { font-size: 26px; font-weight: 300; line-height: 1; }
+
+  .welcome-panel {
+    grid-column: 1 / -1; grid-row: 1 / -1;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; gap: 14px; color: var(--fg-muted); padding: 40px;
+  }
+  .welcome-panel h2 { color: var(--fg); font-size: 22px; font-weight: 800; margin: 0; }
+  .welcome-panel p { max-width: 440px; font-size: 13.5px; line-height: 1.6; margin: 0; }
+
+  /* ── Floating tooltip overlay ───────────────────────────────────────── */
+  #tooltip {
+    display: none; position: fixed; z-index: 1000; max-width: 340px;
+    background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
+    box-shadow: var(--shadow); padding: 12px 14px; pointer-events: none;
+    font-size: 12px; color: var(--fg);
+  }
+  .tooltip-header { display: flex; align-items: center; gap: 7px; margin-bottom: 6px; flex-wrap: wrap; }
+  .tooltip-badge {
+    font-size: 10px; font-weight: 800; padding: 2px 7px; border-radius: 999px; color: #06202e;
+    text-transform: uppercase; letter-spacing: .03em;
+  }
+  .tooltip-subject { font-weight: 700; font-size: 13px; }
+  .tooltip-meta { display: flex; gap: 6px; flex-wrap: wrap; color: var(--fg-muted); font-size: 10.8px; margin-bottom: 8px; }
+  .tooltip-meta span.sep { color: var(--fg-faint); }
+  .tooltip-excerpt {
+    font-size: 12.3px; line-height: 1.5; color: var(--fg);
+    font-style: italic; border-top: 1px dashed var(--border); padding-top: 8px;
+    display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* ── Legend card ────────────────────────────────────────────────────── */
+  #legend-scroll { overflow-y: auto; height: 100%; padding: 14px; }
+  .legend-title { font-size: 13px; font-weight: 800; margin-bottom: 3px; }
+  .legend-sub { font-size: 11px; color: var(--fg-faint); margin-bottom: 12px; }
+  .legend-row {
+    width: 100%; display: flex; align-items: center; gap: 8px; padding: 6px 8px;
+    border-radius: 8px; background: none; border: 1px solid transparent; cursor: pointer;
+    text-align: left; color: var(--fg); font-size: 12px; transition: background-color .12s ease;
+  }
+  .legend-row:hover { background: var(--surface-2); }
+  .legend-row.dimmed { opacity: .38; }
+  .legend-row.active-only { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 14%, transparent); }
+  .legend-swatch { width: 10px; height: 10px; border-radius: 3px; flex: 0 0 auto; }
+  .legend-label { flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-count { font-size: 10.5px; color: var(--fg-faint); font-variant-numeric: tabular-nums; }
+  .legend-group summary {
+    cursor: pointer; font-size: 12px; font-weight: 700; padding: 6px 2px;
+    list-style: none; display: flex; align-items: center; justify-content: space-between;
+    color: var(--fg-muted);
+  }
+  .legend-group summary::-webkit-details-marker { display: none; }
+  .legend-group summary::after { content: '▾'; transition: transform .15s ease; color: var(--fg-faint); }
+  .legend-group[open] summary::after { transform: rotate(180deg); }
+  .legend-group { border-bottom: 1px solid var(--border); padding-bottom: 6px; margin-bottom: 6px; }
+  .legend-group:last-child { border-bottom: none; }
+
+  /* ── Toasts ─────────────────────────────────────────────────────────── */
+  #toast-stack { position: fixed; top: 66px; right: 16px; z-index: 2000; display: flex; flex-direction: column; gap: 8px; }
+  .toast {
+    background: var(--surface); border: 1px solid var(--border); border-left: 4px solid var(--accent);
+    border-radius: 10px; box-shadow: var(--shadow); padding: 10px 14px; font-size: 12.5px;
+    max-width: 300px; animation: toast-in .2s ease;
+  }
+  .toast.warn { border-left-color: #f59e0b; }
+  .toast.error { border-left-color: var(--danger); }
+  @keyframes toast-in { from { opacity:0; transform: translateY(-6px);} to {opacity:1; transform:none;} }
+
+  .fade-in { animation: fade-in .25s ease; }
+  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+  #fatal-error {
+    display: none; position: fixed; inset: 0; z-index: 3000; background: var(--bg);
+    align-items: center; justify-content: center; flex-direction: column; gap: 14px; padding: 40px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     APP SHELL MARKUP
+     ═══════════════════════════════════════════════════════════════════════ -->
+<div id="app" class="flex flex-col h-full">
+
+  <!-- Header -->
+  <header id="app-header" class="flex items-center justify-between px-4">
+    <div class="flex items-center gap-3 min-w-0">
+      <button id="mobile-toggle-sidebar" class="btn" aria-label="Menü öffnen">☰</button>
+      <div class="min-w-0">
+        <h1 class="text-sm font-extrabold tracking-tight truncate">🧬 Evo-Buch Curriculum-Atlas</h1>
+        <p id="header-subtitle" class="text-[10.5px] text-[var(--fg-faint)] truncate leading-none mt-0.5">Lade  Konzeptdaten …</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span id="concept-count-badge" class="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold px-2.5 py-1 rounded-full border" style="border-color:var(--border); color:var(--fg-muted);">
+        0 / 6 Konzepte
+      </span>
+      <button id="theme-toggle" class="btn" title="Theme wechseln" aria-label="Theme wechseln">🌙</button>
+      <button id="mobile-toggle-legend" class="btn" aria-label="Legende öffnen">🗂</button>
+    </div>
+  </header>
+
+  <!-- Body: sidebar | plot grid | legend -->
+  <div id="app-body" class="flex w-full">
+
+    <div id="scrim"></div>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         SIDEBAR — Global settings, concept picker, color/filter, camera
+         ═══════════════════════════════════════════════════════════════ -->
+    <aside id="sidebar" class="overflow-y-auto">
+
+      <!-- 3.1 Global Settings -->
+      <section class="side-section">
+        <div class="side-heading">Darstellung</div>
+        <div class="mb-3">
+          <div class="slider-row">
+            <span>Theme</span>
+          </div>
+          <div class="radio-row">
+            <button class="radio-pill active" data-theme-choice="dark">🌙 Dunkel</button>
+            <button class="radio-pill" data-theme-choice="light">☀️ Hell</button>
+          </div>
+        </div>
+        <div>
+          <div class="slider-row">
+            <span>Punktgröße</span>
+            <span class="slider-val" id="point-size-val">5 px</span>
+          </div>
+          <input type="range" id="point-size-slider" min="1" max="10" step="1" value="5" />
+        </div>
+      </section>
+
+      <!-- 3.4 Camera & Orbit (3D only) -->
+      <section class="side-section">
+        <div class="side-heading">
+          Projektion &amp; Kamera
+          <span class="hint" id="orbit-disabled-hint"></span>
+        </div>
+        <div class="radio-row mb-3">
+          <button class="radio-pill active" data-projection-choice="2d">◻ 2D</button>
+          <button class="radio-pill" data-projection-choice="3d">◼ 3D</button>
+        </div>
+        <button id="btn-orbit-toggle" class="btn full mb-3" disabled>▶ Orbit starten</button>
+        <div class="mb-3">
+          <div class="slider-row">
+            <span>Geschwindigkeit</span>
+            <span class="slider-val" id="orbit-speed-val">0.006</span>
+          </div>
+          <input type="range" id="orbit-speed-slider" min="0.001" max="0.03" step="0.001" value="0.006" disabled />
+        </div>
+        <div>
+          <div class="slider-row">
+            <span>Elevation</span>
+            <span class="slider-val" id="orbit-elevation-val">1.6</span>
+          </div>
+          <input type="range" id="orbit-elevation-slider" min="0.2" max="3.5" step="0.1" value="1.6" disabled />
+        </div>
+      </section>
+
+      <!-- 3.2 Concept Selection -->
+      <section class="side-section">
+        <div class="side-heading">
+          Konzepte (max. 6)
+          <button id="btn-clear-concepts" class="hint underline" style="cursor:pointer;">Zurücksetzen</button>
+        </div>
+        <div id="concept-grid" role="group" aria-label="Konzeptauswahl"></div>
+      </section>
+
+      <!-- 3.3 Color Mapping & Filtering -->
+      <section class="side-section">
+        <div class="side-heading">Einfärben nach</div>
+        <div class="radio-row mb-3">
+          <button class="radio-pill active" data-colorby-choice="subject">Fachbereich</button>
+          <button class="radio-pill" data-colorby-choice="topic">Thema</button>
+        </div>
+
+        <div class="mb-3">
+          <div class="slider-row"><span>Themenfilter</span></div>
+          <select id="topic-filter-select" disabled>
+            <option value="__all__">Alle Themen</option>
+          </select>
+          <p id="topic-filter-hint" class="text-[10.5px] mt-1" style="color:var(--fg-faint);">
+            Nur verfügbar bei genau einem aktiven Konzept.
+          </p>
+        </div>
+
+        <div class="switch-row">
+          <span class="text-[12.5px]">Ausreißer anzeigen</span>
+          <label class="switch">
+            <input type="checkbox" id="outlier-toggle" checked />
+            <span class="track"></span>
+          </label>
+        </div>
+      </section>
+
+    </aside>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         MAIN — Dynamic plot grid
+         ═══════════════════════════════════════════════════════════════ -->
+    <main id="plot-grid-wrap" class="flex-1 min-w-0">
+      <div id="plot-grid" class="grid gap-3 grid-cols-1 grid-rows-1"></div>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════════
+         LEGEND — Persistent floating card, click-to-isolate
+         ═══════════════════════════════════════════════════════════════ -->
+    <aside id="legend-panel">
+      <div id="legend-scroll"></div>
+    </aside>
+
+  </div>
+</div>
+
+<!-- Floating HTML-overlay tooltip (spec §5 fallback approach) -->
+<div id="tooltip"></div>
+
+<!-- Toast notifications -->
+<div id="toast-stack"></div>
+
+<!-- Fatal error screen -->
+<div id="fatal-error">
+  <div style="font-size:40px;">⚠️</div>
+  <h2 class="text-lg font-bold">Der Curriculum-Atlas konnte nicht geladen werden</h2>
+  <p id="fatal-error-msg" class="text-sm max-w-md" style="color:var(--fg-muted);"></p>
+  <button class="btn primary" onclick="location.reload()">Erneut versuchen</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     APPLICATION LOGIC
+     ═══════════════════════════════════════════════════════════════════════ -->
+<script>
+"use strict";
+
+/* ═════════════════════════════════════════════════════════════════════
+   1. CONFIGURATION
+   ═════════════════════════════════════════════════════════════════════
+   DATA_BASE_URL controls where the app fetches manifest.json,
+   color_maps.json and <Concept>.json from. Two supported modes:
+
+     A) Same-repo relative path (default) — works when this HTML file
+        and the data/ folder generated by bertopic_pipeline.py live in
+        the same GitHub Pages deployment.
+          const DATA_BASE_URL = './data';
+
+     B) Cross-repo raw GitHub hosting (per spec §4) — point this at a
+        separate data repository if you want to decouple the app shell
+        from the (potentially large, frequently-regenerated) data files:
+          const DATA_BASE_URL =
+            'https://raw.githubusercontent.com/<User>/<Repo>/main/data';
+   ───────────────────────────────────────────────────────────────────── */
+const DATA_BASE_URL = './data';
+const MANIFEST_URL = `${DATA_BASE_URL}/manifest.json`;
+const COLOR_MAPS_URL = `${DATA_BASE_URL}/color_maps.json`;
+const conceptUrl = (name) => `${DATA_BASE_URL}/${encodeURIComponent(name)}.json`;
+
+// Fallback concept list (used only if manifest.json lacks 'concept_order',
+// e.g. during early development before the pipeline has run once).
+const FALLBACK_CONCEPTS = [
+  "Anpassung", "Anthropologie", "Bedürfnis", "Emotion", "Evolution",
+  "Freiheit", "Gefühl", "Gen", "Gerechtigkeit", "Glück", "Handeln",
+  "Konkurrenz", "Kooperation", "Kultur", "Mensch", "Moral", "Norm",
+  "Rationalität", "Ursache", "Verhalten", "Vorurteil", "Wert",
+];
+
+const MAX_CONCEPTS = 6;
+const GOLDEN_ANGLE = 137.508;   // degrees — maximally-separated hue spacing
+const ORBIT_RADIUS = 2.4;       // fixed camera distance during orbit animation
+const NEUTRAL_GRAY = "#8a8a8a"; // outliers / unknown categories, every scheme
+
+/* ═════════════════════════════════════════════════════════════════════
+   2. GLOBAL STATE
+   ═════════════════════════════════════════════════════════════════════
+   A single mutable object holds the entire app's runtime state. Every
+   control handler mutates this object, then calls the relevant
+   render/rebuild function(s) — there is no separate "framework" layer;
+   for an app this size, plain state + explicit re-render calls stay far
+   easier to reason about than a reactive abstraction would.
+   ───────────────────────────────────────────────────────────────────── */
+const state = {
+  manifest: null,
+  colorMaps: null,
+
+  conceptData: new Map(),     // concept -> array of record objects
+  conceptLoading: new Map(),  // concept -> in-flight Promise (dedupe fetches)
+  localPalettes: new Map(),   // "concept:field" -> { category: hexColor }
+
+  selected: [],               // ordered list of concepts currently on screen
+  panels: new Map(),          // concept -> { el, plotEl, plotted, eventsAttached }
+
+  colorBy: "subject",         // 'subject' | 'topic'
+  showOutliers: true,
+  pointSize: 5,
+  theme: "dark",
+  projection: "2d",           // '2d' | '3d'
+
+  topicFilterConcept: null,   // which concept the topic filter currently targets
+  topicFilterValue: "__all__",
+
+  isolatedGlobal: new Set(),        // legend isolation for subject/state coloring
+  isolatedByConcept: new Map(),     // concept -> Set(), for topic/grade_band coloring
+
+  orbit: { active: false, theta: 0, speed: 0.006, elevation: 1.6, rafId: null },
+
+  _applyingPersistedState: false,  // guards against feedback loops on init
+};
+
+/* ═════════════════════════════════════════════════════════════════════
+   3. GENERIC UTILITIES
+   ───────────────────────────────────────────────────────────────────── */
+const qs  = (sel, root = document) => root.querySelector(sel);
+const qsa = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+
+function el(tag, attrs = {}, ...children) {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === "class") node.className = v;
+    else if (k === "html") node.innerHTML = v;
+    else if (k.startsWith("on") && typeof v === "function") node.addEventListener(k.slice(2), v);
+    else node.setAttribute(k, v);
+  }
+  for (const child of children.flat()) {
+    if (child == null) continue;
+    node.appendChild(typeof child === "string" ? document.createTextNode(child) : child);
+  }
+  return node;
+}
+
+/** Deterministic 32-bit FNV-1a hash -> float in [0, 1). Used to derive
+ *  reproducible topic/grade-band colors client-side (concept-scoped
+ *  dimensions that are NOT precomputed in color_maps.json, unlike
+ *  subject/state, since topic IDs differ per concept). Not the same
+ *  algorithm as the Python pipeline's MD5-based hash — exact hex parity
+ *  with the static PNGs is not required for this dimension, only
+ *  internal reproducibility across re-renders within a single session. */
+function fnv1aUnit(str) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 0x01000193);
+  }
+  return (h >>> 0) / 0xFFFFFFFF;
+}
+
+/** HSL -> #rrggbb hex conversion (h, s, l all in [0,1]). */
+function hslToHex(h, s, l) {
+  const a = s * Math.min(l, 1 - l);
+  const f = (n) => {
+    const k = (n + h * 12) % 12;
+    const c = l - a * Math.max(-1, Math.min(k - 3, 9 - k, 1));
+    return Math.round(c * 255).toString(16).padStart(2, "0");
+  };
+  return `#${f(0)}${f(8)}${f(4)}`;
+}
+
+function debounce(fn, wait) {
+  let t = null;
+  return (...args) => { clearTimeout(t); t = setTimeout(() => fn(...args), wait); };
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   4. TOAST NOTIFICATIONS & FATAL ERROR SCREEN
+   ───────────────────────────────────────────────────────────────────── */
+function showToast(message, type = "info", timeout = 4500) {
+  const stack = qs("#toast-stack");
+  const toast = el("div", { class: `toast ${type}` }, message);
+  stack.appendChild(toast);
+  setTimeout(() => toast.remove(), timeout);
+}
+
+function showFatalError(message) {
+  qs("#fatal-error-msg").textContent = message;
+  qs("#fatal-error").style.display = "flex";
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   5. DATA LAYER — fetch manifest, color maps, per-concept JSON
+   ───────────────────────────────────────────────────────────────────── */
+async function fetchJSON(url) {
+  const res = await fetch(url, { cache: "no-cache" });
+  if (!res.ok) throw new Error(`HTTP ${res.status} for ${url}`);
+  return res.json();
+}
+
+async function loadManifest() {
+  const manifest = await fetchJSON(MANIFEST_URL);
+  if (!manifest.concepts) throw new Error("manifest.json is missing a 'concepts' field.");
+  return manifest;
+}
+
+async function loadColorMaps() {
+  return fetchJSON(COLOR_MAPS_URL);
+}
+
+/** Load (or return cached/in-flight) data for one concept. Deduping
+ *  in-flight requests via `conceptLoading` prevents a double-fetch if a
+ *  user rapidly toggles a concept off/on before the first request lands. */
+function loadConceptData(concept) {
+  if (state.conceptData.has(concept)) return Promise.resolve(state.conceptData.get(concept));
+  if (state.conceptLoading.has(concept)) return state.conceptLoading.get(concept);
+
+  const promise = fetchJSON(conceptUrl(concept))
+    .then((records) => {
+      if (!Array.isArray(records) || records.length === 0) {
+        throw new Error("Datei ist leer oder hat ein unerwartetes Format.");
+      }
+      state.conceptData.set(concept, records);
+      state.conceptLoading.delete(concept);
+      return records;
+    })
+    .catch((err) => {
+      state.conceptLoading.delete(concept);
+      throw err;
+    });
+
+  state.conceptLoading.set(concept, promise);
+  return promise;
+}
+
+/** Apply the current outlier + topic-filter settings to a concept's raw
+ *  record array. Shared by both the plotting layer and the legend, so
+ *  the two can never disagree about what's "currently visible". */
+function getFilteredRecords(concept) {
+  let records = state.conceptData.get(concept) || [];
+  if (!state.showOutliers) records = records.filter((r) => !r.is_outlier);
+  if (state.topicFilterConcept === concept && state.topicFilterValue !== "__all__") {
+    records = records.filter((r) => r.topic === state.topicFilterValue);
+  }
+  return records;
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   6. COLOR RESOLUTION
+   ───────────────────────────────────────────────────────────────────── */
+
+/** Build (or return cached) a deterministic per-concept color palette
+ *  for a concept-scoped field (topic / grade_band). Computed once from
+ *  the FULL unfiltered dataset so colors never shift as the user toggles
+ *  outliers or applies a topic filter — only the *set of visible*
+ *  categories changes, not their assigned colors. */
+function getLocalPalette(concept, field) {
+  const key = `${concept}:${field}`;
+  if (state.localPalettes.has(key)) return state.localPalettes.get(key);
+
+  const allRecords = state.conceptData.get(concept) || [];
+  const uniqueSorted = [...new Set(allRecords.map((r) => r[field] ?? "Unbekannt"))].sort();
+  const startHue = fnv1aUnit(`${key}:start`) * 360;
+
+  const palette = {};
+  uniqueSorted.forEach((label, i) => {
+    const hue = ((startHue + i * GOLDEN_ANGLE) % 360) / 360;
+    const jitter = fnv1aUnit(`${key}:${label}`);
+    const sat = 0.55 + 0.15 * jitter;
+    const light = 0.55 + 0.10 * (1 - jitter);
+    palette[label] = hslToHex(hue, sat, light);
+  });
+
+  state.localPalettes.set(key, palette);
+  return palette;
+}
+
+/** Resolve the display color for one category value within one concept.
+ *  - 'subject' / 'state': sourced from data/color_maps.json (shared,
+ *    cross-concept, identical to the static PNGs from viz_umap_2d.py).
+ *  - 'topic' / 'grade_band': concept-scoped, generated client-side.
+ *  - Outlier topic buckets are always forced to the neutral gray, so
+ *    "no signal" reads identically across every color-by dimension. */
+function resolveColor(concept, field, category, isOutlierCategory) {
+  if (field === "topic" && isOutlierCategory) {
+    return (state.colorMaps && state.colorMaps.outlier_color) || NEUTRAL_GRAY;
+  }
+  if (field === "subject" || field === "state") {
+    const shared = (state.colorMaps && state.colorMaps[field]) || {};
+    if (shared[category]) return shared[category];
+    // Graceful fallback for categories absent from the cached color map
+    // (e.g. new data added after color_maps.json was last generated).
+    return getLocalPalette(concept, field)[category] || NEUTRAL_GRAY;
+  }
+  return getLocalPalette(concept, field)[category] || NEUTRAL_GRAY;
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   7. PERSISTENCE — URL hash (shareable) + localStorage (sticky defaults)
+   ═════════════════════════════════════════════════════════════════════
+   Design choice: we use history.replaceState (never pushState) so that
+   every slider tick / toggle does NOT pollute the browser back-button
+   history — the URL simply always reflects "current state", which is
+   still fully shareable/bookmarkable, without a back-button footgun.
+   ───────────────────────────────────────────────────────────────────── */
+function persistState() {
+  if (state._applyingPersistedState) return; // avoid redundant writes during restore
+
+  const params = new URLSearchParams();
+  if (state.selected.length) params.set("c", state.selected.join(","));
+  params.set("cb", state.colorBy);
+  params.set("out", state.showOutliers ? "1" : "0");
+  params.set("ps", String(state.pointSize));
+  params.set("th", state.theme);
+  params.set("proj", state.projection);
+  if (state.topicFilterConcept && state.topicFilterValue !== "__all__") {
+    params.set("tf", `${state.topicFilterConcept}::${state.topicFilterValue}`);
+  }
+
+  history.replaceState(null, "", `#${params.toString()}`);
+  localStorage.setItem("atlas.theme", state.theme);
+  localStorage.setItem("atlas.pointSize", String(state.pointSize));
+}
+
+/** Parse persisted state from the URL hash (preferred) with localStorage
+ *  fallback for the purely-cosmetic prefs (theme, point size) when no
+ *  hash is present at all (e.g. a fresh visit with no shared link). */
+function readPersistedState() {
+  const hash = location.hash.replace(/^#/, "");
+  const params = new URLSearchParams(hash);
+
+  const result = {
+    concepts: [],
+    colorBy: "subject",
+    showOutliers: true,
+    pointSize: Number(localStorage.getItem("atlas.pointSize")) || 5,
+    theme: localStorage.getItem("atlas.theme") || "dark",
+    projection: "2d",
+    topicFilter: null,
+  };
+
+  if ([...params.keys()].length === 0) return result;
+
+  if (params.has("c")) result.concepts = params.get("c").split(",").filter(Boolean);
+  if (params.has("cb")) result.colorBy = params.get("cb");
+  if (params.has("out")) result.showOutliers = params.get("out") === "1";
+  if (params.has("ps")) result.pointSize = clamp(Number(params.get("ps")) || 5, 1, 10);
+  if (params.has("th")) result.theme = params.get("th");
+  if (params.has("proj")) result.projection = params.get("proj");
+  if (params.has("tf")) {
+    const [c, v] = params.get("tf").split("::");
+    if (c && v) result.topicFilter = { concept: c, value: v };
+  }
+  return result;
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   8. GRID LAYOUT ENGINE  (spec §2)
+   ═════════════════════════════════════════════════════════════════════
+   Grid "capacity" is the number of cells the current N-concept bracket
+   provides (1, 2, 4 or 6). Whenever N sits strictly below its bracket's
+   capacity, one trailing "ghost" add-concept cell fills the remainder
+   — matching the parenthesised optional 4th/6th cell in the spec's
+   ASCII diagram. Brackets that are exactly full (N = 1, 2, 4, 6) show
+   no ghost cell.
+   ───────────────────────────────────────────────────────────────────── */
+function capacityFor(n) {
+  if (n === 0) return 0;
+  if (n === 1) return 1;
+  if (n === 2) return 2;
+  if (n <= 4) return 4;
+  return 6;
+}
+
+function gridClassesFor(n) {
+  if (n <= 1) return "grid-cols-1 grid-rows-1";
+  if (n === 2) return "grid-cols-2 grid-rows-1";
+  if (n <= 4) return "grid-cols-2 grid-rows-2";
+  return "grid-cols-3 grid-rows-2";
+}
+
+function buildWelcomePanel() {
+  return el("div", { class: "welcome-panel fade-in", id: "welcome-panel" },
+    el("div", { style: "font-size:44px;" }, "🧬🗺️"),
+    el("h2", {}, "Willkommen im Curriculum-Atlas"),
+    el("p", {}, "Wählen Sie links bis zu 6 evolutionsanthropologische Kernkonzepte aus, um deren UMAP-Verortung in deutschen Lehrplantexten zu erkunden."),
+  );
+}
+
+function buildGhostPanel() {
+  return el("div", { class: "panel ghost-panel fade-in", id: "ghost-panel",
+                      onclick: () => qs("#mobile-toggle-sidebar")?.classList.contains("hidden") ? null : openMobileSidebar() },
+    el("div", { class: "plus" }, "+"),
+    el("div", { class: "text-xs font-semibold" }, `Konzept hinzufügen (${state.selected.length}/${MAX_CONCEPTS})`),
+  );
+}
+
+function openMobileSidebar() {
+  qs("#sidebar").classList.add("open");
+  qs("#scrim").classList.add("open");
+}
+
+function updateGridLayout() {
+  const grid = qs("#plot-grid");
+  const n = state.selected.length;
+  grid.className = `grid gap-3 ${gridClassesFor(n)}`;
+
+  qs("#welcome-panel")?.remove();
+  qs("#ghost-panel")?.remove();
+
+  if (n === 0) {
+    grid.appendChild(buildWelcomePanel());
+    return;
+  }
+  if (n < capacityFor(n)) {
+    grid.appendChild(buildGhostPanel());
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   9. PANEL LIFECYCLE  (create / remove / loading states)
+   ───────────────────────────────────────────────────────────────────── */
+function buildPanelElement(concept) {
+  const meta = state.manifest.concepts[concept];
+  const nDocs = meta ? meta.n_docs.toLocaleString("de-DE") : "?";
+
+  const panelEl = el("div", { class: "panel fade-in", id: `panel-${concept}` },
+    el("div", { class: "panel-header" },
+      el("div", { class: "title" },
+        el("span", { class: "accent-dot", style: "background:var(--accent);" }),
+        el("span", { class: "name", title: concept }, concept),
+      ),
+      el("div", { class: "flex items-center gap-2" },
+        el("span", { class: "count" }, `${nDocs} Belege`),
+        el("button", { class: "close-btn", title: "Entfernen",
+                       onclick: () => removeConceptPanel(concept) }, "×"),
+      ),
+    ),
+    el("div", { class: "plot-container", id: `plot-${concept}` }),
+  );
+  return panelEl;
+}
+
+function showPanelOverlay(concept, { spinner = true, message = "Lade Daten …", error = false } = {}) {
+  const panel = state.panels.get(concept);
+  if (!panel) return;
+  hidePanelOverlay(concept);
+  const overlay = el("div", { class: "panel-overlay", id: `overlay-${concept}` },
+    spinner ? el("div", { class: "spinner" }) : el("div", { style: "font-size:22px;" }, "⚠️"),
+    el("div", { class: "msg" }, message),
+    error ? el("button", { class: "btn primary", onclick: () => retryConcept(concept) }, "Erneut laden") : null,
+  );
+  panel.el.appendChild(overlay);
+}
+
+function hidePanelOverlay(concept) {
+  qs(`#overlay-${concept}`)?.remove();
+}
+
+function retryConcept(concept) {
+  state.conceptData.delete(concept);
+  showPanelOverlay(concept);
+  loadConceptData(concept)
+    .then(() => { hidePanelOverlay(concept); renderPanelPlot(concept, { isNew: true }); rebuildLegend(); })
+    .catch((err) => showPanelOverlay(concept, { spinner: false, error: true, message: `Fehler: ${err.message}` }));
+}
+
+function addConceptPanel(concept) {
+  if (state.panels.has(concept)) return;
+  if (state.selected.length >= MAX_CONCEPTS) return;
+
+  const panelEl = buildPanelElement(concept);
+  qs("#plot-grid").appendChild(panelEl);
+
+  state.panels.set(concept, {
+    el: panelEl,
+    plotEl: qs(`#plot-${concept}`, panelEl),
+    plotted: false,
+    eventsAttached: false,
+  });
+  state.selected.push(concept);
+
+  updateGridLayout();
+  updateConceptButtonStates();
+  refreshTopicFilterUI();
+  updateHeaderSubtitle();
+  updateOrbitControlAvailability();
+  persistState();
+
+  showPanelOverlay(concept);
+  loadConceptData(concept)
+    .then(() => {
+      hidePanelOverlay(concept);
+      renderPanelPlot(concept, { isNew: true });
+      refreshTopicFilterUI();
+      rebuildLegend();
+    })
+    .catch((err) => {
+      console.error(`[${concept}] load failed:`, err);
+      showPanelOverlay(concept, { spinner: false, error: true, message: `Daten konnten nicht geladen werden: ${err.message}` });
+      showToast(`„${concept}“ konnte nicht geladen werden.`, "error");
+    });
+}
+
+function removeConceptPanel(concept) {
+  const panel = state.panels.get(concept);
+  if (!panel) return;
+
+  if (panel.plotted) { try { Plotly.purge(panel.plotEl); } catch (_) {} }
+  panel.el.remove();
+  state.panels.delete(concept);
+  state.selected = state.selected.filter((c) => c !== concept);
+  state.isolatedByConcept.delete(concept);
+
+  if (state.topicFilterConcept === concept) {
+    state.topicFilterConcept = null;
+    state.topicFilterValue = "__all__";
+  }
+
+  updateGridLayout();
+  updateConceptButtonStates();
+  refreshTopicFilterUI();
+  updateHeaderSubtitle();
+  updateOrbitControlAvailability();
+  rebuildLegend();
+  persistState();
+}
+
+function clearAllConcepts() {
+  [...state.selected].forEach(removeConceptPanel);
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   10. CONCEPT PICKER (sidebar)
+   ───────────────────────────────────────────────────────────────────── */
+function renderConceptPicker() {
+  const order = (state.manifest.concept_order && state.manifest.concept_order.length)
+    ? state.manifest.concept_order : FALLBACK_CONCEPTS;
+  const grid = qs("#concept-grid");
+  grid.innerHTML = "";
+
+  order.forEach((concept) => {
+    const meta = state.manifest.concepts[concept];
+    const available = Boolean(meta);
+    const btn = el("button", {
+      class: `concept-btn${available ? "" : " unavailable"}`,
+      id: `concept-btn-${concept}`,
+      disabled: available ? null : "disabled",
+      title: available ? concept : `${concept} — keine Daten verfügbar`,
+      onclick: () => toggleConcept(concept),
+    },
+      el("span", { class: "dot", style: `background:${available ? "var(--success)" : "var(--fg-faint)"};` }),
+      concept,
+      el("span", { class: "n-docs" }, available ? `${meta.n_docs.toLocaleString("de-DE")} Belege` : "keine Daten"),
+    );
+    if (!available) btn.removeAttribute("onclick");
+    grid.appendChild(btn);
+  });
+}
+
+function toggleConcept(concept) {
+  if (state.panels.has(concept)) {
+    removeConceptPanel(concept);
+  } else if (state.selected.length < MAX_CONCEPTS) {
+    addConceptPanel(concept);
+  }
+}
+
+function updateConceptButtonStates() {
+  const order = (state.manifest.concept_order && state.manifest.concept_order.length)
+    ? state.manifest.concept_order : FALLBACK_CONCEPTS;
+  const atLimit = state.selected.length >= MAX_CONCEPTS;
+
+  order.forEach((concept) => {
+    const btn = qs(`#concept-btn-${concept}`);
+    if (!btn) return;
+    const isAvailable = Boolean(state.manifest.concepts[concept]);
+    const isSelected = state.panels.has(concept);
+    btn.classList.toggle("selected", isSelected);
+    btn.disabled = !isAvailable || (atLimit && !isSelected);
+
+    let badge = btn.querySelector(".badge-num");
+    if (isSelected) {
+      const idx = state.selected.indexOf(concept) + 1;
+      if (!badge) { badge = el("span", { class: "badge-num" }); btn.appendChild(badge); }
+      badge.textContent = String(idx);
+    } else if (badge) {
+      badge.remove();
+    }
+  });
+
+  qs("#concept-count-badge").textContent = `${state.selected.length} / ${MAX_CONCEPTS} Konzepte`;
+}
+
+function updateHeaderSubtitle() {
+  const sub = qs("#header-subtitle");
+  const n = state.selected.length;
+  sub.textContent = n === 0
+    ? "Wählen Sie Konzepte aus, um die Kartierung zu starten."
+    : `${n} Konzept${n === 1 ? "" : "e"} aktiv · Einfärbung: ${state.colorBy === "subject" ? "Fachbereich" : "Thema"} · ${state.projection.toUpperCase()}`;
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   11. PLOTLY FIGURE CONSTRUCTION
+   ═════════════════════════════════════════════════════════════════════ */
+function getPlotThemeColors() {
+  const cs = getComputedStyle(document.documentElement);
+  return {
+    bg: cs.getPropertyValue("--plot-bg").trim(),
+    grid: cs.getPropertyValue("--plot-grid").trim(),
+    fg: cs.getPropertyValue("--plot-fg").trim(),
+    fgMuted: cs.getPropertyValue("--plot-fg-muted").trim(),
+  };
+}
+
+function axisStyle2d(t, title) {
+  return {
+    title: { text: title, font: { size: 10, color: t.fgMuted } },
+    color: t.fg, gridcolor: t.grid, zerolinecolor: t.grid,
+    showspikes: false, tickfont: { size: 9, color: t.fgMuted },
+  };
+}
+function axisStyle3d(t, title) {
+  return {
+    title: { text: title, font: { size: 9, color: t.fgMuted } },
+    color: t.fgMuted, gridcolor: t.grid, zerolinecolor: t.grid,
+    backgroundcolor: t.bg, showspikes: false, tickfont: { size: 8, color: t.fgMuted },
+  };
+}
+
+/** Current camera "eye" vector — driven by the orbit loop's theta angle
+ *  even when orbit is paused, so toggling orbit on/off (or re-rendering
+ *  for unrelated reasons) never causes a visual camera "jump". */
+function currentOrbitEye() {
+  const { theta, elevation } = state.orbit;
+  return { x: ORBIT_RADIUS * Math.cos(theta), y: ORBIT_RADIUS * Math.sin(theta), z: elevation };
+}
+
+/** Construct the {data, layout, config} triple for one concept panel,
+ *  reflecting every current control setting (color-by, outlier filter,
+ *  topic filter, point size, theme, projection, legend isolation). */
+function buildFigure(concept) {
+  const allRecords = state.conceptData.get(concept) || [];
+  const records = getFilteredRecords(concept);
+  const field = state.colorBy;
+  const is3d = state.projection === "3d";
+  const t = getPlotThemeColors();
+
+  const groups = new Map();
+  for (const r of records) {
+    const key = r[field] ?? "Unbekannt";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(r);
+  }
+  // Largest groups drawn first so smaller/rarer categories layer on top.
+  const orderedKeys = [...groups.keys()].sort((a, b) => groups.get(b).length - groups.get(a).length);
+
+  const isolationSet = field === "subject"
+    ? state.isolatedGlobal
+    : (state.isolatedByConcept.get(concept) || new Set());
+
+  const data = orderedKeys.map((key) => {
+    const groupRecords = groups.get(key);
+    const isOutlierCategory = field === "topic" && groupRecords.some((r) => r.is_outlier);
+    const color = resolveColor(concept, field, key, isOutlierCategory);
+    const dimmed = isolationSet.size > 0 && !isolationSet.has(key);
+
+    const trace = {
+      name: key,
+      type: is3d ? "scatter3d" : "scattergl",
+      mode: "markers",
+      x: groupRecords.map((r) => (is3d ? r.umap_3d[0] : r.umap_2d[0])),
+      y: groupRecords.map((r) => (is3d ? r.umap_3d[1] : r.umap_2d[1])),
+      marker: { size: state.pointSize, color, opacity: dimmed ? 0.07 : 0.85, line: { width: 0 } },
+      hoverinfo: "none", // native tooltip disabled — see HTML overlay tooltip (§12)
+      showlegend: false,
+      customdata: groupRecords.map((r) => [r.subject, r.state, r.grade_band, r.topic, r.excerpt, r.id]),
+    };
+    if (is3d) trace.z = groupRecords.map((r) => r.umap_3d[2]);
+    return trace;
+  });
+
+  const layout = {
+    paper_bgcolor: t.bg,
+    plot_bgcolor: t.bg,
+    font: { color: t.fg, family: "Inter, system-ui, sans-serif", size: 11 },
+    margin: is3d ? { l: 0, r: 0, t: 4, b: 0 } : { l: 46, r: 12, t: 6, b: 36 },
+    hovermode: "closest",
+    showlegend: false,
+    // Preserves the user's current pan/zoom/camera across re-renders
+    // triggered by unrelated control changes (color-by, point size, …).
+    // The orbit loop still overrides the camera directly via Plotly.relayout,
+    // which bypasses this mechanism entirely and always takes effect.
+    uirevision: concept,
+  };
+  if (is3d) {
+    layout.scene = {
+      bgcolor: t.bg,
+      xaxis: axisStyle3d(t, "UMAP-1"), yaxis: axisStyle3d(t, "UMAP-2"), zaxis: axisStyle3d(t, "UMAP-3"),
+      camera: { eye: currentOrbitEye() },
+    };
+  } else {
+    layout.xaxis = axisStyle2d(t, "UMAP-1");
+    layout.yaxis = axisStyle2d(t, "UMAP-2");
+    layout.dragmode = "pan";
+  }
+
+  const config = {
+    responsive: true, displaylogo: false, scrollZoom: true, displayModeBar: "hover",
+    modeBarButtonsToRemove: ["select2d", "lasso2d", "toImage"],
+  };
+
+  return { data, layout, config };
+}
+
+function renderPanelPlot(concept, opts = {}) {
+  const panel = state.panels.get(concept);
+  if (!panel || !state.conceptData.has(concept)) return;
+  const { data, layout, config } = buildFigure(concept);
+
+  if (opts.isNew || !panel.plotted) {
+    Plotly.newPlot(panel.plotEl, data, layout, config).then(() => {
+      panel.plotted = true;
+      attachPanelInteractivity(concept);
+    });
+  } else {
+    Plotly.react(panel.plotEl, data, layout, config);
+  }
+}
+
+/** Force a full destroy+recreate — used only for projection-mode switches
+ *  (2D <-> 3D), since that changes trace type (scatter vs scatter3d) and
+ *  the scene/axis structure wholesale; an infrequent, deliberate action
+ *  where the small extra cost of newPlot over react is a non-issue. */
+function forceReplot(concept) {
+  const panel = state.panels.get(concept);
+  if (!panel) return;
+  if (panel.plotted) { try { Plotly.purge(panel.plotEl); } catch (_) {} }
+  panel.plotted = false;
+  panel.eventsAttached = false;
+  renderPanelPlot(concept, { isNew: true });
+}
+
+function renderAllActivePanels(opts = { isNew: false }) {
+  state.selected.forEach((concept) => renderPanelPlot(concept, opts));
+  rebuildLegend();
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   12. HTML-OVERLAY TOOLTIP  (spec §5)
+   ═════════════════════════════════════════════════════════════════════
+   Rationale: Plotly's native hovertemplate cannot reliably word-wrap
+   long German excerpts into a clean multi-line box across renderers.
+   Disabling native hover (`hoverinfo:'none'`, set in buildFigure above)
+   and driving a fully CSS-styled <div id="tooltip"> from plotly_hover /
+   plotly_unhover gives complete control — including the robust 5-line
+   clamp achieved via `-webkit-line-clamp` in the stylesheet.
+   ───────────────────────────────────────────────────────────────────── */
+function attachPanelInteractivity(concept) {
+  const panel = state.panels.get(concept);
+  if (!panel || panel.eventsAttached) return;
+  panel.eventsAttached = true;
+
+  panel.plotEl.on("plotly_hover", (evt) => {
+    const pt = evt.points && evt.points[0];
+    if (!pt || !pt.customdata) return;
+    const [subject, stateName, gradeBand, topic, excerpt, id] = pt.customdata;
+    const color = Array.isArray(pt.data.marker.color) ? pt.data.marker.color[pt.pointNumber] : pt.data.marker.color;
+    renderTooltipContent({ subject, stateName, gradeBand, topic, excerpt, id, concept, color });
+    if (evt.event) positionTooltip(evt.event);
+  });
+
+  panel.plotEl.on("plotly_unhover", () => { qs("#tooltip").style.display = "none"; });
+
+  // Touch devices: tap-to-preview, tap-elsewhere-to-dismiss.
+  panel.plotEl.on("plotly_click", (evt) => {
+    const pt = evt.points && evt.points[0];
+    if (!pt || !pt.customdata) return;
+    const [subject, stateName, gradeBand, topic, excerpt, id] = pt.customdata;
+    const color = Array.isArray(pt.data.marker.color) ? pt.data.marker.color[pt.pointNumber] : pt.data.marker.color;
+    renderTooltipContent({ subject, stateName, gradeBand, topic, excerpt, id, concept, color });
+    if (evt.event) positionTooltip(evt.event);
+  });
+}
+
+function renderTooltipContent({ subject, stateName, gradeBand, topic, excerpt, id, concept, color }) {
+  const tooltip = qs("#tooltip");
+  tooltip.innerHTML = "";
+  tooltip.appendChild(
+    el("div", { class: "tooltip-header" },
+      el("span", { class: "tooltip-badge", style: `background:${color};` }, concept),
+      el("span", { class: "tooltip-subject" }, subject || "Unbekannt"),
+    ),
+  );
+  tooltip.appendChild(
+    el("div", { class: "tooltip-meta" },
+      el("span", {}, `📍 ${stateName || "–"}`),
+      el("span", { class: "sep" }, "·"),
+      el("span", {}, `🎓 Klasse ${gradeBand || "–"}`),
+      el("span", { class: "sep" }, "·"),
+      el("span", {}, `🏷️ ${topic || "–"}`),
+      el("span", { class: "sep" }, "·"),
+      el("span", {}, `#${id}`),
+    ),
+  );
+  tooltip.appendChild(el("div", { class: "tooltip-excerpt" }, excerpt || ""));
+  tooltip.style.display = "block";
+}
+
+function positionTooltip(mouseEvt) {
+  const tooltip = qs("#tooltip");
+  const pad = 18;
+  let x = mouseEvt.clientX + pad;
+  let y = mouseEvt.clientY + pad;
+  const rect = tooltip.getBoundingClientRect();
+  if (x + rect.width > window.innerWidth - 8) x = mouseEvt.clientX - rect.width - pad;
+  if (y + rect.height > window.innerHeight - 8) y = mouseEvt.clientY - rect.height - pad;
+  tooltip.style.left = `${Math.max(8, x)}px`;
+  tooltip.style.top = `${Math.max(8, y)}px`;
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   13. LEGEND  (spec §6 — floating card, click-to-isolate)
+   ═════════════════════════════════════════════════════════════════════
+   'subject' coloring -> one flat, cross-concept legend (categories are
+   comparable across concepts; isolation is a single global Set).
+   'topic' coloring    -> one collapsible group PER active concept
+   (topic IDs are concept-scoped; isolation is tracked per concept).
+   ───────────────────────────────────────────────────────────────────── */
+function rebuildLegend() {
+  const container = qs("#legend-scroll");
+  container.innerHTML = "";
+
+  if (state.selected.length === 0) {
+    container.appendChild(
+      el("div", { class: "text-xs", style: "color:var(--fg-faint); padding-top: 20px; text-align:center;" },
+        "Legende erscheint, sobald ein Konzept ausgewählt ist."),
+    );
+    return;
+  }
+
+  container.appendChild(el("div", { class: "legend-title" }, "Legende"));
+  container.appendChild(el("div", { class: "legend-sub" },
+    state.colorBy === "subject"
+      ? "Eingefärbt nach Fachbereich · klicken zum Isolieren"
+      : "Eingefärbt nach Thema (je Konzept) · klicken zum Isolieren"));
+
+  if (state.colorBy === "subject") {
+    const counts = new Map();
+    for (const concept of state.selected) {
+      for (const r of getFilteredRecords(concept)) {
+        counts.set(r.subject, (counts.get(r.subject) || 0) + 1);
+      }
+    }
+    container.appendChild(buildFlatLegendList(counts));
+  } else {
+    for (const concept of state.selected) {
+      const counts = new Map();
+      for (const r of getFilteredRecords(concept)) {
+        counts.set(r.topic, (counts.get(r.topic) || 0) + 1);
+      }
+      container.appendChild(buildConceptLegendGroup(concept, counts));
+    }
+  }
+}
+
+function buildFlatLegendList(counts) {
+  const wrapper = el("div", {});
+  if (state.isolatedGlobal.size > 0) {
+    wrapper.appendChild(el("button", {
+      class: "hint underline mb-2", style: "cursor:pointer; color:var(--accent);",
+      onclick: () => { state.isolatedGlobal.clear(); renderAllActivePanels(); },
+    }, "Isolierung aufheben"));
+  }
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  for (const [label, count] of sorted) {
+    const color = resolveColor(state.selected[0], "subject", label, false);
+    const isolated = state.isolatedGlobal.has(label);
+    const dimmed = state.isolatedGlobal.size > 0 && !isolated;
+    wrapper.appendChild(
+      el("button", {
+        class: `legend-row${dimmed ? " dimmed" : ""}${isolated ? " active-only" : ""}`,
+        onclick: () => {
+          if (state.isolatedGlobal.has(label)) state.isolatedGlobal.delete(label);
+          else state.isolatedGlobal.add(label);
+          renderAllActivePanels();
+        },
+      },
+        el("span", { class: "legend-swatch", style: `background:${color};` }),
+        el("span", { class: "legend-label" }, label),
+        el("span", { class: "legend-count" }, count.toLocaleString("de-DE")),
+      ),
+    );
+  }
+  return wrapper;
+}
+
+function buildConceptLegendGroup(concept, counts) {
+  const isolationSet = state.isolatedByConcept.get(concept) || new Set();
+  const details = el("details", { class: "legend-group", open: "open" },
+    el("summary", {},
+      el("span", {}, `${concept} (${[...counts.values()].reduce((a, b) => a + b, 0)})`)),
+  );
+
+  if (isolationSet.size > 0) {
+    details.appendChild(el("button", {
+      class: "hint underline mb-1", style: "cursor:pointer; color:var(--accent);",
+      onclick: (e) => { e.preventDefault(); state.isolatedByConcept.delete(concept); renderPanelPlot(concept); rebuildLegend(); },
+    }, "Isolierung aufheben"));
+  }
+
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  for (const [label, count] of sorted) {
+    const isOutlierCategory = label && label.toLowerCase().includes("ausreißer");
+    const color = resolveColor(concept, "topic", label, isOutlierCategory);
+    const isolated = isolationSet.has(label);
+    const dimmed = isolationSet.size > 0 && !isolated;
+    details.appendChild(
+      el("button", {
+        class: `legend-row${dimmed ? " dimmed" : ""}${isolated ? " active-only" : ""}`,
+        onclick: () => {
+          const set = state.isolatedByConcept.get(concept) || new Set();
+          if (set.has(label)) set.delete(label); else set.add(label);
+          state.isolatedByConcept.set(concept, set);
+          renderPanelPlot(concept);
+          rebuildLegend();
+        },
+      },
+        el("span", { class: "legend-swatch", style: `background:${color};` }),
+        el("span", { class: "legend-label" }, label),
+        el("span", { class: "legend-count" }, count.toLocaleString("de-DE")),
+      ),
+    );
+  }
+  return details;
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   14. TOPIC FILTER (conditional dropdown, spec §3.3)
+   ═════════════════════════════════════════════════════════════════════
+   Only meaningful when exactly one concept is active (topic vocabularies
+   are concept-specific, so a cross-concept topic filter would be
+   semantically confusing). With 0 or 2+ concepts active, the control is
+   disabled with an explanatory hint rather than hidden outright, so
+   users understand *why* it's unavailable rather than wondering where
+   it went.
+   ───────────────────────────────────────────────────────────────────── */
+function refreshTopicFilterUI() {
+  const select = qs("#topic-filter-select");
+  const hint = qs("#topic-filter-hint");
+
+  if  (state.selected.length !== 1) {
+    select.disabled = true;
+    select.innerHTML = `<option value="__all__">Alle Themen</option>`;
+    state.topicFilterConcept = null;
+    state.topicFilterValue = "__all__";
+    hint.textContent = "Nur verfügbar bei genau einem aktiven Konzept.";
+    hint.style.display = "block";
+    return;
+  }
+
+  const concept = state.selected[0];
+  state.topicFilterConcept = concept;
+  hint.style.display = "none";
+  select.disabled = false;
+
+  const records = state.conceptData.get(concept);
+  if (!records) {
+    // Data hasn't arrived yet — leave the placeholder option in place;
+    // this function is re-invoked once loadConceptData() resolves.
+    select.innerHTML = `<option value="__all__">Alle Themen</option>`;
+    return;
+  }
+
+  const topicCounts = new Map();
+  for (const r of records) {
+    topicCounts.set(r.topic, (topicCounts.get(r.topic) || 0) + 1);
+  }
+  const sortedTopics = [...topicCounts.entries()].sort((a, b) => b[1] - a[1]);
+
+  select.innerHTML = "";
+  select.appendChild(el("option", { value: "__all__" },
+    `Alle Themen (${records.length.toLocaleString("de-DE")})`));
+  for (const [topic, count] of sortedTopics) {
+    select.appendChild(el("option", { value: topic },
+      `${topic} (${count.toLocaleString("de-DE")})`));
+  }
+
+  // Preserve a previously-selected filter value if it's still valid for
+  // this concept (e.g. user toggled outliers off/on, list order changed).
+  if ([...topicCounts.keys()].includes(state.topicFilterValue)) {
+    select.value = state.topicFilterValue;
+  } else {
+    select.value = "__all__";
+    state.topicFilterValue = "__all__";
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   15. CAMERA & ORBIT CONTROL  (spec §3.4 — 3D projections only)
+   ═════════════════════════════════════════════════════════════════════
+   A single requestAnimationFrame loop advances `state.orbit.theta` and
+   pushes the resulting camera eye vector to EVERY active 3D panel via
+   Plotly.relayout — much cheaper than a full re-render, and it's the
+   correct Plotly API for "just move the camera" without touching data.
+   ───────────────────────────────────────────────────────────────────── */
+function updateOrbitControlAvailability() {
+  const btn = qs("#btn-orbit-toggle");
+  const speedSlider = qs("#orbit-speed-slider");
+  const elevSlider = qs("#orbit-elevation-slider");
+  const hint = qs("#orbit-disabled-hint");
+
+  const eligible = state.projection === "3d" && state.selected.length > 0;
+  btn.disabled = !eligible;
+  speedSlider.disabled = !eligible;
+  elevSlider.disabled = !eligible;
+  hint.textContent = eligible ? "" : "(nur bei 3D)";
+
+  if (!eligible && state.orbit.active) stopOrbit();
+}
+
+function startOrbit() {
+  if (state.orbit.active || state.projection !== "3d") return;
+  state.orbit.active = true;
+  qs("#btn-orbit-toggle").textContent = "⏸ Orbit stoppen";
+  runOrbitFrame();
+}
+
+function stopOrbit() {
+  state.orbit.active = false;
+  qs("#btn-orbit-toggle").textContent = "▶ Orbit starten";
+  if (state.orbit.rafId) cancelAnimationFrame(state.orbit.rafId);
+  state.orbit.rafId = null;
+}
+
+function runOrbitFrame() {
+  if (!state.orbit.active) return;
+  state.orbit.theta += state.orbit.speed;
+  const eye = currentOrbitEye();
+
+  for (const concept of state.selected) {
+    const panel = state.panels.get(concept);
+    if (panel && panel.plotted) {
+      // relayout with a scoped 'scene.camera' key is the lightweight path:
+      // it does NOT re-run the trace-diffing machinery that Plotly.react
+      // would, so this stays smooth even with several 3D panels animating
+      // simultaneously.
+      Plotly.relayout(panel.plotEl, { "scene.camera": { eye } }).catch(() => {});
+    }
+  }
+  state.orbit.rafId = requestAnimationFrame(runOrbitFrame);
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   16. THEME SWITCHING
+   ═════════════════════════════════════════════════════════════════════
+   Two-tier update: (1) flip the `data-theme` attribute so every CSS
+   custom property cascades instantly through the app chrome, then
+   (2) push the new Plotly-specific colors (which Plotly cannot read
+   from CSS vars) into every active panel via a scoped `Plotly.relayout`
+   — no data re-fetch or trace rebuild required.
+   ───────────────────────────────────────────────────────────────────── */
+function applyTheme(theme) {
+  state.theme = theme;
+  document.documentElement.setAttribute("data-theme", theme);
+  qs("#theme-toggle").textContent = theme === "dark" ? "🌙" : "☀️";
+  qsa("[data-theme-choice]").forEach((b) =>
+    b.classList.toggle("active", b.dataset.themeChoice === theme));
+
+  themeRelayoutPatch();
+  persistState();
+}
+
+function themeRelayoutPatch() {
+  const t = getPlotThemeColors();
+  for (const concept of state.selected) {
+    const panel = state.panels.get(concept);
+    if (!panel || !panel.plotted) continue;
+    const is3d = state.projection === "3d";
+    const patch = is3d
+      ? {
+          "paper_bgcolor": t.bg, "scene.bgcolor": t.bg,
+          "scene.xaxis.color": t.fgMuted, "scene.xaxis.gridcolor": t.grid, "scene.xaxis.backgroundcolor": t.bg,
+          "scene.yaxis.color": t.fgMuted, "scene.yaxis.gridcolor": t.grid, "scene.yaxis.backgroundcolor": t.bg,
+          "scene.zaxis.color": t.fgMuted, "scene.zaxis.gridcolor": t.grid, "scene.zaxis.backgroundcolor": t.bg,
+          "font.color": t.fg,
+        }
+      : {
+          "paper_bgcolor": t.bg, "plot_bgcolor": t.bg,
+          "xaxis.color": t.fg, "xaxis.gridcolor": t.grid, "xaxis.zerolinecolor": t.grid,
+          "yaxis.color": t.fg, "yaxis.gridcolor": t.grid, "yaxis.zerolinecolor": t.grid,
+          "font.color": t.fg,
+        };
+    Plotly.relayout(panel.plotEl, patch).catch(() => {});
+  }
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   17. LIGHTWEIGHT CONTROL HANDLERS (point size, outliers, projection,
+       color-by, topic filter) — each picks the cheapest sufficient
+       Plotly update method rather than a blanket full re-render.
+   ───────────────────────────────────────────────────────────────────── */
+function applyPointSize(size) {
+  state.pointSize = size;
+  qs("#point-size-val").textContent = `${size} px`;
+  for (const concept of state.selected) {
+    const panel = state.panels.get(concept);
+    if (panel && panel.plotted) {
+      Plotly.restyle(panel.plotEl, { "marker.size": size }).catch(() => {});
+    }
+  }
+  persistState();
+}
+
+function applyOutlierToggle(show) {
+  state.showOutliers = show;
+  refreshTopicFilterUI(); // topic list/counts depend on outlier inclusion
+  renderAllActivePanels();
+  persistState();
+}
+
+function applyColorBy(mode) {
+  state.colorBy = mode;
+  qsa("[data-colorby-choice]").forEach((b) =>
+    b.classList.toggle("active", b.dataset.colorbyChoice === mode));
+  updateHeaderSubtitle();
+  renderAllActivePanels();
+  persistState();
+}
+
+function applyProjection(mode) {
+  if (mode === state.projection) return;
+  state.projection = mode;
+  qsa("[data-projection-choice]").forEach((b) =>
+    b.classList.toggle("active", b.dataset.projectionChoice === mode));
+  updateHeaderSubtitle();
+  updateOrbitControlAvailability();
+  // Projection switch changes trace type (scatter <-> scatter3d), which
+  // Plotly.react cannot morph in place — a full destroy+recreate per
+  // panel is required and is an acceptably infrequent, deliberate action.
+  for (const concept of state.selected) forceReplot(concept);
+  persistState();
+}
+
+function applyTopicFilter(value) {
+  state.topicFilterValue = value;
+  if (state.topicFilterConcept) renderPanelPlot(state.topicFilterConcept);
+  rebuildLegend();
+  persistState();
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   18. RESPONSIVE RESIZE HANDLING
+   ═════════════════════════════════════════════════════════════════════
+   ResizeObserver on the grid container drives Plotly.Plots.resize() for
+   every active panel — necessary because CSS Grid reflows (e.g. sidebar
+   collapsing on narrow viewports, or the N-concept bracket changing
+   column/row counts) do not automatically trigger Plotly's internal
+   canvas/WebGL resize.
+   ───────────────────────────────────────────────────────────────────── */
+function setupResizeObserver() {
+  const debouncedResize = debounce(() => {
+    for (const concept of state.selected) {
+      const panel = state.panels.get(concept);
+      if (panel && panel.plotted) {
+        try { Plotly.Plots.resize(panel.plotEl); } catch (_) {}
+      }
+    }
+  }, 120);
+
+  const observer = new ResizeObserver(debouncedResize);
+  observer.observe(qs("#plot-grid"));
+  window.addEventListener("resize", debouncedResize);
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   19. STATIC EVENT WIRING (controls that exist once, not per-panel)
+   ───────────────────────────────────────────────────────────────────── */
+function wireStaticControls() {
+  qs("#theme-toggle").addEventListener("click", () =>
+    applyTheme(state.theme === "dark" ? "light" : "dark"));
+  qsa("[data-theme-choice]").forEach((b) =>
+    b.addEventListener("click", () => applyTheme(b.dataset.themeChoice)));
+
+  qsa("[data-projection-choice]").forEach((b) =>
+    b.addEventListener("click", () => applyProjection(b.dataset.projectionChoice)));
+
+  qsa("[data-colorby-choice]").forEach((b) =>
+    b.addEventListener("click", () => applyColorBy(b.dataset.colorbyChoice)));
+
+  const pointSizeSlider = qs("#point-size-slider");
+  pointSizeSlider.addEventListener("input", (e) => applyPointSize(Number(e.target.value)));
+
+  qs("#outlier-toggle").addEventListener("change", (e) => applyOutlierToggle(e.target.checked));
+
+  qs("#topic-filter-select").addEventListener("change", (e) => applyTopicFilter(e.target.value));
+
+  qs("#btn-orbit-toggle").addEventListener("click", () =>
+    state.orbit.active ? stopOrbit() : startOrbit());
+
+  const speedSlider = qs("#orbit-speed-slider");
+  speedSlider.addEventListener("input", (e) => {
+    state.orbit.speed = Number(e.target.value);
+    qs("#orbit-speed-val").textContent = state.orbit.speed.toFixed(3);
+  });
+
+  const elevSlider = qs("#orbit-elevation-slider");
+  elevSlider.addEventListener("input", (e) => {
+    state.orbit.elevation = Number(e.target.value);
+    qs("#orbit-elevation-val").textContent = state.orbit.elevation.toFixed(1);
+    if (!state.orbit.active) {
+      // Reflect elevation changes immediately even while paused, so the
+      // slider feels responsive rather than only "armed for next orbit".
+      for (const concept of state.selected) {
+        const panel = state.panels.get(concept);
+        if (panel && panel.plotted && state.projection === "3d") {
+          Plotly.relayout(panel.plotEl, { "scene.camera": { eye: currentOrbitEye() } }).catch(() => {});
+        }
+      }
+    }
+  });
+
+  qs("#btn-clear-concepts").addEventListener("click", clearAllConcepts);
+
+  // Mobile drawer toggles
+  qs("#mobile-toggle-sidebar").addEventListener("click", () => {
+    qs("#sidebar").classList.add("open");
+    qs("#scrim").classList.add("open");
+  });
+  qs("#mobile-toggle-legend").addEventListener("click", () => {
+    qs("#legend-panel").classList.add("open");
+    qs("#scrim").classList.add("open");
+  });
+  qs("#scrim").addEventListener("click", () => {
+    qs("#sidebar").classList.remove("open");
+    qs("#legend-panel").classList.remove("open");
+    qs("#scrim").classList.remove("open");
+  });
+
+  // Dismiss tooltip on scroll/resize to avoid a stale floating box.
+  window.addEventListener("scroll", () => { qs("#tooltip").style.display = "none"; }, true);
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   20. RESTORE PERSISTED STATE  (on initial load only)
+   ───────────────────────────────────────────────────────────────────── */
+async function restorePersistedState() {
+  state._applyingPersistedState = true;
+  const persisted = readPersistedState();
+
+  applyTheme(persisted.theme);
+
+  qs("#point-size-slider").value = persisted.pointSize;
+  qs("#point-size-val").textContent = `${persisted.pointSize} px`;
+  state.pointSize = persisted.pointSize;
+
+  state.showOutliers = persisted.showOutliers;
+  qs("#outlier-toggle").checked = persisted.showOutliers;
+
+  applyColorBy(persisted.colorBy);
+
+  if (persisted.projection === "3d") {
+    state.projection = "3d";
+    qsa("[data-projection-choice]").forEach((b) =>
+      b.classList.toggle("active", b.dataset.projectionChoice === "3d"));
+  }
+
+  // Add concepts sequentially (not Promise.all) so panel ordering in the
+  // grid deterministically matches the order encoded in the shared URL.
+  const validConcepts = persisted.concepts.filter((c) => state.manifest.concepts[c]);
+  for (const concept of validConcepts.slice(0, MAX_CONCEPTS)) {
+    addConceptPanel(concept);
+    await loadConceptData(concept).catch(() => {});
+  }
+
+  if (persisted.topicFilter && state.selected.length === 1 &&
+      state.selected[0] === persisted.topicFilter.concept) {
+    state.topicFilterValue = persisted.topicFilter.value;
+    refreshTopicFilterUI();
+  }
+
+  state._applyingPersistedState = false;
+  persistState(); // normalize the URL hash to the fully-resolved state
+}
+
+/* ═════════════════════════════════════════════════════════════════════
+   21. BOOTSTRAP
+   ═════════════════════════════════════════════════════════════════════ */
+async function init() {
+  try {
+    wireStaticControls();
+    setupResizeObserver();
+
+    const [manifest, colorMaps] = await Promise.all([
+      loadManifest(),
+      loadColorMaps().catch((err) => {
+        // color_maps.json is a nice-to-have for cross-artifact color
+        // parity, not a hard requirement — degrade to local palettes only.
+        console.warn("color_maps.json unavailable, using local palettes only:", err);
+        showToast("Farbzuordnung nicht gefunden — verwende lokale Farbpaletten.", "warn");
+        return null;
+      }),
+    ]);
+
+    state.manifest = manifest;
+    state.colorMaps = colorMaps;
+
+    renderConceptPicker();
+    updateGridLayout();
+    updateHeaderSubtitle();
+    rebuildLegend();
+
+    await restorePersistedState();
+
+    qs("#header-subtitle").textContent = state.selected.length
+      ? qs("#header-subtitle").textContent
+      : "Bereit. Wählen Sie Konzepte aus, um die Kartierung zu starten.";
+
+  } catch (err) {
+    console.error("Fatal init error:", err);
+    showFatalError(
+      `${err.message}\n\nStellen Sie sicher, dass bertopic_pipeline.py bereits ` +
+      `ausgeführt wurde und die Dateien 'data/manifest.json' sowie die ` +
+      `zugehörigen '<Konzept>.json'-Dateien im Verzeichnis '${DATA_BASE_URL}' ` +
+      `verfügbar sind.`
+    );
+  }
+}
+
+document.addEventListener("DOMContentLoaded", init);
+</script>
+</body>
+</html>
