@@ -71,9 +71,9 @@ async function loadData() {
     const [manifest, documentCatalog, keywordRows, keywordWordCounts, matrixRows] = await Promise.all([
       fetchJson('./data/manifest.json'),
       fetchJson('./data/document_catalog.json'),
-      fetchCsv('../keyword_search/out/results.csv'),
-      fetchCsv('../keyword_search/out/doc_word_counts.csv'),
-      fetchCsv('../keyword_search/out/state_subject_count_matrix.csv')
+      fetchCsv('./data/results.csv'),
+      fetchCsv('./data/doc_word_counts.csv'),
+      fetchCsv('./data/state_subject_count_matrix.csv')
     ]);
 
     appState.manifest = manifest;
@@ -268,7 +268,7 @@ function renderBerTopicPage() {
 
 function renderLdaPage() {
   const concept = document.getElementById('lda-concept')?.value || appState.selectedConcept;
-  const csvUrl = `../lda_topic_modelling/out/${concept}/10/topic_terms_${concept}_10.csv`;
+  const csvUrl = `./data/lda/${encodeURIComponent(concept)}/10/topic_terms_${encodeURIComponent(concept)}_10.csv`;
   fetchText(csvUrl).then((text) => {
     const rows = parseCsv(text);
     const termRows = rows.slice(1).filter((row) => row.some((entry) => entry.trim().length));
