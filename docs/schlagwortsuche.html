@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Schlagwortsuche</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="schlagwortsuche">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <p class="eyebrow">OpenEvo · Schlagwortsuche</p>
+          <h1>Schlagwörter und Treffer</h1>
+        </div>
+        <nav class="nav-links" aria-label="Hauptnavigation">
+          <a href="./index.html">Home</a>
+          <a href="./dokumente.html">Lehrplandokumente</a>
+          <a href="./schlagwortsuche.html" class="is-active">Schlagwortsuche</a>
+          <a href="./bertopic.html">BERTopic</a>
+          <a href="./lda.html">LDA</a>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="secondary-button" type="button">☀️ Hellmodus</button>
+        </div>
+      </header>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Interaktiv</p>
+            <h3>Analyse nach Konzept, Fach, Bundesland und Relativierung</h3>
+          </div>
+        </div>
+        <div class="controls">
+          <label><span>Konzept</span><select id="keyword-concept-filter"></select></label>
+          <label><span>Dimension A</span><select id="keyword-dimension-a"></select></label>
+          <label><span>Dimension B</span><select id="keyword-dimension-b"></select></label>
+          <label><span>Filter nach</span><select id="keyword-filter-dimension"></select></label>
+          <label><span>Filterwert</span><select id="keyword-filter-value"></select></label>
+          <label><span>Anzeige</span><select id="keyword-mode"><option value="absolute">Absolute Treffer</option><option value="relative">Je 10.000 Wörter</option></select></label>
+        </div>
+        <div id="keyword-summary" class="summary-grid"></div>
+        <div id="keyword-table"></div>
+        <div id="keyword-heatmap" class="section-card"></div>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

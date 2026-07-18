@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LDA</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="lda">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <p class="eyebrow">OpenEvo · LDA</p>
+          <h1>Topics und Termfrequenzen</h1>
+        </div>
+        <nav class="nav-links" aria-label="Hauptnavigation">
+          <a href="./index.html">Home</a>
+          <a href="./dokumente.html">Lehrplandokumente</a>
+          <a href="./schlagwortsuche.html">Schlagwortsuche</a>
+          <a href="./bertopic.html">BERTopic</a>
+          <a href="./lda.html" class="is-active">LDA</a>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="secondary-button" type="button">☀️ Hellmodus</button>
+        </div>
+      </header>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Analyse</p>
+            <h3>Term-Häufigkeiten, Topic-Tabelle und Co-Occurrence</h3>
+          </div>
+          <label><span>Konzept</span><select id="lda-concept"></select></label>
+        </div>
+        <div class="visual-grid">
+          <div id="lda-chart" class="panel chart-shell"></div>
+          <div id="lda-table" class="panel"></div>
+        </div>
+        <div id="lda-cooccurrence" class="section-card"></div>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

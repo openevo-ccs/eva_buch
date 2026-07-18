@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OpenEvo Lehrplananalyse</title>
+    <meta name="description" content="Interaktive Lehrplananalyse für Evolutionäre Anthropologie in Lehrplänen" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="home">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <p class="eyebrow">OpenEvo · Lehrplananalyse</p>
+          <h1>Lehrpläne sichtbar machen</h1>
+        </div>
+        <nav class="nav-links" aria-label="Hauptnavigation">
+          <a href="./index.html" class="is-active">Home</a>
+          <a href="./dokumente.html">Lehrplandokumente</a>
+          <a href="./schlagwortsuche.html">Schlagwortsuche</a>
+          <a href="./bertopic.html">BERTopic</a>
+          <a href="./lda.html">LDA</a>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="secondary-button" type="button">☀️ Hellmodus</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-card">
+          <p class="eyebrow">GitHub Pages · Prototyp</p>
+          <h2 id="hero-title">Eine moderne, interaktive Werkbank für die Lehrplananalyse</h2>
+          <p id="hero-copy"></p>
+          <div class="hero-actions">
+            <a class="button" href="./dokumente.html">Dokumente erkunden</a>
+            <a class="secondary-button" href="./bertopic.html">Zu BERTopic</a>
+          </div>
+        </div>
+        <div id="metric-grid" class="metric-grid"></div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Überblick</p>
+            <h3>Die Dokumente, Themen und Konzepte in einem klaren Rahmen</h3>
+          </div>
+        </div>
+        <p>Diese Oberfläche wurde so angelegt, dass sie im Verlauf der Arbeit an der Lehrplananalyse immer weiter ausgebaut werden kann – von der Dokumentenübersicht bis hin zu Topic- und LDA-Visualisierungen.</p>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

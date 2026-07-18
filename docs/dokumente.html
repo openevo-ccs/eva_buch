@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lehrplandokumente</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="dokumente">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <p class="eyebrow">OpenEvo · Lehrplandokumente</p>
+          <h1>Dokumentenübersicht</h1>
+        </div>
+        <nav class="nav-links" aria-label="Hauptnavigation">
+          <a href="./index.html">Home</a>
+          <a href="./dokumente.html" class="is-active">Lehrplandokumente</a>
+          <a href="./schlagwortsuche.html">Schlagwortsuche</a>
+          <a href="./bertopic.html">BERTopic</a>
+          <a href="./lda.html">LDA</a>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="secondary-button" type="button">☀️ Hellmodus</button>
+        </div>
+      </header>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Darstellung</p>
+            <h3>Dokumente nach Fach, Bundesland und Jahr</h3>
+          </div>
+        </div>
+        <div id="document-table"></div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Matrix</p>
+            <h3>Dokumentanzahl nach Bundesland und Fach</h3>
+          </div>
+        </div>
+        <div id="document-matrix"></div>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

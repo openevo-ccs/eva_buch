@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BERTopic</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="bertopic">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <p class="eyebrow">OpenEvo · BERTopic</p>
+          <h1>Clusters und Themenräume</h1>
+        </div>
+        <nav class="nav-links" aria-label="Hauptnavigation">
+          <a href="./index.html">Home</a>
+          <a href="./dokumente.html">Lehrplandokumente</a>
+          <a href="./schlagwortsuche.html">Schlagwortsuche</a>
+          <a href="./bertopic.html" class="is-active">BERTopic</a>
+          <a href="./lda.html">LDA</a>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="secondary-button" type="button">☀️ Hellmodus</button>
+        </div>
+      </header>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Visualisierung</p>
+            <h3>Topics, Ausreißer und thematische Schwerpunkte</h3>
+          </div>
+        </div>
+        <div class="controls">
+          <label><span>Konzept</span><select id="bertopic-concept"></select></label>
+          <label><span>Ausreißer</span><input id="bertopic-show-outliers" type="checkbox" checked /></label>
+          <label><span>Ansicht</span><select id="bertopic-projection"><option value="local">Konzept</option><option value="global">Gesamtraum</option></select></label>
+          <label><span>Punktgröße</span><input id="bertopic-point-size" type="range" min="0.8" max="3" step="0.1" value="1.6" /></label>
+          <label><span>Orbit</span><input id="bertopic-orbit" type="checkbox" /></label>
+        </div>
+        <div class="visual-grid">
+          <div id="bertopic-viz" class="panel viz-shell"></div>
+          <div class="panel">
+            <div id="bertopic-chart" class="chart-shell"></div>
+            <div id="bertopic-detail" class="section-card"></div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
