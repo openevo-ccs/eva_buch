@@ -177,14 +177,14 @@ CANONICAL_STATES = [
 ]
 STATE_ALIASES = {
     "bw": "Baden-Württemberg", "baden wuerttemberg": "Baden-Württemberg",
-    "baden-wuerttemberg": "Baden-Württemberg",
+    "baden-wuerttemberg": "Baden-Württemberg", "bawu": "Baden-Württemberg",
     "by": "Bayern", "bayern": "Bayern",
     "be": "Berlin", "berlin": "Berlin",
     "bb": "Brandenburg", "brandenburg": "Brandenburg",
     "hb": "Bremen", "bremen": "Bremen",
     "hh": "Hamburg", "hamburg": "Hamburg",
     "he": "Hessen", "hessen": "Hessen",
-    "mv": "Mecklenburg-Vorpommern",
+    "mv": "Mecklenburg-Vorpommern", "meckpomm": "Mecklenburg-Vorpommern",
     "mecklenburg vorpommern": "Mecklenburg-Vorpommern",
     "mecklenburg-vorpommern": "Mecklenburg-Vorpommern",
     "ni": "Niedersachsen", "niedersachsen": "Niedersachsen",
@@ -397,6 +397,8 @@ def canonicalize_state(raw: Any, unmapped_tracker: Counter) -> str:
         return UNKNOWN_LABEL
 
     key = _strip_diacritics(text).lower().strip()
+    if key in ("<na>", "na", "n/a", "none", "nan"):
+        return UNKNOWN_LABEL
     if key in STATE_ALIASES:
         return STATE_ALIASES[key]
     # Direct match against canonical list (case-insensitive, accent-insensitive)

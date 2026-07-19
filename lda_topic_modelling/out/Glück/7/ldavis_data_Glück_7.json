@@ -1,0 +1,2987 @@
+{
+  "n_topics": 7,
+  "topic_coordinates": [
+    {
+      "topic": 1,
+      "x": -80.7955,
+      "y": -17.3605,
+      "freq": 8.3443
+    },
+    {
+      "topic": 2,
+      "x": -56.3836,
+      "y": -109.6715,
+      "freq": 14.9772
+    },
+    {
+      "topic": 3,
+      "x": 11.2129,
+      "y": -42.3501,
+      "freq": 10.9341
+    },
+    {
+      "topic": 4,
+      "x": 103.1442,
+      "y": -66.8791,
+      "freq": 30.1698
+    },
+    {
+      "topic": 5,
+      "x": -13.2625,
+      "y": 49.8576,
+      "freq": 17.7064
+    },
+    {
+      "topic": 6,
+      "x": 78.8232,
+      "y": 25.2883,
+      "freq": 9.4474
+    },
+    {
+      "topic": 7,
+      "x": 35.9705,
+      "y": -134.6945,
+      "freq": 8.4209
+    }
+  ],
+  "default_term_freq": [
+    {
+      "term": "glücklich",
+      "freq": 420.0,
+      "total": 420.0
+    },
+    {
+      "term": "leben",
+      "freq": 590.0,
+      "total": 590.0
+    },
+    {
+      "term": "positiv",
+      "freq": 53.0,
+      "total": 53.0
+    },
+    {
+      "term": "situation",
+      "freq": 65.0,
+      "total": 65.0
+    },
+    {
+      "term": "ethik",
+      "freq": 202.0,
+      "total": 202.0
+    },
+    {
+      "term": "moral",
+      "freq": 174.0,
+      "total": 174.0
+    },
+    {
+      "term": "mensch",
+      "freq": 219.0,
+      "total": 219.0
+    },
+    {
+      "term": "moralisch",
+      "freq": 91.0,
+      "total": 91.0
+    },
+    {
+      "term": "beschreiben",
+      "freq": 131.0,
+      "total": 131.0
+    },
+    {
+      "term": "gut",
+      "freq": 106.0,
+      "total": 106.0
+    },
+    {
+      "term": "handlung",
+      "freq": 63.0,
+      "total": 63.0
+    },
+    {
+      "term": "bzgl",
+      "freq": 33.0,
+      "total": 33.0
+    },
+    {
+      "term": "diskutieren",
+      "freq": 104.0,
+      "total": 104.0
+    },
+    {
+      "term": "definieren",
+      "freq": 52.0,
+      "total": 52.0
+    },
+    {
+      "term": "begriff",
+      "freq": 104.0,
+      "total": 104.0
+    },
+    {
+      "term": "kompetenz",
+      "freq": 137.0,
+      "total": 137.0
+    },
+    {
+      "term": "konsum",
+      "freq": 76.0,
+      "total": 76.0
+    },
+    {
+      "term": "denkanstöße",
+      "freq": 43.0,
+      "total": 43.0
+    },
+    {
+      "term": "anspruch",
+      "freq": 32.0,
+      "total": 32.0
+    },
+    {
+      "term": "möglichkeit",
+      "freq": 36.0,
+      "total": 36.0
+    },
+    {
+      "term": "scheinen",
+      "freq": 41.0,
+      "total": 41.0
+    },
+    {
+      "term": "individuell",
+      "freq": 93.0,
+      "total": 93.0
+    },
+    {
+      "term": "argument",
+      "freq": 36.0,
+      "total": 36.0
+    },
+    {
+      "term": "wert",
+      "freq": 80.0,
+      "total": 80.0
+    },
+    {
+      "term": "ding",
+      "freq": 62.0,
+      "total": 62.0
+    },
+    {
+      "term": "freud",
+      "freq": 35.0,
+      "total": 35.0
+    },
+    {
+      "term": "text",
+      "freq": 43.0,
+      "total": 43.0
+    },
+    {
+      "term": "zufall",
+      "freq": 31.0,
+      "total": 31.0
+    },
+    {
+      "term": "analysieren",
+      "freq": 42.0,
+      "total": 42.0
+    },
+    {
+      "term": "thema",
+      "freq": 84.0,
+      "total": 84.0
+    }
+  ],
+  "topics": {
+    "1": [
+      {
+        "term": "entscheidungssituation",
+        "freq": 13.37,
+        "total": 14.21,
+        "logprob": -4.6781,
+        "loglift": 2.4226
+      },
+      {
+        "term": "unbehagen",
+        "freq": 13.27,
+        "total": 14.12,
+        "logprob": -4.6856,
+        "loglift": 2.4217
+      },
+      {
+        "term": "mithilfe",
+        "freq": 13.31,
+        "total": 14.16,
+        "logprob": -4.6827,
+        "loglift": 2.4214
+      },
+      {
+        "term": "einschränkung",
+        "freq": 12.62,
+        "total": 13.46,
+        "logprob": -4.7362,
+        "loglift": 2.419
+      },
+      {
+        "term": "lebensentwurf",
+        "freq": 10.04,
+        "total": 10.88,
+        "logprob": -4.9647,
+        "loglift": 2.4033
+      },
+      {
+        "term": "leitfragen",
+        "freq": 8.63,
+        "total": 9.47,
+        "logprob": -5.1163,
+        "loglift": 2.3906
+      },
+      {
+        "term": "widerspruch",
+        "freq": 8.53,
+        "total": 9.37,
+        "logprob": -5.128,
+        "loglift": 2.3889
+      },
+      {
+        "term": "lernbereich",
+        "freq": 8.37,
+        "total": 9.22,
+        "logprob": -5.1468,
+        "loglift": 2.3861
+      },
+      {
+        "term": "ideale",
+        "freq": 7.87,
+        "total": 8.71,
+        "logprob": -5.2076,
+        "loglift": 2.3822
+      },
+      {
+        "term": "geldschein",
+        "freq": 7.87,
+        "total": 8.71,
+        "logprob": -5.2076,
+        "loglift": 2.3822
+      },
+      {
+        "term": "seitensprung",
+        "freq": 7.87,
+        "total": 8.71,
+        "logprob": -5.2077,
+        "loglift": 2.3821
+      },
+      {
+        "term": "gefahr",
+        "freq": 8.65,
+        "total": 9.67,
+        "logprob": -5.1139,
+        "loglift": 2.372
+      },
+      {
+        "term": "implikation",
+        "freq": 6.62,
+        "total": 7.46,
+        "logprob": -5.381,
+        "loglift": 2.3635
+      },
+      {
+        "term": "unterricht",
+        "freq": 5.19,
+        "total": 6.03,
+        "logprob": -5.625,
+        "loglift": 2.3326
+      },
+      {
+        "term": "verfügen",
+        "freq": 5.23,
+        "total": 6.09,
+        "logprob": -5.6165,
+        "loglift": 2.332
+      },
+      {
+        "term": "einfach",
+        "freq": 5.1,
+        "total": 5.96,
+        "logprob": -5.6423,
+        "loglift": 2.3265
+      },
+      {
+        "term": "unreflektiert",
+        "freq": 4.58,
+        "total": 5.43,
+        "logprob": -5.7496,
+        "loglift": 2.3138
+      },
+      {
+        "term": "erzieherisch",
+        "freq": 4.58,
+        "total": 5.43,
+        "logprob": -5.7498,
+        "loglift": 2.3136
+      },
+      {
+        "term": "fähigkeit",
+        "freq": 7.63,
+        "total": 9.06,
+        "logprob": -5.2385,
+        "loglift": 2.3121
+      },
+      {
+        "term": "endziel",
+        "freq": 4.49,
+        "total": 5.33,
+        "logprob": -5.7699,
+        "loglift": 2.312
+      },
+      {
+        "term": "satz",
+        "freq": 4.49,
+        "total": 5.33,
+        "logprob": -5.77,
+        "loglift": 2.3119
+      },
+      {
+        "term": "fortführen",
+        "freq": 4.49,
+        "total": 5.33,
+        "logprob": -5.7701,
+        "loglift": 2.3119
+      },
+      {
+        "term": "sinnvolles",
+        "freq": 4.49,
+        "total": 5.33,
+        "logprob": -5.7702,
+        "loglift": 2.3118
+      },
+      {
+        "term": "systematisch",
+        "freq": 4.49,
+        "total": 5.33,
+        "logprob": -5.7702,
+        "loglift": 2.3118
+      },
+      {
+        "term": "konsumverhalte",
+        "freq": 4.49,
+        "total": 5.33,
+        "logprob": -5.7702,
+        "loglift": 2.3117
+      },
+      {
+        "term": "arbeitsmaterial",
+        "freq": 4.47,
+        "total": 5.33,
+        "logprob": -5.7726,
+        "loglift": 2.3087
+      },
+      {
+        "term": "sicherheit",
+        "freq": 4.3,
+        "total": 5.14,
+        "logprob": -5.813,
+        "loglift": 2.3052
+      },
+      {
+        "term": "gesundheit",
+        "freq": 8.19,
+        "total": 9.89,
+        "logprob": -5.1678,
+        "loglift": 2.2949
+      },
+      {
+        "term": "glückspotenzial",
+        "freq": 3.87,
+        "total": 4.72,
+        "logprob": -5.9168,
+        "loglift": 2.2855
+      },
+      {
+        "term": "lifestyl",
+        "freq": 3.87,
+        "total": 4.72,
+        "logprob": -5.9177,
+        "loglift": 2.2846
+      },
+      {
+        "term": "anspruch",
+        "freq": 25.47,
+        "total": 32.57,
+        "logprob": -4.0334,
+        "loglift": 2.2379
+      },
+      {
+        "term": "möglichkeit",
+        "freq": 27.65,
+        "total": 36.17,
+        "logprob": -3.9514,
+        "loglift": 2.2149
+      },
+      {
+        "term": "kultur",
+        "freq": 21.35,
+        "total": 29.34,
+        "logprob": -4.2099,
+        "loglift": 2.1657
+      },
+      {
+        "term": "chance",
+        "freq": 16.65,
+        "total": 23.29,
+        "logprob": -4.4588,
+        "loglift": 2.1479
+      },
+      {
+        "term": "finden",
+        "freq": 18.87,
+        "total": 27.34,
+        "logprob": -4.3334,
+        "loglift": 2.1128
+      },
+      {
+        "term": "familie",
+        "freq": 16.95,
+        "total": 25.88,
+        "logprob": -4.4407,
+        "loglift": 2.0604
+      },
+      {
+        "term": "glücksangebot",
+        "freq": 9.08,
+        "total": 13.13,
+        "logprob": -5.0654,
+        "loglift": 2.1142
+      },
+      {
+        "term": "bezug",
+        "freq": 15.76,
+        "total": 29.89,
+        "logprob": -4.5137,
+        "loglift": 1.8434
+      },
+      {
+        "term": "produkt",
+        "freq": 7.0,
+        "total": 10.11,
+        "logprob": -5.3256,
+        "loglift": 2.1153
+      },
+      {
+        "term": "wichtig",
+        "freq": 15.56,
+        "total": 32.82,
+        "logprob": -4.5263,
+        "loglift": 1.7373
+      },
+      {
+        "term": "interview",
+        "freq": 9.98,
+        "total": 17.09,
+        "logprob": -4.97,
+        "loglift": 1.9459
+      },
+      {
+        "term": "freud",
+        "freq": 15.93,
+        "total": 35.99,
+        "logprob": -4.5029,
+        "loglift": 1.6685
+      },
+      {
+        "term": "moralisch",
+        "freq": 28.23,
+        "total": 91.86,
+        "logprob": -3.9306,
+        "loglift": 1.3037
+      },
+      {
+        "term": "etc",
+        "freq": 19.11,
+        "total": 50.16,
+        "logprob": -4.3206,
+        "loglift": 1.5189
+      },
+      {
+        "term": "freizeit",
+        "freq": 15.28,
+        "total": 35.51,
+        "logprob": -4.5447,
+        "loglift": 1.6402
+      },
+      {
+        "term": "prüfen",
+        "freq": 19.59,
+        "total": 61.49,
+        "logprob": -4.2963,
+        "loglift": 1.3394
+      },
+      {
+        "term": "leben",
+        "freq": 53.09,
+        "total": 590.4,
+        "logprob": -3.299,
+        "loglift": 0.0748
+      },
+      {
+        "term": "werbung",
+        "freq": 15.59,
+        "total": 51.35,
+        "logprob": -4.5246,
+        "loglift": 1.2914
+      },
+      {
+        "term": "stehen",
+        "freq": 13.94,
+        "total": 39.33,
+        "logprob": -4.636,
+        "loglift": 1.4466
+      },
+      {
+        "term": "führen",
+        "freq": 14.49,
+        "total": 43.46,
+        "logprob": -4.5979,
+        "loglift": 1.3849
+      },
+      {
+        "term": "glücklich",
+        "freq": 34.52,
+        "total": 420.98,
+        "logprob": -3.7295,
+        "loglift": -0.0174
+      },
+      {
+        "term": "diskussion",
+        "freq": 15.75,
+        "total": 54.71,
+        "logprob": -4.5145,
+        "loglift": 1.2381
+      },
+      {
+        "term": "ding",
+        "freq": 15.95,
+        "total": 62.42,
+        "logprob": -4.5019,
+        "loglift": 1.1189
+      },
+      {
+        "term": "provokation",
+        "freq": 13.25,
+        "total": 43.61,
+        "logprob": -4.6869,
+        "loglift": 1.2924
+      },
+      {
+        "term": "diskutieren",
+        "freq": 16.48,
+        "total": 104.07,
+        "logprob": -4.4692,
+        "loglift": 0.6404
+      },
+      {
+        "term": "beschreiben",
+        "freq": 17.44,
+        "total": 131.83,
+        "logprob": -4.4125,
+        "loglift": 0.4606
+      },
+      {
+        "term": "gemeinschaft",
+        "freq": 10.72,
+        "total": 29.08,
+        "logprob": -4.8985,
+        "loglift": 1.4859
+      },
+      {
+        "term": "gesellschaft",
+        "freq": 12.38,
+        "total": 88.69,
+        "logprob": -4.7546,
+        "loglift": 0.5149
+      },
+      {
+        "term": "vorstellung",
+        "freq": 12.53,
+        "total": 117.27,
+        "logprob": -4.7433,
+        "loglift": 0.2469
+      },
+      {
+        "term": "kompetenz",
+        "freq": 12.52,
+        "total": 137.81,
+        "logprob": -4.7436,
+        "loglift": 0.0851
+      }
+    ],
+    "2": [
+      {
+        "term": "situation",
+        "freq": 64.38,
+        "total": 65.19,
+        "logprob": -3.6911,
+        "loglift": 1.8863
+      },
+      {
+        "term": "argument",
+        "freq": 35.54,
+        "total": 36.39,
+        "logprob": -4.2853,
+        "loglift": 1.875
+      },
+      {
+        "term": "relevanz",
+        "freq": 28.93,
+        "total": 29.73,
+        "logprob": -4.4911,
+        "loglift": 1.8713
+      },
+      {
+        "term": "begründen",
+        "freq": 26.89,
+        "total": 27.79,
+        "logprob": -4.5642,
+        "loglift": 1.866
+      },
+      {
+        "term": "relevant",
+        "freq": 25.25,
+        "total": 26.1,
+        "logprob": -4.6272,
+        "loglift": 1.8656
+      },
+      {
+        "term": "handlungsgrundsätz",
+        "freq": 19.4,
+        "total": 20.22,
+        "logprob": -4.8909,
+        "loglift": 1.8573
+      },
+      {
+        "term": "zugehörigkeit",
+        "freq": 18.09,
+        "total": 18.92,
+        "logprob": -4.9607,
+        "loglift": 1.8537
+      },
+      {
+        "term": "konfrontieren",
+        "freq": 16.53,
+        "total": 17.34,
+        "logprob": -5.0506,
+        "loglift": 1.851
+      },
+      {
+        "term": "identifizieren",
+        "freq": 15.93,
+        "total": 16.74,
+        "logprob": -5.0875,
+        "loglift": 1.8496
+      },
+      {
+        "term": "konsumgemeinschaft",
+        "freq": 15.46,
+        "total": 16.27,
+        "logprob": -5.1179,
+        "loglift": 1.8474
+      },
+      {
+        "term": "kategorisieren",
+        "freq": 14.48,
+        "total": 15.28,
+        "logprob": -5.1831,
+        "loglift": 1.8447
+      },
+      {
+        "term": "sollensethik",
+        "freq": 12.57,
+        "total": 13.37,
+        "logprob": -5.3247,
+        "loglift": 1.8369
+      },
+      {
+        "term": "sammeln",
+        "freq": 11.55,
+        "total": 12.35,
+        "logprob": -5.4097,
+        "loglift": 1.8312
+      },
+      {
+        "term": "schriftlich",
+        "freq": 11.17,
+        "total": 11.97,
+        "logprob": -5.4425,
+        "loglift": 1.8294
+      },
+      {
+        "term": "korrekt",
+        "freq": 11.08,
+        "total": 11.88,
+        "logprob": -5.4509,
+        "loglift": 1.8289
+      },
+      {
+        "term": "gemeinsamkeit",
+        "freq": 11.08,
+        "total": 11.88,
+        "logprob": -5.4511,
+        "loglift": 1.8285
+      },
+      {
+        "term": "dialogpartner",
+        "freq": 9.73,
+        "total": 10.53,
+        "logprob": -5.5812,
+        "loglift": 1.8193
+      },
+      {
+        "term": "bezieh",
+        "freq": 9.64,
+        "total": 10.46,
+        "logprob": -5.5896,
+        "loglift": 1.817
+      },
+      {
+        "term": "unterscheidungsmerkmale",
+        "freq": 9.26,
+        "total": 10.06,
+        "logprob": -5.6303,
+        "loglift": 1.8158
+      },
+      {
+        "term": "oberbegriff",
+        "freq": 9.26,
+        "total": 10.06,
+        "logprob": -5.6303,
+        "loglift": 1.8158
+      },
+      {
+        "term": "metapher",
+        "freq": 9.26,
+        "total": 10.06,
+        "logprob": -5.6304,
+        "loglift": 1.8157
+      },
+      {
+        "term": "neologismen",
+        "freq": 9.26,
+        "total": 10.06,
+        "logprob": -5.6304,
+        "loglift": 1.8157
+      },
+      {
+        "term": "pointiert",
+        "freq": 9.26,
+        "total": 10.06,
+        "logprob": -5.6304,
+        "loglift": 1.8157
+      },
+      {
+        "term": "ausdrucksform",
+        "freq": 9.26,
+        "total": 10.06,
+        "logprob": -5.6304,
+        "loglift": 1.8157
+      },
+      {
+        "term": "perspektivwechsel",
+        "freq": 8.3,
+        "total": 9.1,
+        "logprob": -5.7395,
+        "loglift": 1.8064
+      },
+      {
+        "term": "anteil",
+        "freq": 8.24,
+        "total": 9.04,
+        "logprob": -5.747,
+        "loglift": 1.8058
+      },
+      {
+        "term": "bestimmende",
+        "freq": 7.81,
+        "total": 8.61,
+        "logprob": -5.8005,
+        "loglift": 1.8008
+      },
+      {
+        "term": "eingeh",
+        "freq": 7.81,
+        "total": 8.61,
+        "logprob": -5.8005,
+        "loglift": 1.8007
+      },
+      {
+        "term": "sprechakt",
+        "freq": 7.81,
+        "total": 8.61,
+        "logprob": -5.8007,
+        "loglift": 1.8006
+      },
+      {
+        "term": "gelenkt",
+        "freq": 7.43,
+        "total": 8.24,
+        "logprob": -5.85,
+        "loglift": 1.7958
+      },
+      {
+        "term": "wertvorstellung",
+        "freq": 18.53,
+        "total": 21.07,
+        "logprob": -4.9366,
+        "loglift": 1.7702
+      },
+      {
+        "term": "handlung",
+        "freq": 53.66,
+        "total": 63.1,
+        "logprob": -3.8733,
+        "loglift": 1.7366
+      },
+      {
+        "term": "maßstab",
+        "freq": 12.33,
+        "total": 14.0,
+        "logprob": -5.3442,
+        "loglift": 1.7716
+      },
+      {
+        "term": "definieren",
+        "freq": 41.65,
+        "total": 52.16,
+        "logprob": -4.1267,
+        "loglift": 1.6736
+      },
+      {
+        "term": "formulieren",
+        "freq": 18.07,
+        "total": 21.54,
+        "logprob": -4.9615,
+        "loglift": 1.7231
+      },
+      {
+        "term": "text",
+        "freq": 33.41,
+        "total": 43.19,
+        "logprob": -4.3472,
+        "loglift": 1.6419
+      },
+      {
+        "term": "glücks",
+        "freq": 14.29,
+        "total": 16.69,
+        "logprob": -5.1964,
+        "loglift": 1.7433
+      },
+      {
+        "term": "inhaltsbezogen",
+        "freq": 26.98,
+        "total": 35.6,
+        "logprob": -4.5608,
+        "loglift": 1.6215
+      },
+      {
+        "term": "analysieren",
+        "freq": 30.51,
+        "total": 42.68,
+        "logprob": -4.4381,
+        "loglift": 1.5628
+      },
+      {
+        "term": "beschreiben",
+        "freq": 74.66,
+        "total": 131.83,
+        "logprob": -3.543,
+        "loglift": 1.3302
+      },
+      {
+        "term": "methodischdidaktisch",
+        "freq": 23.51,
+        "total": 32.09,
+        "logprob": -4.6985,
+        "loglift": 1.5877
+      },
+      {
+        "term": "wunsch",
+        "freq": 28.19,
+        "total": 40.33,
+        "logprob": -4.5171,
+        "loglift": 1.5405
+      },
+      {
+        "term": "konsum",
+        "freq": 43.93,
+        "total": 76.18,
+        "logprob": -4.0734,
+        "loglift": 1.3482
+      },
+      {
+        "term": "kontext",
+        "freq": 20.1,
+        "total": 27.46,
+        "logprob": -4.8554,
+        "loglift": 1.5865
+      },
+      {
+        "term": "urteil",
+        "freq": 15.88,
+        "total": 20.16,
+        "logprob": -5.0907,
+        "loglift": 1.6604
+      },
+      {
+        "term": "wahrnehmung",
+        "freq": 24.43,
+        "total": 38.72,
+        "logprob": -4.6604,
+        "loglift": 1.438
+      },
+      {
+        "term": "folge",
+        "freq": 19.07,
+        "total": 26.96,
+        "logprob": -4.9076,
+        "loglift": 1.5526
+      },
+      {
+        "term": "entwickeln",
+        "freq": 26.14,
+        "total": 43.69,
+        "logprob": -4.5926,
+        "loglift": 1.3849
+      },
+      {
+        "term": "bedürfnis",
+        "freq": 28.44,
+        "total": 52.03,
+        "logprob": -4.5083,
+        "loglift": 1.2946
+      },
+      {
+        "term": "sozial",
+        "freq": 37.95,
+        "total": 98.71,
+        "logprob": -4.2196,
+        "loglift": 0.9428
+      },
+      {
+        "term": "begriff",
+        "freq": 37.28,
+        "total": 104.37,
+        "logprob": -4.2376,
+        "loglift": 0.8692
+      },
+      {
+        "term": "weg",
+        "freq": 26.51,
+        "total": 54.76,
+        "logprob": -4.5786,
+        "loglift": 1.173
+      },
+      {
+        "term": "glücksvorstellung",
+        "freq": 36.57,
+        "total": 136.94,
+        "logprob": -4.2568,
+        "loglift": 0.5783
+      },
+      {
+        "term": "ethisch",
+        "freq": 28.74,
+        "total": 84.33,
+        "logprob": -4.4977,
+        "loglift": 0.8222
+      },
+      {
+        "term": "glücklich",
+        "freq": 50.4,
+        "total": 420.98,
+        "logprob": -3.9359,
+        "loglift": -0.2239
+      },
+      {
+        "term": "untersuchen",
+        "freq": 21.97,
+        "total": 41.34,
+        "logprob": -4.7665,
+        "loglift": 1.2663
+      },
+      {
+        "term": "denken",
+        "freq": 22.53,
+        "total": 46.26,
+        "logprob": -4.7413,
+        "loglift": 1.1792
+      },
+      {
+        "term": "kompetenz",
+        "freq": 30.73,
+        "total": 137.81,
+        "logprob": -4.4308,
+        "loglift": 0.3979
+      },
+      {
+        "term": "diskutieren",
+        "freq": 25.32,
+        "total": 104.07,
+        "logprob": -4.6244,
+        "loglift": 0.4851
+      },
+      {
+        "term": "selbstverwirklichung",
+        "freq": 21.7,
+        "total": 62.98,
+        "logprob": -4.7786,
+        "loglift": 0.8332
+      },
+      {
+        "term": "frage",
+        "freq": 22.14,
+        "total": 101.79,
+        "logprob": -4.7587,
+        "loglift": 0.373
+      },
+      {
+        "term": "prüfen",
+        "freq": 20.71,
+        "total": 61.49,
+        "logprob": -4.8256,
+        "loglift": 0.8101
+      }
+    ],
+    "3": [
+      {
+        "term": "sachkompetenz",
+        "freq": 17.96,
+        "total": 18.83,
+        "logprob": -4.6533,
+        "loglift": 2.1661
+      },
+      {
+        "term": "musik",
+        "freq": 14.14,
+        "total": 14.94,
+        "logprob": -4.8926,
+        "loglift": 2.158
+      },
+      {
+        "term": "tod",
+        "freq": 19.26,
+        "total": 20.38,
+        "logprob": -4.5833,
+        "loglift": 2.1569
+      },
+      {
+        "term": "glückskonzeptioner",
+        "freq": 13.44,
+        "total": 14.25,
+        "logprob": -4.943,
+        "loglift": 2.155
+      },
+      {
+        "term": "krankheit",
+        "freq": 11.75,
+        "total": 12.56,
+        "logprob": -5.0771,
+        "loglift": 2.1467
+      },
+      {
+        "term": "phase",
+        "freq": 11.72,
+        "total": 12.53,
+        "logprob": -5.0797,
+        "loglift": 2.1465
+      },
+      {
+        "term": "teilhabe",
+        "freq": 11.66,
+        "total": 12.47,
+        "logprob": -5.0855,
+        "loglift": 2.1456
+      },
+      {
+        "term": "trauer",
+        "freq": 11.73,
+        "total": 12.56,
+        "logprob": -5.0793,
+        "loglift": 2.1448
+      },
+      {
+        "term": "schöpfungsmyth",
+        "freq": 11.16,
+        "total": 11.96,
+        "logprob": -5.1295,
+        "loglift": 2.1433
+      },
+      {
+        "term": "religionsunterricht",
+        "freq": 10.97,
+        "total": 11.78,
+        "logprob": -5.1464,
+        "loglift": 2.142
+      },
+      {
+        "term": "sterben",
+        "freq": 10.85,
+        "total": 11.66,
+        "logprob": -5.1569,
+        "loglift": 2.1413
+      },
+      {
+        "term": "mori",
+        "freq": 10.85,
+        "total": 11.66,
+        "logprob": -5.157,
+        "loglift": 2.1413
+      },
+      {
+        "term": "memento",
+        "freq": 10.85,
+        "total": 11.66,
+        "logprob": -5.1569,
+        "loglift": 2.1413
+      },
+      {
+        "term": "leiden",
+        "freq": 10.85,
+        "total": 11.66,
+        "logprob": -5.157,
+        "loglift": 2.1413
+      },
+      {
+        "term": "trauerbewältigung",
+        "freq": 10.85,
+        "total": 11.66,
+        "logprob": -5.157,
+        "loglift": 2.1413
+      },
+      {
+        "term": "carpe",
+        "freq": 10.85,
+        "total": 11.66,
+        "logprob": -5.157,
+        "loglift": 2.1413
+      },
+      {
+        "term": "diem",
+        "freq": 10.85,
+        "total": 11.66,
+        "logprob": -5.157,
+        "loglift": 2.1413
+      },
+      {
+        "term": "glückserlebnis",
+        "freq": 10.0,
+        "total": 10.87,
+        "logprob": -5.2391,
+        "loglift": 2.13
+      },
+      {
+        "term": "geographie",
+        "freq": 9.16,
+        "total": 9.97,
+        "logprob": -5.3261,
+        "loglift": 2.1285
+      },
+      {
+        "term": "immateriell",
+        "freq": 9.04,
+        "total": 9.86,
+        "logprob": -5.3395,
+        "loglift": 2.1269
+      },
+      {
+        "term": "frustration",
+        "freq": 8.32,
+        "total": 9.13,
+        "logprob": -5.4225,
+        "loglift": 2.1202
+      },
+      {
+        "term": "gegenwart",
+        "freq": 8.05,
+        "total": 8.87,
+        "logprob": -5.4553,
+        "loglift": 2.1169
+      },
+      {
+        "term": "katholisch",
+        "freq": 7.36,
+        "total": 8.17,
+        "logprob": -5.5453,
+        "loglift": 2.1087
+      },
+      {
+        "term": "jenseitsvorstellungen",
+        "freq": 7.3,
+        "total": 8.11,
+        "logprob": -5.5532,
+        "loglift": 2.1079
+      },
+      {
+        "term": "sinnsetzung",
+        "freq": 7.9,
+        "total": 8.78,
+        "logprob": -5.475,
+        "loglift": 2.1077
+      },
+      {
+        "term": "aktiv",
+        "freq": 7.9,
+        "total": 8.78,
+        "logprob": -5.4751,
+        "loglift": 2.1075
+      },
+      {
+        "term": "abhängig",
+        "freq": 7.01,
+        "total": 7.82,
+        "logprob": -5.5939,
+        "loglift": 2.1044
+      },
+      {
+        "term": "mitbestimmung",
+        "freq": 7.06,
+        "total": 7.87,
+        "logprob": -5.5876,
+        "loglift": 2.104
+      },
+      {
+        "term": "mitwirkung",
+        "freq": 7.06,
+        "total": 7.87,
+        "logprob": -5.5876,
+        "loglift": 2.1039
+      },
+      {
+        "term": "seele",
+        "freq": 6.89,
+        "total": 7.7,
+        "logprob": -5.611,
+        "loglift": 2.1024
+      },
+      {
+        "term": "phänomenologische",
+        "freq": 8.1,
+        "total": 9.07,
+        "logprob": -5.4492,
+        "loglift": 2.1008
+      },
+      {
+        "term": "abkürzung",
+        "freq": 7.2,
+        "total": 8.05,
+        "logprob": -5.5675,
+        "loglift": 2.1011
+      },
+      {
+        "term": "aristoteles",
+        "freq": 21.13,
+        "total": 27.41,
+        "logprob": -4.4909,
+        "loglift": 1.953
+      },
+      {
+        "term": "idol",
+        "freq": 15.28,
+        "total": 19.1,
+        "logprob": -4.8148,
+        "loglift": 1.9902
+      },
+      {
+        "term": "alter",
+        "freq": 15.02,
+        "total": 19.16,
+        "logprob": -4.832,
+        "loglift": 1.97
+      },
+      {
+        "term": "endlichkeit",
+        "freq": 18.0,
+        "total": 24.12,
+        "logprob": -4.6508,
+        "loglift": 1.9208
+      },
+      {
+        "term": "vorbild",
+        "freq": 22.0,
+        "total": 33.89,
+        "logprob": -4.4502,
+        "loglift": 1.7813
+      },
+      {
+        "term": "inhalt",
+        "freq": 28.45,
+        "total": 49.22,
+        "logprob": -4.1932,
+        "loglift": 1.6651
+      },
+      {
+        "term": "erkennen",
+        "freq": 22.65,
+        "total": 38.58,
+        "logprob": -4.4213,
+        "loglift": 1.6807
+      },
+      {
+        "term": "vergleich",
+        "freq": 18.06,
+        "total": 30.56,
+        "logprob": -4.6478,
+        "loglift": 1.6873
+      },
+      {
+        "term": "möglich",
+        "freq": 20.84,
+        "total": 38.57,
+        "logprob": -4.5043,
+        "loglift": 1.5977
+      },
+      {
+        "term": "individuell",
+        "freq": 36.42,
+        "total": 93.27,
+        "logprob": -3.9463,
+        "loglift": 1.2728
+      },
+      {
+        "term": "freundschaft",
+        "freq": 19.37,
+        "total": 34.67,
+        "logprob": -4.5774,
+        "loglift": 1.6314
+      },
+      {
+        "term": "umgang",
+        "freq": 20.48,
+        "total": 41.83,
+        "logprob": -4.5221,
+        "loglift": 1.4988
+      },
+      {
+        "term": "persönlich",
+        "freq": 20.24,
+        "total": 41.59,
+        "logprob": -4.5337,
+        "loglift": 1.493
+      },
+      {
+        "term": "kompetenz",
+        "freq": 33.61,
+        "total": 137.81,
+        "logprob": -4.0266,
+        "loglift": 0.8021
+      },
+      {
+        "term": "schuljahrgang",
+        "freq": 16.0,
+        "total": 28.22,
+        "logprob": -4.7688,
+        "loglift": 1.6457
+      },
+      {
+        "term": "lernen",
+        "freq": 14.94,
+        "total": 25.35,
+        "logprob": -4.8375,
+        "loglift": 1.6844
+      },
+      {
+        "term": "reflektieren",
+        "freq": 24.1,
+        "total": 112.09,
+        "logprob": -4.3591,
+        "loglift": 0.6762
+      },
+      {
+        "term": "bne",
+        "freq": 12.72,
+        "total": 18.79,
+        "logprob": -4.9979,
+        "loglift": 1.8233
+      },
+      {
+        "term": "glücksvorstellung",
+        "freq": 24.46,
+        "total": 136.94,
+        "logprob": -4.3445,
+        "loglift": 0.4906
+      },
+      {
+        "term": "glücklich",
+        "freq": 34.38,
+        "total": 420.98,
+        "logprob": -4.0039,
+        "loglift": -0.2919
+      },
+      {
+        "term": "leben",
+        "freq": 34.04,
+        "total": 590.4,
+        "logprob": -4.0137,
+        "loglift": -0.6399
+      },
+      {
+        "term": "frage",
+        "freq": 20.05,
+        "total": 101.79,
+        "logprob": -4.543,
+        "loglift": 0.5887
+      },
+      {
+        "term": "kriterium",
+        "freq": 15.76,
+        "total": 42.66,
+        "logprob": -4.7838,
+        "loglift": 1.2177
+      },
+      {
+        "term": "verschieden",
+        "freq": 17.69,
+        "total": 72.23,
+        "logprob": -4.6682,
+        "loglift": 0.8067
+      },
+      {
+        "term": "gesellschaft",
+        "freq": 15.26,
+        "total": 88.69,
+        "logprob": -4.8162,
+        "loglift": 0.4533
+      },
+      {
+        "term": "sinn",
+        "freq": 14.23,
+        "total": 67.34,
+        "logprob": -4.8857,
+        "loglift": 0.6592
+      }
+    ],
+    "4": [
+      {
+        "term": "weltanschauung",
+        "freq": 42.6,
+        "total": 43.41,
+        "logprob": -4.8045,
+        "loglift": 1.1794
+      },
+      {
+        "term": "entwicklung",
+        "freq": 28.62,
+        "total": 29.44,
+        "logprob": -5.2021,
+        "loglift": 1.1701
+      },
+      {
+        "term": "argumentieren",
+        "freq": 39.52,
+        "total": 40.67,
+        "logprob": -4.8795,
+        "loglift": 1.1697
+      },
+      {
+        "term": "hedonismus",
+        "freq": 23.77,
+        "total": 24.58,
+        "logprob": -5.3878,
+        "loglift": 1.1647
+      },
+      {
+        "term": "darstellen",
+        "freq": 23.09,
+        "total": 23.91,
+        "logprob": -5.4168,
+        "loglift": 1.1636
+      },
+      {
+        "term": "beispiel",
+        "freq": 19.75,
+        "total": 20.59,
+        "logprob": -5.573,
+        "loglift": 1.157
+      },
+      {
+        "term": "wirklichkeit",
+        "freq": 22.58,
+        "total": 23.57,
+        "logprob": -5.4393,
+        "loglift": 1.1553
+      },
+      {
+        "term": "lebensform",
+        "freq": 17.69,
+        "total": 18.5,
+        "logprob": -5.6834,
+        "loglift": 1.1534
+      },
+      {
+        "term": "kompetenzschwerpunkt",
+        "freq": 17.21,
+        "total": 18.02,
+        "logprob": -5.7108,
+        "loglift": 1.1521
+      },
+      {
+        "term": "gedankenexperiment",
+        "freq": 16.92,
+        "total": 17.74,
+        "logprob": -5.7276,
+        "loglift": 1.1514
+      },
+      {
+        "term": "aristotel",
+        "freq": 16.57,
+        "total": 17.39,
+        "logprob": -5.7489,
+        "loglift": 1.1498
+      },
+      {
+        "term": "tugende",
+        "freq": 16.22,
+        "total": 17.04,
+        "logprob": -5.7698,
+        "loglift": 1.1495
+      },
+      {
+        "term": "nachhaltig",
+        "freq": 16.52,
+        "total": 17.37,
+        "logprob": -5.7519,
+        "loglift": 1.1483
+      },
+      {
+        "term": "rev",
+        "freq": 15.22,
+        "total": 16.04,
+        "logprob": -5.8339,
+        "loglift": 1.1455
+      },
+      {
+        "term": "anerziehen",
+        "freq": 14.71,
+        "total": 15.52,
+        "logprob": -5.8677,
+        "loglift": 1.1445
+      },
+      {
+        "term": "beziehen",
+        "freq": 15.55,
+        "total": 16.42,
+        "logprob": -5.8123,
+        "loglift": 1.1439
+      },
+      {
+        "term": "glaube",
+        "freq": 14.22,
+        "total": 15.03,
+        "logprob": -5.902,
+        "loglift": 1.1429
+      },
+      {
+        "term": "ansatz",
+        "freq": 13.87,
+        "total": 14.68,
+        "logprob": -5.9265,
+        "loglift": 1.1415
+      },
+      {
+        "term": "vielfalt",
+        "freq": 14.21,
+        "total": 15.05,
+        "logprob": -5.9021,
+        "loglift": 1.1413
+      },
+      {
+        "term": "utilitarismus",
+        "freq": 15.64,
+        "total": 16.58,
+        "logprob": -5.8066,
+        "loglift": 1.1399
+      },
+      {
+        "term": "rrk",
+        "freq": 13.54,
+        "total": 14.35,
+        "logprob": -5.9508,
+        "loglift": 1.1399
+      },
+      {
+        "term": "maß",
+        "freq": 13.14,
+        "total": 13.95,
+        "logprob": -5.9807,
+        "loglift": 1.1385
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 13.11,
+        "total": 13.92,
+        "logprob": -5.9832,
+        "loglift": 1.1384
+      },
+      {
+        "term": "gültigkeit",
+        "freq": 13.38,
+        "total": 14.22,
+        "logprob": -5.9622,
+        "loglift": 1.1379
+      },
+      {
+        "term": "wahrheit",
+        "freq": 12.9,
+        "total": 13.72,
+        "logprob": -5.9988,
+        "loglift": 1.1373
+      },
+      {
+        "term": "quelle",
+        "freq": 12.84,
+        "total": 13.65,
+        "logprob": -6.0039,
+        "loglift": 1.1369
+      },
+      {
+        "term": "religion",
+        "freq": 51.3,
+        "total": 54.65,
+        "logprob": -4.6187,
+        "loglift": 1.1349
+      },
+      {
+        "term": "wissensbeständ",
+        "freq": 11.76,
+        "total": 12.58,
+        "logprob": -6.0914,
+        "loglift": 1.1314
+      },
+      {
+        "term": "spielen",
+        "freq": 11.56,
+        "total": 12.38,
+        "logprob": -6.1084,
+        "loglift": 1.1305
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 11.44,
+        "total": 12.25,
+        "logprob": -6.1189,
+        "loglift": 1.13
+      },
+      {
+        "term": "wert",
+        "freq": 74.55,
+        "total": 80.23,
+        "logprob": -4.2449,
+        "loglift": 1.1249
+      },
+      {
+        "term": "selbstbestimmt",
+        "freq": 36.22,
+        "total": 40.59,
+        "logprob": -4.9667,
+        "loglift": 1.0843
+      },
+      {
+        "term": "natur",
+        "freq": 42.79,
+        "total": 48.37,
+        "logprob": -4.7999,
+        "loglift": 1.0758
+      },
+      {
+        "term": "wahrnehmen",
+        "freq": 54.85,
+        "total": 63.65,
+        "logprob": -4.5517,
+        "loglift": 1.0495
+      },
+      {
+        "term": "gerechtigkeit",
+        "freq": 44.33,
+        "total": 51.28,
+        "logprob": -4.7647,
+        "loglift": 1.0527
+      },
+      {
+        "term": "verantwortung",
+        "freq": 65.09,
+        "total": 78.35,
+        "logprob": -4.3806,
+        "loglift": 1.0129
+      },
+      {
+        "term": "interpretieren",
+        "freq": 33.49,
+        "total": 38.46,
+        "logprob": -5.0452,
+        "loglift": 1.0598
+      },
+      {
+        "term": "welt",
+        "freq": 52.47,
+        "total": 64.31,
+        "logprob": -4.5962,
+        "loglift": 0.9948
+      },
+      {
+        "term": "freiheit",
+        "freq": 70.64,
+        "total": 90.64,
+        "logprob": -4.2987,
+        "loglift": 0.949
+      },
+      {
+        "term": "hineinversetzen",
+        "freq": 27.03,
+        "total": 31.26,
+        "logprob": -5.2594,
+        "loglift": 1.0528
+      },
+      {
+        "term": "mensch",
+        "freq": 134.91,
+        "total": 219.18,
+        "logprob": -3.6517,
+        "loglift": 0.7131
+      },
+      {
+        "term": "menschlich",
+        "freq": 48.82,
+        "total": 65.62,
+        "logprob": -4.6681,
+        "loglift": 0.9026
+      },
+      {
+        "term": "unglück",
+        "freq": 43.66,
+        "total": 58.53,
+        "logprob": -4.78,
+        "loglift": 0.9052
+      },
+      {
+        "term": "moral",
+        "freq": 105.14,
+        "total": 174.5,
+        "logprob": -3.901,
+        "loglift": 0.6918
+      },
+      {
+        "term": "zusammenleben",
+        "freq": 41.09,
+        "total": 55.01,
+        "logprob": -4.8405,
+        "loglift": 0.9065
+      },
+      {
+        "term": "tugend",
+        "freq": 26.61,
+        "total": 32.07,
+        "logprob": -5.2748,
+        "loglift": 1.012
+      },
+      {
+        "term": "ethik",
+        "freq": 109.73,
+        "total": 202.63,
+        "logprob": -3.8583,
+        "loglift": 0.585
+      },
+      {
+        "term": "norm",
+        "freq": 28.05,
+        "total": 34.88,
+        "logprob": -5.2224,
+        "loglift": 0.9802
+      },
+      {
+        "term": "analysier",
+        "freq": 28.61,
+        "total": 36.23,
+        "logprob": -5.2025,
+        "loglift": 0.9622
+      },
+      {
+        "term": "leben",
+        "freq": 200.58,
+        "total": 590.4,
+        "logprob": -3.2551,
+        "loglift": 0.1188
+      },
+      {
+        "term": "unterscheiden",
+        "freq": 28.5,
+        "total": 37.26,
+        "logprob": -5.2063,
+        "loglift": 0.9302
+      },
+      {
+        "term": "handeln",
+        "freq": 43.56,
+        "total": 69.26,
+        "logprob": -4.7823,
+        "loglift": 0.7345
+      },
+      {
+        "term": "reflektieren",
+        "freq": 58.13,
+        "total": 112.09,
+        "logprob": -4.4937,
+        "loglift": 0.5417
+      },
+      {
+        "term": "sinn",
+        "freq": 40.73,
+        "total": 67.34,
+        "logprob": -4.8494,
+        "loglift": 0.6955
+      },
+      {
+        "term": "vorstellung",
+        "freq": 50.78,
+        "total": 117.27,
+        "logprob": -4.6288,
+        "loglift": 0.3613
+      },
+      {
+        "term": "frage",
+        "freq": 46.36,
+        "total": 101.79,
+        "logprob": -4.7198,
+        "loglift": 0.412
+      },
+      {
+        "term": "glücksvorstellung",
+        "freq": 53.06,
+        "total": 136.94,
+        "logprob": -4.5848,
+        "loglift": 0.2503
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 33.87,
+        "total": 61.43,
+        "logprob": -5.0338,
+        "loglift": 0.6029
+      },
+      {
+        "term": "glücklich",
+        "freq": 60.45,
+        "total": 420.98,
+        "logprob": -4.4545,
+        "loglift": -0.7424
+      },
+      {
+        "term": "diskutieren",
+        "freq": 38.78,
+        "total": 104.07,
+        "logprob": -4.8985,
+        "loglift": 0.211
+      },
+      {
+        "term": "ziel",
+        "freq": 36.37,
+        "total": 88.27,
+        "logprob": -4.9626,
+        "loglift": 0.3116
+      },
+      {
+        "term": "moralisch",
+        "freq": 36.27,
+        "total": 91.86,
+        "logprob": -4.9654,
+        "loglift": 0.269
+      },
+      {
+        "term": "gut",
+        "freq": 33.6,
+        "total": 106.76,
+        "logprob": -5.0419,
+        "loglift": 0.0421
+      }
+    ],
+    "5": [
+      {
+        "term": "denkanstöße",
+        "freq": 42.51,
+        "total": 43.33,
+        "logprob": -4.2737,
+        "loglift": 1.7121
+      },
+      {
+        "term": "scheinen",
+        "freq": 40.72,
+        "total": 41.54,
+        "logprob": -4.3166,
+        "loglift": 1.7113
+      },
+      {
+        "term": "gegenstand",
+        "freq": 24.06,
+        "total": 24.88,
+        "logprob": -4.8429,
+        "loglift": 1.6977
+      },
+      {
+        "term": "sein",
+        "freq": 21.45,
+        "total": 22.28,
+        "logprob": -4.9579,
+        "loglift": 1.6933
+      },
+      {
+        "term": "käuflich",
+        "freq": 21.44,
+        "total": 22.28,
+        "logprob": -4.958,
+        "loglift": 1.6932
+      },
+      {
+        "term": "gangbar",
+        "freq": 19.71,
+        "total": 20.54,
+        "logprob": -5.0421,
+        "loglift": 1.69
+      },
+      {
+        "term": "reflexionsbereich",
+        "freq": 18.89,
+        "total": 19.72,
+        "logprob": -5.0846,
+        "loglift": 1.6883
+      },
+      {
+        "term": "fall",
+        "freq": 18.24,
+        "total": 19.07,
+        "logprob": -5.1198,
+        "loglift": 1.6867
+      },
+      {
+        "term": "lebenskunst",
+        "freq": 18.18,
+        "total": 19.01,
+        "logprob": -5.1233,
+        "loglift": 1.6865
+      },
+      {
+        "term": "selbstverständlich",
+        "freq": 19.13,
+        "total": 20.04,
+        "logprob": -5.0722,
+        "loglift": 1.6847
+      },
+      {
+        "term": "alltag",
+        "freq": 16.05,
+        "total": 16.88,
+        "logprob": -5.2477,
+        "loglift": 1.6809
+      },
+      {
+        "term": "relativ",
+        "freq": 17.28,
+        "total": 18.31,
+        "logprob": -5.1738,
+        "loglift": 1.6732
+      },
+      {
+        "term": "geteilt",
+        "freq": 13.95,
+        "total": 14.83,
+        "logprob": -5.388,
+        "loglift": 1.6701
+      },
+      {
+        "term": "meist",
+        "freq": 11.29,
+        "total": 12.11,
+        "logprob": -5.5991,
+        "loglift": 1.6611
+      },
+      {
+        "term": "nahezu",
+        "freq": 11.21,
+        "total": 12.04,
+        "logprob": -5.6063,
+        "loglift": 1.6605
+      },
+      {
+        "term": "metaphysik",
+        "freq": 11.16,
+        "total": 11.98,
+        "logprob": -5.6113,
+        "loglift": 1.6601
+      },
+      {
+        "term": "begrifflich",
+        "freq": 11.13,
+        "total": 11.96,
+        "logprob": -5.6133,
+        "loglift": 1.66
+      },
+      {
+        "term": "grundorientierung",
+        "freq": 19.14,
+        "total": 20.56,
+        "logprob": -5.0716,
+        "loglift": 1.6599
+      },
+      {
+        "term": "besitzen",
+        "freq": 10.18,
+        "total": 11.02,
+        "logprob": -5.7027,
+        "loglift": 1.6526
+      },
+      {
+        "term": "beide",
+        "freq": 9.93,
+        "total": 10.75,
+        "logprob": -5.7281,
+        "loglift": 1.6517
+      },
+      {
+        "term": "brauchen",
+        "freq": 37.63,
+        "total": 40.75,
+        "logprob": -4.3957,
+        "loglift": 1.6516
+      },
+      {
+        "term": "vielmehr",
+        "freq": 9.7,
+        "total": 10.52,
+        "logprob": -5.7513,
+        "loglift": 1.65
+      },
+      {
+        "term": "vermitteln",
+        "freq": 8.94,
+        "total": 9.76,
+        "logprob": -5.8324,
+        "loglift": 1.6434
+      },
+      {
+        "term": "vornehmlich",
+        "freq": 8.64,
+        "total": 9.47,
+        "logprob": -5.8667,
+        "loglift": 1.6396
+      },
+      {
+        "term": "jung",
+        "freq": 8.27,
+        "total": 9.09,
+        "logprob": -5.9107,
+        "loglift": 1.6367
+      },
+      {
+        "term": "erwartungshaltung",
+        "freq": 8.19,
+        "total": 9.01,
+        "logprob": -5.9204,
+        "loglift": 1.6359
+      },
+      {
+        "term": "wobei",
+        "freq": 8.11,
+        "total": 8.93,
+        "logprob": -5.9308,
+        "loglift": 1.6348
+      },
+      {
+        "term": "idealbild",
+        "freq": 8.11,
+        "total": 8.93,
+        "logprob": -5.9308,
+        "loglift": 1.6348
+      },
+      {
+        "term": "buch",
+        "freq": 7.54,
+        "total": 8.37,
+        "logprob": -6.0038,
+        "loglift": 1.6265
+      },
+      {
+        "term": "psychologie",
+        "freq": 7.32,
+        "total": 8.17,
+        "logprob": -6.0324,
+        "loglift": 1.6216
+      },
+      {
+        "term": "zustand",
+        "freq": 24.99,
+        "total": 29.09,
+        "logprob": -4.8051,
+        "loglift": 1.5791
+      },
+      {
+        "term": "passt",
+        "freq": 16.23,
+        "total": 18.95,
+        "logprob": -5.2368,
+        "loglift": 1.5763
+      },
+      {
+        "term": "trennen",
+        "freq": 11.66,
+        "total": 13.33,
+        "logprob": -5.5673,
+        "loglift": 1.5976
+      },
+      {
+        "term": "konzept",
+        "freq": 19.46,
+        "total": 23.61,
+        "logprob": -5.0552,
+        "loglift": 1.5379
+      },
+      {
+        "term": "reflexion",
+        "freq": 20.17,
+        "total": 24.63,
+        "logprob": -5.0194,
+        "loglift": 1.5313
+      },
+      {
+        "term": "perspektive",
+        "freq": 33.89,
+        "total": 47.18,
+        "logprob": -4.5002,
+        "loglift": 1.4004
+      },
+      {
+        "term": "scheinbar",
+        "freq": 22.97,
+        "total": 31.69,
+        "logprob": -4.8894,
+        "loglift": 1.4092
+      },
+      {
+        "term": "arbeit",
+        "freq": 18.6,
+        "total": 24.6,
+        "logprob": -5.1004,
+        "loglift": 1.4516
+      },
+      {
+        "term": "glücklich",
+        "freq": 157.14,
+        "total": 420.98,
+        "logprob": -2.9663,
+        "loglift": 0.7458
+      },
+      {
+        "term": "frei",
+        "freq": 23.74,
+        "total": 34.47,
+        "logprob": -4.8563,
+        "loglift": 1.3584
+      },
+      {
+        "term": "ding",
+        "freq": 36.56,
+        "total": 62.42,
+        "logprob": -4.4245,
+        "loglift": 1.1962
+      },
+      {
+        "term": "leben",
+        "freq": 184.19,
+        "total": 590.4,
+        "logprob": -2.8074,
+        "loglift": 0.5664
+      },
+      {
+        "term": "kompetenzerwartunge",
+        "freq": 23.73,
+        "total": 42.48,
+        "logprob": -4.8566,
+        "loglift": 1.149
+      },
+      {
+        "term": "selbstverwirklichung",
+        "freq": 29.49,
+        "total": 62.98,
+        "logprob": -4.6393,
+        "loglift": 0.9726
+      },
+      {
+        "term": "gelingend",
+        "freq": 28.65,
+        "total": 61.09,
+        "logprob": -4.6682,
+        "loglift": 0.9741
+      },
+      {
+        "term": "bedeutung",
+        "freq": 29.23,
+        "total": 66.94,
+        "logprob": -4.6483,
+        "loglift": 0.9026
+      },
+      {
+        "term": "weg",
+        "freq": 25.88,
+        "total": 54.76,
+        "logprob": -4.7699,
+        "loglift": 0.9817
+      },
+      {
+        "term": "thema",
+        "freq": 31.29,
+        "total": 84.35,
+        "logprob": -4.58,
+        "loglift": 0.7397
+      },
+      {
+        "term": "vorstellung",
+        "freq": 35.67,
+        "total": 117.27,
+        "logprob": -4.4491,
+        "loglift": 0.5411
+      },
+      {
+        "term": "mensch",
+        "freq": 40.88,
+        "total": 219.18,
+        "logprob": -4.3127,
+        "loglift": 0.0521
+      },
+      {
+        "term": "gut",
+        "freq": 31.14,
+        "total": 106.76,
+        "logprob": -4.585,
+        "loglift": 0.4991
+      },
+      {
+        "term": "sozial",
+        "freq": 28.49,
+        "total": 98.71,
+        "logprob": -4.674,
+        "loglift": 0.4885
+      },
+      {
+        "term": "moralisch",
+        "freq": 25.55,
+        "total": 91.86,
+        "logprob": -4.7826,
+        "loglift": 0.4517
+      },
+      {
+        "term": "ethik",
+        "freq": 29.35,
+        "total": 202.63,
+        "logprob": -4.6442,
+        "loglift": -0.2009
+      },
+      {
+        "term": "stehen",
+        "freq": 21.12,
+        "total": 39.33,
+        "logprob": -4.9734,
+        "loglift": 1.1092
+      },
+      {
+        "term": "moral",
+        "freq": 22.97,
+        "total": 174.5,
+        "logprob": -4.8892,
+        "loglift": -0.2965
+      },
+      {
+        "term": "glücksvorstellung",
+        "freq": 22.49,
+        "total": 136.94,
+        "logprob": -4.9105,
+        "loglift": -0.0754
+      },
+      {
+        "term": "ethisch",
+        "freq": 21.21,
+        "total": 84.33,
+        "logprob": -4.9688,
+        "loglift": 0.351
+      },
+      {
+        "term": "individuell",
+        "freq": 21.22,
+        "total": 93.27,
+        "logprob": -4.9685,
+        "loglift": 0.2506
+      }
+    ],
+    "6": [
+      {
+        "term": "positiv",
+        "freq": 52.25,
+        "total": 53.2,
+        "logprob": -3.4391,
+        "loglift": 2.3415
+      },
+      {
+        "term": "bzgl",
+        "freq": 32.99,
+        "total": 33.83,
+        "logprob": -3.8989,
+        "loglift": 2.3343
+      },
+      {
+        "term": "schöpfung",
+        "freq": 25.3,
+        "total": 26.13,
+        "logprob": -4.1643,
+        "loglift": 2.3272
+      },
+      {
+        "term": "plan",
+        "freq": 22.97,
+        "total": 23.8,
+        "logprob": -4.2608,
+        "loglift": 2.324
+      },
+      {
+        "term": "enthalt",
+        "freq": 19.07,
+        "total": 19.89,
+        "logprob": -4.4473,
+        "loglift": 2.3169
+      },
+      {
+        "term": "proximum",
+        "freq": 21.11,
+        "total": 22.07,
+        "logprob": -4.3454,
+        "loglift": 2.3149
+      },
+      {
+        "term": "differentia",
+        "freq": 21.11,
+        "total": 22.07,
+        "logprob": -4.3455,
+        "loglift": 2.3148
+      },
+      {
+        "term": "genus",
+        "freq": 21.11,
+        "total": 22.07,
+        "logprob": -4.3455,
+        "loglift": 2.3148
+      },
+      {
+        "term": "specifica",
+        "freq": 21.11,
+        "total": 22.07,
+        "logprob": -4.3456,
+        "loglift": 2.3147
+      },
+      {
+        "term": "ausgewogen",
+        "freq": 16.18,
+        "total": 17.01,
+        "logprob": -4.6114,
+        "loglift": 2.3093
+      },
+      {
+        "term": "zufallsglück",
+        "freq": 16.18,
+        "total": 17.01,
+        "logprob": -4.6114,
+        "loglift": 2.3093
+      },
+      {
+        "term": "lusthaushalt",
+        "freq": 16.18,
+        "total": 17.01,
+        "logprob": -4.6115,
+        "loglift": 2.3093
+      },
+      {
+        "term": "reif",
+        "freq": 15.36,
+        "total": 16.19,
+        "logprob": -4.6632,
+        "loglift": 2.3069
+      },
+      {
+        "term": "hesse",
+        "freq": 15.36,
+        "total": 16.19,
+        "logprob": -4.6633,
+        "loglift": 2.3069
+      },
+      {
+        "term": "offenheit",
+        "freq": 15.36,
+        "total": 16.19,
+        "logprob": -4.6633,
+        "loglift": 2.3068
+      },
+      {
+        "term": "haltung",
+        "freq": 15.31,
+        "total": 16.14,
+        "logprob": -4.6669,
+        "loglift": 2.3065
+      },
+      {
+        "term": "glücke",
+        "freq": 11.02,
+        "total": 11.85,
+        "logprob": -4.9957,
+        "loglift": 2.2866
+      },
+      {
+        "term": "jagst",
+        "freq": 11.01,
+        "total": 11.85,
+        "logprob": -4.9961,
+        "loglift": 2.2863
+      },
+      {
+        "term": "provokationessay",
+        "freq": 10.64,
+        "total": 11.51,
+        "logprob": -5.0301,
+        "loglift": 2.2813
+      },
+      {
+        "term": "empfindungsglück",
+        "freq": 10.2,
+        "total": 11.03,
+        "logprob": -5.0729,
+        "loglift": 2.281
+      },
+      {
+        "term": "verantwortungsbewusstsein",
+        "freq": 10.06,
+        "total": 10.89,
+        "logprob": -5.0866,
+        "loglift": 2.2799
+      },
+      {
+        "term": "negativ",
+        "freq": 9.97,
+        "total": 10.82,
+        "logprob": -5.0951,
+        "loglift": 2.2777
+      },
+      {
+        "term": "stark",
+        "freq": 10.59,
+        "total": 11.52,
+        "logprob": -5.0351,
+        "loglift": 2.2754
+      },
+      {
+        "term": "blitzumfrage",
+        "freq": 7.59,
+        "total": 8.42,
+        "logprob": -5.368,
+        "loglift": 2.2559
+      },
+      {
+        "term": "erfolgmisserfolg",
+        "freq": 6.95,
+        "total": 7.78,
+        "logprob": -5.4565,
+        "loglift": 2.247
+      },
+      {
+        "term": "geben",
+        "freq": 6.44,
+        "total": 7.28,
+        "logprob": -5.5334,
+        "loglift": 2.2368
+      },
+      {
+        "term": "absicht",
+        "freq": 24.4,
+        "total": 27.71,
+        "logprob": -4.2008,
+        "loglift": 2.232
+      },
+      {
+        "term": "glücklichsein",
+        "freq": 17.41,
+        "total": 19.86,
+        "logprob": -4.5385,
+        "loglift": 2.2274
+      },
+      {
+        "term": "golden",
+        "freq": 5.47,
+        "total": 6.29,
+        "logprob": -5.6964,
+        "loglift": 2.2185
+      },
+      {
+        "term": "realistisch",
+        "freq": 5.39,
+        "total": 6.22,
+        "logprob": -5.7102,
+        "loglift": 2.2167
+      },
+      {
+        "term": "wohlstand",
+        "freq": 16.55,
+        "total": 19.52,
+        "logprob": -4.5888,
+        "loglift": 2.1943
+      },
+      {
+        "term": "zufall",
+        "freq": 25.65,
+        "total": 31.87,
+        "logprob": -4.1506,
+        "loglift": 2.1425
+      },
+      {
+        "term": "armut",
+        "freq": 15.89,
+        "total": 19.56,
+        "logprob": -4.6296,
+        "loglift": 2.1516
+      },
+      {
+        "term": "zitat",
+        "freq": 9.82,
+        "total": 11.69,
+        "logprob": -5.1112,
+        "loglift": 2.1844
+      },
+      {
+        "term": "dauerhaft",
+        "freq": 17.79,
+        "total": 24.55,
+        "logprob": -4.5167,
+        "loglift": 2.0374
+      },
+      {
+        "term": "freud",
+        "freq": 19.35,
+        "total": 35.99,
+        "logprob": -4.4324,
+        "loglift": 1.739
+      },
+      {
+        "term": "glücklich",
+        "freq": 83.97,
+        "total": 420.98,
+        "logprob": -2.9647,
+        "loglift": 0.7473
+      },
+      {
+        "term": "glücksbegriff",
+        "freq": 18.58,
+        "total": 38.25,
+        "logprob": -4.473,
+        "loglift": 1.6375
+      },
+      {
+        "term": "diskutieren",
+        "freq": 23.08,
+        "total": 104.07,
+        "logprob": -4.2564,
+        "loglift": 0.8532
+      },
+      {
+        "term": "leben",
+        "freq": 42.91,
+        "total": 590.4,
+        "logprob": -3.6361,
+        "loglift": -0.2623
+      },
+      {
+        "term": "ethik",
+        "freq": 28.91,
+        "total": 202.63,
+        "logprob": -4.0309,
+        "loglift": 0.4124
+      },
+      {
+        "term": "mensch",
+        "freq": 27.91,
+        "total": 219.18,
+        "logprob": -4.0661,
+        "loglift": 0.2986
+      },
+      {
+        "term": "führen",
+        "freq": 16.67,
+        "total": 43.46,
+        "logprob": -4.5816,
+        "loglift": 1.4012
+      },
+      {
+        "term": "kompetenz",
+        "freq": 23.77,
+        "total": 137.81,
+        "logprob": -4.2266,
+        "loglift": 0.6021
+      }
+    ],
+    "7": [
+      {
+        "term": "annemarie",
+        "freq": 18.3,
+        "total": 19.15,
+        "logprob": -4.3733,
+        "loglift": 2.4289
+      },
+      {
+        "term": "pieper",
+        "freq": 18.3,
+        "total": 19.15,
+        "logprob": -4.3733,
+        "loglift": 2.4289
+      },
+      {
+        "term": "durchführ",
+        "freq": 17.01,
+        "total": 17.87,
+        "logprob": -4.4463,
+        "loglift": 2.4254
+      },
+      {
+        "term": "literatur",
+        "freq": 16.42,
+        "total": 17.27,
+        "logprob": -4.4816,
+        "loglift": 2.4242
+      },
+      {
+        "term": "glückssache",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "dieter",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "erstellen",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "hoffmann",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "umfrage",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "hamburg",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "thomä",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "campe",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "glücksratgeber",
+        "freq": 15.71,
+        "total": 16.55,
+        "logprob": -4.5259,
+        "loglift": 2.4221
+      },
+      {
+        "term": "darstellung",
+        "freq": 16.68,
+        "total": 17.65,
+        "logprob": -4.4662,
+        "loglift": 2.4177
+      },
+      {
+        "term": "stuttgart",
+        "freq": 11.91,
+        "total": 12.76,
+        "logprob": -4.8029,
+        "loglift": 2.4056
+      },
+      {
+        "term": "pleasur",
+        "freq": 9.98,
+        "total": 10.86,
+        "logprob": -4.9792,
+        "loglift": 2.3899
+      },
+      {
+        "term": "verdienen",
+        "freq": 9.34,
+        "total": 10.22,
+        "logprob": -5.0457,
+        "loglift": 2.3848
+      },
+      {
+        "term": "argumentationsgang",
+        "freq": 8.65,
+        "total": 9.5,
+        "logprob": -5.122,
+        "loglift": 2.3809
+      },
+      {
+        "term": "gedankengäng",
+        "freq": 8.46,
+        "total": 9.32,
+        "logprob": -5.145,
+        "loglift": 2.377
+      },
+      {
+        "term": "success",
+        "freq": 8.62,
+        "total": 9.51,
+        "logprob": -5.1264,
+        "loglift": 2.3759
+      },
+      {
+        "term": "rauschhaft",
+        "freq": 7.94,
+        "total": 8.79,
+        "logprob": -5.2083,
+        "loglift": 2.3725
+      },
+      {
+        "term": "spannbreite",
+        "freq": 7.94,
+        "total": 8.79,
+        "logprob": -5.2087,
+        "loglift": 2.3721
+      },
+      {
+        "term": "kurzzeitig",
+        "freq": 7.93,
+        "total": 8.79,
+        "logprob": -5.2089,
+        "loglift": 2.3719
+      },
+      {
+        "term": "anwendung",
+        "freq": 7.91,
+        "total": 8.8,
+        "logprob": -5.2127,
+        "loglift": 2.3676
+      },
+      {
+        "term": "leitidee",
+        "freq": 7.82,
+        "total": 8.73,
+        "logprob": -5.2229,
+        "loglift": 2.3644
+      },
+      {
+        "term": "gleichförmig",
+        "freq": 7.23,
+        "total": 8.08,
+        "logprob": -5.3026,
+        "loglift": 2.3627
+      },
+      {
+        "term": "überdauernd",
+        "freq": 7.22,
+        "total": 8.08,
+        "logprob": -5.303,
+        "loglift": 2.3623
+      },
+      {
+        "term": "zeitebene",
+        "freq": 7.18,
+        "total": 8.09,
+        "logprob": -5.3094,
+        "loglift": 2.355
+      },
+      {
+        "term": "mehrere",
+        "freq": 6.51,
+        "total": 7.37,
+        "logprob": -5.4064,
+        "loglift": 2.351
+      },
+      {
+        "term": "ebene",
+        "freq": 6.51,
+        "total": 7.37,
+        "logprob": -5.4067,
+        "loglift": 2.3505
+      },
+      {
+        "term": "grundbegriffe",
+        "freq": 16.85,
+        "total": 19.52,
+        "logprob": -4.4559,
+        "loglift": 2.3275
+      },
+      {
+        "term": "empfindung",
+        "freq": 8.65,
+        "total": 10.32,
+        "logprob": -5.1231,
+        "loglift": 2.2974
+      },
+      {
+        "term": "inhaltsbezogene",
+        "freq": 20.61,
+        "total": 30.69,
+        "logprob": -4.2546,
+        "loglift": 2.0762
+      },
+      {
+        "term": "konkretisierung",
+        "freq": 21.2,
+        "total": 33.88,
+        "logprob": -4.226,
+        "loglift": 2.0058
+      },
+      {
+        "term": "eher",
+        "freq": 15.05,
+        "total": 22.24,
+        "logprob": -4.5687,
+        "loglift": 2.084
+      },
+      {
+        "term": "kunst",
+        "freq": 16.33,
+        "total": 27.78,
+        "logprob": -4.4871,
+        "loglift": 1.9433
+      },
+      {
+        "term": "antike",
+        "freq": 23.44,
+        "total": 52.4,
+        "logprob": -4.1257,
+        "loglift": 1.6701
+      },
+      {
+        "term": "begriff",
+        "freq": 29.66,
+        "total": 104.37,
+        "logprob": -3.8904,
+        "loglift": 1.2163
+      },
+      {
+        "term": "leben",
+        "freq": 72.23,
+        "total": 590.4,
+        "logprob": -3.0003,
+        "loglift": 0.3736
+      },
+      {
+        "term": "nämlich",
+        "freq": 12.25,
+        "total": 20.5,
+        "logprob": -4.7742,
+        "loglift": 1.9598
+      },
+      {
+        "term": "gut",
+        "freq": 28.19,
+        "total": 106.76,
+        "logprob": -3.9411,
+        "loglift": 1.1429
+      },
+      {
+        "term": "allgemein",
+        "freq": 18.37,
+        "total": 47.66,
+        "logprob": -4.3693,
+        "loglift": 1.5213
+      },
+      {
+        "term": "thema",
+        "freq": 22.65,
+        "total": 84.35,
+        "logprob": -4.1602,
+        "loglift": 1.1595
+      },
+      {
+        "term": "moral",
+        "freq": 31.16,
+        "total": 174.5,
+        "logprob": -3.8411,
+        "loglift": 0.7516
+      },
+      {
+        "term": "ethik",
+        "freq": 32.57,
+        "total": 202.63,
+        "logprob": -3.7966,
+        "loglift": 0.6466
+      },
+      {
+        "term": "ziel",
+        "freq": 22.95,
+        "total": 88.27,
+        "logprob": -4.1467,
+        "loglift": 1.1275
+      },
+      {
+        "term": "etc",
+        "freq": 17.06,
+        "total": 50.16,
+        "logprob": -4.4434,
+        "loglift": 1.3961
+      },
+      {
+        "term": "lust",
+        "freq": 15.19,
+        "total": 45.93,
+        "logprob": -4.5593,
+        "loglift": 1.3682
+      },
+      {
+        "term": "handeln",
+        "freq": 15.89,
+        "total": 69.26,
+        "logprob": -4.5143,
+        "loglift": 1.0025
+      },
+      {
+        "term": "kompetenz",
+        "freq": 16.65,
+        "total": 137.81,
+        "logprob": -4.4676,
+        "loglift": 0.3611
+      }
+    ]
+  }
+}

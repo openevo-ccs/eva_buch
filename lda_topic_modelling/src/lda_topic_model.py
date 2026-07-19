@@ -9,6 +9,7 @@ import pyLDAvis
 import pyLDAvis.lda_model
 import spacy
 import os
+import json
 import numpy as np
 import pickle
 import sys
@@ -62,7 +63,7 @@ def load_keywords(keyword_path: Path) -> list[str]:
     Returns:
         List of concept label strings.
     """
-    with open(keyword_path, "r") as f:
+    with open(keyword_path, "r", encoding="utf-8") as f:
         return [line.strip() for line in f if line.strip()]
 
 
@@ -126,7 +127,7 @@ def preprocess_text(excerpts: list[dict]) -> list[str]:
     nlp        = spacy.load(SPACY_MODEL)
     stop_words = nlp.Defaults.stop_words
 
-    with open(EXCLUDE_TERMS_PATH, "r") as f:
+    with open(EXCLUDE_TERMS_PATH, "r", encoding="utf-8") as f:
         exclude_terms = set(f.read().split(", "))
     print(f"  {len(exclude_terms)} terms in exclude list")
 
@@ -292,6 +293,25 @@ def get_topic_terms(
     summary_df.to_csv(out_dir / f"topic_terms_{keyword}_{n_topics}.csv", index=False)
     print(f"  Top terms saved: topic_terms_{keyword}_{n_topics}.csv")
 
+    # Term x topic frequency matrix: one row per term (the union of every
+    # topic's top-N terms), one column per topic plus a corpus-wide total —
+    # this is the "collate frequency across all topics in one list" table
+    # from app_specs.md, sortable/downloadable client-side.
+    all_top_indices = sorted({i for top_indices in
+        (topic.argsort()[: -n_top_words - 1 : -1] for topic in model.components_)
+        for i in top_indices}, key=lambda i: -overall_term_freq[i])
+
+    matrix_rows = []
+    for i in all_top_indices:
+        row = {"term": feature_names[i], "total_across_topics": int(overall_term_freq[i])}
+        for topic_idx in range(n_topics):
+            row[f"Topic_{topic_idx + 1}"] = round(float(topic_term_freq[topic_idx, i]), 4)
+        matrix_rows.append(row)
+    pd.DataFrame(matrix_rows).to_csv(
+        out_dir / f"term_frequency_matrix_{keyword}_{n_topics}.csv", index=False
+    )
+    print(f"  Term x topic frequency matrix saved: term_frequency_matrix_{keyword}_{n_topics}.csv")
+
     return topics
 
 
@@ -377,6 +397,83 @@ def create_pyldavis(
     pyLDAvis.save_html(vis_data, str(out_path))
     print(f"  Visualisation saved: {out_path.name}")
     return vis_data
+
+
+# ─────────────────────────────────────────────────────────────────────────────
+# STEP 8b — PYLDAVIS DATA EXPORT (for the site's own custom rebuild)
+# ─────────────────────────────────────────────────────────────────────────────
+
+def export_ldavis_json(
+    vis:      object,
+    keyword:  str,
+    n_topics: int,
+    out_dir:  Path,
+) -> None:
+    """
+    Serialise the pyLDAvis PreparedData object's underlying tables to JSON.
+
+    Rather than embedding pyLDAvis's stock (fixed-theme, English-chrome) HTML
+    widget, the site builds its own themed, German-language, lambda-adjustable
+    intertopic map and term chart from this JSON. It carries exactly the
+    numbers the stock widget itself plots — nothing is recomputed:
+      - topic_coordinates: one row per topic (x/y from the t-SNE inter-topic
+        distance map, plus Freq for bubble sizing).
+      - topic_info: for each topic, its top salient terms (default R=30,
+        matching the "Top-30 Most Salient Terms" convention) with `logprob`
+        and `loglift` — from these, relevance(term) = lambda*logprob +
+        (1-lambda)*loglift can be computed client-side at any lambda in
+        [0, 1], reproducing pyLDAvis's own term-ranking slider.
+      - default_term_freq: the "Default" category rows — corpus-wide term
+        frequency, independent of any topic selection (the initial view
+        before a topic is picked, and the source for a corpus-wide term
+        table across all topics).
+
+    Args:
+        vis:      PreparedData object returned by create_pyldavis().
+        keyword:  Concept label, used in the output filename.
+        n_topics: Total number of topics, used in the output filename.
+        out_dir:  Directory where the JSON file is saved.
+    """
+    topic_coordinates = [
+        {
+            "topic": int(row.topics),
+            "x": round(float(row.x), 4),
+            "y": round(float(row.y), 4),
+            "freq": round(float(row.Freq), 4),
+        }
+        for row in vis.topic_coordinates.itertuples()
+    ]
+
+    info = vis.topic_info
+    default_term_freq = [
+        {"term": row.Term, "freq": round(float(row.Freq), 2), "total": round(float(row.Total), 2)}
+        for row in info[info["Category"] == "Default"].itertuples()
+    ]
+
+    topics = {}
+    for topic_id in range(1, n_topics + 1):
+        rows = info[info["Category"] == f"Topic{topic_id}"]
+        topics[str(topic_id)] = [
+            {
+                "term": row.Term,
+                "freq": round(float(row.Freq), 2),
+                "total": round(float(row.Total), 2),
+                "logprob": round(float(row.logprob), 4),
+                "loglift": round(float(row.loglift), 4),
+            }
+            for row in rows.itertuples()
+        ]
+
+    payload = {
+        "n_topics": n_topics,
+        "topic_coordinates": topic_coordinates,
+        "default_term_freq": default_term_freq,
+        "topics": topics,
+    }
+    out_path = out_dir / f"ldavis_data_{keyword}_{n_topics}.json"
+    with open(out_path, "w", encoding="utf-8") as f:
+        json.dump(payload, f, ensure_ascii=False, indent=2)
+    print(f"  pyLDAvis JSON export saved: {out_path.name}")
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -557,6 +654,13 @@ def run_lda(keywords: list[str], result_df: pd.DataFrame) -> None:
                 max_df=0.8,
                 min_df=5,
             )
+
+            # Step 8b: Export the pyLDAvis data (same in-memory `vis` object
+            # created from this exact model/dtm/vectorizer triple — never
+            # reload a pickle here, since a rebuilt dtm/vectorizer is not
+            # guaranteed to realign with a model pickled under a different
+            # sklearn/spaCy environment).
+            export_ldavis_json(vis, keyword, n_topics, out_dir)
 
             # Save fitted model for reproducibility
             tm_dir = out_dir / "tm"

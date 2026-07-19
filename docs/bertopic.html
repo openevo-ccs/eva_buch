@@ -28,27 +28,49 @@
       <section class="section-card card">
         <div class="section-head">
           <div>
+            <p class="eyebrow">Auswahl</p>
+            <h3>Konzepte (bis zu 6 gleichzeitig)</h3>
+          </div>
+        </div>
+        <div id="bertopic-concept-picker" class="concept-picker"></div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
             <p class="eyebrow">Visualisierung</p>
             <h3>Topics, Ausreißer und thematische Schwerpunkte</h3>
           </div>
         </div>
         <div class="controls">
-          <label><span>Konzept</span><select id="bertopic-concept"></select></label>
-          <label><span>Ausreißer</span><input id="bertopic-show-outliers" type="checkbox" checked /></label>
-          <label><span>Ansicht</span><select id="bertopic-projection"><option value="local">Konzept</option><option value="global">Gesamtraum</option></select></label>
-          <label><span>Punktgröße</span><input id="bertopic-point-size" type="range" min="0.8" max="3" step="0.1" value="1.6" /></label>
-          <label><span>Orbit</span><input id="bertopic-orbit" type="checkbox" /></label>
+          <label><span>Farbe nach</span>
+            <select id="bertopic-color-by">
+              <option value="subject">Fach</option>
+              <option value="topic">Topic</option>
+            </select>
+          </label>
+          <label><span>Ausreißer anzeigen</span><input id="bertopic-show-outliers" type="checkbox" checked /></label>
+          <label><span>Projektion</span>
+            <select id="bertopic-projection">
+              <option value="local">Lokal (pro Konzept)</option>
+              <option value="global">Global (Gesamtraum)</option>
+            </select>
+          </label>
+          <label><span>Punktgröße</span><input id="bertopic-point-size" type="range" min="2" max="10" step="0.5" value="4" /></label>
+          <label><span>Orbit</span><input id="bertopic-orbit-enabled" type="checkbox" /></label>
+          <label><span>Geschwindigkeit</span><input id="bertopic-orbit-speed" type="range" min="0.2" max="3" step="0.1" value="1" /></label>
+          <label><span>Höhe</span><input id="bertopic-orbit-elevation" type="range" min="-1" max="1" step="0.05" value="0.35" /></label>
         </div>
-        <div class="visual-grid">
-          <div id="bertopic-viz" class="panel viz-shell"></div>
-          <div class="panel">
-            <div id="bertopic-chart" class="chart-shell"></div>
-            <div id="bertopic-detail" class="section-card"></div>
-          </div>
+        <div class="bertopic-layout">
+          <div id="bertopic-panels" class="bertopic-panels"></div>
+          <aside id="bertopic-legend" class="legend-panel panel"></aside>
         </div>
       </section>
     </div>
 
+    <div id="bertopic-tooltip" class="bt-tooltip" hidden></div>
+
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
     <script src="./app.js"></script>
   </body>
 </html>

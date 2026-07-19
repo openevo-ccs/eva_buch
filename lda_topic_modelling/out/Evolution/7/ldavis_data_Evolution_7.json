@@ -1,0 +1,3274 @@
+{
+  "n_topics": 7,
+  "topic_coordinates": [
+    {
+      "topic": 1,
+      "x": 42.5176,
+      "y": -92.2317,
+      "freq": 21.6254
+    },
+    {
+      "topic": 2,
+      "x": -58.6146,
+      "y": -90.7871,
+      "freq": 5.5319
+    },
+    {
+      "topic": 3,
+      "x": -6.7465,
+      "y": -3.9047,
+      "freq": 14.6445
+    },
+    {
+      "topic": 4,
+      "x": -107.7766,
+      "y": -2.3566,
+      "freq": 16.5906
+    },
+    {
+      "topic": 5,
+      "x": 94.3215,
+      "y": -5.7277,
+      "freq": 16.7147
+    },
+    {
+      "topic": 6,
+      "x": 45.3408,
+      "y": 82.6839,
+      "freq": 8.4824
+    },
+    {
+      "topic": 7,
+      "x": -55.949,
+      "y": 84.317,
+      "freq": 16.4105
+    }
+  ],
+  "default_term_freq": [
+    {
+      "term": "mensch",
+      "freq": 653.0,
+      "total": 653.0
+    },
+    {
+      "term": "beschreiben",
+      "freq": 346.0,
+      "total": 346.0
+    },
+    {
+      "term": "evolutionstheorie",
+      "freq": 238.0,
+      "total": 238.0
+    },
+    {
+      "term": "stammesgeschichtlich",
+      "freq": 228.0,
+      "total": 228.0
+    },
+    {
+      "term": "entwicklung",
+      "freq": 836.0,
+      "total": 836.0
+    },
+    {
+      "term": "verwandtschaft",
+      "freq": 244.0,
+      "total": 244.0
+    },
+    {
+      "term": "basiskonzept",
+      "freq": 293.0,
+      "total": 293.0
+    },
+    {
+      "term": "zelle",
+      "freq": 167.0,
+      "total": 167.0
+    },
+    {
+      "term": "veränderung",
+      "freq": 182.0,
+      "total": 182.0
+    },
+    {
+      "term": "system",
+      "freq": 177.0,
+      "total": 177.0
+    },
+    {
+      "term": "kulturell",
+      "freq": 110.0,
+      "total": 110.0
+    },
+    {
+      "term": "verändern",
+      "freq": 115.0,
+      "total": 115.0
+    },
+    {
+      "term": "evolution",
+      "freq": 1176.0,
+      "total": 1176.0
+    },
+    {
+      "term": "evolutiv",
+      "freq": 456.0,
+      "total": 456.0
+    },
+    {
+      "term": "genetisch",
+      "freq": 219.0,
+      "total": 219.0
+    },
+    {
+      "term": "individuell",
+      "freq": 166.0,
+      "total": 166.0
+    },
+    {
+      "term": "erklären",
+      "freq": 283.0,
+      "total": 283.0
+    },
+    {
+      "term": "lebewesen",
+      "freq": 238.0,
+      "total": 238.0
+    },
+    {
+      "term": "synthetisch",
+      "freq": 111.0,
+      "total": 111.0
+    },
+    {
+      "term": "wirbeltiere",
+      "freq": 51.0,
+      "total": 51.0
+    },
+    {
+      "term": "beleg",
+      "freq": 151.0,
+      "total": 151.0
+    },
+    {
+      "term": "biologisch",
+      "freq": 211.0,
+      "total": 211.0
+    },
+    {
+      "term": "individuelle",
+      "freq": 118.0,
+      "total": 118.0
+    },
+    {
+      "term": "selektion",
+      "freq": 191.0,
+      "total": 191.0
+    },
+    {
+      "term": "struktur",
+      "freq": 146.0,
+      "total": 146.0
+    },
+    {
+      "term": "funktion",
+      "freq": 131.0,
+      "total": 131.0
+    },
+    {
+      "term": "fortpflanzung",
+      "freq": 118.0,
+      "total": 118.0
+    },
+    {
+      "term": "genetik",
+      "freq": 123.0,
+      "total": 123.0
+    },
+    {
+      "term": "fossil",
+      "freq": 108.0,
+      "total": 108.0
+    },
+    {
+      "term": "organe",
+      "freq": 47.0,
+      "total": 47.0
+    }
+  ],
+  "topics": {
+    "1": [
+      {
+        "term": "isolation",
+        "freq": 74.88,
+        "total": 75.71,
+        "logprob": -4.5247,
+        "loglift": 1.5203
+      },
+      {
+        "term": "artbegriff",
+        "freq": 65.73,
+        "total": 66.57,
+        "logprob": -4.6551,
+        "loglift": 1.5187
+      },
+      {
+        "term": "artbildung",
+        "freq": 64.09,
+        "total": 64.92,
+        "logprob": -4.6804,
+        "loglift": 1.5184
+      },
+      {
+        "term": "wissenschaftlich",
+        "freq": 35.75,
+        "total": 36.58,
+        "logprob": -5.264,
+        "loglift": 1.5083
+      },
+      {
+        "term": "genpool",
+        "freq": 35.72,
+        "total": 36.55,
+        "logprob": -5.265,
+        "loglift": 1.5082
+      },
+      {
+        "term": "populationsgenetisch",
+        "freq": 33.93,
+        "total": 34.76,
+        "logprob": -5.3162,
+        "loglift": 1.5071
+      },
+      {
+        "term": "basisbegriff",
+        "freq": 33.34,
+        "total": 34.17,
+        "logprob": -5.3339,
+        "loglift": 1.5067
+      },
+      {
+        "term": "kompetenzerwartungen",
+        "freq": 33.34,
+        "total": 34.17,
+        "logprob": -5.3339,
+        "loglift": 1.5066
+      },
+      {
+        "term": "gendrift",
+        "freq": 30.52,
+        "total": 31.35,
+        "logprob": -5.4224,
+        "loglift": 1.5045
+      },
+      {
+        "term": "kostennutzenanalyse",
+        "freq": 29.62,
+        "total": 30.45,
+        "logprob": -5.4523,
+        "loglift": 1.5037
+      },
+      {
+        "term": "koevolution",
+        "freq": 30.09,
+        "total": 30.96,
+        "logprob": -5.4364,
+        "loglift": 1.5029
+      },
+      {
+        "term": "synthetisch",
+        "freq": 108.2,
+        "total": 111.71,
+        "logprob": -4.1566,
+        "loglift": 1.4994
+      },
+      {
+        "term": "reproduktiv",
+        "freq": 59.7,
+        "total": 61.65,
+        "logprob": -4.7513,
+        "loglift": 1.4992
+      },
+      {
+        "term": "lamarck",
+        "freq": 25.22,
+        "total": 26.05,
+        "logprob": -5.6131,
+        "loglift": 1.4989
+      },
+      {
+        "term": "radiation",
+        "freq": 20.23,
+        "total": 21.06,
+        "logprob": -5.8334,
+        "loglift": 1.4911
+      },
+      {
+        "term": "adaptiv",
+        "freq": 54.75,
+        "total": 57.05,
+        "logprob": -4.8378,
+        "loglift": 1.4903
+      },
+      {
+        "term": "bereich",
+        "freq": 19.1,
+        "total": 19.93,
+        "logprob": -5.8908,
+        "loglift": 1.4888
+      },
+      {
+        "term": "begriff",
+        "freq": 18.33,
+        "total": 19.18,
+        "logprob": -5.9321,
+        "loglift": 1.4862
+      },
+      {
+        "term": "evolutionstheorien",
+        "freq": 18.06,
+        "total": 18.91,
+        "logprob": -5.9469,
+        "loglift": 1.4855
+      },
+      {
+        "term": "erdzeitalter",
+        "freq": 17.4,
+        "total": 18.24,
+        "logprob": -5.9841,
+        "loglift": 1.4843
+      },
+      {
+        "term": "sympatrisch",
+        "freq": 15.39,
+        "total": 16.22,
+        "logprob": -6.1069,
+        "loglift": 1.4789
+      },
+      {
+        "term": "allelhäufigkeit",
+        "freq": 15.06,
+        "total": 15.89,
+        "logprob": -6.1286,
+        "loglift": 1.4774
+      },
+      {
+        "term": "drift",
+        "freq": 14.76,
+        "total": 15.59,
+        "logprob": -6.1485,
+        "loglift": 1.4767
+      },
+      {
+        "term": "anpassungsprozesse",
+        "freq": 14.05,
+        "total": 14.88,
+        "logprob": -6.1981,
+        "loglift": 1.474
+      },
+      {
+        "term": "allopatrisch",
+        "freq": 13.52,
+        "total": 14.35,
+        "logprob": -6.2366,
+        "loglift": 1.4718
+      },
+      {
+        "term": "evolutionsmechanismen",
+        "freq": 14.24,
+        "total": 15.18,
+        "logprob": -6.1844,
+        "loglift": 1.4677
+      },
+      {
+        "term": "migration",
+        "freq": 12.18,
+        "total": 13.01,
+        "logprob": -6.3405,
+        "loglift": 1.4655
+      },
+      {
+        "term": "bearbeiten",
+        "freq": 11.82,
+        "total": 12.65,
+        "logprob": -6.371,
+        "loglift": 1.4634
+      },
+      {
+        "term": "zusammenspiel",
+        "freq": 11.32,
+        "total": 12.16,
+        "logprob": -6.4137,
+        "loglift": 1.4601
+      },
+      {
+        "term": "molekularbiologie",
+        "freq": 10.92,
+        "total": 11.75,
+        "logprob": -6.4498,
+        "loglift": 1.4581
+      },
+      {
+        "term": "nichtnaturwissenschaftlich",
+        "freq": 41.49,
+        "total": 46.11,
+        "logprob": -5.1152,
+        "loglift": 1.4258
+      },
+      {
+        "term": "evolutionstheorie",
+        "freq": 203.81,
+        "total": 238.66,
+        "logprob": -3.5234,
+        "loglift": 1.3734
+      },
+      {
+        "term": "mutation",
+        "freq": 92.05,
+        "total": 105.9,
+        "logprob": -4.3183,
+        "loglift": 1.3911
+      },
+      {
+        "term": "fitness",
+        "freq": 75.91,
+        "total": 86.82,
+        "logprob": -4.5111,
+        "loglift": 1.3969
+      },
+      {
+        "term": "abgeleitet",
+        "freq": 45.48,
+        "total": 51.91,
+        "logprob": -5.0233,
+        "loglift": 1.3991
+      },
+      {
+        "term": "population",
+        "freq": 38.3,
+        "total": 43.39,
+        "logprob": -5.1951,
+        "loglift": 1.4065
+      },
+      {
+        "term": "abstammung",
+        "freq": 44.11,
+        "total": 51.97,
+        "logprob": -5.054,
+        "loglift": 1.3673
+      },
+      {
+        "term": "folge",
+        "freq": 31.05,
+        "total": 35.47,
+        "logprob": -5.405,
+        "loglift": 1.3981
+      },
+      {
+        "term": "ursprünglich",
+        "freq": 46.45,
+        "total": 57.43,
+        "logprob": -5.0022,
+        "loglift": 1.3192
+      },
+      {
+        "term": "theorie",
+        "freq": 60.19,
+        "total": 77.35,
+        "logprob": -4.7431,
+        "loglift": 1.2804
+      },
+      {
+        "term": "biodiversität",
+        "freq": 70.68,
+        "total": 96.28,
+        "logprob": -4.5825,
+        "loglift": 1.2222
+      },
+      {
+        "term": "verhalten",
+        "freq": 87.17,
+        "total": 138.29,
+        "logprob": -4.3728,
+        "loglift": 1.0698
+      },
+      {
+        "term": "art",
+        "freq": 103.22,
+        "total": 174.54,
+        "logprob": -4.2037,
+        "loglift": 1.006
+      },
+      {
+        "term": "verbindlich",
+        "freq": 45.95,
+        "total": 61.88,
+        "logprob": -5.013,
+        "loglift": 1.2337
+      },
+      {
+        "term": "selektion",
+        "freq": 108.78,
+        "total": 191.9,
+        "logprob": -4.1513,
+        "loglift": 0.9637
+      },
+      {
+        "term": "darwin",
+        "freq": 55.61,
+        "total": 79.76,
+        "logprob": -4.8223,
+        "loglift": 1.1706
+      },
+      {
+        "term": "evolution",
+        "freq": 401.86,
+        "total": 1176.35,
+        "logprob": -2.8445,
+        "loglift": 0.4572
+      },
+      {
+        "term": "merkmal",
+        "freq": 71.09,
+        "total": 130.16,
+        "logprob": -4.5766,
+        "loglift": 0.9265
+      },
+      {
+        "term": "verwandtschaft",
+        "freq": 100.58,
+        "total": 244.65,
+        "logprob": -4.2297,
+        "loglift": 0.6424
+      },
+      {
+        "term": "leben",
+        "freq": 83.12,
+        "total": 184.24,
+        "logprob": -4.4204,
+        "loglift": 0.7353
+      },
+      {
+        "term": "beleg",
+        "freq": 72.64,
+        "total": 151.02,
+        "logprob": -4.5551,
+        "loglift": 0.7995
+      },
+      {
+        "term": "vorstellung",
+        "freq": 51.68,
+        "total": 80.0,
+        "logprob": -4.8955,
+        "loglift": 1.0944
+      },
+      {
+        "term": "entstehung",
+        "freq": 93.7,
+        "total": 259.25,
+        "logprob": -4.3005,
+        "loglift": 0.5136
+      },
+      {
+        "term": "inhalt",
+        "freq": 71.34,
+        "total": 157.67,
+        "logprob": -4.5732,
+        "loglift": 0.7382
+      },
+      {
+        "term": "homologie",
+        "freq": 53.38,
+        "total": 86.99,
+        "logprob": -4.8632,
+        "loglift": 1.0429
+      },
+      {
+        "term": "erläutern",
+        "freq": 72.27,
+        "total": 176.39,
+        "logprob": -4.5602,
+        "loglift": 0.639
+      },
+      {
+        "term": "stammbaum",
+        "freq": 67.55,
+        "total": 159.02,
+        "logprob": -4.6278,
+        "loglift": 0.6751
+      },
+      {
+        "term": "ursache",
+        "freq": 54.05,
+        "total": 101.34,
+        "logprob": -4.8507,
+        "loglift": 0.9028
+      },
+      {
+        "term": "erklären",
+        "freq": 73.91,
+        "total": 283.58,
+        "logprob": -4.5377,
+        "loglift": 0.1867
+      },
+      {
+        "term": "bedeutung",
+        "freq": 61.85,
+        "total": 156.95,
+        "logprob": -4.7159,
+        "loglift": 0.6001
+      },
+      {
+        "term": "mensch",
+        "freq": 78.87,
+        "total": 653.28,
+        "logprob": -4.4728,
+        "loglift": -0.5829
+      }
+    ],
+    "2": [
+      {
+        "term": "wirbeltiere",
+        "freq": 50.68,
+        "total": 51.51,
+        "logprob": -3.5518,
+        "loglift": 2.8783
+      },
+      {
+        "term": "physik",
+        "freq": 19.77,
+        "total": 20.6,
+        "logprob": -4.4931,
+        "loglift": 2.8533
+      },
+      {
+        "term": "fortschritt",
+        "freq": 12.66,
+        "total": 13.49,
+        "logprob": -4.939,
+        "loglift": 2.8309
+      },
+      {
+        "term": "wasser",
+        "freq": 12.38,
+        "total": 13.21,
+        "logprob": -4.9612,
+        "loglift": 2.8295
+      },
+      {
+        "term": "religion",
+        "freq": 13.58,
+        "total": 14.54,
+        "logprob": -4.8683,
+        "loglift": 2.8267
+      },
+      {
+        "term": "revolution",
+        "freq": 10.17,
+        "total": 11.01,
+        "logprob": -5.1581,
+        "loglift": 2.8153
+      },
+      {
+        "term": "vertreter",
+        "freq": 9.74,
+        "total": 10.57,
+        "logprob": -5.2011,
+        "loglift": 2.8127
+      },
+      {
+        "term": "wirbeltiergruppe",
+        "freq": 8.57,
+        "total": 9.4,
+        "logprob": -5.3292,
+        "loglift": 2.8018
+      },
+      {
+        "term": "typisch",
+        "freq": 8.25,
+        "total": 9.09,
+        "logprob": -5.3665,
+        "loglift": 2.7986
+      },
+      {
+        "term": "gleichzeitigkeit",
+        "freq": 7.66,
+        "total": 8.5,
+        "logprob": -5.4406,
+        "loglift": 2.7915
+      },
+      {
+        "term": "schlüsselschlossprinzip",
+        "freq": 7.46,
+        "total": 8.29,
+        "logprob": -5.4679,
+        "loglift": 2.7887
+      },
+      {
+        "term": "klimaveränderung",
+        "freq": 6.89,
+        "total": 7.72,
+        "logprob": -5.5479,
+        "loglift": 2.7806
+      },
+      {
+        "term": "beobachtet",
+        "freq": 6.28,
+        "total": 7.12,
+        "logprob": -5.6394,
+        "loglift": 2.7703
+      },
+      {
+        "term": "erbanlag",
+        "freq": 6.15,
+        "total": 6.98,
+        "logprob": -5.6612,
+        "loglift": 2.7673
+      },
+      {
+        "term": "interpretation",
+        "freq": 6.14,
+        "total": 6.98,
+        "logprob": -5.6621,
+        "loglift": 2.7669
+      },
+      {
+        "term": "raum",
+        "freq": 6.1,
+        "total": 6.94,
+        "logprob": -5.6686,
+        "loglift": 2.766
+      },
+      {
+        "term": "kontinuität",
+        "freq": 6.01,
+        "total": 6.85,
+        "logprob": -5.6837,
+        "loglift": 2.7644
+      },
+      {
+        "term": "stellen",
+        "freq": 32.97,
+        "total": 37.57,
+        "logprob": -3.9816,
+        "loglift": 2.7642
+      },
+      {
+        "term": "mindestens",
+        "freq": 5.85,
+        "total": 6.68,
+        "logprob": -5.7107,
+        "loglift": 2.7615
+      },
+      {
+        "term": "inklusive",
+        "freq": 5.85,
+        "total": 6.68,
+        "logprob": -5.7107,
+        "loglift": 2.7614
+      },
+      {
+        "term": "wirbeltierorgan",
+        "freq": 5.85,
+        "total": 6.68,
+        "logprob": -5.7108,
+        "loglift": 2.7614
+      },
+      {
+        "term": "identität",
+        "freq": 6.68,
+        "total": 7.64,
+        "logprob": -5.5777,
+        "loglift": 2.7607
+      },
+      {
+        "term": "oberflächenvergrößerung",
+        "freq": 5.55,
+        "total": 6.38,
+        "logprob": -5.7634,
+        "loglift": 2.7549
+      },
+      {
+        "term": "blickwinkel",
+        "freq": 5.43,
+        "total": 6.26,
+        "logprob": -5.7863,
+        "loglift": 2.752
+      },
+      {
+        "term": "signal",
+        "freq": 5.61,
+        "total": 6.48,
+        "logprob": -5.7533,
+        "loglift": 2.7505
+      },
+      {
+        "term": "herrschaft",
+        "freq": 5.16,
+        "total": 5.99,
+        "logprob": -5.8369,
+        "loglift": 2.745
+      },
+      {
+        "term": "rückschritt",
+        "freq": 5.16,
+        "total": 5.99,
+        "logprob": -5.8371,
+        "loglift": 2.7449
+      },
+      {
+        "term": "moralphilosophie",
+        "freq": 5.16,
+        "total": 5.99,
+        "logprob": -5.8371,
+        "loglift": 2.7449
+      },
+      {
+        "term": "reform",
+        "freq": 5.16,
+        "total": 5.99,
+        "logprob": -5.8373,
+        "loglift": 2.7447
+      },
+      {
+        "term": "auge",
+        "freq": 4.76,
+        "total": 5.59,
+        "logprob": -5.9171,
+        "loglift": 2.7335
+      },
+      {
+        "term": "organe",
+        "freq": 34.31,
+        "total": 47.62,
+        "logprob": -3.9418,
+        "loglift": 2.5669
+      },
+      {
+        "term": "kontext",
+        "freq": 27.07,
+        "total": 37.15,
+        "logprob": -4.1789,
+        "loglift": 2.5781
+      },
+      {
+        "term": "gruppe",
+        "freq": 12.49,
+        "total": 15.88,
+        "logprob": -4.9523,
+        "loglift": 2.6544
+      },
+      {
+        "term": "jahrgang",
+        "freq": 13.47,
+        "total": 17.28,
+        "logprob": -4.8765,
+        "loglift": 2.6457
+      },
+      {
+        "term": "ereignis",
+        "freq": 11.9,
+        "total": 15.36,
+        "logprob": -5.001,
+        "loglift": 2.6393
+      },
+      {
+        "term": "dar",
+        "freq": 20.6,
+        "total": 29.07,
+        "logprob": -4.4518,
+        "loglift": 2.5503
+      },
+      {
+        "term": "gene",
+        "freq": 13.78,
+        "total": 18.56,
+        "logprob": -4.8542,
+        "loglift": 2.5966
+      },
+      {
+        "term": "bauplan",
+        "freq": 8.17,
+        "total": 10.05,
+        "logprob": -5.3774,
+        "loglift": 2.6869
+      },
+      {
+        "term": "lebensraum",
+        "freq": 18.45,
+        "total": 29.23,
+        "logprob": -4.5623,
+        "loglift": 2.4343
+      },
+      {
+        "term": "geschichte",
+        "freq": 22.38,
+        "total": 40.11,
+        "logprob": -4.3693,
+        "loglift": 2.311
+      },
+      {
+        "term": "historisch",
+        "freq": 15.66,
+        "total": 25.8,
+        "logprob": -4.7259,
+        "loglift": 2.3957
+      },
+      {
+        "term": "vergleichen",
+        "freq": 25.05,
+        "total": 53.1,
+        "logprob": -4.2564,
+        "loglift": 2.1434
+      },
+      {
+        "term": "veränderung",
+        "freq": 57.92,
+        "total": 182.72,
+        "logprob": -3.4183,
+        "loglift": 1.7457
+      },
+      {
+        "term": "aspekt",
+        "freq": 31.13,
+        "total": 79.15,
+        "logprob": -4.0391,
+        "loglift": 1.9615
+      },
+      {
+        "term": "evolutionären",
+        "freq": 11.9,
+        "total": 19.38,
+        "logprob": -5.0011,
+        "loglift": 2.4064
+      },
+      {
+        "term": "klima",
+        "freq": 8.29,
+        "total": 11.13,
+        "logprob": -5.3624,
+        "loglift": 2.6001
+      },
+      {
+        "term": "möglich",
+        "freq": 21.08,
+        "total": 54.81,
+        "logprob": -4.429,
+        "loglift": 1.9391
+      },
+      {
+        "term": "wirbeltier",
+        "freq": 18.8,
+        "total": 45.65,
+        "logprob": -4.5436,
+        "loglift": 2.0075
+      },
+      {
+        "term": "hinsichtlich",
+        "freq": 17.0,
+        "total": 42.84,
+        "logprob": -4.644,
+        "loglift": 1.9705
+      },
+      {
+        "term": "pflanze",
+        "freq": 17.31,
+        "total": 48.55,
+        "logprob": -4.6259,
+        "loglift": 1.8634
+      },
+      {
+        "term": "ordnen",
+        "freq": 10.87,
+        "total": 18.44,
+        "logprob": -5.0909,
+        "loglift": 2.3668
+      },
+      {
+        "term": "technik",
+        "freq": 10.97,
+        "total": 19.2,
+        "logprob": -5.0825,
+        "loglift": 2.3345
+      },
+      {
+        "term": "stammesgeschichtlich",
+        "freq": 29.84,
+        "total": 228.13,
+        "logprob": -4.0816,
+        "loglift": 0.8604
+      },
+      {
+        "term": "evolution",
+        "freq": 43.29,
+        "total": 1176.35,
+        "logprob": -3.7094,
+        "loglift": -0.4076
+      },
+      {
+        "term": "struktur",
+        "freq": 21.46,
+        "total": 146.38,
+        "logprob": -4.4109,
+        "loglift": 0.9748
+      },
+      {
+        "term": "vielfalt",
+        "freq": 19.83,
+        "total": 115.47,
+        "logprob": -4.4903,
+        "loglift": 1.1326
+      },
+      {
+        "term": "entwicklung",
+        "freq": 32.06,
+        "total": 836.48,
+        "logprob": -4.0097,
+        "loglift": -0.367
+      },
+      {
+        "term": "funktion",
+        "freq": 18.96,
+        "total": 131.54,
+        "logprob": -4.5347,
+        "loglift": 0.9579
+      },
+      {
+        "term": "fossil",
+        "freq": 13.5,
+        "total": 108.05,
+        "logprob": -4.8743,
+        "loglift": 0.8151
+      },
+      {
+        "term": "beschreiben",
+        "freq": 13.63,
+        "total": 346.9,
+        "logprob": -4.8647,
+        "loglift": -0.3418
+      },
+      {
+        "term": "beispiel",
+        "freq": 12.59,
+        "total": 88.13,
+        "logprob": -4.9443,
+        "loglift": 0.9488
+      }
+    ],
+    "3": [
+      {
+        "term": "kulturell",
+        "freq": 109.27,
+        "total": 110.13,
+        "logprob": -3.757,
+        "loglift": 1.9133
+      },
+      {
+        "term": "gang",
+        "freq": 33.25,
+        "total": 34.1,
+        "logprob": -4.9467,
+        "loglift": 1.8958
+      },
+      {
+        "term": "werkzeuggebrauch",
+        "freq": 32.78,
+        "total": 33.62,
+        "logprob": -4.961,
+        "loglift": 1.8958
+      },
+      {
+        "term": "sprachentwicklung",
+        "freq": 29.84,
+        "total": 30.68,
+        "logprob": -5.0551,
+        "loglift": 1.8933
+      },
+      {
+        "term": "verbreitung",
+        "freq": 26.72,
+        "total": 27.56,
+        "logprob": -5.1655,
+        "loglift": 1.89
+      },
+      {
+        "term": "biosphäre",
+        "freq": 26.82,
+        "total": 27.7,
+        "logprob": -5.1616,
+        "loglift": 1.8889
+      },
+      {
+        "term": "gott",
+        "freq": 22.15,
+        "total": 22.99,
+        "logprob": -5.3529,
+        "loglift": 1.8838
+      },
+      {
+        "term": "fossilgeschichte",
+        "freq": 20.53,
+        "total": 21.38,
+        "logprob": -5.4288,
+        "loglift": 1.8809
+      },
+      {
+        "term": "offen",
+        "freq": 20.21,
+        "total": 21.06,
+        "logprob": -5.4445,
+        "loglift": 1.8802
+      },
+      {
+        "term": "fähig",
+        "freq": 19.36,
+        "total": 20.2,
+        "logprob": -5.4877,
+        "loglift": 1.8786
+      },
+      {
+        "term": "fossilfund",
+        "freq": 16.44,
+        "total": 17.28,
+        "logprob": -5.6513,
+        "loglift": 1.8712
+      },
+      {
+        "term": "erschließung",
+        "freq": 16.34,
+        "total": 17.18,
+        "logprob": -5.6574,
+        "loglift": 1.871
+      },
+      {
+        "term": "energetisch",
+        "freq": 15.8,
+        "total": 16.64,
+        "logprob": -5.6906,
+        "loglift": 1.8693
+      },
+      {
+        "term": "selbstregulation",
+        "freq": 14.88,
+        "total": 15.72,
+        "logprob": -5.7507,
+        "loglift": 1.8662
+      },
+      {
+        "term": "anthropozän",
+        "freq": 14.71,
+        "total": 15.6,
+        "logprob": -5.7625,
+        "loglift": 1.8624
+      },
+      {
+        "term": "stofflich",
+        "freq": 13.22,
+        "total": 14.06,
+        "logprob": -5.8689,
+        "loglift": 1.8595
+      },
+      {
+        "term": "informatorisch",
+        "freq": 13.22,
+        "total": 14.06,
+        "logprob": -5.8689,
+        "loglift": 1.8595
+      },
+      {
+        "term": "problemstellung",
+        "freq": 13.06,
+        "total": 13.9,
+        "logprob": -5.8812,
+        "loglift": 1.8587
+      },
+      {
+        "term": "ausbreitung",
+        "freq": 13.01,
+        "total": 13.85,
+        "logprob": -5.885,
+        "loglift": 1.8584
+      },
+      {
+        "term": "fortpflanzungsverhalt",
+        "freq": 12.61,
+        "total": 13.45,
+        "logprob": -5.9166,
+        "loglift": 1.8565
+      },
+      {
+        "term": "sonderstellung",
+        "freq": 11.7,
+        "total": 12.54,
+        "logprob": -5.9915,
+        "loglift": 1.8515
+      },
+      {
+        "term": "einfluß",
+        "freq": 10.9,
+        "total": 11.76,
+        "logprob": -6.062,
+        "loglift": 1.8452
+      },
+      {
+        "term": "rev",
+        "freq": 10.61,
+        "total": 11.45,
+        "logprob": -6.0887,
+        "loglift": 1.8449
+      },
+      {
+        "term": "menschlich",
+        "freq": 60.15,
+        "total": 64.97,
+        "logprob": -4.354,
+        "loglift": 1.8441
+      },
+      {
+        "term": "menschenbild",
+        "freq": 10.03,
+        "total": 10.87,
+        "logprob": -6.1448,
+        "loglift": 1.8407
+      },
+      {
+        "term": "produkt",
+        "freq": 9.82,
+        "total": 10.66,
+        "logprob": -6.1666,
+        "loglift": 1.839
+      },
+      {
+        "term": "selbstständig",
+        "freq": 9.81,
+        "total": 10.65,
+        "logprob": -6.1674,
+        "loglift": 1.8388
+      },
+      {
+        "term": "eth",
+        "freq": 9.65,
+        "total": 10.49,
+        "logprob": -6.1834,
+        "loglift": 1.8377
+      },
+      {
+        "term": "besonderheit",
+        "freq": 9.52,
+        "total": 10.36,
+        "logprob": -6.1977,
+        "loglift": 1.8364
+      },
+      {
+        "term": "bedürfnis",
+        "freq": 9.44,
+        "total": 10.28,
+        "logprob": -6.2062,
+        "loglift": 1.8356
+      },
+      {
+        "term": "ursprung",
+        "freq": 40.99,
+        "total": 47.92,
+        "logprob": -4.7375,
+        "loglift": 1.7648
+      },
+      {
+        "term": "modern",
+        "freq": 56.26,
+        "total": 70.77,
+        "logprob": -4.4208,
+        "loglift": 1.6918
+      },
+      {
+        "term": "biologieunterricht",
+        "freq": 43.28,
+        "total": 53.93,
+        "logprob": -4.6831,
+        "loglift": 1.7011
+      },
+      {
+        "term": "aufrecht",
+        "freq": 23.12,
+        "total": 27.44,
+        "logprob": -5.3101,
+        "loglift": 1.7499
+      },
+      {
+        "term": "mensch",
+        "freq": 380.72,
+        "total": 653.28,
+        "logprob": -2.5088,
+        "loglift": 1.3812
+      },
+      {
+        "term": "heutig",
+        "freq": 27.83,
+        "total": 34.73,
+        "logprob": -5.1246,
+        "loglift": 1.6996
+      },
+      {
+        "term": "weltbild",
+        "freq": 20.18,
+        "total": 24.16,
+        "logprob": -5.4463,
+        "loglift": 1.7411
+      },
+      {
+        "term": "menschwerdung",
+        "freq": 22.22,
+        "total": 27.55,
+        "logprob": -5.3499,
+        "loglift": 1.7061
+      },
+      {
+        "term": "beitrag",
+        "freq": 38.27,
+        "total": 56.81,
+        "logprob": -4.8062,
+        "loglift": 1.5261
+      },
+      {
+        "term": "handeln",
+        "freq": 28.27,
+        "total": 39.6,
+        "logprob": -5.1089,
+        "loglift": 1.5842
+      },
+      {
+        "term": "ableiten",
+        "freq": 24.12,
+        "total": 32.09,
+        "logprob": -5.2679,
+        "loglift": 1.6356
+      },
+      {
+        "term": "wechselwirkung",
+        "freq": 30.35,
+        "total": 48.2,
+        "logprob": -5.0379,
+        "loglift": 1.4586
+      },
+      {
+        "term": "evolution",
+        "freq": 257.86,
+        "total": 1176.35,
+        "logprob": -2.8984,
+        "loglift": 0.4033
+      },
+      {
+        "term": "welt",
+        "freq": 20.62,
+        "total": 27.33,
+        "logprob": -5.4246,
+        "loglift": 1.6394
+      },
+      {
+        "term": "naturwissenschaftlich",
+        "freq": 37.68,
+        "total": 68.21,
+        "logprob": -4.8218,
+        "loglift": 1.3275
+      },
+      {
+        "term": "entwickeln",
+        "freq": 49.78,
+        "total": 108.25,
+        "logprob": -4.5432,
+        "loglift": 1.1442
+      },
+      {
+        "term": "biologisch",
+        "freq": 72.25,
+        "total": 211.18,
+        "logprob": -4.1707,
+        "loglift": 0.8485
+      },
+      {
+        "term": "basiskonzept",
+        "freq": 87.34,
+        "total": 293.55,
+        "logprob": -3.981,
+        "loglift": 0.7089
+      },
+      {
+        "term": "primat",
+        "freq": 28.03,
+        "total": 46.46,
+        "logprob": -5.1175,
+        "loglift": 1.4159
+      },
+      {
+        "term": "system",
+        "freq": 55.16,
+        "total": 177.51,
+        "logprob": -4.4405,
+        "loglift": 0.7524
+      },
+      {
+        "term": "entwicklung",
+        "freq": 112.15,
+        "total": 836.48,
+        "logprob": -3.731,
+        "loglift": -0.0883
+      },
+      {
+        "term": "individuell",
+        "freq": 44.57,
+        "total": 166.17,
+        "logprob": -4.6537,
+        "loglift": 0.6053
+      },
+      {
+        "term": "evolutiv",
+        "freq": 53.31,
+        "total": 456.03,
+        "logprob": -4.4747,
+        "loglift": -0.2254
+      },
+      {
+        "term": "kommunikation",
+        "freq": 36.68,
+        "total": 140.39,
+        "logprob": -4.8485,
+        "loglift": 0.579
+      },
+      {
+        "term": "darstellen",
+        "freq": 31.37,
+        "total": 84.52,
+        "logprob": -5.0051,
+        "loglift": 0.9298
+      },
+      {
+        "term": "inhalt",
+        "freq": 34.4,
+        "total": 157.67,
+        "logprob": -4.9127,
+        "loglift": 0.3987
+      },
+      {
+        "term": "bedeutung",
+        "freq": 32.68,
+        "total": 156.95,
+        "logprob": -4.9641,
+        "loglift": 0.3519
+      },
+      {
+        "term": "umwelt",
+        "freq": 27.92,
+        "total": 92.77,
+        "logprob": -5.1213,
+        "loglift": 0.7204
+      },
+      {
+        "term": "lebewesen",
+        "freq": 29.35,
+        "total": 238.45,
+        "logprob": -5.0716,
+        "loglift": -0.1739
+      }
+    ],
+    "4": [
+      {
+        "term": "eukaryotisch",
+        "freq": 61.23,
+        "total": 62.06,
+        "logprob": -4.461,
+        "loglift": 1.7828
+      },
+      {
+        "term": "evolutionsökologie",
+        "freq": 58.29,
+        "total": 59.13,
+        "logprob": -4.5101,
+        "loglift": 1.7821
+      },
+      {
+        "term": "neurobiologie",
+        "freq": 33.92,
+        "total": 34.75,
+        "logprob": -5.0515,
+        "loglift": 1.7721
+      },
+      {
+        "term": "fortführung",
+        "freq": 28.3,
+        "total": 29.14,
+        "logprob": -5.2328,
+        "loglift": 1.7672
+      },
+      {
+        "term": "code",
+        "freq": 27.88,
+        "total": 28.71,
+        "logprob": -5.2477,
+        "loglift": 1.7669
+      },
+      {
+        "term": "vielzeller",
+        "freq": 26.57,
+        "total": 27.41,
+        "logprob": -5.2956,
+        "loglift": 1.7655
+      },
+      {
+        "term": "stoffwechsel",
+        "freq": 32.65,
+        "total": 33.73,
+        "logprob": -5.0896,
+        "loglift": 1.7639
+      },
+      {
+        "term": "leistungsfach",
+        "freq": 24.27,
+        "total": 25.11,
+        "logprob": -5.3862,
+        "loglift": 1.7625
+      },
+      {
+        "term": "zellulär",
+        "freq": 23.97,
+        "total": 24.81,
+        "logprob": -5.399,
+        "loglift": 1.7615
+      },
+      {
+        "term": "physiologisch",
+        "freq": 22.59,
+        "total": 23.43,
+        "logprob": -5.4582,
+        "loglift": 1.7599
+      },
+      {
+        "term": "prokaryot",
+        "freq": 20.91,
+        "total": 21.74,
+        "logprob": -5.5354,
+        "loglift": 1.7573
+      },
+      {
+        "term": "verteilung",
+        "freq": 19.6,
+        "total": 20.44,
+        "logprob": -5.6,
+        "loglift": 1.7545
+      },
+      {
+        "term": "qphase",
+        "freq": 19.48,
+        "total": 20.32,
+        "logprob": -5.6062,
+        "loglift": 1.7543
+      },
+      {
+        "term": "regulation",
+        "freq": 18.3,
+        "total": 19.13,
+        "logprob": -5.6687,
+        "loglift": 1.7518
+      },
+      {
+        "term": "pro",
+        "freq": 17.34,
+        "total": 18.18,
+        "logprob": -5.7223,
+        "loglift": 1.7495
+      },
+      {
+        "term": "einzeller",
+        "freq": 16.71,
+        "total": 17.54,
+        "logprob": -5.7598,
+        "loglift": 1.7476
+      },
+      {
+        "term": "cytologie",
+        "freq": 16.45,
+        "total": 17.29,
+        "logprob": -5.775,
+        "loglift": 1.747
+      },
+      {
+        "term": "zellbiologie",
+        "freq": 16.15,
+        "total": 16.98,
+        "logprob": -5.7939,
+        "loglift": 1.746
+      },
+      {
+        "term": "beginn",
+        "freq": 15.03,
+        "total": 15.87,
+        "logprob": -5.8656,
+        "loglift": 1.742
+      },
+      {
+        "term": "stoffwechselprozesse",
+        "freq": 13.66,
+        "total": 14.49,
+        "logprob": -5.9612,
+        "loglift": 1.7372
+      },
+      {
+        "term": "stoffwechselprozes",
+        "freq": 13.41,
+        "total": 14.24,
+        "logprob": -5.9798,
+        "loglift": 1.7361
+      },
+      {
+        "term": "makromoleküle",
+        "freq": 13.26,
+        "total": 14.09,
+        "logprob": -5.9908,
+        "loglift": 1.7354
+      },
+      {
+        "term": "immunbiologie",
+        "freq": 13.02,
+        "total": 13.85,
+        "logprob": -6.0092,
+        "loglift": 1.7343
+      },
+      {
+        "term": "proteinbiosynthese",
+        "freq": 12.69,
+        "total": 13.54,
+        "logprob": -6.0345,
+        "loglift": 1.7316
+      },
+      {
+        "term": "eukaryot",
+        "freq": 12.13,
+        "total": 12.96,
+        "logprob": -6.0803,
+        "loglift": 1.7298
+      },
+      {
+        "term": "genaktivität",
+        "freq": 12.08,
+        "total": 12.91,
+        "logprob": -6.0844,
+        "loglift": 1.7295
+      },
+      {
+        "term": "biomembran",
+        "freq": 11.92,
+        "total": 12.75,
+        "logprob": -6.0972,
+        "loglift": 1.7289
+      },
+      {
+        "term": "pflanzlich",
+        "freq": 11.91,
+        "total": 12.74,
+        "logprob": -6.0983,
+        "loglift": 1.7288
+      },
+      {
+        "term": "tierisch",
+        "freq": 11.89,
+        "total": 12.72,
+        "logprob": -6.1002,
+        "loglift": 1.7286
+      },
+      {
+        "term": "gärung",
+        "freq": 11.62,
+        "total": 12.46,
+        "logprob": -6.1226,
+        "loglift": 1.7272
+      },
+      {
+        "term": "zelle",
+        "freq": 143.2,
+        "total": 167.1,
+        "logprob": -3.6114,
+        "loglift": 1.6419
+      },
+      {
+        "term": "tabelle",
+        "freq": 70.11,
+        "total": 81.76,
+        "logprob": -4.3255,
+        "loglift": 1.6426
+      },
+      {
+        "term": "sekundarstufe",
+        "freq": 16.73,
+        "total": 18.28,
+        "logprob": -5.7586,
+        "loglift": 1.7073
+      },
+      {
+        "term": "fachinhalte",
+        "freq": 32.4,
+        "total": 37.07,
+        "logprob": -5.0975,
+        "loglift": 1.6615
+      },
+      {
+        "term": "fotosynthese",
+        "freq": 35.98,
+        "total": 41.71,
+        "logprob": -4.9927,
+        "loglift": 1.6484
+      },
+      {
+        "term": "ökologie",
+        "freq": 69.18,
+        "total": 84.31,
+        "logprob": -4.3389,
+        "loglift": 1.5986
+      },
+      {
+        "term": "ökologisch",
+        "freq": 70.2,
+        "total": 89.75,
+        "logprob": -4.3242,
+        "loglift": 1.5507
+      },
+      {
+        "term": "stoff",
+        "freq": 63.54,
+        "total": 82.0,
+        "logprob": -4.424,
+        "loglift": 1.5413
+      },
+      {
+        "term": "endosymbiontentheorie",
+        "freq": 24.07,
+        "total": 27.61,
+        "logprob": -5.3948,
+        "loglift": 1.6588
+      },
+      {
+        "term": "klasse",
+        "freq": 31.14,
+        "total": 37.13,
+        "logprob": -5.1372,
+        "loglift": 1.6204
+      },
+      {
+        "term": "individuelle",
+        "freq": 81.94,
+        "total": 118.34,
+        "logprob": -4.1696,
+        "loglift": 1.4288
+      },
+      {
+        "term": "genetik",
+        "freq": 81.8,
+        "total": 123.7,
+        "logprob": -4.1713,
+        "loglift": 1.3828
+      },
+      {
+        "term": "nische",
+        "freq": 23.7,
+        "total": 27.85,
+        "logprob": -5.4101,
+        "loglift": 1.635
+      },
+      {
+        "term": "steuerung",
+        "freq": 52.82,
+        "total": 75.87,
+        "logprob": -4.6088,
+        "loglift": 1.4342
+      },
+      {
+        "term": "funktion",
+        "freq": 79.99,
+        "total": 131.54,
+        "logprob": -4.1936,
+        "loglift": 1.299
+      },
+      {
+        "term": "struktur",
+        "freq": 85.35,
+        "total": 146.38,
+        "logprob": -4.1289,
+        "loglift": 1.2568
+      },
+      {
+        "term": "energieumwandlung",
+        "freq": 44.5,
+        "total": 65.66,
+        "logprob": -4.7802,
+        "loglift": 1.4073
+      },
+      {
+        "term": "molekular",
+        "freq": 46.23,
+        "total": 71.74,
+        "logprob": -4.742,
+        "loglift": 1.3569
+      },
+      {
+        "term": "ökosystem",
+        "freq": 56.6,
+        "total": 98.0,
+        "logprob": -4.5396,
+        "loglift": 1.2473
+      },
+      {
+        "term": "evolutiv",
+        "freq": 157.12,
+        "total": 456.03,
+        "logprob": -3.5186,
+        "loglift": 0.7308
+      },
+      {
+        "term": "regelung",
+        "freq": 39.76,
+        "total": 59.33,
+        "logprob": -4.8927,
+        "loglift": 1.396
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 83.17,
+        "total": 189.71,
+        "logprob": -4.1547,
+        "loglift": 0.9717
+      },
+      {
+        "term": "grundlegend",
+        "freq": 62.84,
+        "total": 128.18,
+        "logprob": -4.435,
+        "loglift": 1.0835
+      },
+      {
+        "term": "entwicklung",
+        "freq": 145.11,
+        "total": 836.48,
+        "logprob": -3.5981,
+        "loglift": 0.0446
+      },
+      {
+        "term": "evolution",
+        "freq": 172.93,
+        "total": 1176.35,
+        "logprob": -3.4227,
+        "loglift": -0.121
+      },
+      {
+        "term": "basiskonzept",
+        "freq": 81.66,
+        "total": 293.55,
+        "logprob": -4.173,
+        "loglift": 0.5169
+      },
+      {
+        "term": "kommunikation",
+        "freq": 56.29,
+        "total": 140.39,
+        "logprob": -4.545,
+        "loglift": 0.8825
+      },
+      {
+        "term": "entstehung",
+        "freq": 71.81,
+        "total": 259.25,
+        "logprob": -4.3016,
+        "loglift": 0.5125
+      },
+      {
+        "term": "information",
+        "freq": 50.83,
+        "total": 119.43,
+        "logprob": -4.6471,
+        "loglift": 0.9421
+      },
+      {
+        "term": "biologie",
+        "freq": 50.81,
+        "total": 123.3,
+        "logprob": -4.6476,
+        "loglift": 0.9098
+      },
+      {
+        "term": "leben",
+        "freq": 52.81,
+        "total": 184.24,
+        "logprob": -4.6089,
+        "loglift": 0.5468
+      },
+      {
+        "term": "erklären",
+        "freq": 58.22,
+        "total": 283.58,
+        "logprob": -4.5114,
+        "loglift": 0.213
+      },
+      {
+        "term": "mensch",
+        "freq": 69.51,
+        "total": 653.28,
+        "logprob": -4.3341,
+        "loglift": -0.4442
+      },
+      {
+        "term": "ebene",
+        "freq": 39.43,
+        "total": 73.62,
+        "logprob": -4.9011,
+        "loglift": 1.1719
+      },
+      {
+        "term": "grundlage",
+        "freq": 39.79,
+        "total": 131.55,
+        "logprob": -4.892,
+        "loglift": 0.6006
+      }
+    ],
+    "5": [
+      {
+        "term": "stammbäum",
+        "freq": 40.74,
+        "total": 41.57,
+        "logprob": -4.8758,
+        "loglift": 1.7687
+      },
+      {
+        "term": "igv",
+        "freq": 24.88,
+        "total": 25.77,
+        "logprob": -5.3689,
+        "loglift": 1.7538
+      },
+      {
+        "term": "vereinfacht",
+        "freq": 23.18,
+        "total": 24.04,
+        "logprob": -5.4397,
+        "loglift": 1.7526
+      },
+      {
+        "term": "blütenpflanze",
+        "freq": 22.12,
+        "total": 22.95,
+        "logprob": -5.4865,
+        "loglift": 1.7521
+      },
+      {
+        "term": "rekonstruktion",
+        "freq": 20.49,
+        "total": 21.34,
+        "logprob": -5.5631,
+        "loglift": 1.7483
+      },
+      {
+        "term": "morphologisch",
+        "freq": 28.89,
+        "total": 30.12,
+        "logprob": -5.2194,
+        "loglift": 1.7475
+      },
+      {
+        "term": "wal",
+        "freq": 18.9,
+        "total": 19.74,
+        "logprob": -5.6436,
+        "loglift": 1.7459
+      },
+      {
+        "term": "vermehrung",
+        "freq": 20.43,
+        "total": 21.35,
+        "logprob": -5.5658,
+        "loglift": 1.7452
+      },
+      {
+        "term": "kladogramm",
+        "freq": 18.32,
+        "total": 19.15,
+        "logprob": -5.6752,
+        "loglift": 1.7444
+      },
+      {
+        "term": "säugetier",
+        "freq": 15.8,
+        "total": 16.64,
+        "logprob": -5.8231,
+        "loglift": 1.7372
+      },
+      {
+        "term": "landwirbeltier",
+        "freq": 15.4,
+        "total": 16.23,
+        "logprob": -5.8489,
+        "loglift": 1.7364
+      },
+      {
+        "term": "vogel",
+        "freq": 14.52,
+        "total": 15.35,
+        "logprob": -5.9072,
+        "loglift": 1.7333
+      },
+      {
+        "term": "rezent",
+        "freq": 14.06,
+        "total": 14.89,
+        "logprob": -5.94,
+        "loglift": 1.7315
+      },
+      {
+        "term": "text",
+        "freq": 12.98,
+        "total": 13.81,
+        "logprob": -6.0197,
+        "loglift": 1.7269
+      },
+      {
+        "term": "veranschaulichen",
+        "freq": 12.98,
+        "total": 13.81,
+        "logprob": -6.0197,
+        "loglift": 1.7267
+      },
+      {
+        "term": "fachsprachlich",
+        "freq": 12.01,
+        "total": 12.84,
+        "logprob": -6.0971,
+        "loglift": 1.7221
+      },
+      {
+        "term": "bedeutungsgehalt",
+        "freq": 12.01,
+        "total": 12.84,
+        "logprob": -6.0971,
+        "loglift": 1.722
+      },
+      {
+        "term": "aussagekraft",
+        "freq": 11.56,
+        "total": 12.41,
+        "logprob": -6.1358,
+        "loglift": 1.718
+      },
+      {
+        "term": "strukturieren",
+        "freq": 11.12,
+        "total": 11.95,
+        "logprob": -6.1742,
+        "loglift": 1.7167
+      },
+      {
+        "term": "rudiment",
+        "freq": 10.99,
+        "total": 11.82,
+        "logprob": -6.1862,
+        "loglift": 1.7161
+      },
+      {
+        "term": "beispielhaft",
+        "freq": 10.58,
+        "total": 11.42,
+        "logprob": -6.2237,
+        "loglift": 1.713
+      },
+      {
+        "term": "befund",
+        "freq": 10.53,
+        "total": 11.37,
+        "logprob": -6.229,
+        "loglift": 1.7118
+      },
+      {
+        "term": "rekonstruieren",
+        "freq": 10.44,
+        "total": 11.3,
+        "logprob": -6.237,
+        "loglift": 1.7097
+      },
+      {
+        "term": "alltagssprachlich",
+        "freq": 10.08,
+        "total": 10.91,
+        "logprob": -6.2727,
+        "loglift": 1.7097
+      },
+      {
+        "term": "anatomisch",
+        "freq": 13.61,
+        "total": 14.74,
+        "logprob": -5.9726,
+        "loglift": 1.7089
+      },
+      {
+        "term": "ordn",
+        "freq": 9.81,
+        "total": 10.65,
+        "logprob": -6.2993,
+        "loglift": 1.7075
+      },
+      {
+        "term": "basis",
+        "freq": 9.14,
+        "total": 9.98,
+        "logprob": -6.3702,
+        "loglift": 1.7015
+      },
+      {
+        "term": "ableit",
+        "freq": 8.87,
+        "total": 9.71,
+        "logprob": -6.4,
+        "loglift": 1.6992
+      },
+      {
+        "term": "vorgegeben",
+        "freq": 8.83,
+        "total": 9.67,
+        "logprob": -6.4046,
+        "loglift": 1.6983
+      },
+      {
+        "term": "parasitismus",
+        "freq": 8.15,
+        "total": 8.99,
+        "logprob": -6.4848,
+        "loglift": 1.6913
+      },
+      {
+        "term": "erstellen",
+        "freq": 18.08,
+        "total": 20.66,
+        "logprob": -5.6883,
+        "loglift": 1.6556
+      },
+      {
+        "term": "beschreiben",
+        "freq": 251.08,
+        "total": 346.9,
+        "logprob": -3.0573,
+        "loglift": 1.4656
+      },
+      {
+        "term": "stammesgeschichtlich",
+        "freq": 165.25,
+        "total": 228.13,
+        "logprob": -3.4756,
+        "loglift": 1.4664
+      },
+      {
+        "term": "evolutionsprozeß",
+        "freq": 21.98,
+        "total": 26.65,
+        "logprob": -5.4927,
+        "loglift": 1.5964
+      },
+      {
+        "term": "unterschied",
+        "freq": 29.06,
+        "total": 36.52,
+        "logprob": -5.2138,
+        "loglift": 1.5602
+      },
+      {
+        "term": "beispiel",
+        "freq": 60.23,
+        "total": 88.13,
+        "logprob": -4.4849,
+        "loglift": 1.4083
+      },
+      {
+        "term": "vergleich",
+        "freq": 58.44,
+        "total": 85.1,
+        "logprob": -4.515,
+        "loglift": 1.4131
+      },
+      {
+        "term": "verwandtschaft",
+        "freq": 136.67,
+        "total": 244.65,
+        "logprob": -3.6655,
+        "loglift": 1.2066
+      },
+      {
+        "term": "organismus",
+        "freq": 134.76,
+        "total": 247.49,
+        "logprob": -3.6795,
+        "loglift": 1.181
+      },
+      {
+        "term": "fossil",
+        "freq": 67.05,
+        "total": 108.05,
+        "logprob": -4.3777,
+        "loglift": 1.3117
+      },
+      {
+        "term": "kompetenz",
+        "freq": 57.78,
+        "total": 92.24,
+        "logprob": -4.5264,
+        "loglift": 1.3212
+      },
+      {
+        "term": "erklären",
+        "freq": 135.9,
+        "total": 283.58,
+        "logprob": -3.6712,
+        "loglift": 1.0533
+      },
+      {
+        "term": "angepasstheit",
+        "freq": 104.65,
+        "total": 203.31,
+        "logprob": -3.9324,
+        "loglift": 1.1248
+      },
+      {
+        "term": "analysieren",
+        "freq": 27.87,
+        "total": 37.96,
+        "logprob": -5.2557,
+        "loglift": 1.4797
+      },
+      {
+        "term": "beleg",
+        "freq": 77.68,
+        "total": 151.02,
+        "logprob": -4.2304,
+        "loglift": 1.1241
+      },
+      {
+        "term": "erläutern",
+        "freq": 80.14,
+        "total": 176.39,
+        "logprob": -4.1992,
+        "loglift": 1.0
+      },
+      {
+        "term": "stammbaum",
+        "freq": 73.0,
+        "total": 159.02,
+        "logprob": -4.2926,
+        "loglift": 1.0103
+      },
+      {
+        "term": "modell",
+        "freq": 30.5,
+        "total": 46.04,
+        "logprob": -5.1652,
+        "loglift": 1.3771
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 37.01,
+        "total": 63.51,
+        "logprob": -4.9717,
+        "loglift": 1.2489
+      },
+      {
+        "term": "prozeß",
+        "freq": 43.98,
+        "total": 90.78,
+        "logprob": -4.7993,
+        "loglift": 1.0642
+      },
+      {
+        "term": "entwicklung",
+        "freq": 142.44,
+        "total": 836.48,
+        "logprob": -3.6241,
+        "loglift": 0.0186
+      },
+      {
+        "term": "verschieden",
+        "freq": 47.46,
+        "total": 132.7,
+        "logprob": -4.7231,
+        "loglift": 0.7608
+      },
+      {
+        "term": "mensch",
+        "freq": 99.21,
+        "total": 653.28,
+        "logprob": -3.9858,
+        "loglift": -0.0959
+      },
+      {
+        "term": "merkmal",
+        "freq": 44.02,
+        "total": 130.16,
+        "logprob": -4.7983,
+        "loglift": 0.7048
+      },
+      {
+        "term": "darstellen",
+        "freq": 36.37,
+        "total": 84.52,
+        "logprob": -4.9892,
+        "loglift": 0.9457
+      },
+      {
+        "term": "entstehung",
+        "freq": 58.03,
+        "total": 259.25,
+        "logprob": -4.522,
+        "loglift": 0.2921
+      },
+      {
+        "term": "evolution",
+        "freq": 102.82,
+        "total": 1176.35,
+        "logprob": -3.9501,
+        "loglift": -0.6484
+      },
+      {
+        "term": "erkenntnisgewinnung",
+        "freq": 31.64,
+        "total": 64.12,
+        "logprob": -5.1286,
+        "loglift": 1.0826
+      },
+      {
+        "term": "ergebnis",
+        "freq": 36.29,
+        "total": 107.06,
+        "logprob": -4.9914,
+        "loglift": 0.7072
+      },
+      {
+        "term": "evolutiv",
+        "freq": 55.14,
+        "total": 456.03,
+        "logprob": -4.5733,
+        "loglift": -0.3239
+      },
+      {
+        "term": "bedeutung",
+        "freq": 39.87,
+        "total": 156.95,
+        "logprob": -4.8974,
+        "loglift": 0.4186
+      },
+      {
+        "term": "art",
+        "freq": 37.78,
+        "total": 174.54,
+        "logprob": -4.9513,
+        "loglift": 0.2585
+      },
+      {
+        "term": "homologie",
+        "freq": 32.88,
+        "total": 86.99,
+        "logprob": -5.0902,
+        "loglift": 0.816
+      },
+      {
+        "term": "evolutionstheorie",
+        "freq": 33.94,
+        "total": 238.66,
+        "logprob": -5.0584,
+        "loglift": -0.1615
+      },
+      {
+        "term": "inhalt",
+        "freq": 32.04,
+        "total": 157.67,
+        "logprob": -5.1159,
+        "loglift": 0.1955
+      }
+    ],
+    "6": [
+      {
+        "term": "wahlbereich",
+        "freq": 25.63,
+        "total": 26.47,
+        "logprob": -4.6608,
+        "loglift": 2.4352
+      },
+      {
+        "term": "abbildung",
+        "freq": 19.11,
+        "total": 19.94,
+        "logprob": -4.9548,
+        "loglift": 2.4246
+      },
+      {
+        "term": "frage",
+        "freq": 15.45,
+        "total": 16.34,
+        "logprob": -5.1674,
+        "loglift": 2.411
+      },
+      {
+        "term": "digital",
+        "freq": 14.18,
+        "total": 15.02,
+        "logprob": -5.2528,
+        "loglift": 2.4097
+      },
+      {
+        "term": "experimentell",
+        "freq": 11.76,
+        "total": 12.6,
+        "logprob": -5.4405,
+        "loglift": 2.398
+      },
+      {
+        "term": "argumentieren",
+        "freq": 10.88,
+        "total": 11.72,
+        "logprob": -5.5176,
+        "loglift": 2.3932
+      },
+      {
+        "term": "formulieren",
+        "freq": 10.51,
+        "total": 11.34,
+        "logprob": -5.5524,
+        "loglift": 2.391
+      },
+      {
+        "term": "landwirtschaft",
+        "freq": 10.37,
+        "total": 11.21,
+        "logprob": -5.5659,
+        "loglift": 2.3892
+      },
+      {
+        "term": "kompetenzraster",
+        "freq": 19.98,
+        "total": 21.62,
+        "logprob": -4.91,
+        "loglift": 2.3881
+      },
+      {
+        "term": "untersuchung",
+        "freq": 14.61,
+        "total": 15.85,
+        "logprob": -5.223,
+        "loglift": 2.3857
+      },
+      {
+        "term": "weltverständniss",
+        "freq": 9.26,
+        "total": 10.1,
+        "logprob": -5.6795,
+        "loglift": 2.3802
+      },
+      {
+        "term": "fundiert",
+        "freq": 9.24,
+        "total": 10.1,
+        "logprob": -5.6807,
+        "loglift": 2.3791
+      },
+      {
+        "term": "tendenz",
+        "freq": 9.24,
+        "total": 10.1,
+        "logprob": -5.6813,
+        "loglift": 2.3785
+      },
+      {
+        "term": "problem",
+        "freq": 8.91,
+        "total": 9.74,
+        "logprob": -5.7177,
+        "loglift": 2.3779
+      },
+      {
+        "term": "manipulationsversuche",
+        "freq": 8.59,
+        "total": 9.42,
+        "logprob": -5.7536,
+        "loglift": 2.3749
+      },
+      {
+        "term": "zukünftig",
+        "freq": 8.34,
+        "total": 9.17,
+        "logprob": -5.784,
+        "loglift": 2.3721
+      },
+      {
+        "term": "experiment",
+        "freq": 17.1,
+        "total": 18.92,
+        "logprob": -5.0654,
+        "loglift": 2.3662
+      },
+      {
+        "term": "virus",
+        "freq": 7.56,
+        "total": 8.39,
+        "logprob": -5.8817,
+        "loglift": 2.3628
+      },
+      {
+        "term": "kompetent",
+        "freq": 7.22,
+        "total": 8.07,
+        "logprob": -5.9279,
+        "loglift": 2.356
+      },
+      {
+        "term": "hypothesen",
+        "freq": 6.41,
+        "total": 7.24,
+        "logprob": -6.0469,
+        "loglift": 2.3448
+      },
+      {
+        "term": "leistungsbewertung",
+        "freq": 6.27,
+        "total": 7.1,
+        "logprob": -6.0687,
+        "loglift": 2.3427
+      },
+      {
+        "term": "evolutionsgedanken",
+        "freq": 11.7,
+        "total": 13.27,
+        "logprob": -5.4452,
+        "loglift": 2.3412
+      },
+      {
+        "term": "vermitteln",
+        "freq": 6.88,
+        "total": 7.82,
+        "logprob": -5.9757,
+        "loglift": 2.3394
+      },
+      {
+        "term": "arbeits",
+        "freq": 6.08,
+        "total": 6.91,
+        "logprob": -6.0998,
+        "loglift": 2.3389
+      },
+      {
+        "term": "krankheit",
+        "freq": 13.57,
+        "total": 15.44,
+        "logprob": -5.2972,
+        "loglift": 2.338
+      },
+      {
+        "term": "internet",
+        "freq": 6.0,
+        "total": 6.83,
+        "logprob": -6.1136,
+        "loglift": 2.3373
+      },
+      {
+        "term": "gesetzmäßigkeit",
+        "freq": 6.13,
+        "total": 6.99,
+        "logprob": -6.0923,
+        "loglift": 2.3347
+      },
+      {
+        "term": "gesamt",
+        "freq": 5.85,
+        "total": 6.69,
+        "logprob": -6.1375,
+        "loglift": 2.3341
+      },
+      {
+        "term": "denkweise",
+        "freq": 5.78,
+        "total": 6.62,
+        "logprob": -6.1496,
+        "loglift": 2.3329
+      },
+      {
+        "term": "schädel",
+        "freq": 5.76,
+        "total": 6.61,
+        "logprob": -6.1534,
+        "loglift": 2.3304
+      },
+      {
+        "term": "didaktisch",
+        "freq": 13.29,
+        "total": 15.39,
+        "logprob": -5.3178,
+        "loglift": 2.3203
+      },
+      {
+        "term": "medizin",
+        "freq": 15.1,
+        "total": 18.11,
+        "logprob": -5.1898,
+        "loglift": 2.2859
+      },
+      {
+        "term": "strukturierungsvorschlag",
+        "freq": 22.82,
+        "total": 28.25,
+        "logprob": -4.7769,
+        "loglift": 2.2541
+      },
+      {
+        "term": "giraff",
+        "freq": 9.59,
+        "total": 11.31,
+        "logprob": -5.6441,
+        "loglift": 2.3025
+      },
+      {
+        "term": "ziel",
+        "freq": 7.43,
+        "total": 8.62,
+        "logprob": -5.8986,
+        "loglift": 2.3195
+      },
+      {
+        "term": "kompetenzbereich",
+        "freq": 15.75,
+        "total": 19.65,
+        "logprob": -5.1478,
+        "loglift": 2.2459
+      },
+      {
+        "term": "computergestützt",
+        "freq": 11.58,
+        "total": 14.1,
+        "logprob": -5.4558,
+        "loglift": 2.27
+      },
+      {
+        "term": "gehirn",
+        "freq": 14.6,
+        "total": 18.45,
+        "logprob": -5.2235,
+        "loglift": 2.2333
+      },
+      {
+        "term": "präbiologisch",
+        "freq": 9.32,
+        "total": 11.29,
+        "logprob": -5.6731,
+        "loglift": 2.275
+      },
+      {
+        "term": "denk",
+        "freq": 12.8,
+        "total": 16.63,
+        "logprob": -5.3551,
+        "loglift": 2.2059
+      },
+      {
+        "term": "evolutionsbiologie",
+        "freq": 16.55,
+        "total": 23.48,
+        "logprob": -5.0982,
+        "loglift": 2.1176
+      },
+      {
+        "term": "reflektieren",
+        "freq": 22.5,
+        "total": 35.02,
+        "logprob": -4.7911,
+        "loglift": 2.025
+      },
+      {
+        "term": "lernen",
+        "freq": 20.12,
+        "total": 30.56,
+        "logprob": -4.9032,
+        "loglift": 2.0489
+      },
+      {
+        "term": "medium",
+        "freq": 17.23,
+        "total": 25.36,
+        "logprob": -5.0583,
+        "loglift": 2.0805
+      },
+      {
+        "term": "standard",
+        "freq": 13.91,
+        "total": 19.12,
+        "logprob": -5.2723,
+        "loglift": 2.1488
+      },
+      {
+        "term": "thema",
+        "freq": 21.16,
+        "total": 35.64,
+        "logprob": -4.8529,
+        "loglift": 1.9455
+      },
+      {
+        "term": "möglichkeit",
+        "freq": 18.96,
+        "total": 30.62,
+        "logprob": -4.9623,
+        "loglift": 1.988
+      },
+      {
+        "term": "evolutionär",
+        "freq": 36.16,
+        "total": 85.17,
+        "logprob": -4.3169,
+        "loglift": 1.6104
+      },
+      {
+        "term": "anregung",
+        "freq": 27.32,
+        "total": 55.72,
+        "logprob": -4.5972,
+        "loglift": 1.7544
+      },
+      {
+        "term": "chemie",
+        "freq": 14.82,
+        "total": 21.19,
+        "logprob": -5.2086,
+        "loglift": 2.1096
+      },
+      {
+        "term": "biologisch",
+        "freq": 57.67,
+        "total": 211.18,
+        "logprob": -3.8499,
+        "loglift": 1.1693
+      },
+      {
+        "term": "evolution",
+        "freq": 122.4,
+        "total": 1176.35,
+        "logprob": -3.0974,
+        "loglift": 0.2043
+      },
+      {
+        "term": "technisch",
+        "freq": 15.24,
+        "total": 23.2,
+        "logprob": -5.1807,
+        "loglift": 2.047
+      },
+      {
+        "term": "phänomen",
+        "freq": 25.06,
+        "total": 80.33,
+        "logprob": -4.6834,
+        "loglift": 1.3024
+      },
+      {
+        "term": "lernende",
+        "freq": 19.82,
+        "total": 66.82,
+        "logprob": -4.9181,
+        "loglift": 1.2518
+      },
+      {
+        "term": "leben",
+        "freq": 26.16,
+        "total": 184.24,
+        "logprob": -4.6406,
+        "loglift": 0.5151
+      },
+      {
+        "term": "verfahren",
+        "freq": 20.41,
+        "total": 83.49,
+        "logprob": -4.8886,
+        "loglift": 1.0586
+      },
+      {
+        "term": "biologie",
+        "freq": 20.55,
+        "total": 123.3,
+        "logprob": -4.8818,
+        "loglift": 0.6755
+      },
+      {
+        "term": "angewandte",
+        "freq": 15.52,
+        "total": 33.59,
+        "logprob": -5.1626,
+        "loglift": 1.6951
+      },
+      {
+        "term": "entstehung",
+        "freq": 21.73,
+        "total": 259.25,
+        "logprob": -4.8259,
+        "loglift": -0.0118
+      },
+      {
+        "term": "entwicklung",
+        "freq": 24.52,
+        "total": 836.48,
+        "logprob": -4.7053,
+        "loglift": -1.0625
+      },
+      {
+        "term": "tier",
+        "freq": 15.9,
+        "total": 55.33,
+        "logprob": -5.1382,
+        "loglift": 1.2204
+      },
+      {
+        "term": "verhalten",
+        "freq": 16.53,
+        "total": 138.29,
+        "logprob": -5.0996,
+        "loglift": 0.343
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 16.06,
+        "total": 189.71,
+        "logprob": -5.1285,
+        "loglift": -0.0021
+      }
+    ],
+    "7": [
+      {
+        "term": "zeitraum",
+        "freq": 49.68,
+        "total": 50.53,
+        "logprob": -4.6591,
+        "loglift": 1.7904
+      },
+      {
+        "term": "umwelteinflüss",
+        "freq": 40.02,
+        "total": 40.86,
+        "logprob": -4.8753,
+        "loglift": 1.7864
+      },
+      {
+        "term": "lauf",
+        "freq": 34.1,
+        "total": 34.95,
+        "logprob": -5.0354,
+        "loglift": 1.7827
+      },
+      {
+        "term": "unumkehrbar",
+        "freq": 31.3,
+        "total": 32.15,
+        "logprob": -5.1212,
+        "loglift": 1.7802
+      },
+      {
+        "term": "lebendig",
+        "freq": 27.77,
+        "total": 28.62,
+        "logprob": -5.2408,
+        "loglift": 1.7772
+      },
+      {
+        "term": "innerer",
+        "freq": 25.45,
+        "total": 26.3,
+        "logprob": -5.3278,
+        "loglift": 1.7745
+      },
+      {
+        "term": "fell",
+        "freq": 23.65,
+        "total": 24.49,
+        "logprob": -5.4014,
+        "loglift": 1.7721
+      },
+      {
+        "term": "angepasst",
+        "freq": 23.06,
+        "total": 23.92,
+        "logprob": -5.4265,
+        "loglift": 1.7709
+      },
+      {
+        "term": "homöostase",
+        "freq": 21.7,
+        "total": 22.55,
+        "logprob": -5.4872,
+        "loglift": 1.7689
+      },
+      {
+        "term": "lebende",
+        "freq": 21.03,
+        "total": 21.87,
+        "logprob": -5.5188,
+        "loglift": 1.7678
+      },
+      {
+        "term": "individuum",
+        "freq": 22.31,
+        "total": 23.26,
+        "logprob": -5.4597,
+        "loglift": 1.7655
+      },
+      {
+        "term": "erhöhen",
+        "freq": 17.85,
+        "total": 18.69,
+        "logprob": -5.6827,
+        "loglift": 1.761
+      },
+      {
+        "term": "funktionsbezogen",
+        "freq": 17.17,
+        "total": 18.01,
+        "logprob": -5.7216,
+        "loglift": 1.7592
+      },
+      {
+        "term": "aufrechterhalten",
+        "freq": 17.17,
+        "total": 18.01,
+        "logprob": -5.7216,
+        "loglift": 1.7592
+      },
+      {
+        "term": "stark",
+        "freq": 14.74,
+        "total": 15.59,
+        "logprob": -5.8738,
+        "loglift": 1.7513
+      },
+      {
+        "term": "verändern",
+        "freq": 108.56,
+        "total": 115.3,
+        "logprob": -3.8774,
+        "loglift": 1.747
+      },
+      {
+        "term": "bär",
+        "freq": 13.46,
+        "total": 14.31,
+        "logprob": -5.9649,
+        "loglift": 1.7464
+      },
+      {
+        "term": "verständnis",
+        "freq": 37.16,
+        "total": 39.56,
+        "logprob": -4.9494,
+        "loglift": 1.7448
+      },
+      {
+        "term": "evolutive",
+        "freq": 12.88,
+        "total": 13.72,
+        "logprob": -6.0092,
+        "loglift": 1.7436
+      },
+      {
+        "term": "kennzeichen",
+        "freq": 12.87,
+        "total": 13.72,
+        "logprob": -6.0096,
+        "loglift": 1.7436
+      },
+      {
+        "term": "somit",
+        "freq": 12.48,
+        "total": 13.33,
+        "logprob": -6.0402,
+        "loglift": 1.7416
+      },
+      {
+        "term": "sexuelle",
+        "freq": 12.36,
+        "total": 13.2,
+        "logprob": -6.0504,
+        "loglift": 1.7411
+      },
+      {
+        "term": "allel",
+        "freq": 12.04,
+        "total": 12.89,
+        "logprob": -6.0763,
+        "loglift": 1.7391
+      },
+      {
+        "term": "unterrichtsthema",
+        "freq": 12.21,
+        "total": 13.16,
+        "logprob": -6.0622,
+        "loglift": 1.7328
+      },
+      {
+        "term": "kurzfristig",
+        "freq": 10.41,
+        "total": 11.25,
+        "logprob": -6.222,
+        "loglift": 1.7292
+      },
+      {
+        "term": "deutlich",
+        "freq": 10.39,
+        "total": 11.23,
+        "logprob": -6.2241,
+        "loglift": 1.7289
+      },
+      {
+        "term": "durchgängig",
+        "freq": 10.03,
+        "total": 10.88,
+        "logprob": -6.2592,
+        "loglift": 1.7262
+      },
+      {
+        "term": "fortwährend",
+        "freq": 9.87,
+        "total": 10.72,
+        "logprob": -6.2751,
+        "loglift": 1.725
+      },
+      {
+        "term": "erklärungsprinzip",
+        "freq": 9.56,
+        "total": 10.41,
+        "logprob": -6.3068,
+        "loglift": 1.7225
+      },
+      {
+        "term": "befruchtung",
+        "freq": 8.8,
+        "total": 9.65,
+        "logprob": -6.3904,
+        "loglift": 1.7144
+      },
+      {
+        "term": "artwandel",
+        "freq": 27.67,
+        "total": 30.47,
+        "logprob": -5.2442,
+        "loglift": 1.7108
+      },
+      {
+        "term": "führen",
+        "freq": 60.53,
+        "total": 68.43,
+        "logprob": -4.4615,
+        "loglift": 1.6846
+      },
+      {
+        "term": "weitergabe",
+        "freq": 49.14,
+        "total": 59.63,
+        "logprob": -4.6699,
+        "loglift": 1.6139
+      },
+      {
+        "term": "fortpflanzung",
+        "freq": 92.66,
+        "total": 118.37,
+        "logprob": -4.0357,
+        "loglift": 1.5624
+      },
+      {
+        "term": "sachverhalt",
+        "freq": 33.13,
+        "total": 39.2,
+        "logprob": -5.0644,
+        "loglift": 1.6389
+      },
+      {
+        "term": "wichtig",
+        "freq": 23.96,
+        "total": 27.78,
+        "logprob": -5.3884,
+        "loglift": 1.6591
+      },
+      {
+        "term": "genetisch",
+        "freq": 150.0,
+        "total": 219.51,
+        "logprob": -3.5541,
+        "loglift": 1.4265
+      },
+      {
+        "term": "system",
+        "freq": 121.62,
+        "total": 177.51,
+        "logprob": -3.7637,
+        "loglift": 1.4291
+      },
+      {
+        "term": "lebend",
+        "freq": 48.03,
+        "total": 62.26,
+        "logprob": -4.6929,
+        "loglift": 1.5477
+      },
+      {
+        "term": "lebewesen",
+        "freq": 153.0,
+        "total": 238.45,
+        "logprob": -3.5342,
+        "loglift": 1.3635
+      },
+      {
+        "term": "individuell",
+        "freq": 110.54,
+        "total": 166.17,
+        "logprob": -3.8593,
+        "loglift": 1.3996
+      },
+      {
+        "term": "innerhalb",
+        "freq": 36.52,
+        "total": 46.18,
+        "logprob": -4.9668,
+        "loglift": 1.5725
+      },
+      {
+        "term": "zustand",
+        "freq": 21.35,
+        "total": 24.72,
+        "logprob": -5.5038,
+        "loglift": 1.6604
+      },
+      {
+        "term": "entwicklung",
+        "freq": 359.46,
+        "total": 836.48,
+        "logprob": -2.6801,
+        "loglift": 0.9626
+      },
+      {
+        "term": "material",
+        "freq": 25.11,
+        "total": 30.55,
+        "logprob": -5.3416,
+        "loglift": 1.6111
+      },
+      {
+        "term": "prozess",
+        "freq": 47.63,
+        "total": 72.42,
+        "logprob": -4.7013,
+        "loglift": 1.3881
+      },
+      {
+        "term": "individualentwicklung",
+        "freq": 40.67,
+        "total": 60.66,
+        "logprob": -4.8593,
+        "loglift": 1.4074
+      },
+      {
+        "term": "basiskonzept",
+        "freq": 123.97,
+        "total": 293.55,
+        "logprob": -3.7447,
+        "loglift": 0.9452
+      },
+      {
+        "term": "evolutiv",
+        "freq": 166.48,
+        "total": 456.03,
+        "logprob": -3.4498,
+        "loglift": 0.7996
+      },
+      {
+        "term": "variabilität",
+        "freq": 64.53,
+        "total": 134.47,
+        "logprob": -4.3975,
+        "loglift": 1.0731
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 68.59,
+        "total": 189.71,
+        "logprob": -4.3365,
+        "loglift": 0.7899
+      },
+      {
+        "term": "selektion",
+        "freq": 66.23,
+        "total": 191.9,
+        "logprob": -4.3715,
+        "loglift": 0.7434
+      },
+      {
+        "term": "grundlage",
+        "freq": 53.29,
+        "total": 131.55,
+        "logprob": -4.589,
+        "loglift": 0.9036
+      },
+      {
+        "term": "erklärung",
+        "freq": 38.29,
+        "total": 68.11,
+        "logprob": -4.9194,
+        "loglift": 1.2315
+      },
+      {
+        "term": "verschieden",
+        "freq": 51.77,
+        "total": 132.7,
+        "logprob": -4.6178,
+        "loglift": 0.8661
+      },
+      {
+        "term": "ökosystem",
+        "freq": 39.81,
+        "total": 98.0,
+        "logprob": -4.8806,
+        "loglift": 0.9063
+      },
+      {
+        "term": "prinzip",
+        "freq": 39.92,
+        "total": 99.85,
+        "logprob": -4.8777,
+        "loglift": 0.8905
+      },
+      {
+        "term": "vielfalt",
+        "freq": 41.15,
+        "total": 115.47,
+        "logprob": -4.8474,
+        "loglift": 0.7756
+      },
+      {
+        "term": "veränderung",
+        "freq": 46.53,
+        "total": 182.72,
+        "logprob": -4.7247,
+        "loglift": 0.4393
+      },
+      {
+        "term": "evolution",
+        "freq": 75.2,
+        "total": 1176.35,
+        "logprob": -4.2445,
+        "loglift": -0.9428
+      },
+      {
+        "term": "beschreiben",
+        "freq": 46.29,
+        "total": 346.9,
+        "logprob": -4.7297,
+        "loglift": -0.2068
+      },
+      {
+        "term": "information",
+        "freq": 38.87,
+        "total": 119.43,
+        "logprob": -4.9046,
+        "loglift": 0.6846
+      }
+    ]
+  }
+}

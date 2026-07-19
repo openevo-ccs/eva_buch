@@ -11,7 +11,7 @@
       <header class="site-header">
         <div class="brand">
           <p class="eyebrow">OpenEvo · LDA</p>
-          <h1>Topics und Termfrequenzen</h1>
+          <h1>Themenmodellierung mit LDA</h1>
         </div>
         <nav class="nav-links" aria-label="Hauptnavigation">
           <a href="./index.html">Home</a>
@@ -28,19 +28,76 @@
       <section class="section-card card">
         <div class="section-head">
           <div>
-            <p class="eyebrow">Analyse</p>
-            <h3>Term-Häufigkeiten, Topic-Tabelle und Co-Occurrence</h3>
+            <p class="eyebrow">Auswahl</p>
+            <h3>Konzept und Modellgröße</h3>
           </div>
+        </div>
+        <div class="controls">
           <label><span>Konzept</span><select id="lda-concept"></select></label>
+          <label><span>Anzahl Themen (k)</span>
+            <select id="lda-k">
+              <option value="5">5</option>
+              <option value="7">7</option>
+              <option value="10" selected>10</option>
+            </select>
+          </label>
+        </div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Intertopic Distance Map</p>
+            <h3>Themenraum (via t-SNE) und Top-30 relevanteste Begriffe</h3>
+          </div>
+          <label style="min-width:260px"><span>Relevanz λ = <span id="lda-lambda-value">0.60</span></span>
+            <input id="lda-lambda" type="range" min="0" max="1" step="0.01" value="0.6" />
+          </label>
         </div>
         <div class="visual-grid">
-          <div id="lda-chart" class="panel chart-shell"></div>
-          <div id="lda-table" class="panel"></div>
+          <div id="lda-map" class="panel viz-shell"></div>
+          <div class="panel">
+            <h4 id="lda-selected-topic-title" style="margin:0 0 10px;">Thema auswählen</h4>
+            <div id="lda-term-chart" class="chart-shell"></div>
+          </div>
         </div>
-        <div id="lda-cooccurrence" class="section-card"></div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Tabelle</p>
+            <h3>Termhäufigkeiten je Thema</h3>
+          </div>
+          <button id="download-term-table" class="secondary-button" type="button">CSV herunterladen</button>
+        </div>
+        <div id="lda-term-table"></div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Verteilung</p>
+            <h3>Themenverteilung nach Fach</h3>
+          </div>
+          <button id="download-topic-subject-table" class="secondary-button" type="button">CSV herunterladen</button>
+        </div>
+        <div id="lda-topic-subject"></div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Übersicht</p>
+            <h3>Konzept-Kookkurrenz</h3>
+          </div>
+        </div>
+        <p style="color:var(--muted);margin-top:0;">Wie oft taucht der Name eines Konzepts unter den relevantesten Begriffen der Themen eines anderen Konzepts auf (k=10).</p>
+        <div id="lda-cooccurrence"></div>
       </section>
     </div>
 
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js" charset="utf-8"></script>
     <script src="./app.js"></script>
   </body>
 </html>

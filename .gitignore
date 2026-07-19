@@ -19,10 +19,11 @@ build/
 # Environment variables (secrets)
 .env
 
-# Data files 
-data/
-!docs/data/
-bertopic/cache/
+# Data files — only the top-level raw corpus, not every nested "data" folder
+# (a bare "data/" matches at any depth and was silently swallowing
+# bertopic/src/data/ and app/data/, which need to stay tracked)
+/data/
+bertopic/src/cache/
 bertopic/notebooks/
 # keyword_search/
 # lda_topic_modelling/
