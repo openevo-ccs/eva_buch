@@ -15,6 +15,9 @@ Copies:
   keyword_search/out/{results.csv, doc_word_counts.csv,
   state_subject_count_matrix.csv}
     -> docs/data/
+  data/LP_DE_2026_1_txtfiles/
+    -> docs/data/txtfiles/ (raw corpus mirror, so the Lehrplandokumente table
+       can link to full document text on GitHub Pages)
 
 LDA/BERTopic scope is the 22 canonical concepts from
 bertopic/src/data/manifest.json's concept_order (the same list
@@ -47,6 +50,7 @@ BERTOPIC_DATA = ROOT / "bertopic" / "src" / "data"
 LDA_OUT = ROOT / "lda_topic_modelling" / "out"
 KEYWORD_OUT = ROOT / "keyword_search" / "out"
 DOCS_DATA = ROOT / "docs" / "data"
+TXTFILES_SRC = ROOT / "data" / "LP_DE_2026_1_txtfiles"
 
 N_TOPICS_LIST = [5, 7, 10]
 
@@ -153,10 +157,27 @@ def build_keyword_search_data() -> None:
     print(f"Keyword search: copied {copied}/{len(files)} files -> {DOCS_DATA}")
 
 
+def build_txtfiles_mirror() -> None:
+    """Mirror the raw .txt corpus into docs/data/txtfiles/ so the Lehrplandokumente
+    table (per app_specs.md) can link straight to a document's full text on the
+    deployed GitHub Pages site -- data/LP_DE_2026_1_txtfiles/ itself lives outside
+    docs/ and is not served by Pages."""
+    target = DOCS_DATA / "txtfiles"
+    if not TXTFILES_SRC.exists():
+        print(f"  [WARN] {TXTFILES_SRC} not found -- skipping txtfiles mirror.")
+        return
+    if target.exists():
+        shutil.rmtree(target)
+    shutil.copytree(TXTFILES_SRC, target)
+    count = sum(1 for _ in target.rglob("*.txt"))
+    print(f"Txtfiles: mirrored {count} file(s) -> {target}")
+
+
 def main() -> None:
     concepts = build_bertopic_data()
     build_lda_data(concepts)
     build_keyword_search_data()
+    build_txtfiles_mirror()
     print("DONE.")
 
 

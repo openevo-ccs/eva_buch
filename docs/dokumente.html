@@ -26,23 +26,21 @@
       </header>
 
       <section class="section-card card">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Darstellung</p>
-            <h3>Dokumente nach Fach, Bundesland und Jahr</h3>
-          </div>
-        </div>
-        <div id="document-table"></div>
-      </section>
+        <p style="margin-top:0;color:var(--muted);">Hier finden Sie eine Übersicht über alle in der Lehrplananalyse enthaltenen Lehrplandokumente.</p>
 
-      <section class="section-card card">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Matrix</p>
-            <h3>Dokumentanzahl nach Bundesland und Fach</h3>
-          </div>
+        <div id="dokumente-tabs" class="tab-strip">
+          <button type="button" class="tab-btn is-active" data-tab="matrix">Matrix</button>
+          <button type="button" class="tab-btn" data-tab="tabelle">Tabelle</button>
         </div>
-        <div id="document-matrix"></div>
+
+        <div class="tab-panel is-active" data-strip="dokumente-tabs" data-tab="matrix">
+          <div id="document-matrix" class="data-dense"></div>
+        </div>
+
+        <div class="tab-panel" data-strip="dokumente-tabs" data-tab="tabelle">
+          <div class="controls" id="dokumente-table-controls"></div>
+          <div id="document-table"></div>
+        </div>
       </section>
     </div>
 

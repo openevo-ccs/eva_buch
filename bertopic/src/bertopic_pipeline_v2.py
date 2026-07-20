@@ -390,15 +390,21 @@ def canonicalize_state(raw: Any, unmapped_tracker: Counter) -> str:
     federal state names. Unknown values are Title-Cased and tallied in
     `unmapped_tracker` so they can be reviewed/added to STATE_ALIASES later.
     """
+    # KMK-issued national documents (Bildungsstandards, EPA, etc.) have no
+    # Bundesland by design -- keyword_search.py treats these the same way
+    # (state left unset for KMK-prefixed filenames). So a missing/blank state
+    # means "KMK", not "Unbekannt".
     if raw is None or (isinstance(raw, float) and np.isnan(raw)):
-        return UNKNOWN_LABEL
+        return "KMK"
     text = str(raw).strip()
     if not text:
-        return UNKNOWN_LABEL
+        return "KMK"
 
     key = _strip_diacritics(text).lower().strip()
     if key in ("<na>", "na", "n/a", "none", "nan"):
-        return UNKNOWN_LABEL
+        return "KMK"
+    if key == "kmk":
+        return "KMK"
     if key in STATE_ALIASES:
         return STATE_ALIASES[key]
     # Direct match against canonical list (case-insensitive, accent-insensitive)

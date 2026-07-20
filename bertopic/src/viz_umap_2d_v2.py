@@ -315,8 +315,22 @@ def load_or_build_color_maps(
         all_subjects.update(frag.get("subjects", {}).keys())
         all_states.update(frag.get("states", {}).keys())
 
+    # Fixed per app_specs.md ("dots colored by subject area - consistent colors
+    # across [the app]"): Bio=green, Sozialkunde=red, Geschichte=orange-yellow,
+    # Ethik/Philo=purple, Psychologie=blue. Anything unmapped (new subject added
+    # later) still falls back to the deterministic hash palette below.
+    fixed_subject_colors = {
+        "Bio": "#43c463",
+        "Sozialkunde": "#e05a5a",
+        "Geschichte": "#e0a23a",
+        "Ethik, Philo": "#9a4ad6",
+        "Psychologie": "#4a7fd6",
+    }
+    subject_palette = deterministic_palette(sorted(all_subjects), salt="subject")
+    subject_palette.update({s: c for s, c in fixed_subject_colors.items() if s in all_subjects})
+
     color_maps = {
-        "subject": deterministic_palette(sorted(all_subjects), salt="subject"),
+        "subject": subject_palette,
         "state": deterministic_palette(sorted(all_states), salt="state"),
         "outlier_color": NEUTRAL_GRAY,
     }

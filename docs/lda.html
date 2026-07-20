@@ -45,55 +45,86 @@
       </section>
 
       <section class="section-card card">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Intertopic Distance Map</p>
-            <h3>Themenraum (via t-SNE) und Top-30 relevanteste Begriffe</h3>
-          </div>
-          <label style="min-width:260px"><span>Relevanz λ = <span id="lda-lambda-value">0.60</span></span>
-            <input id="lda-lambda" type="range" min="0" max="1" step="0.01" value="0.6" />
-          </label>
+        <div id="lda-tabs" class="tab-strip">
+          <button type="button" class="tab-btn is-active" data-tab="visualisierung">Themen-Visualisierung</button>
+          <button type="button" class="tab-btn" data-tab="wortfrequenzen">Wortfrequenzen</button>
+          <button type="button" class="tab-btn" data-tab="wortwolken">Wortwolken</button>
+          <button type="button" class="tab-btn" data-tab="themen-faecher">Themen nach Fächern</button>
+          <button type="button" class="tab-btn" data-tab="kookkurrenz">Konzept-Kookkurrenz</button>
         </div>
-        <div class="visual-grid">
-          <div id="lda-map" class="panel viz-shell"></div>
-          <div class="panel">
-            <h4 id="lda-selected-topic-title" style="margin:0 0 10px;">Thema auswählen</h4>
-            <div id="lda-term-chart" class="chart-shell"></div>
-          </div>
-        </div>
-      </section>
 
-      <section class="section-card card">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Tabelle</p>
-            <h3>Termhäufigkeiten je Thema</h3>
+        <div class="tab-panel is-active" data-strip="lda-tabs" data-tab="visualisierung">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Intertopic Distance Map</p>
+              <h3>Themenraum (via MDS) und Top-30 relevanteste Begriffe</h3>
+            </div>
+            <label style="min-width:260px"><span>Relevanz λ = <span id="lda-lambda-value">0.60</span></span>
+              <input id="lda-lambda" type="range" min="0" max="1" step="0.01" value="0.6" />
+            </label>
           </div>
-          <button id="download-term-table" class="secondary-button" type="button">CSV herunterladen</button>
+          <div class="visual-grid">
+            <div id="lda-map" class="panel viz-shell"></div>
+            <div class="panel">
+              <h4 id="lda-selected-topic-title" style="margin:0 0 10px;">Thema auswählen</h4>
+              <div id="lda-term-chart" class="chart-shell"></div>
+            </div>
+          </div>
         </div>
-        <div id="lda-term-table"></div>
-      </section>
 
-      <section class="section-card card">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Verteilung</p>
-            <h3>Themenverteilung nach Fach</h3>
+        <div class="tab-panel" data-strip="lda-tabs" data-tab="wortfrequenzen">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Tabelle</p>
+              <h3>Termhäufigkeiten je Thema</h3>
+            </div>
+            <button id="download-term-table" class="secondary-button" type="button">CSV herunterladen</button>
           </div>
-          <button id="download-topic-subject-table" class="secondary-button" type="button">CSV herunterladen</button>
+          <div id="lda-term-table" class="data-dense"></div>
         </div>
-        <div id="lda-topic-subject"></div>
-      </section>
 
-      <section class="section-card card">
-        <div class="section-head">
-          <div>
-            <p class="eyebrow">Übersicht</p>
-            <h3>Konzept-Kookkurrenz</h3>
+        <div class="tab-panel" data-strip="lda-tabs" data-tab="wortwolken">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Wortwolken</p>
+              <h3>Themenbegriffe als Wortwolke</h3>
+            </div>
           </div>
+          <div class="controls">
+            <label><span>Modus</span>
+              <select id="wc-mode">
+                <option value="collection">Konzeptsammlung</option>
+                <option value="single">Einzelnes Konzept</option>
+              </select>
+            </label>
+            <label id="wc-single-picker-wrap" hidden><span>Konzept</span><select id="wc-single-concept"></select></label>
+          </div>
+          <div id="wc-collection-picker" class="concept-picker"></div>
+          <div id="wc-grid" class="wc-grid"></div>
         </div>
-        <p style="color:var(--muted);margin-top:0;">Wie oft taucht der Name eines Konzepts unter den relevantesten Begriffen der Themen eines anderen Konzepts auf (k=10).</p>
-        <div id="lda-cooccurrence"></div>
+
+        <div class="tab-panel" data-strip="lda-tabs" data-tab="themen-faecher">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Verteilung</p>
+              <h3>Themenverteilung nach Fach</h3>
+            </div>
+            <button id="download-topic-subject-table" class="secondary-button" type="button">CSV herunterladen</button>
+          </div>
+          <div id="lda-topic-subject" class="data-dense"></div>
+        </div>
+
+        <div class="tab-panel" data-strip="lda-tabs" data-tab="kookkurrenz">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Übersicht</p>
+              <h3>Konzept-Kookkurrenz</h3>
+            </div>
+          </div>
+          <p style="color:var(--muted);margin-top:0;">Wie oft taucht der Name eines Konzepts unter den relevantesten Begriffen der Themen eines anderen Konzepts auf (k=10).</p>
+          <div id="lda-cooccurrence" class="data-dense"></div>
+          <div id="lda-cooccurrence-network" class="panel viz-shell" style="margin-top:16px;"></div>
+        </div>
       </section>
     </div>
 

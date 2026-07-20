@@ -1,7 +1,6 @@
 const appState = {
   theme: localStorage.getItem('theme') || 'dark',
   manifest: null,
-  documentCatalog: null,
   keywordRows: [],
   keywordWordCounts: [],
   conceptOrder: [],
@@ -26,15 +25,52 @@ const appState = {
     colorBy: 'subject',
     showOutliers: true,
     projection: 'local',
-    pointSize: 4,
+    dimension: '3d',
+    pointSize: 2,
     orbit: { enabled: false, speed: 1, elevation: 0.35, theta: 0, raf: null },
-    isolated: new Set()
+    selection: null
   }
 };
 
-const BERTOPIC_MAX_CONCEPTS = 6;
+const BERTOPIC_MAX_CONCEPTS = 9;
 const BERTOPIC_DATA_BASE = './data/bertopic';
 const LDA_DATA_BASE = './data/lda';
+
+// Canonical German state names, mirroring bertopic_pipeline_v2.py's STATE_ALIASES,
+// so results.csv/doc_word_counts.csv (which still carry raw abbreviations) render
+// consistently with the rest of the app. KMK-issued national documents have no
+// Bundesland, hence "None"/blank -> "KMK" (not "Unbekannt").
+const STATE_ALIASES = {
+  'bawü': 'Baden-Württemberg', 'bawue': 'Baden-Württemberg', 'bw': 'Baden-Württemberg',
+  'baden wuerttemberg': 'Baden-Württemberg', 'baden-wuerttemberg': 'Baden-Württemberg',
+  'baden-württemberg': 'Baden-Württemberg',
+  'by': 'Bayern', 'bayern': 'Bayern',
+  'be': 'Berlin', 'berlin': 'Berlin',
+  'bb': 'Brandenburg', 'brandenburg': 'Brandenburg',
+  'hb': 'Bremen', 'bremen': 'Bremen',
+  'hh': 'Hamburg', 'hamburg': 'Hamburg',
+  'he': 'Hessen', 'hessen': 'Hessen',
+  'meckpomm': 'Mecklenburg-Vorpommern', 'mv': 'Mecklenburg-Vorpommern',
+  'mecklenburg vorpommern': 'Mecklenburg-Vorpommern', 'mecklenburg-vorpommern': 'Mecklenburg-Vorpommern',
+  'ni': 'Niedersachsen', 'niedersachsen': 'Niedersachsen',
+  'nrw': 'Nordrhein-Westfalen', 'nordrhein westfalen': 'Nordrhein-Westfalen',
+  'nordrhein-westfalen': 'Nordrhein-Westfalen',
+  'rp': 'Rheinland-Pfalz', 'rlp': 'Rheinland-Pfalz',
+  'rheinland pfalz': 'Rheinland-Pfalz', 'rheinland-pfalz': 'Rheinland-Pfalz',
+  'sl': 'Saarland', 'saarland': 'Saarland',
+  'sn': 'Sachsen', 'sachsen': 'Sachsen',
+  'st': 'Sachsen-Anhalt', 'sachsen anhalt': 'Sachsen-Anhalt', 'sachsen-anhalt': 'Sachsen-Anhalt',
+  'sh': 'Schleswig-Holstein', 'schleswig holstein': 'Schleswig-Holstein',
+  'schleswig-holstein': 'Schleswig-Holstein',
+  'th': 'Thüringen', 'thueringen': 'Thüringen', 'thüringen': 'Thüringen',
+  'kmk': 'KMK', 'none': 'KMK', 'na': 'KMK', 'n/a': 'KMK', '<na>': 'KMK', 'nan': 'KMK',
+};
+
+function normalizeState(raw) {
+  const value = String(raw ?? '').trim();
+  if (!value) return 'KMK';
+  return STATE_ALIASES[value.toLowerCase()] || value;
+}
 
 const dimensionOptions = [
   { value: 'concept', label: 'Konzept' },
@@ -67,6 +103,7 @@ function bindEvents() {
 
   document.getElementById('bertopic-color-by')?.addEventListener('change', (event) => {
     appState.bertopic.colorBy = event.target.value;
+    appState.bertopic.selection = null;
     rebuildAllBerTopicPanels();
     renderBerTopicLegend();
   });
@@ -78,13 +115,22 @@ function bindEvents() {
     appState.bertopic.projection = event.target.value;
     rebuildAllBerTopicPanels();
   });
+  document.getElementById('bertopic-dimension')?.addEventListener('change', (event) => {
+    appState.bertopic.dimension = event.target.value;
+    rebuildAllBerTopicPanels();
+  });
   document.getElementById('bertopic-point-size')?.addEventListener('input', (event) => {
     appState.bertopic.pointSize = Number(event.target.value);
-    restyleAllBerTopicPanels({ 'marker.size': appState.bertopic.pointSize });
+    restylePointSizes();
   });
   document.getElementById('bertopic-orbit-enabled')?.addEventListener('change', (event) => {
     appState.bertopic.orbit.enabled = event.target.checked;
-    if (appState.bertopic.orbit.enabled) startBerTopicOrbit(); else stopBerTopicOrbit();
+    if (appState.bertopic.orbit.enabled) {
+      seedBerTopicOrbitFromCurrentView();
+      startBerTopicOrbit();
+    } else {
+      stopBerTopicOrbit();
+    }
   });
   document.getElementById('bertopic-orbit-speed')?.addEventListener('input', (event) => {
     appState.bertopic.orbit.speed = Number(event.target.value);
@@ -102,6 +148,10 @@ function bindEvents() {
   document.getElementById('keyword-filter-value')?.addEventListener('change', renderKeywordPage);
   document.getElementById('keyword-mode')?.addEventListener('change', renderKeywordPage);
   document.getElementById('keyword-concept-filter')?.addEventListener('change', renderKeywordPage);
+  document.getElementById('keyword-shading-scope')?.addEventListener('change', renderKeywordPage);
+  document.getElementById('keyword-download-csv')?.addEventListener('click', () => {
+    downloadCsvFromArray(appState.keywordTableRows || [], 'schlagwortsuche.csv');
+  });
 
   document.getElementById('lda-concept')?.addEventListener('change', (event) => {
     appState.lda.concept = event.target.value;
@@ -110,6 +160,7 @@ function bindEvents() {
   document.getElementById('lda-k')?.addEventListener('change', (event) => {
     appState.lda.k = Number(event.target.value);
     loadLdaData();
+    if (appState.wordcloud && appState.wordcloud.mode === 'collection') renderWordclouds();
   });
   document.getElementById('lda-lambda')?.addEventListener('input', (event) => {
     appState.lda.lambda = Number(event.target.value);
@@ -147,20 +198,19 @@ function getPlotlyThemeColors() {
 async function loadData() {
   try {
     const needsKeywordData = appState.page === 'schlagwortsuche';
+    const needsDocumentData = appState.page === 'dokumente';
 
-    const [manifest, documentCatalog, keywordRows, keywordWordCounts, matrixRows] = await Promise.all([
+    const [manifest, keywordRows, keywordWordCounts, documentOverview] = await Promise.all([
       fetchJson('./data/manifest.json'),
-      fetchJson('./data/document_catalog.json'),
       needsKeywordData ? fetchCsv('./data/results.csv') : Promise.resolve([]),
       needsKeywordData ? fetchCsv('./data/doc_word_counts.csv') : Promise.resolve([]),
-      fetchCsv('./data/state_subject_count_matrix.csv')
+      needsDocumentData ? fetchCsv(encodeURI('./Lehrplandokumente Übersicht.csv')) : Promise.resolve([])
     ]);
 
     appState.manifest = manifest;
-    appState.documentCatalog = documentCatalog;
-    appState.keywordRows = keywordRows;
-    appState.keywordWordCounts = keywordWordCounts;
-    appState.matrixRows = matrixRows;
+    appState.keywordRows = keywordRows.map((row) => ({ ...row, state: normalizeState(row.state) }));
+    appState.keywordWordCounts = keywordWordCounts.map((row) => ({ ...row, state: normalizeState(row.state) }));
+    appState.documentOverview = documentOverview;
     appState.conceptOrder = manifest.concept_order || [];
 
     populateConceptSelectors();
@@ -255,18 +305,166 @@ function renderHomePage() {
   ].map((item) => `<article class="metric-card"><strong>${item.value}</strong><span>${item.label}</span></article>`).join('');
 }
 
-function renderDocumentPage() {
-  const documents = [...(appState.documentCatalog?.documents || [])].sort((a, b) => (b.year || 0) - (a.year || 0));
-  const tableRows = documents.map((doc) => ({ Titel: doc.title, Fach: doc.subject, Bundesland: doc.state, Jahr: doc.year || '—', Pfad: doc.path }));
-  document.getElementById('document-table').innerHTML = renderTable(tableRows, ['Titel', 'Fach', 'Bundesland', 'Jahr', 'Pfad']);
+const DOKUMENTE_TABLE_COLUMNS = ['Bundesland', 'Fach', 'Schulart', 'Jahr', 'Gesamtwortzahl'];
 
-  const states = [...new Set(documents.map((doc) => doc.state).filter(Boolean))].sort();
-  const subjects = [...new Set(documents.map((doc) => doc.subject).filter(Boolean))].sort();
-  const matrix = [['Bundesland', ...subjects, 'Gesamt'], ...states.map((state) => {
-    const rowValues = subjects.map((subject) => documents.filter((doc) => doc.state === state && doc.subject === subject).length);
-    return [state, ...rowValues, rowValues.reduce((sum, value) => sum + value, 0)];
-  }), ['Gesamt', ...subjects.map((subject) => documents.filter((doc) => doc.subject === subject).length), documents.length]];
-  document.getElementById('document-matrix').innerHTML = renderMatrix(matrix);
+function getDokumenteRows() {
+  const rows = appState.documentOverview || [];
+  return rows.map((row, index) => ({
+    id: index + 1,
+    Bundesland: normalizeState(row['Bundesland']),
+    Fach: row['Fach'] || '—',
+    Schulart: row['Schulart'] || '—',
+    Jahr: row['Jahr'] || '—',
+    Gesamtwortzahl: Number(row['Gesamtwortanzahl'] || 0),
+    Referenz: row['Referenz'] || '—',
+    Dateiname: row['Dateiname'] || ''
+  }));
+}
+
+function txtFileLink(row) {
+  if (!row.Dateiname || !row.Fach) return null;
+  const txtName = row.Dateiname.replace(/\.pdf$/i, '.txt');
+  return encodeURI(`./data/txtfiles/${row.Fach}/${txtName}`);
+}
+
+function renderDocumentPage() {
+  initTabStrip('dokumente-tabs');
+  if (!appState.dokumente) {
+    appState.dokumente = { sort: { key: 'id', dir: 'asc' }, filters: { Bundesland: 'Alle', Fach: 'Alle', Schulart: 'Alle', Jahr: 'Alle' } };
+  }
+  renderDokumenteControls();
+  renderDokumenteTable();
+  renderDokumenteMatrix();
+}
+
+function renderDokumenteControls() {
+  const container = document.getElementById('dokumente-table-controls');
+  if (!container) return;
+  const rows = getDokumenteRows();
+  const filters = appState.dokumente.filters;
+  const optionsFor = (key) => ['Alle', ...new Set(rows.map((r) => r[key]).filter((v) => v !== undefined && v !== '—'))].sort();
+
+  container.innerHTML = ['Bundesland', 'Fach', 'Schulart', 'Jahr'].map((key) => `
+    <label><span>${escapeHtml(key)}</span>
+      <select data-filter-key="${key}">
+        ${optionsFor(key).map((value) => `<option value="${escapeHtml(value)}" ${filters[key] === String(value) ? 'selected' : ''}>${escapeHtml(value)}</option>`).join('')}
+      </select>
+    </label>`).join('');
+
+  container.querySelectorAll('select[data-filter-key]').forEach((select) => {
+    select.addEventListener('change', () => {
+      appState.dokumente.filters[select.dataset.filterKey] = select.value;
+      renderDokumenteTable();
+    });
+  });
+}
+
+function renderDokumenteTable() {
+  const container = document.getElementById('document-table');
+  if (!container) return;
+  const { sort, filters } = appState.dokumente;
+  let rows = getDokumenteRows();
+  Object.entries(filters).forEach(([key, value]) => {
+    if (value !== 'Alle') rows = rows.filter((r) => String(r[key]) === value);
+  });
+  rows.sort((a, b) => {
+    const [va, vb] = [a[sort.key], b[sort.key]];
+    const cmp = typeof va === 'number' && typeof vb === 'number' ? va - vb : String(va).localeCompare(String(vb));
+    return sort.dir === 'asc' ? cmp : -cmp;
+  });
+
+  container.innerHTML = `
+    <div class="table-shell">
+      <table>
+        <thead><tr>
+          <th>#</th>
+          ${DOKUMENTE_TABLE_COLUMNS.map((key) => `<th data-key="${key}" style="cursor:pointer;">${escapeHtml(key)}${sort.key === key ? (sort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</th>`).join('')}
+          <th>Referenz</th>
+          <th>Volltext</th>
+        </tr></thead>
+        <tbody>${rows.map((row) => {
+          const link = txtFileLink(row);
+          return `<tr>
+            <td>${row.id}</td>
+            <td>${escapeHtml(row.Bundesland)}</td>
+            <td>${escapeHtml(row.Fach)}</td>
+            <td>${escapeHtml(row.Schulart)}</td>
+            <td>${escapeHtml(row.Jahr)}</td>
+            <td>${row.Gesamtwortzahl.toLocaleString('de-DE')}</td>
+            <td>${escapeHtml(row.Referenz)}</td>
+            <td>${link ? `<a href="${link}" target="_blank" rel="noopener">Text öffnen</a>` : '—'}</td>
+          </tr>`;
+        }).join('')}</tbody>
+      </table>
+    </div>
+  `;
+
+  container.querySelectorAll('th[data-key]').forEach((th) => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      const current = appState.dokumente.sort;
+      appState.dokumente.sort = { key, dir: current.key === key && current.dir === 'asc' ? 'desc' : 'asc' };
+      renderDokumenteTable();
+    });
+  });
+}
+
+function renderDokumenteMatrix() {
+  const container = document.getElementById('document-matrix');
+  if (!container) return;
+  const rows = getDokumenteRows();
+  const states = [...new Set(rows.map((r) => r.Bundesland))].sort();
+  const subjects = [...new Set(rows.map((r) => r.Fach))].sort();
+  if (!appState.dokumente.matrixSort) appState.dokumente.matrixSort = { key: null, dir: 'desc' };
+  const matrixSort = appState.dokumente.matrixSort;
+
+  let stateRows = states.map((state) => {
+    const counts = subjects.map((subject) => rows.filter((r) => r.Bundesland === state && r.Fach === subject).length);
+    return { state, counts, total: counts.reduce((a, b) => a + b, 0) };
+  });
+  if (matrixSort.key) {
+    const colIndex = matrixSort.key === 'Gesamt' ? -1 : subjects.indexOf(matrixSort.key);
+    stateRows.sort((a, b) => {
+      const va = colIndex === -1 ? a.total : a.counts[colIndex];
+      const vb = colIndex === -1 ? b.total : b.counts[colIndex];
+      return matrixSort.dir === 'asc' ? va - vb : vb - va;
+    });
+  }
+
+  const subjectTotals = subjects.map((subject) => rows.filter((r) => r.Fach === subject).length);
+  const grandTotal = rows.length;
+  const maxCell = Math.max(1, ...stateRows.flatMap((r) => r.counts));
+
+  const headerCells = [`<th>Bundesland</th>`, ...subjects.map((s) => `<th data-key="${escapeHtml(s)}" style="cursor:pointer;">${escapeHtml(s)}${matrixSort.key === s ? (matrixSort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</th>`), `<th data-key="Gesamt" style="cursor:pointer;">Gesamt${matrixSort.key === 'Gesamt' ? (matrixSort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</th>`];
+
+  container.innerHTML = `
+    <div class="table-shell">
+      <table>
+        <thead><tr>${headerCells.join('')}</tr></thead>
+        <tbody>
+          ${stateRows.map((row) => `<tr>
+            <td>${escapeHtml(row.state)}</td>
+            ${row.counts.map((value) => `<td class="heat-cell" style="background: rgba(8,94,101,${Math.min(0.85, 0.12 + (value / maxCell) * 0.6)});">${value}</td>`).join('')}
+            <td>${row.total}</td>
+          </tr>`).join('')}
+          <tr>
+            <td><strong>Gesamt</strong></td>
+            ${subjectTotals.map((value) => `<td><strong>${value}</strong></td>`).join('')}
+            <td><strong>${grandTotal}</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  container.querySelectorAll('th[data-key]').forEach((th) => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      const current = appState.dokumente.matrixSort;
+      appState.dokumente.matrixSort = { key, dir: current.key === key && current.dir === 'desc' ? 'asc' : 'desc' };
+      renderDokumenteMatrix();
+    });
+  });
 }
 
 function renderKeywordPage() {
@@ -285,21 +483,39 @@ function renderKeywordPage() {
   const columnValues = [...new Set(rows.map((row) => row[dimensionToKey(dimensionB)]).filter(Boolean))].sort();
   const wordCounts = Object.fromEntries(appState.keywordWordCounts.map((row) => [row.file, Number(row.word_count || 0)]));
 
+  const cellValue = (rowValue, columnValue) => {
+    const matches = rows.filter((row) => row[dimensionToKey(dimensionA)] === rowValue && row[dimensionToKey(dimensionB)] === columnValue);
+    const totalWords = matches.reduce((sum, row) => sum + (wordCounts[row.file] || 1), 0);
+    const value = mode === 'relative' ? (matches.length / Math.max(totalWords, 1)) * 10000 : matches.length;
+    return Number(value.toFixed(2));
+  };
+
   const tableRows = rowValues.map((rowValue) => {
     const entry = { [dimensionLabel(dimensionA)]: rowValue };
+    let rowTotal = 0;
     columnValues.forEach((columnValue) => {
-      const matches = rows.filter((row) => row[dimensionToKey(dimensionA)] === rowValue && row[dimensionToKey(dimensionB)] === columnValue);
-      const totalWords = matches.reduce((sum, row) => sum + (wordCounts[row.file] || 1), 0);
-      const value = mode === 'relative' ? (matches.length / Math.max(totalWords, 1)) * 10000 : matches.length;
-      entry[columnValue] = Number(value.toFixed(2));
+      const value = cellValue(rowValue, columnValue);
+      entry[columnValue] = value;
+      rowTotal += value;
     });
+    entry.Gesamt = Number(rowTotal.toFixed(2));
     return entry;
   });
+  const gesamtRow = { [dimensionLabel(dimensionA)]: 'Gesamt' };
+  let grandTotal = 0;
+  columnValues.forEach((columnValue) => {
+    const colTotal = tableRows.reduce((sum, row) => sum + row[columnValue], 0);
+    gesamtRow[columnValue] = Number(colTotal.toFixed(2));
+    grandTotal += colTotal;
+  });
+  gesamtRow.Gesamt = Number(grandTotal.toFixed(2));
 
-  document.getElementById('keyword-table').innerHTML = renderTable(tableRows, [dimensionLabel(dimensionA), ...columnValues]);
+  appState.keywordTableRows = [...tableRows, gesamtRow];
+  document.getElementById('keyword-table').innerHTML = renderTable(appState.keywordTableRows, [dimensionLabel(dimensionA), ...columnValues, 'Gesamt']);
 
+  const shadingScope = document.getElementById('keyword-shading-scope')?.value || 'table';
   const heatmapRows = [[dimensionLabel(dimensionA), ...columnValues], ...tableRows.map((row) => [row[dimensionLabel(dimensionA)], ...columnValues.map((column) => row[column])])];
-  document.getElementById('keyword-heatmap').innerHTML = renderHeatmap(heatmapRows, mode === 'relative' ? 'Relative Häufigkeit je 10.000 Wörter' : 'Absolute Treffer');
+  document.getElementById('keyword-heatmap').innerHTML = renderHeatmap(heatmapRows, mode === 'relative' ? 'Relative Häufigkeit je 10.000 Wörter' : 'Absolute Treffer', shadingScope);
 
   document.getElementById('keyword-summary').innerHTML = [
     { title: 'Treffer gesamt', value: rows.length.toLocaleString('de-DE') },
@@ -373,10 +589,10 @@ function syncBerTopicPanelGrid() {
   if (!grid) return;
   const active = appState.bertopic.active;
   grid.className = 'bertopic-panels' +
-    (active.length >= 5 ? ' grid-6' : active.length >= 3 ? ' grid-4' : active.length === 2 ? ' grid-2' : '');
+    (active.length >= 7 ? ' grid-9' : active.length >= 5 ? ' grid-6' : active.length >= 3 ? ' grid-4' : active.length === 2 ? ' grid-2' : '');
 
   if (active.length === 0) {
-    grid.innerHTML = '<div class="bt-panel-empty">Wählen Sie oben bis zu sechs Konzepte aus, um die Themenräume zu vergleichen.</div>';
+    grid.innerHTML = '<div class="bt-panel-empty">Wählen Sie oben bis zu neun Konzepte aus, um die Themenräume zu vergleichen.</div>';
     return;
   }
 
@@ -450,13 +666,28 @@ function getBerTopicFilteredRecords(concept) {
   return appState.bertopic.showOutliers ? records : records.filter((r) => !r.is_outlier);
 }
 
+const LEGEND_HIGHLIGHT_COLOR = '#ffe600';
+
+function isBerTopicSelected(record, concept) {
+  const sel = appState.bertopic.selection;
+  if (!sel || record.is_outlier) return false;
+  if (sel.type === 'subject') return record.subject === sel.value;
+  return concept === sel.concept && record.topic === sel.value;
+}
+
 function berTopicColorFor(record, concept) {
+  if (isBerTopicSelected(record, concept)) return LEGEND_HIGHLIGHT_COLOR;
   const colorMaps = appState.bertopic.colorMaps || {};
   if (record.is_outlier) return colorMaps.outlier_color || '#8a8a8a';
   if (appState.bertopic.colorBy === 'subject') {
     return (colorMaps.subject || {})[record.subject] || hashColor(record.subject, 'subject');
   }
   return hashColor(`${concept}::${record.topic}`, 'topic');
+}
+
+function berTopicSizeFor(record, concept) {
+  const base = appState.bertopic.pointSize;
+  return isBerTopicSelected(record, concept) ? base + 2 : base;
 }
 
 function drawBerTopicPanel(concept) {
@@ -466,30 +697,42 @@ function drawBerTopicPanel(concept) {
   if (!plotEl) return;
 
   const records = getBerTopicFilteredRecords(concept);
-  const coordKey = appState.bertopic.projection === 'global' ? 'umap_3d_global' : 'umap_3d';
+  const is3d = appState.bertopic.dimension !== '2d';
+  const suffix = appState.bertopic.projection === 'global' ? '_global' : '';
+  const coordKey = (is3d ? 'umap_3d' : 'umap_2d') + suffix;
   const theme = getPlotlyThemeColors();
 
   const trace = {
-    type: 'scatter3d',
+    type: is3d ? 'scatter3d' : 'scattergl',
     mode: 'markers',
     x: records.map((r) => r[coordKey][0]),
     y: records.map((r) => r[coordKey][1]),
-    z: records.map((r) => r[coordKey][2]),
-    marker: { size: appState.bertopic.pointSize, color: records.map((r) => berTopicColorFor(r, concept)), opacity: 0.85 },
+    marker: {
+      size: records.map((r) => berTopicSizeFor(r, concept)),
+      color: records.map((r) => berTopicColorFor(r, concept)),
+      opacity: 0.85
+    },
     customdata: records.map((r) => [r.subject, r.state, r.topic, r.excerpt, r.is_outlier]),
     hoverinfo: 'none'
   };
+  if (is3d) trace.z = records.map((r) => r[coordKey][2]);
 
   const layout = {
     margin: { l: 0, r: 0, t: 0, b: 0 },
     paper_bgcolor: theme.paper,
-    scene: {
+    plot_bgcolor: theme.paper,
+    showlegend: false,
+    uirevision: `${concept}-${appState.bertopic.dimension}`
+  };
+  if (is3d) {
+    layout.scene = {
       xaxis: { visible: false }, yaxis: { visible: false }, zaxis: { visible: false },
       camera: currentBerTopicCameraEye(), bgcolor: theme.paper
-    },
-    showlegend: false,
-    uirevision: concept
-  };
+    };
+  } else {
+    layout.xaxis = { visible: false };
+    layout.yaxis = { visible: false, scaleanchor: 'x' };
+  }
 
   Plotly.react(plotEl, [trace], layout, { displayModeBar: false, responsive: true }).then(() => {
     attachBerTopicHoverHandlers(plotEl, concept);
@@ -508,6 +751,18 @@ function applyBerTopicCameraToAllPanels() {
     const plotEl = panel && panel.querySelector('.bt-panel-plot');
     if (plotEl && plotEl.data) Plotly.relayout(plotEl, { 'scene.camera': camera });
   });
+}
+
+function seedBerTopicOrbitFromCurrentView() {
+  const concept = appState.bertopic.active.find((c) => appState.bertopic.dimension !== '2d' && findBerTopicPanel(c));
+  const panel = concept && findBerTopicPanel(concept);
+  const plotEl = panel && panel.querySelector('.bt-panel-plot');
+  const eye = plotEl && plotEl.layout && plotEl.layout.scene && plotEl.layout.scene.camera && plotEl.layout.scene.camera.eye;
+  if (!eye) return;
+  appState.bertopic.orbit.theta = Math.atan2(eye.y, eye.x);
+  appState.bertopic.orbit.elevation = eye.z;
+  const elevationInput = document.getElementById('bertopic-orbit-elevation');
+  if (elevationInput) elevationInput.value = String(eye.z);
 }
 
 function startBerTopicOrbit() {
@@ -536,6 +791,16 @@ function restyleAllBerTopicPanels(update) {
     const panel = findBerTopicPanel(concept);
     const plotEl = panel && panel.querySelector('.bt-panel-plot');
     if (plotEl && plotEl.data) Plotly.restyle(plotEl, update);
+  });
+}
+
+function restylePointSizes() {
+  appState.bertopic.active.forEach((concept) => {
+    const panel = findBerTopicPanel(concept);
+    const plotEl = panel && panel.querySelector('.bt-panel-plot');
+    if (!plotEl || !plotEl.data) return;
+    const records = getBerTopicFilteredRecords(concept);
+    Plotly.restyle(plotEl, { 'marker.size': [records.map((r) => berTopicSizeFor(r, concept))] });
   });
 }
 
@@ -589,6 +854,7 @@ function renderBerTopicLegend() {
   const el = document.getElementById('bertopic-legend');
   if (!el) return;
   const active = appState.bertopic.active;
+  const selection = appState.bertopic.selection;
   if (active.length === 0) {
     el.innerHTML = '<h4>Legende</h4><p style="color:var(--muted);font-size:0.86rem;">Keine Konzepte ausgewählt.</p>';
     return;
@@ -606,7 +872,7 @@ function renderBerTopicLegend() {
     el.innerHTML = `
       <h4>Legende — Fach</h4>
       ${subjects.map((subject) => `
-        <div class="legend-row">
+        <div class="legend-row${selection && selection.value !== subject ? ' dimmed' : ''}" data-type="subject" data-value="${escapeHtml(subject)}">
           <span class="legend-swatch" style="background:${(colorMaps.subject || {})[subject] || hashColor(subject, 'subject')}"></span>
           <span class="legend-label">${escapeHtml(subject)}</span>
           <span class="legend-count">${counts.get(subject)}</span>
@@ -624,7 +890,7 @@ function renderBerTopicLegend() {
         <div class="legend-group">
           <div class="legend-group-title">${escapeHtml(concept)}</div>
           ${topics.map((topic) => `
-            <div class="legend-row">
+            <div class="legend-row${selection && (selection.concept !== concept || selection.value !== topic) ? ' dimmed' : ''}" data-type="topic" data-concept="${escapeHtml(concept)}" data-value="${escapeHtml(topic)}">
               <span class="legend-swatch" style="background:${hashColor(`${concept}::${topic}`, 'topic')}"></span>
               <span class="legend-label">${escapeHtml(topic)}</span>
               <span class="legend-count">${counts.get(topic)}</span>
@@ -632,6 +898,19 @@ function renderBerTopicLegend() {
         </div>`;
     }).join('')}`;
   }
+
+  el.querySelectorAll('.legend-row[data-type]').forEach((row) => {
+    row.addEventListener('click', () => {
+      const type = row.dataset.type;
+      const value = row.dataset.value;
+      const concept = row.dataset.concept;
+      const current = appState.bertopic.selection;
+      const isSame = current && current.type === type && current.value === value && current.concept === concept;
+      appState.bertopic.selection = isSame ? null : { type, value, concept };
+      renderBerTopicLegend();
+      rebuildAllBerTopicPanels();
+    });
+  });
 }
 
 function fnv1aHash(str) {
@@ -671,8 +950,10 @@ window.addEventListener('resize', () => {
 
 function renderLdaPage() {
   if (!appState.lda.concept) appState.lda.concept = appState.conceptOrder[0];
+  initTabStrip('lda-tabs');
   populateLdaControls();
   loadLdaData();
+  initWordclouds();
 }
 
 function populateLdaControls() {
@@ -843,11 +1124,264 @@ function renderLdaTopicSubject() {
 
 function renderLdaCooccurrence() {
   const container = document.getElementById('lda-cooccurrence');
-  if (!container) return;
+  const networkEl = document.getElementById('lda-cooccurrence-network');
   const data = appState.lda.cooccurrence;
-  if (!data) { container.innerHTML = '<p>Keine Daten verfügbar.</p>'; return; }
-  const matrix = [['Konzept', ...data.concepts], ...data.concepts.map((c, i) => [c, ...data.matrix[i]])];
-  container.innerHTML = renderMatrix(matrix);
+  if (!data) {
+    if (container) container.innerHTML = '<p>Keine Daten verfügbar.</p>';
+    return;
+  }
+  if (container) {
+    const matrix = [['Konzept', ...data.concepts], ...data.concepts.map((c, i) => [c, ...data.matrix[i]])];
+    container.innerHTML = renderMatrix(matrix);
+  }
+  if (networkEl) renderCooccurrenceNetwork(networkEl, data);
+}
+
+function renderCooccurrenceNetwork(el, data) {
+  if (typeof Plotly === 'undefined') return;
+  const { concepts, matrix } = data;
+  const n = concepts.length;
+  const theme = getPlotlyThemeColors();
+
+  // Simple force-directed layout: repulsion between all node pairs, attraction
+  // along edges weighted by co-occurrence value, run for a fixed number of steps.
+  const positions = concepts.map((_, i) => {
+    const angle = (i / n) * Math.PI * 2;
+    return { x: Math.cos(angle), y: Math.sin(angle) };
+  });
+  const maxWeight = Math.max(1, ...matrix.flat());
+  for (let step = 0; step < 300; step += 1) {
+    const forces = positions.map(() => ({ x: 0, y: 0 }));
+    for (let i = 0; i < n; i += 1) {
+      for (let j = i + 1; j < n; j += 1) {
+        const dx = positions[i].x - positions[j].x;
+        const dy = positions[i].y - positions[j].y;
+        const distSq = Math.max(dx * dx + dy * dy, 0.001);
+        const repulse = 0.02 / distSq;
+        const weight = (matrix[i][j] + matrix[j][i]) / (2 * maxWeight);
+        const attract = weight * 0.02;
+        const fx = dx * repulse - dx * attract;
+        const fy = dy * repulse - dy * attract;
+        forces[i].x += fx; forces[i].y += fy;
+        forces[j].x -= fx; forces[j].y -= fy;
+      }
+    }
+    positions.forEach((p, i) => { p.x += forces[i].x; p.y += forces[i].y; });
+  }
+
+  const edgeTraces = [];
+  for (let i = 0; i < n; i += 1) {
+    for (let j = i + 1; j < n; j += 1) {
+      const weight = matrix[i][j] + matrix[j][i];
+      if (weight <= 0) continue;
+      edgeTraces.push({
+        type: 'scatter', mode: 'lines', hoverinfo: 'none', showlegend: false,
+        x: [positions[i].x, positions[j].x], y: [positions[i].y, positions[j].y],
+        line: { color: theme.border, width: Math.min(6, 0.6 + (weight / maxWeight) * 5) }
+      });
+    }
+  }
+
+  const nodeTrace = {
+    type: 'scatter', mode: 'markers+text', showlegend: false,
+    x: positions.map((p) => p.x), y: positions.map((p) => p.y),
+    text: concepts, textposition: 'top center',
+    textfont: { color: theme.text, size: 11 },
+    marker: { size: 16, color: theme.paper, line: { color: '#53d1ff', width: 2 } },
+    hovertext: concepts, hoverinfo: 'text'
+  };
+
+  Plotly.react(el, [...edgeTraces, nodeTrace], {
+    margin: { l: 10, r: 10, t: 10, b: 10 },
+    paper_bgcolor: theme.paper, plot_bgcolor: theme.paper,
+    xaxis: { visible: false }, yaxis: { visible: false },
+    showlegend: false, uirevision: 'cooccurrence-network'
+  }, { displayModeBar: false, responsive: true });
+}
+
+// ─────────────────────────────────────────────────────────────────────────
+// LDA — Wortwolken (word clouds), built from the already-loaded per-topic
+// term-frequency data. No external word-cloud library: a small canvas-measured
+// Archimedean-spiral packer renders circular, horizontal-only word clouds.
+// ─────────────────────────────────────────────────────────────────────────
+
+let _wcCanvas = null;
+function wcMeasure(term, fontSize) {
+  if (!_wcCanvas) _wcCanvas = document.createElement('canvas');
+  const ctx = _wcCanvas.getContext('2d');
+  ctx.font = `700 ${fontSize}px Nunito, sans-serif`;
+  return ctx.measureText(term).width;
+}
+
+function wcScaleFontSize(weight, maxWeight) {
+  const t = maxWeight > 0 ? Math.sqrt(Math.max(weight, 0) / maxWeight) : 0;
+  return 5 + t * (30 - 5);
+}
+
+function wcRectsOverlap(a, b) {
+  return !(a.x + a.width < b.x - 2 || b.x + b.width < a.x - 2 || a.y + a.height < b.y - 2 || b.y + b.height < a.y - 2);
+}
+
+function wcLayout(terms, size) {
+  const center = size / 2;
+  const placed = [];
+  terms.forEach((t) => {
+    const width = wcMeasure(t.term, t.fontSize);
+    const height = t.fontSize * 1.15;
+    let angle = Math.random() * Math.PI * 2;
+    let radius = 0;
+    let tries = 0;
+    let rect;
+    for (;;) {
+      const x = center + radius * Math.cos(angle) - width / 2;
+      const y = center + radius * Math.sin(angle) - height / 2;
+      rect = { x, y, width, height };
+      const outOfCircle = Math.hypot(x + width / 2 - center, y + height / 2 - center) + Math.max(width, height) / 2 > size / 2 - 4;
+      const overlaps = !outOfCircle && placed.some((p) => wcRectsOverlap(rect, p));
+      tries += 1;
+      if ((!outOfCircle && !overlaps) || tries > 3000) break;
+      angle += 0.36;
+      radius += 1.4;
+    }
+    placed.push(rect);
+    t.x = rect.x; t.y = rect.y; t.width = rect.width; t.height = rect.height;
+  });
+  return terms;
+}
+
+function renderWordCloudCard(title, termsRaw, size = 260) {
+  const terms = termsRaw.filter((t) => t.weight > 0).sort((a, b) => b.weight - a.weight).slice(0, 50);
+  if (!terms.length) {
+    return `<div class="wc-card"><h4 class="wc-card-title">${escapeHtml(title)}</h4><div class="wc-circle" style="width:${size}px;height:${size}px;"></div></div>`;
+  }
+  const maxWeight = Math.max(1, ...terms.map((t) => t.weight));
+  const sized = terms.map((t) => ({ ...t, fontSize: wcScaleFontSize(t.weight, maxWeight) }));
+  wcLayout(sized, size);
+  const words = sized.map((t) => `<span style="position:absolute;left:${t.x.toFixed(1)}px;top:${t.y.toFixed(1)}px;font-size:${t.fontSize.toFixed(1)}px;color:${hashColor(t.term, 'wordcloud-term')};font-family:'Nunito',sans-serif;font-weight:700;white-space:nowrap;line-height:1.15;">${escapeHtml(t.term)}</span>`).join('');
+  return `
+    <div class="wc-card">
+      <h4 class="wc-card-title">${escapeHtml(title)}</h4>
+      <div class="wc-circle" style="width:${size}px;height:${size}px;">${words}</div>
+    </div>
+  `;
+}
+
+async function fetchTermFrequencyMatrix(concept, k) {
+  const key = `${concept}::${k}`;
+  if (appState.wordcloud.cache[key]) return appState.wordcloud.cache[key];
+  const rows = await fetchCsv(`${LDA_DATA_BASE}/${encodeURIComponent(concept)}/${k}/term_frequency_matrix_${encodeURIComponent(concept)}_${k}.csv`).catch(() => []);
+  appState.wordcloud.cache[key] = rows;
+  return rows;
+}
+
+function initWordclouds() {
+  if (appState.wordcloud) { renderWordclouds(); return; }
+  appState.wordcloud = {
+    mode: 'collection',
+    collectionConcepts: appState.conceptOrder.slice(0, 3),
+    singleConcept: appState.conceptOrder[0],
+    cache: {}
+  };
+  populateWordcloudControls();
+  bindWordcloudEvents();
+  renderWordclouds();
+}
+
+function populateWordcloudControls() {
+  const picker = document.getElementById('wc-collection-picker');
+  const singleSelect = document.getElementById('wc-single-concept');
+  if (picker) {
+    picker.innerHTML = appState.conceptOrder.map((concept) => `
+      <label class="wc-checkbox"><input type="checkbox" value="${escapeHtml(concept)}" ${appState.wordcloud.collectionConcepts.includes(concept) ? 'checked' : ''} /> ${escapeHtml(concept)}</label>
+    `).join('');
+    picker.querySelectorAll('input[type="checkbox"]').forEach((input) => {
+      input.addEventListener('change', () => {
+        const list = appState.wordcloud.collectionConcepts;
+        if (input.checked) {
+          if (list.length >= BERTOPIC_MAX_CONCEPTS) { input.checked = false; return; }
+          list.push(input.value);
+        } else {
+          const idx = list.indexOf(input.value);
+          if (idx >= 0) list.splice(idx, 1);
+        }
+        renderWordclouds();
+      });
+    });
+  }
+  if (singleSelect) {
+    singleSelect.innerHTML = appState.conceptOrder.map((c) => `<option value="${escapeHtml(c)}">${escapeHtml(c)}</option>`).join('');
+    singleSelect.value = appState.wordcloud.singleConcept;
+  }
+}
+
+function bindWordcloudEvents() {
+  document.getElementById('wc-mode')?.addEventListener('change', (event) => {
+    appState.wordcloud.mode = event.target.value;
+    const collectionPicker = document.getElementById('wc-collection-picker');
+    const singleWrap = document.getElementById('wc-single-picker-wrap');
+    if (collectionPicker) collectionPicker.hidden = appState.wordcloud.mode !== 'collection';
+    if (singleWrap) singleWrap.hidden = appState.wordcloud.mode !== 'single';
+    renderWordclouds();
+  });
+  document.getElementById('wc-single-concept')?.addEventListener('change', (event) => {
+    appState.wordcloud.singleConcept = event.target.value;
+    renderWordclouds();
+  });
+}
+
+async function renderWordclouds() {
+  const container = document.getElementById('wc-grid');
+  if (!container || !appState.wordcloud) return;
+  container.innerHTML = '<p style="color:var(--muted);">Lade Wortwolken …</p>';
+
+  if (appState.wordcloud.mode === 'collection') {
+    const concepts = appState.wordcloud.collectionConcepts;
+    if (!concepts.length) {
+      container.innerHTML = '<p style="color:var(--muted);">Bitte mindestens ein Konzept auswählen.</p>';
+      return;
+    }
+    const k = appState.lda.k || 10;
+    const rowsByConcept = await Promise.all(concepts.map((c) => fetchTermFrequencyMatrix(c, k)));
+
+    const globalTotals = new Map();
+    rowsByConcept.forEach((rows) => {
+      rows.forEach((row) => {
+        const weight = Number(row.total_across_topics || 0);
+        globalTotals.set(row.term, (globalTotals.get(row.term) || 0) + weight);
+      });
+    });
+    const globalTerms = [...globalTotals.entries()].map(([term, weight]) => ({ term, weight }));
+
+    const cols = concepts.length >= 5 ? 3 : concepts.length >= 3 ? 2 : concepts.length;
+    const perConceptCards = concepts.map((concept, i) => {
+      const terms = rowsByConcept[i].map((row) => ({ term: row.term, weight: Number(row.total_across_topics || 0) }));
+      return renderWordCloudCard(concept, terms);
+    }).join('');
+
+    container.className = `wc-grid wc-cols-${Math.max(cols, 1)}`;
+    container.innerHTML = `
+      <div class="wc-global-wrap">${renderWordCloudCard('Global (alle ausgewählten Konzepte)', globalTerms, 300)}</div>
+      ${perConceptCards}
+    `;
+  } else {
+    const concept = appState.wordcloud.singleConcept;
+    if (!concept) return;
+    const rows = await fetchTermFrequencyMatrix(concept, 10);
+    if (!rows.length) {
+      container.innerHTML = '<p style="color:var(--muted);">Keine Daten verfügbar.</p>';
+      return;
+    }
+    const topicCols = Object.keys(rows[0]).filter((h) => h.startsWith('Topic_'));
+    const topicTotals = topicCols
+      .map((col) => ({ col, total: rows.reduce((sum, row) => sum + Number(row[col] || 0), 0) }))
+      .sort((a, b) => b.total - a.total);
+
+    container.className = 'wc-grid wc-cols-4';
+    container.innerHTML = topicTotals.map(({ col }) => {
+      const terms = rows.map((row) => ({ term: row.term, weight: Number(row[col] || 0) }));
+      return renderWordCloudCard(col.replace('Topic_', 'Thema '), terms, 220);
+    }).join('');
+  }
 }
 
 function downloadCsvFromArray(rows, filename) {
@@ -869,6 +1403,19 @@ function downloadCsvFromArray(rows, filename) {
 function csvEscapeCell(value) {
   const str = String(value ?? '');
   return /[",\n]/.test(str) ? `"${str.replace(/"/g, '""')}"` : str;
+}
+
+function initTabStrip(stripId) {
+  const strip = document.getElementById(stripId);
+  if (!strip) return;
+  strip.querySelectorAll('.tab-btn').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      strip.querySelectorAll('.tab-btn').forEach((b) => b.classList.toggle('is-active', b === btn));
+      document.querySelectorAll(`.tab-panel[data-strip="${stripId}"]`).forEach((panel) => {
+        panel.classList.toggle('is-active', panel.dataset.tab === btn.dataset.tab);
+      });
+    });
+  });
 }
 
 function renderTable(rows, headers) {
@@ -900,15 +1447,31 @@ function renderMatrix(matrix) {
   `;
 }
 
-function renderHeatmap(rows, title) {
+function renderHeatmap(rows, title, scope = 'table') {
+  const [headerRow, ...dataRows] = rows;
+  const dataCells = dataRows.map((row) => row.slice(1).map(Number));
+  const tableMax = Math.max(1, ...dataCells.flat().filter((n) => !Number.isNaN(n)));
+  const colMax = headerRow.slice(1).map((_, colIndex) => Math.max(1, ...dataCells.map((cells) => cells[colIndex]).filter((n) => !Number.isNaN(n))));
+  const rowMax = dataCells.map((cells) => Math.max(1, ...cells.filter((n) => !Number.isNaN(n))));
+
+  const shadeFor = (value, rowIndex, colIndex) => {
+    const denom = scope === 'column' ? colMax[colIndex] : scope === 'row' ? rowMax[rowIndex] : tableMax;
+    return Math.max(0.14, Math.min(0.9, value / Math.max(denom, 1)));
+  };
+
   return `
     <div class="panel">
-      <h4>${title}</h4>
+      <h4>${escapeHtml(title)}</h4>
       <div class="table-shell">
-        <table>${rows.map((row) => `<tr>${row.map((value, index) => {
-          const numeric = Number(value);
-          return `<td class="${Number.isNaN(numeric) ? '' : 'heat-cell'}" style="${Number.isNaN(numeric) ? '' : `background: rgba(8,94,101,${Math.max(0.14, Math.min(0.9, numeric / 20))});`}">${escapeHtml(value)}</td>`;
-        }).join('')}</tr>`).join('')}</table>
+        <table>
+          <tr>${headerRow.map((value) => `<th>${escapeHtml(value)}</th>`).join('')}</tr>
+          ${dataRows.map((row, rowIndex) => `<tr>${row.map((value, index) => {
+            if (index === 0) return `<td>${escapeHtml(value)}</td>`;
+            const numeric = Number(value);
+            if (Number.isNaN(numeric)) return `<td>${escapeHtml(value)}</td>`;
+            return `<td class="heat-cell" style="background: rgba(8,94,101,${shadeFor(numeric, rowIndex, index - 1)});">${escapeHtml(value)}</td>`;
+          }).join('')}</tr>`).join('')}
+        </table>
       </div>
     </div>
   `;

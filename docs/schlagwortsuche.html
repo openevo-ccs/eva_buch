@@ -29,8 +29,9 @@
         <div class="section-head">
           <div>
             <p class="eyebrow">Interaktiv</p>
-            <h3>Analyse nach Konzept, Fach, Bundesland und Relativierung</h3>
+            <h3>Ergebnisse nach Konzept, Fach, Bundesland</h3>
           </div>
+          <button id="keyword-download-csv" class="secondary-button" type="button">CSV herunterladen</button>
         </div>
         <div class="controls">
           <label><span>Konzept</span><select id="keyword-concept-filter"></select></label>
@@ -39,10 +40,17 @@
           <label><span>Filter nach</span><select id="keyword-filter-dimension"></select></label>
           <label><span>Filterwert</span><select id="keyword-filter-value"></select></label>
           <label><span>Anzeige</span><select id="keyword-mode"><option value="absolute">Absolute Treffer</option><option value="relative">Je 10.000 Wörter</option></select></label>
+          <label><span>Schattierung</span>
+            <select id="keyword-shading-scope">
+              <option value="table">Gesamte Tabelle</option>
+              <option value="column">Je Spalte</option>
+              <option value="row">Je Zeile</option>
+            </select>
+          </label>
         </div>
         <div id="keyword-summary" class="summary-grid"></div>
-        <div id="keyword-table"></div>
-        <div id="keyword-heatmap" class="section-card"></div>
+        <div id="keyword-table" class="data-dense"></div>
+        <div id="keyword-heatmap" class="section-card data-dense"></div>
       </section>
     </div>
 
