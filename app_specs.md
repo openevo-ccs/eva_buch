@@ -1,4 +1,26 @@
-# Lehrplananalyse App Specifications
+# Lehrplananalyse — App Specification
+
+| | |
+|---|---|
+| **Project** | Companion data app for *Evolutionäre Anthropologie als fächerübergreifender Biologieunterricht* (Hanisch, Springer, 2027) |
+| **Design lead** | Dr. Susan Hanisch |
+| **Document status** | Living document — edit specification text in place; use the *Notes for future revisions* block at the end of each section for open questions, ideas, and planned changes rather than inline comments |
+| **Last major revision** | 2026-07-20 |
+
+## Table of Contents
+
+1. [Overview](#1-overview)
+2. [Global Data Conventions](#2-global-data-conventions)
+3. [Home](#3-home)
+4. [Lehrplandokumente](#4-lehrplandokumente)
+5. [Schlagwortsuche](#5-schlagwortsuche)
+6. [Themenmodellierung: BERTopic](#6-themenmodellierung-bertopic)
+7. [Themenmodellierung: LDA](#7-themenmodellierung-lda)
+8. [Revision History](#8-revision-history)
+
+---
+
+## 1. Overview
 
 The Lehrplan Analyse App is a supplementary data interactive built as a GitHub Pages interactive that will live at [http://openevo-ccs.github.io/eva_buch/app/index.html](http://openevo-ccs.github.io/eva_buch/app/index.html)
 With a permanent url: [http://lehrplananalyse.openevo.net](http://lehrplananalyse.openevo.net)
@@ -6,9 +28,13 @@ With a permanent url: [http://lehrplananalyse.openevo.net](http://lehrplananalys
 The German OpenEvo website for the book: *Evolutionäre Anthropologie als fächerübergreifender Biologieunterricht,* by Dr. Susan Hanisch, is here:
 [https://openevo.eva.mpg.de/projectbase/evo-anthro-buch/?lang=de](https://openevo.eva.mpg.de/projectbase/evo-anthro-buch/?lang=de)
 
+### 1.1 Purpose
+
 It must seamlessly create a comprehensive, intuitive, clean UI/UX for users to engage with data visualizations and access to the raw data from the Lehrplananalyse. All text must be in full, grammatically correct German for this research context.
 
 Whenever possible use the raw GitHub data to generate an amazing, insightful, beautiful data visualization with user-specified options as appropriate, and always enable a raw-data table view (well formatted) with data export options.
+
+### 1.2 Visual Design
 
 **Color and font styles:**
 
@@ -17,6 +43,8 @@ Whenever possible use the raw GitHub data to generate an amazing, insightful, be
   * #272D63
   * With rich gradients within and between these shades and core dark/light elements
 * All menu items and headers should be in Nunito font, with all other text in Roboto font, using smaller font sizes for displaying scientific content as appropriate.
+
+### 1.3 Navigation
 
 **Menu:**
 (sub-menus may be specified in menu header section descriptions below)
@@ -27,7 +55,13 @@ Whenever possible use the raw GitHub data to generate an amazing, insightful, be
 * BERTopic
 * LDA
 
-# Analysis notes
+> **Notes for future revisions (Overview):**
+>
+> _Add notes, open questions, or planned changes here._
+
+---
+
+## 2. Global Data Conventions
 
 Ensure consistent naming of states (Bundesland) everywhere a state name is displayed or exported. At minimum, in `results.csv` and any other pipeline output where these raw labels still appear, replace the following:
 
@@ -37,7 +71,13 @@ Ensure consistent naming of states (Bundesland) everywhere a state name is displ
 
 Any other abbreviated or raw state labels found in source data (e.g. "NRW") should likewise be normalized to their full, correctly spelled German name for consistency across all pages of the app.
 
-# Home
+> **Notes for future revisions (Global Data Conventions):**
+>
+> _Add notes, open questions, or planned changes here._
+
+---
+
+## 3. Home
 
 Hier finden Sie ausführliche Informationen zur Lehrplananalyse, die in der Publikation Hanisch (2027). *Evolutionäre Anthropologie als fächerübergreifender Biologieunterricht*. Springer vorgestellt wird.
 
@@ -51,7 +91,13 @@ Unter dem Menüpunkt *BERTopic* finden Sie Informationen und Ergebnisse der Them
 
 Unter dem Menüpunkt *LDA* finden Sie Informationen und Ergebnisse der Themenmodellierung nach dem LDA-Verfahren.
 
-# Lehrplandokumente
+> **Notes for future revisions (Home):**
+>
+> _Add notes, open questions, or planned changes here._
+
+---
+
+## 4. Lehrplandokumente
 
 * Text at the top of the page, above tabs: "Hier finden Sie eine Übersicht über alle in der Lehrplananalyse enthaltenen Lehrplandokumente."
 * Two tabs within this page: "Matrix" and "Tabelle"
@@ -71,7 +117,13 @@ Unter dem Menüpunkt *LDA* finden Sie Informationen und Ergebnisse der Themenmod
   * Last column: link to the matching .txt file, matched to it via Dateiname, from [LP_DE_2026_1_txtfiles](https://github.com/openevo-ccs/eva_buch/tree/main/data/LP_DE_2026_1_txtfiles)
   * Allow user to filter and sort by Bundesland, Fach, Schulart, Jahr, Gesamtwortzahl
 
-# Schlagwortsuche
+> **Notes for future revisions (Lehrplandokumente):**
+>
+> _Add notes, open questions, or planned changes here._
+
+---
+
+## 5. Schlagwortsuche
 
 * include only one table in this page
 * Header "Ergebnisse nach Konzept, Fach, Bundesland"
@@ -93,11 +145,17 @@ Unter dem Menüpunkt *LDA* finden Sie Informationen und Ergebnisse der Themenmod
 * include entropy measure in last column?
 * allow user to sort by columns
 
-# Themenmodellierung BERTopic
+> **Notes for future revisions (Schlagwortsuche):**
+>
+> _Add notes, open questions, or planned changes here. (Open item carried over from the previous revision: whether/how to add an entropy measure column still needs a methodology decision.)_
+
+---
+
+## 6. Themenmodellierung: BERTopic
 
 Kurze Einführung ähnlich wie im Buch
 
-## App design
+### 6.1 App Design
 
 **Selection options:**
 
@@ -158,16 +216,22 @@ Legend for subjects and topics on the right side.
 
 Can one improve the dimensions of the box that shows up when hovering over a point (like, make it show the full text of the excerpt in about 5 lines, not one line)?
 
-# Themenmodellierung LDA
+> **Notes for future revisions (BERTopic):**
+>
+> _Add notes, open questions, or planned changes here._
+
+---
+
+## 7. Themenmodellierung: LDA
 
 Kurze Einführung ähnlich wie im Buch
 
-## Analysis notes
+### 7.1 Analysis Notes
 
 * Within LDA output, use the topic term frequencies data of each concept (CSV by topic, e.g. [here](https://github.com/openevo-ccs/eva_buch/tree/main/lda_topic_modelling/out/Wert/10/topic_term_frequencies)), and collate also across all topics to see frequency of terms across all topics in one list
 * calculate concept co-occurrence or a similar value (how often a searched concept appears in the topic terms of another concept)
 
-## Design notes
+### 7.2 Design Notes
 
 Main menu items/app windows arranged in tabs similar to browser tabs (not like menu items):
 
@@ -177,7 +241,7 @@ Main menu items/app windows arranged in tabs similar to browser tabs (not like m
 * Topic distribution by subject ("Themen nach Fächern")
 * Concept co-occurrence ("Konzept-Kookkurrenz")
 
-### Topics and term frequency visualization
+#### 7.2.1 Topics and term frequency visualization
 
 * Filter by concept (same 22-concept list as above)
 
@@ -188,7 +252,7 @@ Visualization based on a modified pyLDAvis:
 * On the right side of the window, an Intertopic Distance Map (via multidimensional scaling)
   * User can select topics in this map; this selection shows the topic-level frequency in the Top-30 Most Salient Terms bar chart
 
-### Table of term frequencies
+#### 7.2.2 Table of term frequencies
 
 * Filter by concept (same 22-concept list as above)
 * The table should be formatted similar to the CSV visualization in GitHub, with shaded color headers and similar font size and row height
@@ -201,7 +265,7 @@ Visualization based on a modified pyLDAvis:
 | term2 |  |  |  |  |  |
 | … |  |  |  |  |  |
 
-### Word clouds of topic terms
+#### 7.2.3 Word clouds of topic terms
 
 * Switch between two modes: "collection of concepts" or "single concept"
 * Word cloud style guide:
@@ -226,7 +290,7 @@ Visualization based on a modified pyLDAvis:
   * (in single mode) word clouds for each of the 10 topics of a selected concept, with font size of words scaled by their relative frequency within that topic
     * word clouds arranged in a 4×3 matrix, starting with the most frequent topic
 
-### Topic distribution by subject
+#### 7.2.4 Topic distribution by subject
 
 * Filter by concept (same 22-concept list as above)
 * Topics in rows, subjects in columns, with column and row "Gesamt" containing total values
@@ -241,7 +305,7 @@ Visualization based on a modified pyLDAvis:
 | Topic 2 |  |  |  |  |
 | … |  |  |  |  |
 
-### Concept co-occurrence
+#### 7.2.5 Concept co-occurrence
 
 * matrix of concepts with co-occurrence values
 * the matrix should be formatted similar to the CSV visualization in GitHub, with similar font size and row height
@@ -255,3 +319,18 @@ Visualization based on a modified pyLDAvis:
 | … |  |  |  |
 
 * Network graph for concept co-occurrence
+
+> **Notes for future revisions (LDA):**
+>
+> _Add notes, open questions, or planned changes here._
+
+---
+
+## 8. Revision History
+
+| Date | Change | By |
+|---|---|---|
+| 2026-07-20 | Full spec revision merged from Susan Hanisch's notes (`app_specs_SH_notes.md`); reformatted into this numbered, sectioned document with per-section revision-notes space | Susan Hanisch / Claude |
+| 2026-07-18 | Prior working draft | — |
+
+> _Add new rows above as the specification changes. Keep one row per substantive revision, with a one-line summary of what changed and who requested/made the change._
