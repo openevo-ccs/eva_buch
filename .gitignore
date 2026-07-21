@@ -29,6 +29,13 @@ bertopic/notebooks/
 # lda_topic_modelling/
 rm/
 
+# Regenerable fitted-model artifacts — analogous to bertopic/src/cache/
+# above, these are large binary build outputs, not source. 78 pre-existing
+# ones from the original run are already committed on `main`/tagged at
+# pre-rerun-2026-07 (retrievable there); going forward they should not be
+# re-added. See METHODOLOGY.md section 6.
+lda_topic_modelling/out/**/tm/*.pkl
+
 # macOS
 .DS_Store
 

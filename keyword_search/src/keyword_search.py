@@ -252,10 +252,19 @@ def clean_hyphenated_text(text: str) -> str:
         if ch.isalpha() and not re.match(r"[a-zA-ZäöüÄÖÜßéèêëçñ]", ch)
     }
     if stripped_letters:
-        print(f"  WARNING: clean_hyphenated_text() is stripping unexpected "
-              f"letter(s) {sorted(stripped_letters)!r} -- possible unhandled "
-              f"font-encoding issue in the source PDF (see METHODOLOGY.md "
-              f"section 1 for a known example).")
+        msg = (f"  WARNING: clean_hyphenated_text() is stripping unexpected "
+               f"letter(s) {sorted(stripped_letters)!r} -- possible unhandled "
+               f"font-encoding issue in the source PDF (see METHODOLOGY.md "
+               f"section 1 for a known example).")
+        try:
+            print(msg)
+        except UnicodeEncodeError:
+            # Some consoles (Windows cp1252 in particular) can't represent
+            # every script (e.g. Greek) even though the underlying string
+            # is correct UTF-8 -- fall back to a lossy-but-non-crashing
+            # representation rather than letting this warning kill the run.
+            enc = sys.stdout.encoding or "utf-8"
+            print(msg.encode(enc, errors="replace").decode(enc, errors="replace"))
 
     # Remove characters outside the expected German/Latin alphabet
     text = re.sub(r"[^a-zA-ZäöüÄÖÜßéèêëçñ\s,.;:/-]", "", text)

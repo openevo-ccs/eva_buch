@@ -146,6 +146,30 @@ DEFAULT_CONCEPTS: list[str] = [
 # 19% outliers under this one -- see METHODOLOGY.md SS3 for the full pilot).
 EMBEDDING_MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
 
+# Topic-count CEILING (approved 2026-07-21, "Strategy B", METHODOLOGY.md
+# section 4): app_specs.md requires "no more than ten topics plus one
+# outlier topic" per concept. BERTopic's nr_topics/_reduce_topics() counts
+# the outlier bucket (-1) toward this total when outliers exist, so 11 ->
+# up to 10 real topics + 1 outlier. Critically, reduce_topics only MERGES
+# DOWN when a concept's natural topic count exceeds this value -- it never
+# inflates a concept that naturally settles below it (self._outliers is
+# subtracted before AgglomerativeClustering(n=nr_topics - outliers) runs,
+# and reduction is skipped entirely when nr_topics >= the natural count).
+# So passing this uniformly is already the full "ceiling not target"
+# behavior -- no extra custom logic needed on top of BERTopic's own.
+DEFAULT_NR_TOPICS_CEILING = 11
+
+
+def embedding_model_slug() -> str:
+    """Filesystem-safe stand-in for EMBEDDING_MODEL_NAME, used to namespace
+    every embedding-derived cache path (global embeddings, per-concept
+    BERTopic models, per-concept UMAP projections) so switching models
+    can't silently resurrect a stale cache fit on the previous model's
+    embeddings -- see compute_or_load_embeddings() for the incident this
+    fixes (METHODOLOGY.md section 3/6).
+    """
+    return re.sub(r"[^a-zA-Z0-9_-]+", "_", EMBEDDING_MODEL_NAME)
+
 # A single seed drives every stochastic component (numpy, UMAP, HDBSCAN)
 # so that re-running the pipeline on unchanged input yields identical output.
 RANDOM_SEED = 42
@@ -286,8 +310,15 @@ def parse_args(argv: Optional[list[str]] = None) -> RunConfig:
                     help="Refit BERTopic models even if cached.")
     p.add_argument("--skip-stats", action="store_true",
                     help="Skip topic/subject distribution-statistics export.")
-    p.add_argument("--nr-topics", type=int, default=None,
-                    help="Fixed target topic count per concept (default: auto).")
+    p.add_argument("--nr-topics", type=int, default=DEFAULT_NR_TOPICS_CEILING,
+                    help="Topic-count CEILING per concept, passed straight to "
+                         "BERTopic's own nr_topics/reduce_topics. Per BERTopic's "
+                         "_reduce_topics(), this only merges down when a concept's "
+                         "natural (min_cluster_size-driven) topic count exceeds the "
+                         "ceiling -- it never inflates a concept that naturally "
+                         "settles below it. Pass 0 or a negative value for "
+                         "uncapped/auto (the old default, not recommended -- see "
+                         "METHODOLOGY.md section 4).")
     p.add_argument("--minify-json", dest="pretty_json", action="store_false",
                     help="Write compact (minified) JSON instead of indented.")
     p.add_argument("--dry-run", action="store_true",
@@ -295,6 +326,8 @@ def parse_args(argv: Optional[list[str]] = None) -> RunConfig:
     p.add_argument("--log-level", default="INFO",
                     choices=["DEBUG", "INFO", "WARNING", "ERROR"])
     args = p.parse_args(argv)
+
+    nr_topics = args.nr_topics if args.nr_topics and args.nr_topics > 0 else None
 
     concepts = DEFAULT_CONCEPTS
     if args.concepts:
@@ -317,7 +350,7 @@ def parse_args(argv: Optional[list[str]] = None) -> RunConfig:
         skip_stats=args.skip_stats,
         dry_run=args.dry_run,
         pretty_json=args.pretty_json,
-        nr_topics=args.nr_topics,
+        nr_topics=nr_topics,
         log_level=args.log_level,
         topic_overrides_path=args.topic_overrides,
     )
@@ -495,8 +528,13 @@ def compute_or_load_embeddings(
     """Compute (or load cached) L2-normalised sentence embeddings for the
     full corpus. This is the single most expensive step, so it is computed
     exactly once and reused across every concept's BERTopic run.
+
+    The cache filename is namespaced by embedding model name -- without
+    this, switching EMBEDDING_MODEL_NAME (as happened 2026-07-21, see
+    METHODOLOGY.md section 3) would silently reuse a stale cache computed
+    under the old model, since the old filename carried no model identity.
     """
-    cache_path = cache_dir / "embeddings_all.npy"
+    cache_path = cache_dir / f"embeddings_all__{embedding_model_slug()}.npy"
     if cache_path.exists() and not force:
         log.info("Loading global embeddings from cache …")
         emb = np.load(cache_path)
@@ -616,7 +654,7 @@ def fit_or_load_bertopic(
     potentially informative vocabulary in every other concept's model.
     """
     german_stopwords = list(stopwords_for_concept(concept))
-    cache_path = cache_dir / concept / f"topic_model_{concept}.pkl"
+    cache_path = cache_dir / concept / f"topic_model_{concept}__{embedding_model_slug()}.pkl"
 
     if cache_path.exists() and not force:
         log.info(f"  [{concept}] Loading BERTopic model from cache …")
@@ -928,11 +966,11 @@ def process_concept(
     meta_df["bertopic_topic"] = topics
 
     umap2d = compute_or_load_umap(
-        embeddings, cfg.cache_dir / concept / f"umap2d_{concept}.npy",
+        embeddings, cfg.cache_dir / concept / f"umap2d_{concept}__{embedding_model_slug()}.npy",
         n_components=2, log=log, force=cfg.force_umap,
     )
     umap3d = compute_or_load_umap(
-        embeddings, cfg.cache_dir / concept / f"umap3d_{concept}.npy",
+        embeddings, cfg.cache_dir / concept / f"umap3d_{concept}__{embedding_model_slug()}.npy",
         n_components=3, log=log, force=cfg.force_umap,
     )
 

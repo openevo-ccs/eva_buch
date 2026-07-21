@@ -36,7 +36,7 @@ from pathlib import Path
 
 import numpy as np
 
-from bertopic_pipeline_v2 import compute_or_load_umap, setup_logging, RANDOM_SEED
+from bertopic_pipeline_v2 import compute_or_load_umap, setup_logging, RANDOM_SEED, embedding_model_slug
 
 
 def round_pair(coords: np.ndarray, i: int, ndim: int) -> list[float]:
@@ -61,7 +61,11 @@ def main() -> None:
 
     log = setup_logging(args.out_dir, "INFO")
 
-    embeddings_path = args.cache_dir / "embeddings_all.npy"
+    # Cache paths are namespaced by embedding model (see
+    # bertopic_pipeline_v2.embedding_model_slug()) so switching models
+    # can't silently resurrect a stale fit from the previous one.
+    slug = embedding_model_slug()
+    embeddings_path = args.cache_dir / f"embeddings_all__{slug}.npy"
     if not embeddings_path.exists():
         raise SystemExit(f"[FATAL] {embeddings_path} not found — run bertopic_pipeline_v2.py first.")
 
@@ -70,11 +74,11 @@ def main() -> None:
     log.info(f"  Loaded embeddings: shape {embeddings_all.shape}")
 
     umap2d_global = compute_or_load_umap(
-        embeddings_all, args.cache_dir / "umap2d_global.npy",
+        embeddings_all, args.cache_dir / f"umap2d_global__{slug}.npy",
         n_components=2, log=log, force=args.force,
     )
     umap3d_global = compute_or_load_umap(
-        embeddings_all, args.cache_dir / "umap3d_global.npy",
+        embeddings_all, args.cache_dir / f"umap3d_global__{slug}.npy",
         n_components=3, log=log, force=args.force,
     )
 
