@@ -17,6 +17,7 @@ from pathlib import Path
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from config import RESULT_PATH as DATA_PATH, LDA_IN, LDA_OUT as OUT_DIR
+from shared_stopwords import stopwords_for_concept
 
 print("All libraries successfully imported!")
 
@@ -24,7 +25,6 @@ print("All libraries successfully imported!")
 # CONFIGURATION
 # ─────────────────────────────────────────────────────────────────────────────
 KEYWORD_PATH         = LDA_IN / "keywords_topic_modelling.txt"
-EXCLUDE_TERMS_PATH   = LDA_IN / "exclude_list.txt"
 
 # spaCy model for German lemmatisation and stopword removal
 SPACY_MODEL = "de_core_news_sm"
@@ -103,7 +103,7 @@ def get_excerpts(df: pd.DataFrame, keyword: str | None = None) -> list[dict] | b
 # STEP 3 — PREPROCESSING
 # ─────────────────────────────────────────────────────────────────────────────
 
-def preprocess_text(excerpts: list[dict]) -> list[str]:
+def preprocess_text(excerpts: list[dict], concept: str | None = None) -> list[str]:
     """
     Preprocess raw text excerpts for LDA: clean, lemmatise, and remove stopwords.
 
@@ -111,25 +111,30 @@ def preprocess_text(excerpts: list[dict]) -> list[str]:
       - Strip non-alphabetic characters (German umlauts retained)
       - Lemmatise using spaCy's German model
       - Lowercase all tokens
-      - Remove spaCy stopwords, project-specific exclude-list terms,
-        and tokens shorter than 3 characters
+      - Remove stopwords (both lemma and surface form checked) and tokens
+        shorter than 3 characters
 
-    The exclude list is loaded from EXCLUDE_TERMS_PATH (comma-separated).
+    Stopwords come from shared_stopwords.stopwords_for_concept(concept) --
+    the single list shared with the BERTopic pipeline (base German list +
+    curriculum-administrative/pedagogical Tier 1 additions), plus this
+    concept's own keyword variants excluded from its own vectorizer only
+    (Tier 3 self-seed exclusion, METHODOLOGY.md SS2). Pass concept=None to
+    get the base list only (e.g. when preprocessing across all concepts
+    at once).
 
     Args:
         excerpts: List of dicts as returned by get_excerpts(), each containing
                   at least a 'text_excerpt' key.
+        concept:  Concept label whose own seed terms should additionally be
+                  excluded, or None for the base list only.
 
     Returns:
         List of preprocessed strings (one per excerpt), with empty string for
         non-string inputs.
     """
     nlp        = spacy.load(SPACY_MODEL)
-    stop_words = nlp.Defaults.stop_words
-
-    with open(EXCLUDE_TERMS_PATH, "r", encoding="utf-8") as f:
-        exclude_terms = set(f.read().split(", "))
-    print(f"  {len(exclude_terms)} terms in exclude list")
+    stop_words = stopwords_for_concept(concept or "")
+    print(f"  {len(stop_words)} stopwords in effect for concept={concept!r}")
 
     processed_texts = []
     for item in excerpts:
@@ -146,8 +151,7 @@ def preprocess_text(excerpts: list[dict]) -> list[str]:
             token.lemma_.lower()
             for token in doc
             if token.text.lower() not in stop_words
-            and token.lemma_.lower() not in exclude_terms
-            and token.text.lower() not in exclude_terms
+            and token.lemma_.lower() not in stop_words
             and len(token.text) > 2
         ]
         processed_texts.append(" ".join(tokens))
@@ -602,7 +606,7 @@ def run_topic_model(
     # Step 2: Get excerpts for the concept
     excerpts = get_excerpts(df, keyword)
     # Step 3: Preprocess text
-    preprocessed = preprocess_text(excerpts)
+    preprocessed = preprocess_text(excerpts, keyword)
     # Step 4: Build document-term matrix
     dtm, vectorizer = create_dtm(preprocessed, max_df=max_df, min_df=min_df)
     feature_names   = vectorizer.get_feature_names_out()

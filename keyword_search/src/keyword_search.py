@@ -12,7 +12,7 @@ import pymupdf
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from config import KW_IN, KW_OUT as OUT_DIR, DATA_DIR, RESULT_PATH as OUT_PATH
-from utils import pdf_dir_to_txt
+from utils import pdf_dir_to_txt, remap_font_encoding_artifacts
 
 print("All libraries successfully imported!")
 
@@ -214,6 +214,7 @@ def normalize_text(text: str) -> str:
     Returns:
         Normalised text string.
     """
+    text = remap_font_encoding_artifacts(text)
     for char in DASH_CHARS:
         text = text.replace(char, "-")
     return unicodedata.normalize("NFKC", text)
@@ -239,6 +240,23 @@ def clean_hyphenated_text(text: str) -> str:
     text = re.sub(r"\b\d+(\.\d+)*\.?(?=\s|$)", "", text)
     # Remove repeated-dot artefacts (table of contents leaders)
     text = re.sub(r"\.(\s*\.){3,}", "", text)
+
+    # Defensive check added 2026-07-21: report (don't silently drop) any
+    # alphabetic character the whitelist below is about to strip. A real
+    # letter being removed here is the signature of an unhandled PDF
+    # font-encoding issue (see METHODOLOGY.md section 1) rather than
+    # routine punctuation/symbol noise, which this filter also strips
+    # constantly and harmlessly.
+    stripped_letters = {
+        ch for ch in text
+        if ch.isalpha() and not re.match(r"[a-zA-ZäöüÄÖÜßéèêëçñ]", ch)
+    }
+    if stripped_letters:
+        print(f"  WARNING: clean_hyphenated_text() is stripping unexpected "
+              f"letter(s) {sorted(stripped_letters)!r} -- possible unhandled "
+              f"font-encoding issue in the source PDF (see METHODOLOGY.md "
+              f"section 1 for a known example).")
+
     # Remove characters outside the expected German/Latin alphabet
     text = re.sub(r"[^a-zA-ZäöüÄÖÜßéèêëçñ\s,.;:/-]", "", text)
     # Collapse line breaks to single spaces

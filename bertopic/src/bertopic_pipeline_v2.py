@@ -58,7 +58,7 @@
 #
 #  REQUIREMENTS
 #  ------------
-#    pandas, numpy, scipy, scikit-learn, nltk, tqdm,
+#    pandas, numpy, scipy, scikit-learn, spacy, tqdm,
 #    bertopic, umap-learn, hdbscan, sentence-transformers
 #
 # ══════════════════════════════════════════════════════════════════════════
@@ -114,11 +114,11 @@ except ImportError as e:
     sys.exit(f"[FATAL] Missing dependency 'bertopic'/'scikit-learn': {e}. "
               f"Run: pip install bertopic scikit-learn")
 
+sys.path.append(str(Path(__file__).resolve().parent.parent.parent))
 try:
-    import nltk
-    from nltk.corpus import stopwords as nltk_stopwords
+    from shared_stopwords import stopwords_for_concept
 except ImportError as e:
-    sys.exit(f"[FATAL] Missing dependency 'nltk': {e}. Run: pip install nltk")
+    sys.exit(f"[FATAL] Could not import shared_stopwords.py from repo root: {e}")
 
 import pickle
 
@@ -137,9 +137,14 @@ DEFAULT_CONCEPTS: list[str] = [
     "Rationalität", "Ursache", "Verhalten", "Vorurteil", "Wert",
 ]
 
-# Sentence-embedding model. MiniLM is small, fast, and multilingual-capable
-# for German short text; swap here if a better German-tuned model is found.
-EMBEDDING_MODEL_NAME = "all-MiniLM-L6-v2"
+# Sentence-embedding model. paraphrase-multilingual-MiniLM-L12-v2 replaced
+# all-MiniLM-L6-v2 on 2026-07-21: the latter is trained overwhelmingly on
+# English sentence pairs despite the old comment here calling it
+# "multilingual-capable", and produced under-differentiated embeddings for
+# German curriculum text (e.g. Verhalten's 1,155-doc corpus collapsed to 4
+# clusters with a 0% outlier rate under the old model vs. 23 clusters /
+# 19% outliers under this one -- see METHODOLOGY.md SS3 for the full pilot).
+EMBEDDING_MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
 
 # A single seed drives every stochastic component (numpy, UMAP, HDBSCAN)
 # so that re-running the pipeline on unchanged input yields identical output.
@@ -158,13 +163,6 @@ COLUMN_MAP = {
     "year":    "year",
     "subject": "subject",
 }
-
-# Extra German stopwords beyond NLTK's default list — mostly OCR/abbreviation
-# artefacts observed in curriculum PDFs.
-EXTRA_STOP_WORDS = [
-    "gv", "lt", "bzw", "std", "ca", "tf", "ak", "le",
-    "sowie", "schlerinnen", "schler", "fr", "ggf", "usw", "vgl",
-]
 
 # Canonical German federal states + best-effort alias resolution. Any raw
 # 'state' value not matched here falls through to a Title-Case pass-through
@@ -363,16 +361,6 @@ def md5_of_file(path: Path, chunk_size: int = 2 ** 20) -> str:
         for chunk in iter(lambda: f.read(chunk_size), b""):
             h.update(chunk)
     return h.hexdigest()
-
-
-def ensure_nltk_stopwords(log: logging.Logger) -> list[str]:
-    """Return the German NLTK stopword list, downloading it if necessary."""
-    try:
-        return nltk_stopwords.words("german")
-    except LookupError:
-        log.info("NLTK German stopwords not found locally — downloading …")
-        nltk.download("stopwords", quiet=True)
-        return nltk_stopwords.words("german")
 
 
 # ══════════════════════════════════════════════════════════════════════════
@@ -613,7 +601,6 @@ def fit_or_load_bertopic(
     embeddings: np.ndarray,
     cache_dir: Path,
     log: logging.Logger,
-    german_stopwords: list[str],
     nr_topics: Optional[int] = None,
     force: bool = False,
 ) -> tuple[BERTopic, list[int]]:
@@ -621,7 +608,14 @@ def fit_or_load_bertopic(
     subset. Hyperparameters scale with corpus size; a fallback vectoriser
     (no min_df/max_df constraints) is used if the primary one raises
     (typical failure mode: max_df < min_df on very small/sparse corpora).
+
+    Stopwords are resolved per concept via shared_stopwords.stopwords_for_concept()
+    -- the shared Tier 1/2 base list plus this concept's own seed-term variants
+    (Tier 3 self-seed exclusion, METHODOLOGY.md SS2), so e.g. "freiheit" is
+    excluded from the Freiheit model's own vocabulary but remains ordinary,
+    potentially informative vocabulary in every other concept's model.
     """
+    german_stopwords = list(stopwords_for_concept(concept))
     cache_path = cache_dir / concept / f"topic_model_{concept}.pkl"
 
     if cache_path.exists() and not force:
@@ -909,7 +903,6 @@ def process_concept(
     df: pd.DataFrame,
     embeddings_all: np.ndarray,
     cfg: RunConfig,
-    german_stopwords: list[str],
     topic_overrides: dict[str, dict[str, str]],
     state_tracker: Counter,
     log: logging.Logger,
@@ -929,7 +922,7 @@ def process_concept(
     embeddings = embeddings_all[meta_df["doc_id"].to_numpy()]
 
     topic_model, topics = fit_or_load_bertopic(
-        concept, docs, embeddings, cfg.cache_dir, log, german_stopwords,
+        concept, docs, embeddings, cfg.cache_dir, log,
         nr_topics=cfg.nr_topics, force=cfg.force_topics,
     )
     meta_df["bertopic_topic"] = topics
@@ -991,7 +984,6 @@ def main() -> None:
     log.info(f"Source CSV checksum (MD5): {csv_checksum}")
 
     df = load_source_csv(cfg.csv_path, log)
-    german_stopwords = ensure_nltk_stopwords(log) + EXTRA_STOP_WORDS
     topic_overrides = load_topic_overrides(cfg.topic_overrides_path, log)
 
     embeddings_all = compute_or_load_embeddings(
@@ -1009,7 +1001,7 @@ def main() -> None:
         log.info("-" * 78)
         try:
             fragment = process_concept(
-                concept, df, embeddings_all, cfg, german_stopwords,
+                concept, df, embeddings_all, cfg,
                 topic_overrides, state_tracker, log,
             )
             if fragment:
