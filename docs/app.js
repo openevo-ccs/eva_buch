@@ -26,7 +26,7 @@ const appState = {
     showOutliers: true,
     projection: 'local',
     dimension: '3d',
-    pointSize: 2,
+    pointSize: 4,
     orbit: { enabled: false, speed: 1, elevation: 0.35, theta: 0, raf: null },
     selection: null
   }
@@ -378,7 +378,7 @@ function renderDokumenteTable() {
       <table>
         <thead><tr>
           <th>#</th>
-          ${DOKUMENTE_TABLE_COLUMNS.map((key) => `<th data-key="${key}" style="cursor:pointer;">${escapeHtml(key)}${sort.key === key ? (sort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</th>`).join('')}
+          ${DOKUMENTE_TABLE_COLUMNS.map((key) => sortableHeaderCell(key, key, sort)).join('')}
           <th>Referenz</th>
           <th>Volltext</th>
         </tr></thead>
@@ -435,7 +435,11 @@ function renderDokumenteMatrix() {
   const grandTotal = rows.length;
   const maxCell = Math.max(1, ...stateRows.flatMap((r) => r.counts));
 
-  const headerCells = [`<th>Bundesland</th>`, ...subjects.map((s) => `<th data-key="${escapeHtml(s)}" style="cursor:pointer;">${escapeHtml(s)}${matrixSort.key === s ? (matrixSort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</th>`), `<th data-key="Gesamt" style="cursor:pointer;">Gesamt${matrixSort.key === 'Gesamt' ? (matrixSort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</th>`];
+  const headerCells = [
+    `<th>Bundesland</th>`,
+    ...subjects.map((s) => sortableHeaderCell(s, s, matrixSort)),
+    sortableHeaderCell('Gesamt', 'Gesamt', matrixSort),
+  ];
 
   container.innerHTML = `
     <div class="table-shell">
@@ -483,39 +487,70 @@ function renderKeywordPage() {
   const columnValues = [...new Set(rows.map((row) => row[dimensionToKey(dimensionB)]).filter(Boolean))].sort();
   const wordCounts = Object.fromEntries(appState.keywordWordCounts.map((row) => [row.file, Number(row.word_count || 0)]));
 
-  const cellValue = (rowValue, columnValue) => {
-    const matches = rows.filter((row) => row[dimensionToKey(dimensionA)] === rowValue && row[dimensionToKey(dimensionB)] === columnValue);
-    const totalWords = matches.reduce((sum, row) => sum + (wordCounts[row.file] || 1), 0);
-    const value = mode === 'relative' ? (matches.length / Math.max(totalWords, 1)) * 10000 : matches.length;
+  // Word-count denominators are summed over the UNIQUE documents in a
+  // slice, not per match-row -- a document with several matches in the
+  // same cell shouldn't have its word count added more than once, and
+  // when "concept" is one of the chosen dimensions a document can appear
+  // in several columns, so row/column aggregates need their own dedup too.
+  const wordsForSlice = (slice) => {
+    const files = new Set(slice.map((row) => row.file));
+    let sum = 0;
+    files.forEach((file) => { sum += wordCounts[file] || 0; });
+    return sum;
+  };
+  const cellDisplay = (count, words) => {
+    const value = mode === 'relative' ? (count / Math.max(words, 1)) * 10000 : count;
     return Number(value.toFixed(2));
   };
 
   const tableRows = rowValues.map((rowValue) => {
+    const rowMatches = rows.filter((row) => row[dimensionToKey(dimensionA)] === rowValue);
     const entry = { [dimensionLabel(dimensionA)]: rowValue };
-    let rowTotal = 0;
     columnValues.forEach((columnValue) => {
-      const value = cellValue(rowValue, columnValue);
-      entry[columnValue] = value;
-      rowTotal += value;
+      const slice = rowMatches.filter((row) => row[dimensionToKey(dimensionB)] === columnValue);
+      entry[columnValue] = cellDisplay(slice.length, wordsForSlice(slice));
     });
-    entry.Gesamt = Number(rowTotal.toFixed(2));
+    // Gesamt is recomputed from this row's full match set (all columns
+    // combined), not by summing the already-normalized per-cell values --
+    // summing relative-frequency ratios across cells with different word-
+    // count denominators does not equal the row's true combined rate.
+    entry.Gesamt = cellDisplay(rowMatches.length, wordsForSlice(rowMatches));
     return entry;
   });
-  const gesamtRow = { [dimensionLabel(dimensionA)]: 'Gesamt' };
-  let grandTotal = 0;
-  columnValues.forEach((columnValue) => {
-    const colTotal = tableRows.reduce((sum, row) => sum + row[columnValue], 0);
-    gesamtRow[columnValue] = Number(colTotal.toFixed(2));
-    grandTotal += colTotal;
-  });
-  gesamtRow.Gesamt = Number(grandTotal.toFixed(2));
 
+  const gesamtRow = { [dimensionLabel(dimensionA)]: 'Gesamt' };
+  columnValues.forEach((columnValue) => {
+    const colMatches = rows.filter((row) => row[dimensionToKey(dimensionB)] === columnValue);
+    gesamtRow[columnValue] = cellDisplay(colMatches.length, wordsForSlice(colMatches));
+  });
+  gesamtRow.Gesamt = cellDisplay(rows.length, wordsForSlice(rows));
+
+  // app_specs.md: "include only one table on this page" -- the shaded
+  // heatmap below is that one table; a separate plain-table rendering of
+  // the same data used to also exist here and has been removed. Keep
+  // keywordTableRows (including the Gesamt row) around for CSV export.
   appState.keywordTableRows = [...tableRows, gesamtRow];
-  document.getElementById('keyword-table').innerHTML = renderTable(appState.keywordTableRows, [dimensionLabel(dimensionA), ...columnValues, 'Gesamt']);
 
   const shadingScope = document.getElementById('keyword-shading-scope')?.value || 'table';
-  const heatmapRows = [[dimensionLabel(dimensionA), ...columnValues], ...tableRows.map((row) => [row[dimensionLabel(dimensionA)], ...columnValues.map((column) => row[column])])];
-  document.getElementById('keyword-heatmap').innerHTML = renderHeatmap(heatmapRows, mode === 'relative' ? 'Relative Häufigkeit je 10.000 Wörter' : 'Absolute Treffer', shadingScope);
+  const heatmapRows = [
+    [dimensionLabel(dimensionA), ...columnValues, 'Gesamt'],
+    ...tableRows.map((row) => [row[dimensionLabel(dimensionA)], ...columnValues.map((column) => row[column]), row.Gesamt]),
+    ['Gesamt', ...columnValues.map((column) => gesamtRow[column]), gesamtRow.Gesamt],
+  ];
+  if (!appState.keywordSort) appState.keywordSort = { key: null, dir: 'desc' };
+  const heatmapEl = document.getElementById('keyword-heatmap');
+  heatmapEl.innerHTML = renderHeatmap(
+    heatmapRows, mode === 'relative' ? 'Relative Häufigkeit je 10.000 Wörter' : 'Absolute Treffer',
+    shadingScope, appState.keywordSort,
+  );
+  heatmapEl.querySelectorAll('th[data-key]').forEach((th) => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      const current = appState.keywordSort;
+      appState.keywordSort = { key, dir: current.key === key && current.dir === 'desc' ? 'asc' : 'desc' };
+      renderKeywordPage();
+    });
+  });
 
   document.getElementById('keyword-summary').innerHTML = [
     { title: 'Treffer gesamt', value: rows.length.toLocaleString('de-DE') },
@@ -1007,6 +1042,8 @@ function renderLdaMap() {
   const coords = appState.lda.ldavis.topic_coordinates || [];
   const theme = getPlotlyThemeColors();
 
+  const selected = appState.lda.selectedTopic;
+
   const trace = {
     type: 'scatter',
     mode: 'markers+text',
@@ -1017,7 +1054,10 @@ function renderLdaMap() {
     marker: {
       size: coords.map((t) => Math.max(20, Math.sqrt(Math.max(t.freq, 0.1)) * 7)),
       color: coords.map((t) => hashColor(`lda::${t.topic}`, 'lda-topic')),
-      line: { color: theme.border, width: 1 }
+      line: {
+        color: coords.map((t) => (t.topic === selected ? LEGEND_HIGHLIGHT_COLOR : theme.border)),
+        width: coords.map((t) => (t.topic === selected ? 3 : 1))
+      }
     },
     customdata: coords.map((t) => t.topic),
     hoverinfo: 'none'
@@ -1038,6 +1078,7 @@ function renderLdaMap() {
       const point = event.points && event.points[0];
       if (!point) return;
       appState.lda.selectedTopic = point.customdata;
+      renderLdaMap();
       renderLdaTermPanel();
     });
   });
@@ -1088,12 +1129,12 @@ function renderLdaTermTable() {
   container.innerHTML = `
     <div class="table-shell">
       <table>
-        <thead><tr>${headers.map((h) => `<th data-key="${h}" style="cursor:pointer;">${escapeHtml(ldaTermColumnLabel(h))}${sort.key === h ? (sort.dir === 'asc' ? ' ▲' : ' ▼') : ''}</th>`).join('')}</tr></thead>
+        <thead><tr>${headers.map((h) => sortableHeaderCell(ldaTermColumnLabel(h), h, sort)).join('')}</tr></thead>
         <tbody>${sorted.map((row) => `<tr>${headers.map((h) => `<td>${escapeHtml(row[h])}</td>`).join('')}</tr>`).join('')}</tbody>
       </table>
     </div>
   `;
-  container.querySelectorAll('th').forEach((th) => {
+  container.querySelectorAll('th[data-key]').forEach((th) => {
     th.addEventListener('click', () => {
       const key = th.dataset.key;
       const current = appState.lda.tableSort;
@@ -1119,7 +1160,16 @@ function renderLdaTopicSubject() {
     ['Thema', ...columns.slice(1)],
     ...rows.map((row) => [`Thema ${row.topic_id}`, ...columns.slice(1).map((c) => row[c])])
   ];
-  container.innerHTML = renderMatrix(matrix);
+  if (!appState.lda.topicSubjectSort) appState.lda.topicSubjectSort = { key: null, dir: 'desc' };
+  container.innerHTML = renderMatrix(matrix, appState.lda.topicSubjectSort);
+  container.querySelectorAll('th[data-key]').forEach((th) => {
+    th.addEventListener('click', () => {
+      const key = th.dataset.key;
+      const current = appState.lda.topicSubjectSort;
+      appState.lda.topicSubjectSort = { key, dir: current.key === key && current.dir === 'desc' ? 'asc' : 'desc' };
+      renderLdaTopicSubject();
+    });
+  });
 }
 
 function renderLdaCooccurrence() {
@@ -1132,7 +1182,16 @@ function renderLdaCooccurrence() {
   }
   if (container) {
     const matrix = [['Konzept', ...data.concepts], ...data.concepts.map((c, i) => [c, ...data.matrix[i]])];
-    container.innerHTML = renderMatrix(matrix);
+    if (!appState.lda.cooccurrenceSort) appState.lda.cooccurrenceSort = { key: null, dir: 'desc' };
+    container.innerHTML = renderMatrix(matrix, appState.lda.cooccurrenceSort);
+    container.querySelectorAll('th[data-key]').forEach((th) => {
+      th.addEventListener('click', () => {
+        const key = th.dataset.key;
+        const current = appState.lda.cooccurrenceSort;
+        appState.lda.cooccurrenceSort = { key, dir: current.key === key && current.dir === 'desc' ? 'asc' : 'desc' };
+        renderLdaCooccurrence();
+      });
+    });
   }
   if (networkEl) renderCooccurrenceNetwork(networkEl, data);
 }
@@ -1418,25 +1477,33 @@ function initTabStrip(stripId) {
   });
 }
 
-function renderTable(rows, headers) {
-  if (!rows.length) return '<p>Keine Daten verfügbar.</p>';
-  return `
-    <div class="table-shell">
-      <table>
-        <thead><tr>${headers.map((header) => `<th>${escapeHtml(header)}</th>`).join('')}</tr></thead>
-        <tbody>${rows.map((row) => `<tr>${headers.map((header) => `<td>${escapeHtml(row[header] ?? '—')}</td>`).join('')}</tr>`).join('')}</tbody>
-      </table>
-    </div>
-  `;
-}
+function renderMatrix(matrix, sortState = null) {
+  const [headerRow, ...allRows] = matrix;
 
-function renderMatrix(matrix) {
-  const [headerRow, ...rows] = matrix;
+  // As in renderHeatmap(): a trailing "Gesamt" row stays pinned at the
+  // bottom regardless of sort -- only the other rows get reordered.
+  const gesamtRow = allRows.length && allRows[allRows.length - 1][0] === 'Gesamt'
+    ? allRows[allRows.length - 1] : null;
+  let rows = gesamtRow ? allRows.slice(0, -1) : allRows;
+
+  if (sortState && sortState.key) {
+    const colIndex = headerRow.indexOf(sortState.key);
+    if (colIndex > 0) {
+      rows = [...rows].sort((a, b) => {
+        const va = Number(a[colIndex]);
+        const vb = Number(b[colIndex]);
+        const cmp = (Number.isNaN(va) ? -Infinity : va) - (Number.isNaN(vb) ? -Infinity : vb);
+        return sortState.dir === 'asc' ? cmp : -cmp;
+      });
+    }
+  }
+  const renderedRows = gesamtRow ? [...rows, gesamtRow] : rows;
+
   return `
     <div class="table-shell">
       <table>
-        <thead><tr>${headerRow.map((value) => `<th>${escapeHtml(value)}</th>`).join('')}</tr></thead>
-        <tbody>${rows.map((row) => `<tr>${row.map((value, index) => {
+        <thead><tr>${headerRow.map((value, index) => index === 0 ? `<th>${escapeHtml(value)}</th>` : sortableHeaderCell(value, value, sortState)).join('')}</tr></thead>
+        <tbody>${renderedRows.map((row) => `<tr>${row.map((value, index) => {
           const isHeader = index === 0;
           const number = Number(value);
           const isNumber = !Number.isNaN(number);
@@ -1447,9 +1514,29 @@ function renderMatrix(matrix) {
   `;
 }
 
-function renderHeatmap(rows, title, scope = 'table') {
-  const [headerRow, ...dataRows] = rows;
-  const dataCells = dataRows.map((row) => row.slice(1).map(Number));
+function renderHeatmap(rows, title, scope = 'table', sortState = null) {
+  const [headerRow, ...allDataRows] = rows;
+
+  // The "Gesamt" row (if present) always stays pinned at the bottom --
+  // sorting reorders every other row around it, never the total itself.
+  const gesamtRow = allDataRows.length && allDataRows[allDataRows.length - 1][0] === 'Gesamt'
+    ? allDataRows[allDataRows.length - 1] : null;
+  let dataRows = gesamtRow ? allDataRows.slice(0, -1) : allDataRows;
+
+  if (sortState && sortState.key) {
+    const colIndex = headerRow.indexOf(sortState.key);
+    if (colIndex > 0) {
+      dataRows = [...dataRows].sort((a, b) => {
+        const va = Number(a[colIndex]);
+        const vb = Number(b[colIndex]);
+        const cmp = (Number.isNaN(va) ? -Infinity : va) - (Number.isNaN(vb) ? -Infinity : vb);
+        return sortState.dir === 'asc' ? cmp : -cmp;
+      });
+    }
+  }
+  const renderedRows = gesamtRow ? [...dataRows, gesamtRow] : dataRows;
+
+  const dataCells = renderedRows.map((row) => row.slice(1).map(Number));
   const tableMax = Math.max(1, ...dataCells.flat().filter((n) => !Number.isNaN(n)));
   const colMax = headerRow.slice(1).map((_, colIndex) => Math.max(1, ...dataCells.map((cells) => cells[colIndex]).filter((n) => !Number.isNaN(n))));
   const rowMax = dataCells.map((cells) => Math.max(1, ...cells.filter((n) => !Number.isNaN(n))));
@@ -1464,8 +1551,8 @@ function renderHeatmap(rows, title, scope = 'table') {
       <h4>${escapeHtml(title)}</h4>
       <div class="table-shell">
         <table>
-          <tr>${headerRow.map((value) => `<th>${escapeHtml(value)}</th>`).join('')}</tr>
-          ${dataRows.map((row, rowIndex) => `<tr>${row.map((value, index) => {
+          <tr>${headerRow.map((value, index) => index === 0 ? `<th>${escapeHtml(value)}</th>` : sortableHeaderCell(value, value, sortState)).join('')}</tr>
+          ${renderedRows.map((row, rowIndex) => `<tr>${row.map((value, index) => {
             if (index === 0) return `<td>${escapeHtml(value)}</td>`;
             const numeric = Number(value);
             if (Number.isNaN(numeric)) return `<td>${escapeHtml(value)}</td>`;
@@ -1479,6 +1566,15 @@ function renderHeatmap(rows, title, scope = 'table') {
 
 function dimensionLabel(value) {
   return dimensionOptions.find((option) => option.value === value)?.label || value;
+}
+
+function sortableHeaderCell(label, key, sortState) {
+  // Every sortable column shows an arrow by default (neutral ↕ when not
+  // the active sort column, ▲/▼ when it is) so users can tell at a glance
+  // that the column is sortable, per app_specs.md's repeated requirement.
+  const isActive = sortState && sortState.key === key;
+  const arrow = isActive ? (sortState.dir === 'asc' ? ' ▲' : ' ▼') : ' ↕';
+  return `<th data-key="${escapeHtml(key)}" style="cursor:pointer;">${escapeHtml(label)}${arrow}</th>`;
 }
 
 function escapeHtml(value) {
