@@ -713,6 +713,27 @@ def fit_or_load_bertopic(
             verbose=False,
             calculate_probabilities=False,
             nr_topics=nr_topics,
+            # CRITICAL for a German corpus: BERTopic.__init__ sets
+            # self.language = language if not embedding_model else None
+            # (bertopic/_bertopic.py). Since embeddings are precomputed and
+            # injected externally via fit_transform(docs, embeddings) rather
+            # than passing embedding_model= here, self.language would
+            # default to "english" (the constructor default) if left
+            # unset. BERTopic's own _preprocess_text() then does
+            # `re.sub(r"[^A-Za-z0-9 ]+", "", doc)` whenever
+            # self.language == "english" -- silently deleting every
+            # umlaut/ß (and any other non-ASCII character) from the text
+            # actually used to build each topic's c-TF-IDF representation.
+            # Found 2026-07-23 after a fresh pilot script's topic-term
+            # output showed "abhngigkeit"/"gefhle"/"franzsische" with the
+            # umlaut simply missing (verified at the codepoint level, not a
+            # terminal-display artifact) -- traced to this exact line via a
+            # minimal BERTopic repro. Confirmed pre-existing: every topic
+            # label/term this pipeline has ever produced was silently
+            # ASCII-stripped. Any non-"english" value disables the strip;
+            # "multilingual" is semantically accurate given
+            # EMBEDDING_MODEL_NAME. See METHODOLOGY.md section 1.5.
+            language="multilingual",
         )
 
     try:
