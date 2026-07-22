@@ -44,14 +44,14 @@ Executed entirely on a feature branch (see Phase 5, already set up: `data-rerun-
 2. Full `keyword_search.py` extraction rerun (regenerates `doc_word_counts.csv` etc.) is only needed if the source PDFs are restored and a from-scratch reproducibility pass is wanted — not required, since the corruption fix already landed without it.
 3. ✅ **Diagnostic sweep complete** (2026-07-22) — `topic_sweep.py --concepts all` finished cleanly, all 22 concepts, no errors (after one mid-run interruption and a checkpointing fix, see `METHODOLOGY.md` §4.1–4.3). Analysis of the results (§4.4) found natural per-concept topic counts of 2–90 and drove the ceiling decision above. **Production BERTopic refit now in progress**: `bertopic_pipeline_v2.py --force-topics` (embeddings/UMAP already cached under the correct model slug, no need to force those) — `--force-topics` is required because the model cache key doesn't include `nr_topics`, so a normal run would silently reuse the sweep's *uncapped* cached fits instead of applying the new ceiling.
 4. Re-run LDA: all 22 concepts × the now-widened `N_TOPICS_LIST` = [5,7,10,12,15,20] (`lda_topic_model.py`, gained a `--concepts` filter 2026-07-22 for manual resume if interrupted — no automatic resume, since output paths aren't keyed by corpus provenance and would risk serving stale pre-rerun results). **In progress.**
-5. Regenerate manifest, color maps, `docs/data` mirror via `scripts/build_docs_data.py` (needs `viz_umap_2d_v2.py --force-color-maps` first, since topic counts changed substantially). **Not yet executed — depends on items 3–4 finishing.**
+5. ✅ **Done** — Global UMAP projection, color maps, and cross-concept analytics rebuilt (all confirmed stale by mtime); `docs/data` mirror regenerated via `scripts/build_docs_data.py`. Caught and fixed a 4th stale `N_TOPICS_LIST` copy in `compute_cross_concept_analytics.py` in the process (would have broken the LDA page's topic-distribution table for K=12/15/20). See `METHODOLOGY.md` §4.5.
 
 ## Phase 4 — post-rerun QA
-1. Re-run today's audit scripts: topic-count distribution per concept, corruption grep (expect zero hits), Kompetenz-family frequency check against the new stopword list.
-2. Coherence/agreement report per concept — flag any concept where BERTopic and LDA diverge sharply, for Susan's review.
-3. Playwright screenshot pass, all 5 pages, both themes.
-4. Update `app_specs.md` revision history; fold in `app_specs_SH_notes.md`.
-5. Write `METHODOLOGY.md`: final stopword list, topic-number-selection procedure + sweep results, embedding model choice and why, known limitations (e.g. the RheinPfalz Philosophie document's font issue and how it was handled).
+1. ✅ **Done** — Corruption grep (zero hits, both `results.csv` copies byte-identical), Kompetenz-family frequency check (all 7 terms confirmed in stopword list), topic-count cross-check (9 concepts spot-checked against production log and natural-count table, exact match).
+2. ✅ **Done, mechanically** — Coherence/agreement readout produced (`METHODOLOGY.md` §4.5): low, fairly uniform agreement across all 22 concepts (0.02–0.12), no statistical outlier. **Still needs Susan's domain-expert read** — not resolvable by me alone.
+3. ✅ **Done** — Playwright pass, all 5 pages × both themes, zero console/page errors; also verified the new LDA K options (12/15/20) and the new BERTopic collapsible-legend UX.
+4. **Not yet done** — `app_specs.md` revision history update + folding in `app_specs_SH_notes.md`. Still correctly gated on Susan reviewing the ceiling=31 deviation first (flagged inline in that file).
+5. ✅ **Done, ongoing** — `METHODOLOGY.md` is comprehensively up to date through §4.5 and §1.5 (encoding), covering the final stopword list, topic-number-selection procedure, embedding model choice, and known limitations.
 
 ## Phase 5 — repo strategy (runs alongside Phases 2–4, not after)
 1. `git tag pre-rerun-2026-07` (or similar), pushed to remote — permanent, retrievable snapshot of the original run.
