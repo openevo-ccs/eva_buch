@@ -32,9 +32,27 @@ rm/
 # Regenerable fitted-model artifacts — analogous to bertopic/src/cache/
 # above, these are large binary build outputs, not source. 78 pre-existing
 # ones from the original run are already committed on `main`/tagged at
-# pre-rerun-2026-07 (retrievable there); going forward they should not be
-# re-added. See METHODOLOGY.md section 6.
+# pre-rerun-2026-07 (retrievable there); untracked (not deleted) from the
+# working tree 2026-07-22 now that LDA has actually been rerun. See
+# METHODOLOGY.md section 6.
 lda_topic_modelling/out/**/tm/*.pkl
+
+# Static per-concept PNG plots (viz_umap_2d_v2.py) — regenerable, ~20MB,
+# never consumed by the deployed app (which renders live via Plotly.js from
+# the tracked JSON data instead). Same regenerable-output rationale as
+# bertopic/src/cache/ above.
+bertopic/src/out/visualizations/
+
+# Ad-hoc console-log captures from backgrounded pipeline runs (shell
+# redirection of a script's stdout for progress-monitoring purposes only —
+# distinct from bertopic/src/out/pipeline.log, which the pipeline itself
+# writes deliberately via a UTF-8 FileHandler and which stays tracked).
+# See METHODOLOGY.md section 1.5 for why these specifically should not be
+# trusted/committed as UTF-8 on Windows without PYTHONIOENCODING set.
+bertopic/src/out/production_*.log
+bertopic/src/out/full_sweep.log
+bertopic/src/out/timing_pilot.log
+lda_topic_modelling/out/production_*.log
 
 # macOS
 .DS_Store

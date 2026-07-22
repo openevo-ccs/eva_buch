@@ -983,3 +983,31 @@
 21:57:07 [INFO   ] ==============================================================================
 21:57:07 [INFO   ] DONE. Succeeded: 22/22 concept(s).
 21:57:07 [INFO   ] ==============================================================================
+23:38:29 [INFO   ] Loading global embeddings cache …
+23:38:29 [INFO   ]   Loaded embeddings: shape (35894, 384)
+23:39:24 [INFO   ]   Fitted + cached UMAP (2D): shape (35894, 2) -> umap2d_global__paraphrase-multilingual-MiniLM-L12-v2.npy
+23:40:00 [INFO   ]   Fitted + cached UMAP (3D): shape (35894, 3) -> umap3d_global__paraphrase-multilingual-MiniLM-L12-v2.npy
+23:40:00 [INFO   ]   [Anpassung] Merged global coords into 738 records -> Anpassung.json
+23:40:00 [INFO   ]   [Anthropologie] Merged global coords into 312 records -> Anthropologie.json
+23:40:00 [INFO   ]   [Bedürfnis] Merged global coords into 640 records -> Bedürfnis.json
+23:40:00 [INFO   ]   [Emotion] Merged global coords into 267 records -> Emotion.json
+23:40:00 [INFO   ]   [Evolution] Merged global coords into 1,085 records -> Evolution.json
+23:40:00 [INFO   ]   [Freiheit] Merged global coords into 1,236 records -> Freiheit.json
+23:40:00 [INFO   ]   [Gefühl] Merged global coords into 354 records -> Gefühl.json
+23:40:00 [INFO   ]   [Gen] Merged global coords into 991 records -> Gen.json
+23:40:01 [INFO   ]   [Gerechtigkeit] Merged global coords into 1,343 records -> Gerechtigkeit.json
+23:40:01 [INFO   ]   [Glück] Merged global coords into 661 records -> Glück.json
+23:40:01 [INFO   ]   [Handeln] Merged global coords into 3,849 records -> Handeln.json
+23:40:01 [INFO   ]   [Konkurrenz] Merged global coords into 268 records -> Konkurrenz.json
+23:40:01 [INFO   ]   [Kooperation] Merged global coords into 569 records -> Kooperation.json
+23:40:01 [INFO   ]   [Kultur] Merged global coords into 1,466 records -> Kultur.json
+23:40:02 [INFO   ]   [Mensch] Merged global coords into 4,852 records -> Mensch.json
+23:40:02 [INFO   ]   [Moral] Merged global coords into 1,264 records -> Moral.json
+23:40:02 [INFO   ]   [Norm] Merged global coords into 1,134 records -> Norm.json
+23:40:02 [INFO   ]   [Rationalität] Merged global coords into 279 records -> Rationalität.json
+23:40:02 [INFO   ]   [Ursache] Merged global coords into 1,277 records -> Ursache.json
+23:40:02 [INFO   ]   [Verhalten] Merged global coords into 1,155 records -> Verhalten.json
+23:40:02 [INFO   ]   [Vorurteil] Merged global coords into 285 records -> Vorurteil.json
+23:40:02 [INFO   ]   [Wert] Merged global coords into 2,135 records -> Wert.json
+23:40:02 [INFO   ] Wrote global bbox -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\manifest.json
+23:40:02 [INFO   ] DONE.

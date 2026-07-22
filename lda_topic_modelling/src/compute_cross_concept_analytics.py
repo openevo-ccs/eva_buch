@@ -39,7 +39,12 @@ import pandas as pd
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from config import LDA_OUT as OUT_DIR, TM_DIR
 
-N_TOPICS_LIST = [5, 7, 10]
+# Keep in sync with lda_topic_model.py's own copy (see that file for why
+# this isn't a single shared source: the app's LDA topic-count dropdown is
+# shared/uniform across concepts, widened 2026-07-22 to the sweep-validated
+# grid). Missing a K value here silently breaks the LDA page's "topic
+# distribution by subject" table for anyone who selects that K.
+N_TOPICS_LIST = [5, 7, 10, 12, 15, 20]
 COOCCURRENCE_K = 10
 BERTOPIC_MANIFEST = TM_DIR / "src" / "data" / "manifest.json"
 

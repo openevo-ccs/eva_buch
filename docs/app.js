@@ -915,22 +915,28 @@ function renderBerTopicLegend() {
       <div class="legend-row"><span class="legend-swatch" style="background:${colorMaps.outlier_color || '#8a8a8a'}"></span><span class="legend-label">Ausreißer</span></div>
     `;
   } else {
+    // Topic counts per concept now range up to ~30 (data-driven per-concept
+    // ceiling, METHODOLOGY.md §4.4) rather than a flat ~10, so a concept
+    // group can be long enough to bury the others in scroll. <details> keeps
+    // every group present and clickable while defaulting small/single/
+    // currently-selected groups open and large multi-concept ones collapsed.
     el.innerHTML = `<h4>Legende — Topic</h4>${active.map((concept) => {
       const counts = new Map();
       (appState.bertopic.conceptData[concept] || []).forEach((r) => {
         if (!r.is_outlier) counts.set(r.topic, (counts.get(r.topic) || 0) + 1);
       });
       const topics = [...counts.keys()].sort((a, b) => counts.get(b) - counts.get(a));
+      const isOpen = active.length === 1 || topics.length <= 12 || (selection && selection.concept === concept);
       return `
-        <div class="legend-group">
-          <div class="legend-group-title">${escapeHtml(concept)}</div>
+        <details class="legend-group"${isOpen ? ' open' : ''}>
+          <summary class="legend-group-title">${escapeHtml(concept)} <span class="legend-group-count">(${topics.length})</span></summary>
           ${topics.map((topic) => `
             <div class="legend-row${selection && (selection.concept !== concept || selection.value !== topic) ? ' dimmed' : ''}" data-type="topic" data-concept="${escapeHtml(concept)}" data-value="${escapeHtml(topic)}">
               <span class="legend-swatch" style="background:${hashColor(`${concept}::${topic}`, 'topic')}"></span>
               <span class="legend-label">${escapeHtml(topic)}</span>
               <span class="legend-count">${counts.get(topic)}</span>
             </div>`).join('')}
-        </div>`;
+        </details>`;
     }).join('')}`;
   }
 
