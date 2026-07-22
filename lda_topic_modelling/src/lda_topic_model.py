@@ -29,8 +29,14 @@ KEYWORD_PATH         = LDA_IN / "keywords_topic_modelling.txt"
 # spaCy model for German lemmatisation and stopword removal
 SPACY_MODEL = "de_core_news_sm"
 
-# Topic counts to run for each concept (one model is fitted per value)
-N_TOPICS_LIST = [5, 7, 10]
+# Topic counts to run for each concept (one model is fitted per value).
+# The app exposes this as a live user-facing dropdown (docs/lda.html #lda-k),
+# uniform across all concepts -- so this stays a shared list rather than a
+# per-concept optimum. Widened 2026-07-22 from [5,7,10] to the full grid
+# validated by topic_sweep.py's coherence sweep (METHODOLOGY.md section
+# 4.4), so every option in the dropdown has a documented coherence number
+# behind it. Keep in sync with scripts/build_docs_data.py's own copy.
+N_TOPICS_LIST = [5, 7, 10, 12, 15, 20]
 
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -605,6 +611,9 @@ def run_topic_model(
 
     # Step 2: Get excerpts for the concept
     excerpts = get_excerpts(df, keyword)
+    if excerpts is False:
+        print(f"  Skipping '{keyword}' (n_topics={n_topics}): no excerpts found.")
+        return None, None, None, None, None, None, None
     # Step 3: Preprocess text
     preprocessed = preprocess_text(excerpts, keyword)
     # Step 4: Build document-term matrix
@@ -658,6 +667,8 @@ def run_lda(keywords: list[str], result_df: pd.DataFrame) -> None:
                 max_df=0.8,
                 min_df=5,
             )
+            if lda_model is None:
+                continue
 
             # Step 8b: Export the pyLDAvis data (same in-memory `vis` object
             # created from this exact model/dtm/vectorizer triple — never
@@ -682,10 +693,31 @@ def main() -> None:
       1. Load keywords and search results
       2–9. Run topic modelling for each concept × n_topics combination
            (see run_topic_model for per-run steps)
+
+    --concepts lets a run be resumed manually after an interruption by
+    passing just the remaining concepts (e.g. via directory mtimes under
+    lda_topic_modelling/out/). There is deliberately no automatic
+    skip-if-output-exists resume: output paths are keyed only by
+    (concept, n_topics), not by corpus/stopword provenance, so blindly
+    skipping existing files would silently keep pre-rerun (stale) results
+    for anything not yet touched by this run.
     """
+    import argparse
+    p = argparse.ArgumentParser(description="LDA topic-modelling production pipeline.")
+    p.add_argument("--concepts", type=str, default=None,
+                    help="Comma-separated subset of concepts to (re)run. Default: all.")
+    args = p.parse_args()
+
     # Step 1 — Load inputs
     keywords  = load_keywords(KEYWORD_PATH)
     result_df = load_data(DATA_PATH)
+
+    if args.concepts:
+        requested = [c.strip() for c in args.concepts.split(",") if c.strip()]
+        unknown = [c for c in requested if c not in keywords]
+        if unknown:
+            print(f"[WARN] Unrecognised concept(s) requested (processing anyway): {unknown}")
+        keywords = requested
 
     # Steps 2–9 — Run LDA for all concepts and topic counts
     run_lda(keywords, result_df)

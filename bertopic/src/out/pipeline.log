@@ -743,3 +743,243 @@
 10:47:13 [INFO   ]   [Wert] Merged global coords into 2,135 records -> Wert.json
 10:47:13 [INFO   ] Wrote global bbox -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\manifest.json
 10:47:13 [INFO   ] DONE.
+21:52:48 [INFO   ] ==============================================================================
+21:52:48 [INFO   ]   Evo-Buch Curriculum-Atlas — BERTopic Data Generation Pipeline
+21:52:48 [INFO   ] ==============================================================================
+21:52:48 [INFO   ] CSV:          D:\dev\openevo-ccs-lab\eva_buch\keyword_search\out\results.csv
+21:52:48 [INFO   ] Web data dir: D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data
+21:52:48 [INFO   ] Cache dir:    D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\cache
+21:52:48 [INFO   ] Out dir:      D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\out
+21:52:48 [INFO   ] Concepts:     22 -> ['Anpassung', 'Anthropologie', 'Bedürfnis', 'Emotion', 'Evolution', 'Freiheit', 'Gefühl', 'Gen', 'Gerechtigkeit', 'Glück', 'Handeln', 'Konkurrenz', 'Kooperation', 'Kultur', 'Mensch', 'Moral', 'Norm', 'Rationalität', 'Ursache', 'Verhalten', 'Vorurteil', 'Wert']
+21:52:49 [INFO   ] Source CSV checksum (MD5): 99df4798ba23f58b4433b7a871fd5523
+21:52:49 [INFO   ] Loading source CSV from D:\dev\openevo-ccs-lab\eva_buch\keyword_search\out\results.csv …
+21:52:49 [INFO   ]   Loaded 28,339 rows × 11 columns.
+21:52:49 [INFO   ] No topic-label override file at D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\topic_label_overrides.json (using auto-labels only).
+21:52:49 [INFO   ] Loading global embeddings from cache …
+21:52:49 [INFO   ]   Loaded embeddings: shape (35894, 384)
+21:52:49 [INFO   ] ------------------------------------------------------------------------------
+21:52:49 [INFO   ] CONCEPT: Anpassung
+21:52:49 [INFO   ] ------------------------------------------------------------------------------
+21:52:49 [INFO   ] [Anpassung] 738 matching documents.
+21:52:49 [INFO   ]   [Anpassung] Fitting BERTopic on 738 documents …
+21:53:00 [INFO   ]   [Anpassung] Fitted 14 topic(s) (105 outlier docs).
+21:53:02 [INFO   ]   Fitted + cached UMAP (2D): shape (738, 2) -> umap2d_Anpassung__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:03 [INFO   ]   Fitted + cached UMAP (3D): shape (738, 3) -> umap3d_Anpassung__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:04 [INFO   ]   [Anpassung] Saved topic/subject distribution diagnostics.
+21:53:04 [INFO   ]   [Anpassung] Wrote 738 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Anpassung.json
+21:53:04 [INFO   ] ------------------------------------------------------------------------------
+21:53:04 [INFO   ] CONCEPT: Anthropologie
+21:53:04 [INFO   ] ------------------------------------------------------------------------------
+21:53:04 [INFO   ] [Anthropologie] 312 matching documents.
+21:53:04 [INFO   ]   [Anthropologie] Fitting BERTopic on 312 documents …
+21:53:04 [INFO   ]   [Anthropologie] Fitted 8 topic(s) (69 outlier docs).
+21:53:05 [INFO   ]   Fitted + cached UMAP (2D): shape (312, 2) -> umap2d_Anthropologie__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:05 [INFO   ]   Fitted + cached UMAP (3D): shape (312, 3) -> umap3d_Anthropologie__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:05 [INFO   ]   [Anthropologie] Saved topic/subject distribution diagnostics.
+21:53:05 [INFO   ]   [Anthropologie] Wrote 312 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Anthropologie.json
+21:53:05 [INFO   ] ------------------------------------------------------------------------------
+21:53:05 [INFO   ] CONCEPT: Bedürfnis
+21:53:05 [INFO   ] ------------------------------------------------------------------------------
+21:53:05 [INFO   ] [Bedürfnis] 640 matching documents.
+21:53:05 [INFO   ]   [Bedürfnis] Fitting BERTopic on 640 documents …
+21:53:07 [INFO   ]   [Bedürfnis] Fitted 16 topic(s) (105 outlier docs).
+21:53:08 [INFO   ]   Fitted + cached UMAP (2D): shape (640, 2) -> umap2d_Bedürfnis__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:10 [INFO   ]   Fitted + cached UMAP (3D): shape (640, 3) -> umap3d_Bedürfnis__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:10 [INFO   ]   [Bedürfnis] Saved topic/subject distribution diagnostics.
+21:53:10 [INFO   ]   [Bedürfnis] Wrote 640 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Bedürfnis.json
+21:53:10 [INFO   ] ------------------------------------------------------------------------------
+21:53:10 [INFO   ] CONCEPT: Emotion
+21:53:10 [INFO   ] ------------------------------------------------------------------------------
+21:53:10 [INFO   ] [Emotion] 267 matching documents.
+21:53:10 [INFO   ]   [Emotion] Fitting BERTopic on 267 documents …
+21:53:10 [INFO   ]   [Emotion] Fitted 4 topic(s) (17 outlier docs).
+21:53:11 [INFO   ]   Fitted + cached UMAP (2D): shape (267, 2) -> umap2d_Emotion__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:11 [INFO   ]   Fitted + cached UMAP (3D): shape (267, 3) -> umap3d_Emotion__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:11 [INFO   ]   [Emotion] Saved topic/subject distribution diagnostics.
+21:53:11 [INFO   ]   [Emotion] Wrote 267 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Emotion.json
+21:53:11 [INFO   ] ------------------------------------------------------------------------------
+21:53:11 [INFO   ] CONCEPT: Evolution
+21:53:11 [INFO   ] ------------------------------------------------------------------------------
+21:53:11 [INFO   ] [Evolution] 1,085 matching documents.
+21:53:11 [INFO   ]   [Evolution] Fitting BERTopic on 1,085 documents …
+21:53:14 [INFO   ]   [Evolution] Fitted 23 topic(s) (217 outlier docs).
+21:53:17 [INFO   ]   Fitted + cached UMAP (2D): shape (1085, 2) -> umap2d_Evolution__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:19 [INFO   ]   Fitted + cached UMAP (3D): shape (1085, 3) -> umap3d_Evolution__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:19 [INFO   ]   [Evolution] Saved topic/subject distribution diagnostics.
+21:53:20 [INFO   ]   [Evolution] Wrote 1,085 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Evolution.json
+21:53:20 [INFO   ] ------------------------------------------------------------------------------
+21:53:20 [INFO   ] CONCEPT: Freiheit
+21:53:20 [INFO   ] ------------------------------------------------------------------------------
+21:53:20 [INFO   ] [Freiheit] 1,236 matching documents.
+21:53:20 [INFO   ]   [Freiheit] Fitting BERTopic on 1,236 documents …
+21:53:23 [INFO   ]   [Freiheit] Fitted 24 topic(s) (310 outlier docs).
+21:53:26 [INFO   ]   Fitted + cached UMAP (2D): shape (1236, 2) -> umap2d_Freiheit__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:29 [INFO   ]   Fitted + cached UMAP (3D): shape (1236, 3) -> umap3d_Freiheit__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:29 [INFO   ]   [Freiheit] Saved topic/subject distribution diagnostics.
+21:53:29 [INFO   ]   [Freiheit] Wrote 1,236 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Freiheit.json
+21:53:29 [INFO   ] ------------------------------------------------------------------------------
+21:53:29 [INFO   ] CONCEPT: Gefühl
+21:53:29 [INFO   ] ------------------------------------------------------------------------------
+21:53:29 [INFO   ] [Gefühl] 354 matching documents.
+21:53:29 [INFO   ]   [Gefühl] Fitting BERTopic on 354 documents …
+21:53:30 [INFO   ]   [Gefühl] Fitted 4 topic(s) (13 outlier docs).
+21:53:30 [INFO   ]   Fitted + cached UMAP (2D): shape (354, 2) -> umap2d_Gefühl__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:31 [INFO   ]   Fitted + cached UMAP (3D): shape (354, 3) -> umap3d_Gefühl__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:31 [INFO   ]   [Gefühl] Saved topic/subject distribution diagnostics.
+21:53:31 [INFO   ]   [Gefühl] Wrote 354 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Gefühl.json
+21:53:31 [INFO   ] ------------------------------------------------------------------------------
+21:53:31 [INFO   ] CONCEPT: Gen
+21:53:31 [INFO   ] ------------------------------------------------------------------------------
+21:53:31 [INFO   ] [Gen] 991 matching documents.
+21:53:31 [INFO   ]   [Gen] Fitting BERTopic on 991 documents …
+21:53:33 [INFO   ]   [Gen] Fitted 18 topic(s) (150 outlier docs).
+21:53:36 [INFO   ]   Fitted + cached UMAP (2D): shape (991, 2) -> umap2d_Gen__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:38 [INFO   ]   Fitted + cached UMAP (3D): shape (991, 3) -> umap3d_Gen__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:38 [INFO   ]   [Gen] Saved topic/subject distribution diagnostics.
+21:53:38 [INFO   ]   [Gen] Wrote 991 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Gen.json
+21:53:38 [INFO   ] ------------------------------------------------------------------------------
+21:53:38 [INFO   ] CONCEPT: Gerechtigkeit
+21:53:38 [INFO   ] ------------------------------------------------------------------------------
+21:53:38 [INFO   ] [Gerechtigkeit] 1,343 matching documents.
+21:53:38 [INFO   ]   [Gerechtigkeit] Fitting BERTopic on 1,343 documents …
+21:53:42 [INFO   ]   [Gerechtigkeit] Fitted 31 topic(s) (277 outlier docs).
+21:53:46 [INFO   ]   Fitted + cached UMAP (2D): shape (1343, 2) -> umap2d_Gerechtigkeit__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:50 [INFO   ]   Fitted + cached UMAP (3D): shape (1343, 3) -> umap3d_Gerechtigkeit__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:50 [INFO   ]   [Gerechtigkeit] Saved topic/subject distribution diagnostics.
+21:53:50 [INFO   ]   [Gerechtigkeit] Wrote 1,343 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Gerechtigkeit.json
+21:53:50 [INFO   ] ------------------------------------------------------------------------------
+21:53:50 [INFO   ] CONCEPT: Glück
+21:53:50 [INFO   ] ------------------------------------------------------------------------------
+21:53:50 [INFO   ] [Glück] 661 matching documents.
+21:53:50 [INFO   ]   [Glück] Fitting BERTopic on 661 documents …
+21:53:51 [INFO   ]   [Glück] Fitted 15 topic(s) (181 outlier docs).
+21:53:53 [INFO   ]   Fitted + cached UMAP (2D): shape (661, 2) -> umap2d_Glück__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:54 [INFO   ]   Fitted + cached UMAP (3D): shape (661, 3) -> umap3d_Glück__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:53:54 [INFO   ]   [Glück] Saved topic/subject distribution diagnostics.
+21:53:54 [INFO   ]   [Glück] Wrote 661 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Glück.json
+21:53:54 [INFO   ] ------------------------------------------------------------------------------
+21:53:54 [INFO   ] CONCEPT: Handeln
+21:53:54 [INFO   ] ------------------------------------------------------------------------------
+21:53:54 [INFO   ] [Handeln] 3,849 matching documents.
+21:53:54 [INFO   ]   [Handeln] Fitting BERTopic on 3,849 documents …
+21:54:14 [INFO   ]   [Handeln] Fitted 31 topic(s) (815 outlier docs).
+21:54:32 [INFO   ]   Fitted + cached UMAP (2D): shape (3849, 2) -> umap2d_Handeln__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:54:50 [INFO   ]   Fitted + cached UMAP (3D): shape (3849, 3) -> umap3d_Handeln__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:54:50 [INFO   ]   [Handeln] Saved topic/subject distribution diagnostics.
+21:54:50 [INFO   ]   [Handeln] Wrote 3,849 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Handeln.json
+21:54:50 [INFO   ] ------------------------------------------------------------------------------
+21:54:50 [INFO   ] CONCEPT: Konkurrenz
+21:54:50 [INFO   ] ------------------------------------------------------------------------------
+21:54:50 [INFO   ] [Konkurrenz] 268 matching documents.
+21:54:50 [INFO   ]   [Konkurrenz] Fitting BERTopic on 268 documents …
+21:54:51 [WARNING]   [Konkurrenz] Primary vectoriser failed (max_df corresponds to < documents than min_df); retrying with unconstrained vocabulary …
+21:54:51 [INFO   ]   [Konkurrenz] Fitted 2 topic(s) (0 outlier docs).
+21:54:52 [INFO   ]   Fitted + cached UMAP (2D): shape (268, 2) -> umap2d_Konkurrenz__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:54:52 [INFO   ]   Fitted + cached UMAP (3D): shape (268, 3) -> umap3d_Konkurrenz__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:54:52 [INFO   ]   [Konkurrenz] Saved topic/subject distribution diagnostics.
+21:54:52 [INFO   ]   [Konkurrenz] Wrote 268 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Konkurrenz.json
+21:54:52 [INFO   ] ------------------------------------------------------------------------------
+21:54:52 [INFO   ] CONCEPT: Kooperation
+21:54:52 [INFO   ] ------------------------------------------------------------------------------
+21:54:52 [INFO   ] [Kooperation] 569 matching documents.
+21:54:52 [INFO   ]   [Kooperation] Fitting BERTopic on 569 documents …
+21:54:53 [INFO   ]   [Kooperation] Fitted 11 topic(s) (110 outlier docs).
+21:54:54 [INFO   ]   Fitted + cached UMAP (2D): shape (569, 2) -> umap2d_Kooperation__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:54:55 [INFO   ]   Fitted + cached UMAP (3D): shape (569, 3) -> umap3d_Kooperation__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:54:56 [INFO   ]   [Kooperation] Saved topic/subject distribution diagnostics.
+21:54:56 [INFO   ]   [Kooperation] Wrote 569 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Kooperation.json
+21:54:56 [INFO   ] ------------------------------------------------------------------------------
+21:54:56 [INFO   ] CONCEPT: Kultur
+21:54:56 [INFO   ] ------------------------------------------------------------------------------
+21:54:56 [INFO   ] [Kultur] 1,466 matching documents.
+21:54:56 [INFO   ]   [Kultur] Fitting BERTopic on 1,466 documents …
+21:55:00 [INFO   ]   [Kultur] Fitted 22 topic(s) (130 outlier docs).
+21:55:04 [INFO   ]   Fitted + cached UMAP (2D): shape (1466, 2) -> umap2d_Kultur__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:55:07 [INFO   ]   Fitted + cached UMAP (3D): shape (1466, 3) -> umap3d_Kultur__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:55:07 [INFO   ]   [Kultur] Saved topic/subject distribution diagnostics.
+21:55:08 [INFO   ]   [Kultur] Wrote 1,466 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Kultur.json
+21:55:08 [INFO   ] ------------------------------------------------------------------------------
+21:55:08 [INFO   ] CONCEPT: Mensch
+21:55:08 [INFO   ] ------------------------------------------------------------------------------
+21:55:08 [INFO   ] [Mensch] 4,852 matching documents.
+21:55:08 [INFO   ]   [Mensch] Fitting BERTopic on 4,852 documents …
+21:55:31 [INFO   ]   [Mensch] Fitted 31 topic(s) (1067 outlier docs).
+21:55:52 [INFO   ]   Fitted + cached UMAP (2D): shape (4852, 2) -> umap2d_Mensch__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:01 [INFO   ]   Fitted + cached UMAP (3D): shape (4852, 3) -> umap3d_Mensch__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:01 [INFO   ]   [Mensch] Saved topic/subject distribution diagnostics.
+21:56:01 [INFO   ]   [Mensch] Wrote 4,852 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Mensch.json
+21:56:01 [INFO   ] ------------------------------------------------------------------------------
+21:56:01 [INFO   ] CONCEPT: Moral
+21:56:01 [INFO   ] ------------------------------------------------------------------------------
+21:56:01 [INFO   ] [Moral] 1,264 matching documents.
+21:56:01 [INFO   ]   [Moral] Fitting BERTopic on 1,264 documents …
+21:56:05 [INFO   ]   [Moral] Fitted 26 topic(s) (180 outlier docs).
+21:56:08 [INFO   ]   Fitted + cached UMAP (2D): shape (1264, 2) -> umap2d_Moral__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:12 [INFO   ]   Fitted + cached UMAP (3D): shape (1264, 3) -> umap3d_Moral__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:12 [INFO   ]   [Moral] Saved topic/subject distribution diagnostics.
+21:56:12 [INFO   ]   [Moral] Wrote 1,264 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Moral.json
+21:56:12 [INFO   ] ------------------------------------------------------------------------------
+21:56:12 [INFO   ] CONCEPT: Norm
+21:56:12 [INFO   ] ------------------------------------------------------------------------------
+21:56:12 [INFO   ] [Norm] 1,134 matching documents.
+21:56:12 [INFO   ]   [Norm] Fitting BERTopic on 1,134 documents …
+21:56:15 [INFO   ]   [Norm] Fitted 24 topic(s) (211 outlier docs).
+21:56:18 [INFO   ]   Fitted + cached UMAP (2D): shape (1134, 2) -> umap2d_Norm__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:21 [INFO   ]   Fitted + cached UMAP (3D): shape (1134, 3) -> umap3d_Norm__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:21 [INFO   ]   [Norm] Saved topic/subject distribution diagnostics.
+21:56:21 [INFO   ]   [Norm] Wrote 1,134 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Norm.json
+21:56:21 [INFO   ] ------------------------------------------------------------------------------
+21:56:21 [INFO   ] CONCEPT: Rationalität
+21:56:21 [INFO   ] ------------------------------------------------------------------------------
+21:56:21 [INFO   ] [Rationalität] 279 matching documents.
+21:56:21 [INFO   ]   [Rationalität] Fitting BERTopic on 279 documents …
+21:56:22 [INFO   ]   [Rationalität] Fitted 8 topic(s) (52 outlier docs).
+21:56:22 [INFO   ]   Fitted + cached UMAP (2D): shape (279, 2) -> umap2d_Rationalität__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:23 [INFO   ]   Fitted + cached UMAP (3D): shape (279, 3) -> umap3d_Rationalität__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:23 [INFO   ]   [Rationalität] Saved topic/subject distribution diagnostics.
+21:56:23 [INFO   ]   [Rationalität] Wrote 279 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Rationalität.json
+21:56:23 [INFO   ] ------------------------------------------------------------------------------
+21:56:23 [INFO   ] CONCEPT: Ursache
+21:56:23 [INFO   ] ------------------------------------------------------------------------------
+21:56:23 [INFO   ] [Ursache] 1,277 matching documents.
+21:56:23 [INFO   ]   [Ursache] Fitting BERTopic on 1,277 documents …
+21:56:26 [INFO   ]   [Ursache] Fitted 29 topic(s) (281 outlier docs).
+21:56:30 [INFO   ]   Fitted + cached UMAP (2D): shape (1277, 2) -> umap2d_Ursache__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:34 [INFO   ]   Fitted + cached UMAP (3D): shape (1277, 3) -> umap3d_Ursache__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:34 [INFO   ]   [Ursache] Saved topic/subject distribution diagnostics.
+21:56:34 [INFO   ]   [Ursache] Wrote 1,277 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Ursache.json
+21:56:34 [INFO   ] ------------------------------------------------------------------------------
+21:56:34 [INFO   ] CONCEPT: Verhalten
+21:56:34 [INFO   ] ------------------------------------------------------------------------------
+21:56:34 [INFO   ] [Verhalten] 1,155 matching documents.
+21:56:34 [INFO   ]   [Verhalten] Fitting BERTopic on 1,155 documents …
+21:56:37 [INFO   ]   [Verhalten] Fitted 23 topic(s) (308 outlier docs).
+21:56:40 [INFO   ]   Fitted + cached UMAP (2D): shape (1155, 2) -> umap2d_Verhalten__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:43 [INFO   ]   Fitted + cached UMAP (3D): shape (1155, 3) -> umap3d_Verhalten__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:43 [INFO   ]   [Verhalten] Saved topic/subject distribution diagnostics.
+21:56:43 [INFO   ]   [Verhalten] Wrote 1,155 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Verhalten.json
+21:56:43 [INFO   ] ------------------------------------------------------------------------------
+21:56:43 [INFO   ] CONCEPT: Vorurteil
+21:56:43 [INFO   ] ------------------------------------------------------------------------------
+21:56:43 [INFO   ] [Vorurteil] 285 matching documents.
+21:56:43 [INFO   ]   [Vorurteil] Fitting BERTopic on 285 documents …
+21:56:44 [WARNING]   [Vorurteil] Primary vectoriser failed (max_df corresponds to < documents than min_df); retrying with unconstrained vocabulary …
+21:56:44 [INFO   ]   [Vorurteil] Fitted 3 topic(s) (19 outlier docs).
+21:56:45 [INFO   ]   Fitted + cached UMAP (2D): shape (285, 2) -> umap2d_Vorurteil__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:45 [INFO   ]   Fitted + cached UMAP (3D): shape (285, 3) -> umap3d_Vorurteil__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:56:45 [INFO   ]   [Vorurteil] Saved topic/subject distribution diagnostics.
+21:56:45 [INFO   ]   [Vorurteil] Wrote 285 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Vorurteil.json
+21:56:45 [INFO   ] ------------------------------------------------------------------------------
+21:56:45 [INFO   ] CONCEPT: Wert
+21:56:45 [INFO   ] ------------------------------------------------------------------------------
+21:56:45 [INFO   ] [Wert] 2,135 matching documents.
+21:56:45 [INFO   ]   [Wert] Fitting BERTopic on 2,135 documents …
+21:56:53 [INFO   ]   [Wert] Fitted 31 topic(s) (507 outlier docs).
+21:56:59 [INFO   ]   Fitted + cached UMAP (2D): shape (2135, 2) -> umap2d_Wert__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:57:06 [INFO   ]   Fitted + cached UMAP (3D): shape (2135, 3) -> umap3d_Wert__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:57:06 [INFO   ]   [Wert] Saved topic/subject distribution diagnostics.
+21:57:07 [INFO   ]   [Wert] Wrote 2,135 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Wert.json
+21:57:07 [INFO   ] Wrote manifest -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\manifest.json
+21:57:07 [INFO   ] ==============================================================================
+21:57:07 [INFO   ] DONE. Succeeded: 22/22 concept(s).
+21:57:07 [INFO   ] ==============================================================================

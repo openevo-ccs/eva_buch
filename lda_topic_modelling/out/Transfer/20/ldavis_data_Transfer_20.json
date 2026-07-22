@@ -1,0 +1,5863 @@
+{
+  "n_topics": 20,
+  "topic_coordinates": [
+    {
+      "topic": 1,
+      "x": -53.9128,
+      "y": -71.3541,
+      "freq": 12.7111
+    },
+    {
+      "topic": 2,
+      "x": -102.3932,
+      "y": -96.8043,
+      "freq": 0.2926
+    },
+    {
+      "topic": 3,
+      "x": -64.7605,
+      "y": -21.4055,
+      "freq": 5.0141
+    },
+    {
+      "topic": 4,
+      "x": -54.4322,
+      "y": 83.9383,
+      "freq": 12.002
+    },
+    {
+      "topic": 5,
+      "x": 59.8745,
+      "y": 54.252,
+      "freq": 1.3395
+    },
+    {
+      "topic": 6,
+      "x": -16.4469,
+      "y": 0.7366,
+      "freq": 2.1522
+    },
+    {
+      "topic": 7,
+      "x": 12.317,
+      "y": 97.5706,
+      "freq": 6.0148
+    },
+    {
+      "topic": 8,
+      "x": 0.6528,
+      "y": 45.7447,
+      "freq": 5.168
+    },
+    {
+      "topic": 9,
+      "x": 94.877,
+      "y": -52.0549,
+      "freq": 1.6852
+    },
+    {
+      "topic": 10,
+      "x": 0.7734,
+      "y": -90.4755,
+      "freq": 4.0433
+    },
+    {
+      "topic": 11,
+      "x": -11.217,
+      "y": -43.8708,
+      "freq": 0.8897
+    },
+    {
+      "topic": 12,
+      "x": -116.4322,
+      "y": -37.4704,
+      "freq": 0.2926
+    },
+    {
+      "topic": 13,
+      "x": -56.9211,
+      "y": 31.0114,
+      "freq": 13.6915
+    },
+    {
+      "topic": 14,
+      "x": 34.8987,
+      "y": 0.6889,
+      "freq": 7.5732
+    },
+    {
+      "topic": 15,
+      "x": 90.288,
+      "y": 4.8106,
+      "freq": 5.6314
+    },
+    {
+      "topic": 16,
+      "x": -111.1761,
+      "y": 24.5731,
+      "freq": 6.3462
+    },
+    {
+      "topic": 17,
+      "x": 61.7201,
+      "y": -101.5147,
+      "freq": 7.1659
+    },
+    {
+      "topic": 18,
+      "x": 39.1635,
+      "y": -49.035,
+      "freq": 1.3558
+    },
+    {
+      "topic": 19,
+      "x": 16.4017,
+      "y": -142.7486,
+      "freq": 2.5606
+    },
+    {
+      "topic": 20,
+      "x": -45.8293,
+      "y": -127.8219,
+      "freq": 4.0703
+    }
+  ],
+  "default_term_freq": [
+    {
+      "term": "anforderungsbereich",
+      "freq": 57.0,
+      "total": 57.0
+    },
+    {
+      "term": "sachverhalt",
+      "freq": 28.0,
+      "total": 28.0
+    },
+    {
+      "term": "zusammenhang",
+      "freq": 36.0,
+      "total": 36.0
+    },
+    {
+      "term": "sachverhalte",
+      "freq": 42.0,
+      "total": 42.0
+    },
+    {
+      "term": "gesellschaft",
+      "freq": 10.0,
+      "total": 10.0
+    },
+    {
+      "term": "operator",
+      "freq": 36.0,
+      "total": 36.0
+    },
+    {
+      "term": "afb",
+      "freq": 22.0,
+      "total": 22.0
+    },
+    {
+      "term": "biologisch",
+      "freq": 11.0,
+      "total": 11.0
+    },
+    {
+      "term": "kriterium",
+      "freq": 17.0,
+      "total": 17.0
+    },
+    {
+      "term": "demokratisch",
+      "freq": 11.0,
+      "total": 11.0
+    },
+    {
+      "term": "politisch",
+      "freq": 27.0,
+      "total": 27.0
+    },
+    {
+      "term": "reorganisation",
+      "freq": 30.0,
+      "total": 30.0
+    },
+    {
+      "term": "kommunikation",
+      "freq": 11.0,
+      "total": 11.0
+    },
+    {
+      "term": "material",
+      "freq": 24.0,
+      "total": 24.0
+    },
+    {
+      "term": "ler",
+      "freq": 16.0,
+      "total": 16.0
+    },
+    {
+      "term": "ziel",
+      "freq": 16.0,
+      "total": 16.0
+    },
+    {
+      "term": "region",
+      "freq": 10.0,
+      "total": 10.0
+    },
+    {
+      "term": "reproduktion",
+      "freq": 17.0,
+      "total": 17.0
+    },
+    {
+      "term": "verwend",
+      "freq": 18.0,
+      "total": 18.0
+    },
+    {
+      "term": "teilche",
+      "freq": 8.0,
+      "total": 8.0
+    },
+    {
+      "term": "begriff",
+      "freq": 9.0,
+      "total": 9.0
+    },
+    {
+      "term": "ebene",
+      "freq": 11.0,
+      "total": 11.0
+    },
+    {
+      "term": "fachmethode",
+      "freq": 18.0,
+      "total": 18.0
+    },
+    {
+      "term": "fragestellung",
+      "freq": 13.0,
+      "total": 13.0
+    },
+    {
+      "term": "datum",
+      "freq": 16.0,
+      "total": 16.0
+    },
+    {
+      "term": "umfasst",
+      "freq": 18.0,
+      "total": 18.0
+    },
+    {
+      "term": "reflexion",
+      "freq": 19.0,
+      "total": 19.0
+    },
+    {
+      "term": "genetik",
+      "freq": 9.0,
+      "total": 9.0
+    },
+    {
+      "term": "anwendung",
+      "freq": 16.0,
+      "total": 16.0
+    },
+    {
+      "term": "kontext",
+      "freq": 22.0,
+      "total": 22.0
+    }
+  ],
+  "topics": {
+    "1": [
+      {
+        "term": "afb",
+        "freq": 21.66,
+        "total": 22.81,
+        "logprob": -2.6744,
+        "loglift": 2.0112
+      },
+      {
+        "term": "reproduktion",
+        "freq": 16.3,
+        "total": 17.43,
+        "logprob": -2.9589,
+        "loglift": 1.9959
+      },
+      {
+        "term": "schriftlich",
+        "freq": 11.24,
+        "total": 12.38,
+        "logprob": -3.3302,
+        "loglift": 1.9661
+      },
+      {
+        "term": "iii",
+        "freq": 12.01,
+        "total": 14.12,
+        "logprob": -3.2647,
+        "loglift": 1.9003
+      },
+      {
+        "term": "anforderungsbereiche",
+        "freq": 5.83,
+        "total": 6.93,
+        "logprob": -3.9878,
+        "loglift": 1.8887
+      },
+      {
+        "term": "mithilfe",
+        "freq": 5.78,
+        "total": 7.02,
+        "logprob": -3.9954,
+        "loglift": 1.8687
+      },
+      {
+        "term": "fall",
+        "freq": 5.1,
+        "total": 6.22,
+        "logprob": -4.12,
+        "loglift": 1.865
+      },
+      {
+        "term": "zuordnung",
+        "freq": 4.4,
+        "total": 5.5,
+        "logprob": -4.2683,
+        "loglift": 1.8389
+      },
+      {
+        "term": "legen",
+        "freq": 4.4,
+        "total": 5.5,
+        "logprob": -4.2686,
+        "loglift": 1.8387
+      },
+      {
+        "term": "gegliedert",
+        "freq": 4.4,
+        "total": 5.5,
+        "logprob": -4.2695,
+        "loglift": 1.8379
+      },
+      {
+        "term": "eindeutig",
+        "freq": 4.4,
+        "total": 5.51,
+        "logprob": -4.2688,
+        "loglift": 1.8374
+      },
+      {
+        "term": "fest",
+        "freq": 4.4,
+        "total": 5.51,
+        "logprob": -4.2689,
+        "loglift": 1.8371
+      },
+      {
+        "term": "anforderungsbereichen",
+        "freq": 4.4,
+        "total": 5.51,
+        "logprob": -4.2696,
+        "loglift": 1.837
+      },
+      {
+        "term": "aufführen",
+        "freq": 4.4,
+        "total": 5.51,
+        "logprob": -4.2693,
+        "loglift": 1.8365
+      },
+      {
+        "term": "problemlösung",
+        "freq": 8.39,
+        "total": 10.81,
+        "logprob": -3.6236,
+        "loglift": 1.8091
+      },
+      {
+        "term": "regel",
+        "freq": 5.13,
+        "total": 6.62,
+        "logprob": -4.1155,
+        "loglift": 1.8066
+      },
+      {
+        "term": "inhaltlich",
+        "freq": 3.65,
+        "total": 4.79,
+        "logprob": -4.4549,
+        "loglift": 1.7916
+      },
+      {
+        "term": "berücksichtigen",
+        "freq": 7.46,
+        "total": 9.8,
+        "logprob": -3.7404,
+        "loglift": 1.7901
+      },
+      {
+        "term": "anforderung",
+        "freq": 5.11,
+        "total": 6.95,
+        "logprob": -4.118,
+        "loglift": 1.7554
+      },
+      {
+        "term": "reflexion",
+        "freq": 14.28,
+        "total": 19.45,
+        "logprob": -3.0916,
+        "loglift": 1.7535
+      },
+      {
+        "term": "standard",
+        "freq": 4.4,
+        "total": 6.23,
+        "logprob": -4.2693,
+        "loglift": 1.7138
+      },
+      {
+        "term": "problemstellung",
+        "freq": 6.17,
+        "total": 9.2,
+        "logprob": -3.9307,
+        "loglift": 1.6631
+      },
+      {
+        "term": "arbeit",
+        "freq": 4.51,
+        "total": 8.08,
+        "logprob": -4.2432,
+        "loglift": 1.4797
+      },
+      {
+        "term": "vorgegeben",
+        "freq": 2.89,
+        "total": 5.52,
+        "logprob": -4.6879,
+        "loglift": 1.416
+      },
+      {
+        "term": "verschieden",
+        "freq": 5.12,
+        "total": 10.08,
+        "logprob": -4.1175,
+        "loglift": 1.3849
+      },
+      {
+        "term": "gerecht",
+        "freq": 4.4,
+        "total": 8.78,
+        "logprob": -4.2692,
+        "loglift": 1.3711
+      },
+      {
+        "term": "operator",
+        "freq": 17.16,
+        "total": 36.15,
+        "logprob": -2.9072,
+        "loglift": 1.3178
+      },
+      {
+        "term": "reorganisation",
+        "freq": 14.19,
+        "total": 30.14,
+        "logprob": -3.0979,
+        "loglift": 1.3092
+      },
+      {
+        "term": "anforderungsbereich",
+        "freq": 25.75,
+        "total": 57.43,
+        "logprob": -2.5018,
+        "loglift": 1.2604
+      },
+      {
+        "term": "aufgabe",
+        "freq": 4.6,
+        "total": 11.13,
+        "logprob": -4.225,
+        "loglift": 1.1785
+      },
+      {
+        "term": "wissen",
+        "freq": 5.03,
+        "total": 12.43,
+        "logprob": -4.1344,
+        "loglift": 1.1586
+      },
+      {
+        "term": "lernen",
+        "freq": 4.42,
+        "total": 16.94,
+        "logprob": -4.2638,
+        "loglift": 0.7196
+      }
+    ],
+    "2": [
+      {
+        "term": "bearbeite",
+        "freq": 0.03,
+        "total": 3.37,
+        "logprob": -5.5293,
+        "loglift": 1.0687
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.03,
+        "total": 3.73,
+        "logprob": -5.5545,
+        "loglift": 0.9424
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.03,
+        "total": 4.02,
+        "logprob": -5.5539,
+        "loglift": 0.8684
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.03,
+        "total": 4.35,
+        "logprob": -5.5188,
+        "loglift": 0.8241
+      },
+      {
+        "term": "selektion",
+        "freq": 0.03,
+        "total": 4.41,
+        "logprob": -5.5166,
+        "loglift": 0.8133
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.03,
+        "total": 4.33,
+        "logprob": -5.5425,
+        "loglift": 0.8057
+      },
+      {
+        "term": "funktion",
+        "freq": 0.03,
+        "total": 4.45,
+        "logprob": -5.5237,
+        "loglift": 0.7969
+      },
+      {
+        "term": "droge",
+        "freq": 0.03,
+        "total": 4.43,
+        "logprob": -5.5294,
+        "loglift": 0.7939
+      },
+      {
+        "term": "saltatorisch",
+        "freq": 0.03,
+        "total": 4.45,
+        "logprob": -5.5311,
+        "loglift": 0.7885
+      },
+      {
+        "term": "vertieft",
+        "freq": 0.03,
+        "total": 4.82,
+        "logprob": -5.4529,
+        "loglift": 0.7862
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.03,
+        "total": 4.52,
+        "logprob": -5.5352,
+        "loglift": 0.7687
+      },
+      {
+        "term": "gift",
+        "freq": 0.03,
+        "total": 4.46,
+        "logprob": -5.5611,
+        "loglift": 0.7576
+      },
+      {
+        "term": "rückmeldung",
+        "freq": 0.03,
+        "total": 4.55,
+        "logprob": -5.5684,
+        "loglift": 0.7291
+      },
+      {
+        "term": "inhaltlich",
+        "freq": 0.03,
+        "total": 4.79,
+        "logprob": -5.5178,
+        "loglift": 0.7287
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 0.03,
+        "total": 4.46,
+        "logprob": -5.5959,
+        "loglift": 0.7229
+      },
+      {
+        "term": "erhalten",
+        "freq": 0.03,
+        "total": 4.75,
+        "logprob": -5.5338,
+        "loglift": 0.7214
+      },
+      {
+        "term": "übertragen",
+        "freq": 0.03,
+        "total": 4.73,
+        "logprob": -5.5425,
+        "loglift": 0.7171
+      },
+      {
+        "term": "chance",
+        "freq": 0.03,
+        "total": 4.78,
+        "logprob": -5.5521,
+        "loglift": 0.697
+      },
+      {
+        "term": "neuromuskulär",
+        "freq": 0.03,
+        "total": 5.01,
+        "logprob": -5.5164,
+        "loglift": 0.6859
+      },
+      {
+        "term": "stärken",
+        "freq": 0.03,
+        "total": 4.95,
+        "logprob": -5.5286,
+        "loglift": 0.6843
+      },
+      {
+        "term": "grad",
+        "freq": 0.03,
+        "total": 5.3,
+        "logprob": -5.4738,
+        "loglift": 0.671
+      },
+      {
+        "term": "basis",
+        "freq": 0.03,
+        "total": 4.81,
+        "logprob": -5.5731,
+        "loglift": 0.67
+      },
+      {
+        "term": "sinnvoll",
+        "freq": 0.03,
+        "total": 5.48,
+        "logprob": -5.445,
+        "loglift": 0.6667
+      },
+      {
+        "term": "schaffen",
+        "freq": 0.03,
+        "total": 5.01,
+        "logprob": -5.5378,
+        "loglift": 0.6636
+      },
+      {
+        "term": "erweitern",
+        "freq": 0.03,
+        "total": 4.97,
+        "logprob": -5.5505,
+        "loglift": 0.6586
+      },
+      {
+        "term": "grenze",
+        "freq": 0.03,
+        "total": 5.24,
+        "logprob": -5.5,
+        "loglift": 0.6567
+      },
+      {
+        "term": "theorie",
+        "freq": 0.03,
+        "total": 5.56,
+        "logprob": -5.4604,
+        "loglift": 0.6376
+      },
+      {
+        "term": "erregung",
+        "freq": 0.03,
+        "total": 5.1,
+        "logprob": -5.5451,
+        "loglift": 0.6376
+      },
+      {
+        "term": "fertigkeit",
+        "freq": 0.03,
+        "total": 5.07,
+        "logprob": -5.5833,
+        "loglift": 0.6063
+      },
+      {
+        "term": "bild",
+        "freq": 0.03,
+        "total": 5.53,
+        "logprob": -5.4992,
+        "loglift": 0.6028
+      },
+      {
+        "term": "anpassung",
+        "freq": 0.03,
+        "total": 5.26,
+        "logprob": -5.553,
+        "loglift": 0.5988
+      },
+      {
+        "term": "vergleich",
+        "freq": 0.03,
+        "total": 5.93,
+        "logprob": -5.4768,
+        "loglift": 0.5562
+      },
+      {
+        "term": "gegliedert",
+        "freq": 0.03,
+        "total": 5.5,
+        "logprob": -5.5281,
+        "loglift": 0.5793
+      },
+      {
+        "term": "zielen",
+        "freq": 0.03,
+        "total": 7.16,
+        "logprob": -5.4445,
+        "loglift": 0.4004
+      },
+      {
+        "term": "problem",
+        "freq": 0.03,
+        "total": 6.28,
+        "logprob": -5.493,
+        "loglift": 0.483
+      },
+      {
+        "term": "abschnitt",
+        "freq": 0.03,
+        "total": 6.0,
+        "logprob": -5.5057,
+        "loglift": 0.5161
+      },
+      {
+        "term": "lerninhalt",
+        "freq": 0.03,
+        "total": 5.99,
+        "logprob": -5.5086,
+        "loglift": 0.5134
+      },
+      {
+        "term": "landwirtschaft",
+        "freq": 0.03,
+        "total": 6.72,
+        "logprob": -5.4836,
+        "loglift": 0.4244
+      },
+      {
+        "term": "historisch",
+        "freq": 0.03,
+        "total": 10.41,
+        "logprob": -5.3944,
+        "loglift": 0.0751
+      },
+      {
+        "term": "gehören",
+        "freq": 0.03,
+        "total": 6.97,
+        "logprob": -5.4908,
+        "loglift": 0.3805
+      },
+      {
+        "term": "entwicklung",
+        "freq": 0.03,
+        "total": 6.14,
+        "logprob": -5.51,
+        "loglift": 0.4884
+      },
+      {
+        "term": "arbeiten",
+        "freq": 0.03,
+        "total": 10.62,
+        "logprob": -5.4408,
+        "loglift": 0.0094
+      },
+      {
+        "term": "übung",
+        "freq": 0.03,
+        "total": 6.75,
+        "logprob": -5.5019,
+        "loglift": 0.4007
+      },
+      {
+        "term": "komplexität",
+        "freq": 0.03,
+        "total": 6.43,
+        "logprob": -5.5075,
+        "loglift": 0.4448
+      },
+      {
+        "term": "unterschied",
+        "freq": 0.03,
+        "total": 6.02,
+        "logprob": -5.5142,
+        "loglift": 0.5036
+      },
+      {
+        "term": "begriff",
+        "freq": 0.03,
+        "total": 9.28,
+        "logprob": -5.4847,
+        "loglift": 0.1004
+      },
+      {
+        "term": "kriterienorientieren",
+        "freq": 0.03,
+        "total": 7.42,
+        "logprob": -5.5006,
+        "loglift": 0.3078
+      },
+      {
+        "term": "modell",
+        "freq": 0.03,
+        "total": 15.15,
+        "logprob": -5.4674,
+        "loglift": -0.3728
+      },
+      {
+        "term": "fachmethode",
+        "freq": 0.03,
+        "total": 18.87,
+        "logprob": -5.4643,
+        "loglift": -0.5891
+      },
+      {
+        "term": "selbstständig",
+        "freq": 0.03,
+        "total": 14.18,
+        "logprob": -5.4797,
+        "loglift": -0.3189
+      },
+      {
+        "term": "reflexion",
+        "freq": 0.03,
+        "total": 19.45,
+        "logprob": -5.4787,
+        "loglift": -0.6336
+      },
+      {
+        "term": "kenntnis",
+        "freq": 0.03,
+        "total": 13.15,
+        "logprob": -5.4907,
+        "loglift": -0.254
+      },
+      {
+        "term": "inhalt",
+        "freq": 0.03,
+        "total": 19.01,
+        "logprob": -5.481,
+        "loglift": -0.6132
+      },
+      {
+        "term": "anwendung",
+        "freq": 0.03,
+        "total": 16.25,
+        "logprob": -5.4843,
+        "loglift": -0.4599
+      },
+      {
+        "term": "berücksichtigen",
+        "freq": 0.03,
+        "total": 9.8,
+        "logprob": -5.5044,
+        "loglift": 0.0262
+      },
+      {
+        "term": "privat",
+        "freq": 0.03,
+        "total": 11.15,
+        "logprob": -5.5041,
+        "loglift": -0.1028
+      },
+      {
+        "term": "grundsätzlich",
+        "freq": 0.03,
+        "total": 7.44,
+        "logprob": -5.5087,
+        "loglift": 0.2971
+      },
+      {
+        "term": "fragestellung",
+        "freq": 0.03,
+        "total": 13.09,
+        "logprob": -5.5046,
+        "loglift": -0.264
+      },
+      {
+        "term": "ziel",
+        "freq": 0.03,
+        "total": 16.61,
+        "logprob": -5.5076,
+        "loglift": -0.5049
+      }
+    ],
+    "3": [
+      {
+        "term": "gestalten",
+        "freq": 7.67,
+        "total": 8.87,
+        "logprob": -2.7827,
+        "loglift": 2.8475
+      },
+      {
+        "term": "sinnvoll",
+        "freq": 4.3,
+        "total": 5.48,
+        "logprob": -3.3602,
+        "loglift": 2.7515
+      },
+      {
+        "term": "schaffen",
+        "freq": 3.87,
+        "total": 5.01,
+        "logprob": -3.4665,
+        "loglift": 2.735
+      },
+      {
+        "term": "lernaufgabe",
+        "freq": 3.87,
+        "total": 5.75,
+        "logprob": -3.4669,
+        "loglift": 2.597
+      },
+      {
+        "term": "beziehung",
+        "freq": 4.86,
+        "total": 7.97,
+        "logprob": -3.2385,
+        "loglift": 2.4984
+      },
+      {
+        "term": "gelingen",
+        "freq": 3.86,
+        "total": 6.45,
+        "logprob": -3.47,
+        "loglift": 2.4784
+      },
+      {
+        "term": "wichtig",
+        "freq": 3.41,
+        "total": 6.84,
+        "logprob": -3.5939,
+        "loglift": 2.2963
+      },
+      {
+        "term": "charakterisier",
+        "freq": 3.99,
+        "total": 8.99,
+        "logprob": -3.4365,
+        "loglift": 2.1806
+      },
+      {
+        "term": "verlangen",
+        "freq": 3.99,
+        "total": 8.99,
+        "logprob": -3.436,
+        "loglift": 2.1804
+      },
+      {
+        "term": "herausarbeit",
+        "freq": 3.99,
+        "total": 9.0,
+        "logprob": -3.4368,
+        "loglift": 2.1793
+      },
+      {
+        "term": "situation",
+        "freq": 3.82,
+        "total": 8.69,
+        "logprob": -3.4786,
+        "loglift": 2.1724
+      },
+      {
+        "term": "ler",
+        "freq": 6.92,
+        "total": 16.82,
+        "logprob": -2.886,
+        "loglift": 2.1041
+      },
+      {
+        "term": "begriff",
+        "freq": 3.65,
+        "total": 9.28,
+        "logprob": -3.5252,
+        "loglift": 2.06
+      },
+      {
+        "term": "leistung",
+        "freq": 3.99,
+        "total": 10.62,
+        "logprob": -3.4367,
+        "loglift": 2.0131
+      },
+      {
+        "term": "gelernt",
+        "freq": 3.43,
+        "total": 9.64,
+        "logprob": -3.5871,
+        "loglift": 1.9595
+      },
+      {
+        "term": "einordnen",
+        "freq": 3.98,
+        "total": 11.94,
+        "logprob": -3.4395,
+        "loglift": 1.8933
+      },
+      {
+        "term": "entsprechend",
+        "freq": 3.41,
+        "total": 10.56,
+        "logprob": -3.5939,
+        "loglift": 1.8621
+      },
+      {
+        "term": "datum",
+        "freq": 5.4,
+        "total": 16.86,
+        "logprob": -3.1339,
+        "loglift": 1.8537
+      },
+      {
+        "term": "aufgabenstellung",
+        "freq": 3.47,
+        "total": 11.72,
+        "logprob": -3.577,
+        "loglift": 1.7748
+      },
+      {
+        "term": "material",
+        "freq": 5.64,
+        "total": 24.54,
+        "logprob": -3.0906,
+        "loglift": 1.5217
+      },
+      {
+        "term": "kriterium",
+        "freq": 3.41,
+        "total": 17.19,
+        "logprob": -3.5938,
+        "loglift": 1.3746
+      },
+      {
+        "term": "chance",
+        "freq": 0.94,
+        "total": 4.78,
+        "logprob": -4.8856,
+        "loglift": 1.3635
+      },
+      {
+        "term": "vergleich",
+        "freq": 1.02,
+        "total": 5.93,
+        "logprob": -4.801,
+        "loglift": 1.232
+      },
+      {
+        "term": "modell",
+        "freq": 2.37,
+        "total": 15.15,
+        "logprob": -3.9589,
+        "loglift": 1.1356
+      },
+      {
+        "term": "grenze",
+        "freq": 0.8,
+        "total": 5.24,
+        "logprob": -5.0449,
+        "loglift": 1.1118
+      },
+      {
+        "term": "biologisch",
+        "freq": 1.66,
+        "total": 11.86,
+        "logprob": -4.3148,
+        "loglift": 1.0247
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.51,
+        "total": 4.35,
+        "logprob": -5.4897,
+        "loglift": 0.8532
+      },
+      {
+        "term": "analyse",
+        "freq": 0.66,
+        "total": 6.62,
+        "logprob": -5.2299,
+        "loglift": 0.6934
+      },
+      {
+        "term": "text",
+        "freq": 0.51,
+        "total": 5.26,
+        "logprob": -5.4909,
+        "loglift": 0.6611
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 3.18,
+        "total": 36.61,
+        "logprob": -3.6642,
+        "loglift": 0.5483
+      },
+      {
+        "term": "sachverhalt",
+        "freq": 2.07,
+        "total": 28.14,
+        "logprob": -4.0934,
+        "loglift": 0.382
+      },
+      {
+        "term": "struktur",
+        "freq": 0.97,
+        "total": 12.09,
+        "logprob": -4.8531,
+        "loglift": 0.4673
+      },
+      {
+        "term": "anwendung",
+        "freq": 1.1,
+        "total": 16.25,
+        "logprob": -4.7245,
+        "loglift": 0.2999
+      },
+      {
+        "term": "operator",
+        "freq": 1.05,
+        "total": 36.15,
+        "logprob": -4.7723,
+        "loglift": -0.5473
+      }
+    ],
+    "4": [
+      {
+        "term": "wiedergeben",
+        "freq": 8.46,
+        "total": 9.71,
+        "logprob": -3.5569,
+        "loglift": 1.9826
+      },
+      {
+        "term": "verwendung",
+        "freq": 9.42,
+        "total": 10.85,
+        "logprob": -3.4493,
+        "loglift": 1.9797
+      },
+      {
+        "term": "präzise",
+        "freq": 7.72,
+        "total": 8.98,
+        "logprob": -3.6486,
+        "loglift": 1.9693
+      },
+      {
+        "term": "begrifflich",
+        "freq": 7.71,
+        "total": 8.98,
+        "logprob": -3.6502,
+        "loglift": 1.9673
+      },
+      {
+        "term": "darlegen",
+        "freq": 7.71,
+        "total": 8.98,
+        "logprob": -3.6507,
+        "loglift": 1.9672
+      },
+      {
+        "term": "aufführ",
+        "freq": 7.71,
+        "total": 8.99,
+        "logprob": -3.6507,
+        "loglift": 1.9663
+      },
+      {
+        "term": "logisch",
+        "freq": 7.7,
+        "total": 8.99,
+        "logprob": -3.6516,
+        "loglift": 1.9652
+      },
+      {
+        "term": "erschließen",
+        "freq": 8.73,
+        "total": 10.73,
+        "logprob": -3.5262,
+        "loglift": 1.9139
+      },
+      {
+        "term": "insbesondere",
+        "freq": 4.6,
+        "total": 5.75,
+        "logprob": -4.1657,
+        "loglift": 1.8979
+      },
+      {
+        "term": "wesentliche",
+        "freq": 7.7,
+        "total": 9.7,
+        "logprob": -3.6508,
+        "loglift": 1.8897
+      },
+      {
+        "term": "einordn",
+        "freq": 4.7,
+        "total": 6.58,
+        "logprob": -4.1442,
+        "loglift": 1.785
+      },
+      {
+        "term": "struktur",
+        "freq": 8.1,
+        "total": 12.09,
+        "logprob": -3.601,
+        "loglift": 1.7194
+      },
+      {
+        "term": "bearbeite",
+        "freq": 2.22,
+        "total": 3.37,
+        "logprob": -4.8962,
+        "loglift": 1.7018
+      },
+      {
+        "term": "zeitlich",
+        "freq": 4.7,
+        "total": 7.3,
+        "logprob": -4.1441,
+        "loglift": 1.6804
+      },
+      {
+        "term": "kriterienorientieren",
+        "freq": 4.24,
+        "total": 7.42,
+        "logprob": -4.2474,
+        "loglift": 1.561
+      },
+      {
+        "term": "wirtschaftlich",
+        "freq": 4.7,
+        "total": 8.25,
+        "logprob": -4.1448,
+        "loglift": 1.558
+      },
+      {
+        "term": "sachverhalte",
+        "freq": 23.04,
+        "total": 42.69,
+        "logprob": -2.5554,
+        "loglift": 1.5034
+      },
+      {
+        "term": "prozeß",
+        "freq": 7.71,
+        "total": 14.56,
+        "logprob": -3.6504,
+        "loglift": 1.4839
+      },
+      {
+        "term": "unterschiedlich",
+        "freq": 6.3,
+        "total": 12.41,
+        "logprob": -3.8515,
+        "loglift": 1.4424
+      },
+      {
+        "term": "sachverhalt",
+        "freq": 13.87,
+        "total": 28.14,
+        "logprob": -3.0628,
+        "loglift": 1.4126
+      },
+      {
+        "term": "material",
+        "freq": 11.92,
+        "total": 24.54,
+        "logprob": -3.2142,
+        "loglift": 1.3981
+      },
+      {
+        "term": "methode",
+        "freq": 7.36,
+        "total": 15.62,
+        "logprob": -3.6965,
+        "loglift": 1.3677
+      },
+      {
+        "term": "entwicklung",
+        "freq": 2.87,
+        "total": 6.14,
+        "logprob": -4.6373,
+        "loglift": 1.3611
+      },
+      {
+        "term": "verbindlich",
+        "freq": 3.15,
+        "total": 7.06,
+        "logprob": -4.5448,
+        "loglift": 1.3134
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 16.19,
+        "total": 36.61,
+        "logprob": -2.9084,
+        "loglift": 1.3041
+      },
+      {
+        "term": "text",
+        "freq": 2.32,
+        "total": 5.26,
+        "logprob": -4.8498,
+        "loglift": 1.3022
+      },
+      {
+        "term": "ordn",
+        "freq": 2.34,
+        "total": 5.7,
+        "logprob": -4.8409,
+        "loglift": 1.2314
+      },
+      {
+        "term": "verwenden",
+        "freq": 2.32,
+        "total": 6.15,
+        "logprob": -4.8494,
+        "loglift": 1.1464
+      },
+      {
+        "term": "benennen",
+        "freq": 4.71,
+        "total": 13.23,
+        "logprob": -4.1441,
+        "loglift": 1.0862
+      },
+      {
+        "term": "grundlegend",
+        "freq": 2.08,
+        "total": 5.96,
+        "logprob": -4.9594,
+        "loglift": 1.069
+      },
+      {
+        "term": "reorganisation",
+        "freq": 9.6,
+        "total": 30.14,
+        "logprob": -3.4307,
+        "loglift": 0.9764
+      },
+      {
+        "term": "inhalt",
+        "freq": 5.63,
+        "total": 19.01,
+        "logprob": -3.9645,
+        "loglift": 0.9033
+      },
+      {
+        "term": "anforderungsbereich",
+        "freq": 10.53,
+        "total": 57.43,
+        "logprob": -3.3387,
+        "loglift": 0.4236
+      },
+      {
+        "term": "datum",
+        "freq": 4.67,
+        "total": 16.86,
+        "logprob": -4.1511,
+        "loglift": 0.8365
+      },
+      {
+        "term": "umfasst",
+        "freq": 4.74,
+        "total": 18.83,
+        "logprob": -4.1362,
+        "loglift": 0.741
+      },
+      {
+        "term": "politisch",
+        "freq": 4.7,
+        "total": 27.02,
+        "logprob": -4.1445,
+        "loglift": 0.3717
+      }
+    ],
+    "5": [
+      {
+        "term": "gesellschaft",
+        "freq": 6.26,
+        "total": 10.48,
+        "logprob": -1.6657,
+        "loglift": 3.7977
+      },
+      {
+        "term": "funktion",
+        "freq": 2.49,
+        "total": 4.45,
+        "logprob": -2.5888,
+        "loglift": 3.7318
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 1.75,
+        "total": 4.02,
+        "logprob": -2.9427,
+        "loglift": 3.4797
+      },
+      {
+        "term": "vergleich",
+        "freq": 2.26,
+        "total": 5.93,
+        "logprob": -2.6859,
+        "loglift": 3.347
+      },
+      {
+        "term": "begriff",
+        "freq": 3.2,
+        "total": 9.28,
+        "logprob": -2.3373,
+        "loglift": 3.2478
+      },
+      {
+        "term": "individuell",
+        "freq": 0.83,
+        "total": 5.52,
+        "logprob": -3.6813,
+        "loglift": 2.4225
+      },
+      {
+        "term": "selektion",
+        "freq": 0.59,
+        "total": 4.41,
+        "logprob": -4.0197,
+        "loglift": 2.3102
+      },
+      {
+        "term": "anpassung",
+        "freq": 0.61,
+        "total": 5.26,
+        "logprob": -3.999,
+        "loglift": 2.1528
+      },
+      {
+        "term": "neu",
+        "freq": 0.61,
+        "total": 6.61,
+        "logprob": -3.9992,
+        "loglift": 1.9254
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.06,
+        "total": 3.37,
+        "logprob": -6.3496,
+        "loglift": 0.2484
+      },
+      {
+        "term": "umfasst",
+        "freq": 0.3,
+        "total": 18.83,
+        "logprob": -4.7164,
+        "loglift": 0.1608
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.06,
+        "total": 3.73,
+        "logprob": -6.3435,
+        "loglift": 0.1534
+      },
+      {
+        "term": "saltatorisch",
+        "freq": 0.06,
+        "total": 4.45,
+        "logprob": -6.2989,
+        "loglift": 0.0207
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.06,
+        "total": 4.33,
+        "logprob": -6.3492,
+        "loglift": -0.0009
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.06,
+        "total": 4.35,
+        "logprob": -6.3554,
+        "loglift": -0.0125
+      },
+      {
+        "term": "rückmeldung",
+        "freq": 0.06,
+        "total": 4.55,
+        "logprob": -6.3168,
+        "loglift": -0.0193
+      },
+      {
+        "term": "gift",
+        "freq": 0.06,
+        "total": 4.46,
+        "logprob": -6.3484,
+        "loglift": -0.0298
+      },
+      {
+        "term": "droge",
+        "freq": 0.06,
+        "total": 4.43,
+        "logprob": -6.3701,
+        "loglift": -0.0468
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.06,
+        "total": 4.52,
+        "logprob": -6.3532,
+        "loglift": -0.0493
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 0.06,
+        "total": 4.46,
+        "logprob": -6.392,
+        "loglift": -0.0732
+      },
+      {
+        "term": "schaffen",
+        "freq": 0.06,
+        "total": 5.01,
+        "logprob": -6.2775,
+        "loglift": -0.076
+      },
+      {
+        "term": "vertieft",
+        "freq": 0.06,
+        "total": 4.82,
+        "logprob": -6.3193,
+        "loglift": -0.0802
+      },
+      {
+        "term": "chance",
+        "freq": 0.06,
+        "total": 4.78,
+        "logprob": -6.3356,
+        "loglift": -0.0865
+      },
+      {
+        "term": "übertragen",
+        "freq": 0.06,
+        "total": 4.73,
+        "logprob": -6.3529,
+        "loglift": -0.0933
+      },
+      {
+        "term": "inhaltlich",
+        "freq": 0.06,
+        "total": 4.79,
+        "logprob": -6.3421,
+        "loglift": -0.0955
+      },
+      {
+        "term": "erhalten",
+        "freq": 0.06,
+        "total": 4.75,
+        "logprob": -6.3555,
+        "loglift": -0.1003
+      },
+      {
+        "term": "basis",
+        "freq": 0.06,
+        "total": 4.81,
+        "logprob": -6.356,
+        "loglift": -0.1129
+      },
+      {
+        "term": "fertigkeit",
+        "freq": 0.06,
+        "total": 5.07,
+        "logprob": -6.3068,
+        "loglift": -0.1172
+      },
+      {
+        "term": "erweitern",
+        "freq": 0.06,
+        "total": 4.97,
+        "logprob": -6.3424,
+        "loglift": -0.1333
+      },
+      {
+        "term": "stärken",
+        "freq": 0.06,
+        "total": 4.95,
+        "logprob": -6.3706,
+        "loglift": -0.1578
+      },
+      {
+        "term": "sinnvoll",
+        "freq": 0.06,
+        "total": 5.48,
+        "logprob": -6.2815,
+        "loglift": -0.1698
+      },
+      {
+        "term": "prinzip",
+        "freq": 0.1,
+        "total": 11.25,
+        "logprob": -5.7834,
+        "loglift": -0.3912
+      },
+      {
+        "term": "einzeln",
+        "freq": 0.09,
+        "total": 10.42,
+        "logprob": -5.9292,
+        "loglift": -0.4603
+      },
+      {
+        "term": "bedeutung",
+        "freq": 0.09,
+        "total": 11.84,
+        "logprob": -5.9418,
+        "loglift": -0.6008
+      },
+      {
+        "term": "gestalten",
+        "freq": 0.07,
+        "total": 8.87,
+        "logprob": -6.2103,
+        "loglift": -0.5801
+      },
+      {
+        "term": "wichtig",
+        "freq": 0.06,
+        "total": 6.84,
+        "logprob": -6.284,
+        "loglift": -0.3938
+      },
+      {
+        "term": "lernaufgabe",
+        "freq": 0.06,
+        "total": 5.75,
+        "logprob": -6.3192,
+        "loglift": -0.2552
+      },
+      {
+        "term": "gelingen",
+        "freq": 0.06,
+        "total": 6.45,
+        "logprob": -6.301,
+        "loglift": -0.3525
+      },
+      {
+        "term": "diagramm",
+        "freq": 0.06,
+        "total": 5.79,
+        "logprob": -6.3224,
+        "loglift": -0.2653
+      },
+      {
+        "term": "ler",
+        "freq": 0.07,
+        "total": 16.82,
+        "logprob": -6.2106,
+        "loglift": -1.2205
+      },
+      {
+        "term": "entwicklung",
+        "freq": 0.06,
+        "total": 6.14,
+        "logprob": -6.3178,
+        "loglift": -0.3194
+      },
+      {
+        "term": "gelernt",
+        "freq": 0.06,
+        "total": 9.64,
+        "logprob": -6.2809,
+        "loglift": -0.7343
+      },
+      {
+        "term": "situation",
+        "freq": 0.06,
+        "total": 8.69,
+        "logprob": -6.2915,
+        "loglift": -0.6405
+      },
+      {
+        "term": "aufgabenstellung",
+        "freq": 0.06,
+        "total": 11.72,
+        "logprob": -6.2752,
+        "loglift": -0.9233
+      },
+      {
+        "term": "kriterium",
+        "freq": 0.06,
+        "total": 17.19,
+        "logprob": -6.2743,
+        "loglift": -1.3059
+      },
+      {
+        "term": "entsprechend",
+        "freq": 0.06,
+        "total": 10.56,
+        "logprob": -6.301,
+        "loglift": -0.845
+      },
+      {
+        "term": "material",
+        "freq": 0.06,
+        "total": 24.54,
+        "logprob": -6.2833,
+        "loglift": -1.671
+      },
+      {
+        "term": "darstellung",
+        "freq": 0.06,
+        "total": 12.99,
+        "logprob": -6.3026,
+        "loglift": -1.0537
+      },
+      {
+        "term": "wissen",
+        "freq": 0.06,
+        "total": 12.43,
+        "logprob": -6.3062,
+        "loglift": -1.0133
+      },
+      {
+        "term": "verfahrensweise",
+        "freq": 0.06,
+        "total": 12.82,
+        "logprob": -6.3065,
+        "loglift": -1.0449
+      }
+    ],
+    "6": [
+      {
+        "term": "lösung",
+        "freq": 3.95,
+        "total": 6.7,
+        "logprob": -2.5993,
+        "loglift": 3.3115
+      },
+      {
+        "term": "einfach",
+        "freq": 3.92,
+        "total": 6.78,
+        "logprob": -2.608,
+        "loglift": 3.2906
+      },
+      {
+        "term": "neu",
+        "freq": 2.27,
+        "total": 6.61,
+        "logprob": -3.1524,
+        "loglift": 2.7722
+      },
+      {
+        "term": "vorgegeben",
+        "freq": 1.57,
+        "total": 5.52,
+        "logprob": -3.5259,
+        "loglift": 2.578
+      },
+      {
+        "term": "frage",
+        "freq": 2.14,
+        "total": 7.59,
+        "logprob": -3.215,
+        "loglift": 2.5714
+      },
+      {
+        "term": "problem",
+        "freq": 1.57,
+        "total": 6.28,
+        "logprob": -3.5201,
+        "loglift": 2.4559
+      },
+      {
+        "term": "biologisch",
+        "freq": 2.7,
+        "total": 11.86,
+        "logprob": -2.9825,
+        "loglift": 2.357
+      },
+      {
+        "term": "problemstellung",
+        "freq": 1.83,
+        "total": 9.2,
+        "logprob": -3.3676,
+        "loglift": 2.2262
+      },
+      {
+        "term": "anwendung",
+        "freq": 2.59,
+        "total": 16.25,
+        "logprob": -3.0205,
+        "loglift": 2.0038
+      },
+      {
+        "term": "text",
+        "freq": 0.81,
+        "total": 5.26,
+        "logprob": -4.1843,
+        "loglift": 1.9677
+      },
+      {
+        "term": "ordn",
+        "freq": 0.82,
+        "total": 5.7,
+        "logprob": -4.1714,
+        "loglift": 1.9009
+      },
+      {
+        "term": "lernaufgabe",
+        "freq": 0.81,
+        "total": 5.75,
+        "logprob": -4.1851,
+        "loglift": 1.8789
+      },
+      {
+        "term": "aufgabe",
+        "freq": 1.52,
+        "total": 11.13,
+        "logprob": -3.5548,
+        "loglift": 1.8488
+      },
+      {
+        "term": "erkenntnisgewinnung",
+        "freq": 0.82,
+        "total": 6.36,
+        "logprob": -4.1741,
+        "loglift": 1.7891
+      },
+      {
+        "term": "erworben",
+        "freq": 0.82,
+        "total": 7.16,
+        "logprob": -4.1731,
+        "loglift": 1.6708
+      },
+      {
+        "term": "wissen",
+        "freq": 1.2,
+        "total": 12.43,
+        "logprob": -3.7918,
+        "loglift": 1.5011
+      },
+      {
+        "term": "kriterium",
+        "freq": 1.52,
+        "total": 17.19,
+        "logprob": -3.5573,
+        "loglift": 1.411
+      },
+      {
+        "term": "zusammenhäng",
+        "freq": 0.82,
+        "total": 10.41,
+        "logprob": -4.1708,
+        "loglift": 1.2988
+      },
+      {
+        "term": "fragestellung",
+        "freq": 0.82,
+        "total": 13.09,
+        "logprob": -4.1715,
+        "loglift": 1.0691
+      },
+      {
+        "term": "darstellung",
+        "freq": 0.81,
+        "total": 12.99,
+        "logprob": -4.1878,
+        "loglift": 1.0611
+      },
+      {
+        "term": "inhalt",
+        "freq": 0.82,
+        "total": 19.01,
+        "logprob": -4.1763,
+        "loglift": 0.6915
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.08,
+        "total": 3.37,
+        "logprob": -6.5603,
+        "loglift": 0.0377
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.08,
+        "total": 3.73,
+        "logprob": -6.5218,
+        "loglift": -0.0249
+      },
+      {
+        "term": "sachverhalte",
+        "freq": 0.82,
+        "total": 42.69,
+        "logprob": -4.1725,
+        "loglift": -0.1137
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.08,
+        "total": 4.02,
+        "logprob": -6.5473,
+        "loglift": -0.1249
+      },
+      {
+        "term": "erweitern",
+        "freq": 0.09,
+        "total": 4.97,
+        "logprob": -6.352,
+        "loglift": -0.1429
+      },
+      {
+        "term": "selektion",
+        "freq": 0.08,
+        "total": 4.41,
+        "logprob": -6.5188,
+        "loglift": -0.1889
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 0.08,
+        "total": 4.46,
+        "logprob": -6.514,
+        "loglift": -0.1953
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.08,
+        "total": 4.33,
+        "logprob": -6.5439,
+        "loglift": -0.1957
+      },
+      {
+        "term": "funktion",
+        "freq": 0.08,
+        "total": 4.45,
+        "logprob": -6.5174,
+        "loglift": -0.1968
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.08,
+        "total": 4.52,
+        "logprob": -6.5035,
+        "loglift": -0.1996
+      },
+      {
+        "term": "sinnvoll",
+        "freq": 0.09,
+        "total": 5.48,
+        "logprob": -6.3694,
+        "loglift": -0.2577
+      },
+      {
+        "term": "stärken",
+        "freq": 0.08,
+        "total": 4.95,
+        "logprob": -6.4584,
+        "loglift": -0.2456
+      },
+      {
+        "term": "vergleich",
+        "freq": 0.09,
+        "total": 5.93,
+        "logprob": -6.3658,
+        "loglift": -0.3328
+      },
+      {
+        "term": "übung",
+        "freq": 0.09,
+        "total": 6.75,
+        "logprob": -6.3489,
+        "loglift": -0.4464
+      },
+      {
+        "term": "historisch",
+        "freq": 0.1,
+        "total": 10.41,
+        "logprob": -6.2769,
+        "loglift": -0.8074
+      },
+      {
+        "term": "grundlegend",
+        "freq": 0.08,
+        "total": 5.96,
+        "logprob": -6.454,
+        "loglift": -0.4255
+      },
+      {
+        "term": "lernen",
+        "freq": 0.1,
+        "total": 16.94,
+        "logprob": -6.312,
+        "loglift": -1.3286
+      },
+      {
+        "term": "vertiefung",
+        "freq": 0.09,
+        "total": 9.57,
+        "logprob": -6.426,
+        "loglift": -0.8713
+      },
+      {
+        "term": "verfahrensweise",
+        "freq": 0.09,
+        "total": 12.82,
+        "logprob": -6.4359,
+        "loglift": -1.1743
+      }
+    ],
+    "7": [
+      {
+        "term": "stärken",
+        "freq": 3.81,
+        "total": 4.95,
+        "logprob": -3.664,
+        "loglift": 2.5488
+      },
+      {
+        "term": "erweitern",
+        "freq": 3.81,
+        "total": 4.97,
+        "logprob": -3.6639,
+        "loglift": 2.5452
+      },
+      {
+        "term": "rückmeldung",
+        "freq": 3.4,
+        "total": 4.55,
+        "logprob": -3.777,
+        "loglift": 2.5205
+      },
+      {
+        "term": "erhalten",
+        "freq": 3.0,
+        "total": 4.75,
+        "logprob": -3.902,
+        "loglift": 2.3533
+      },
+      {
+        "term": "arbeiten",
+        "freq": 5.97,
+        "total": 10.62,
+        "logprob": -3.2158,
+        "loglift": 2.2344
+      },
+      {
+        "term": "übung",
+        "freq": 3.79,
+        "total": 6.75,
+        "logprob": -3.6707,
+        "loglift": 2.2319
+      },
+      {
+        "term": "ziel",
+        "freq": 9.29,
+        "total": 16.61,
+        "logprob": -2.7734,
+        "loglift": 2.2293
+      },
+      {
+        "term": "deutschland",
+        "freq": 3.93,
+        "total": 7.48,
+        "logprob": -3.6333,
+        "loglift": 2.1666
+      },
+      {
+        "term": "historisch",
+        "freq": 5.44,
+        "total": 10.41,
+        "logprob": -3.3085,
+        "loglift": 2.1611
+      },
+      {
+        "term": "privat",
+        "freq": 5.26,
+        "total": 11.15,
+        "logprob": -3.3408,
+        "loglift": 2.0606
+      },
+      {
+        "term": "römer",
+        "freq": 4.34,
+        "total": 9.9,
+        "logprob": -3.5347,
+        "loglift": 1.9856
+      },
+      {
+        "term": "problem",
+        "freq": 2.59,
+        "total": 6.28,
+        "logprob": -4.0508,
+        "loglift": 1.9252
+      },
+      {
+        "term": "analyse",
+        "freq": 2.6,
+        "total": 6.62,
+        "logprob": -4.0466,
+        "loglift": 1.8766
+      },
+      {
+        "term": "vertiefung",
+        "freq": 3.73,
+        "total": 9.57,
+        "logprob": -3.6865,
+        "loglift": 1.8681
+      },
+      {
+        "term": "römisch",
+        "freq": 2.19,
+        "total": 5.73,
+        "logprob": -4.2178,
+        "loglift": 1.8501
+      },
+      {
+        "term": "geografisch",
+        "freq": 2.19,
+        "total": 5.74,
+        "logprob": -4.2175,
+        "loglift": 1.8485
+      },
+      {
+        "term": "unterschied",
+        "freq": 2.19,
+        "total": 6.02,
+        "logprob": -4.2162,
+        "loglift": 1.8016
+      },
+      {
+        "term": "dimension",
+        "freq": 2.2,
+        "total": 6.12,
+        "logprob": -4.2151,
+        "loglift": 1.7862
+      },
+      {
+        "term": "situation",
+        "freq": 3.0,
+        "total": 8.69,
+        "logprob": -3.9024,
+        "loglift": 1.7487
+      },
+      {
+        "term": "unterschiedlich",
+        "freq": 4.28,
+        "total": 12.41,
+        "logprob": -3.547,
+        "loglift": 1.7469
+      },
+      {
+        "term": "grundlegend",
+        "freq": 2.05,
+        "total": 5.96,
+        "logprob": -4.2858,
+        "loglift": 1.7426
+      },
+      {
+        "term": "nutzen",
+        "freq": 3.4,
+        "total": 9.98,
+        "logprob": -3.7767,
+        "loglift": 1.7351
+      },
+      {
+        "term": "information",
+        "freq": 4.34,
+        "total": 13.14,
+        "logprob": -3.534,
+        "loglift": 1.703
+      },
+      {
+        "term": "individuell",
+        "freq": 1.81,
+        "total": 5.52,
+        "logprob": -4.4082,
+        "loglift": 1.6955
+      },
+      {
+        "term": "wissen",
+        "freq": 4.05,
+        "total": 12.43,
+        "logprob": -3.6032,
+        "loglift": 1.6898
+      },
+      {
+        "term": "setzen",
+        "freq": 3.0,
+        "total": 9.57,
+        "logprob": -3.9023,
+        "loglift": 1.6515
+      },
+      {
+        "term": "möglichkeit",
+        "freq": 1.78,
+        "total": 6.26,
+        "logprob": -4.4233,
+        "loglift": 1.555
+      },
+      {
+        "term": "komplexität",
+        "freq": 1.78,
+        "total": 6.43,
+        "logprob": -4.4236,
+        "loglift": 1.5287
+      },
+      {
+        "term": "wesentlich",
+        "freq": 2.19,
+        "total": 7.92,
+        "logprob": -4.2176,
+        "loglift": 1.5257
+      },
+      {
+        "term": "leben",
+        "freq": 2.19,
+        "total": 8.08,
+        "logprob": -4.216,
+        "loglift": 1.5074
+      },
+      {
+        "term": "sach",
+        "freq": 3.53,
+        "total": 13.15,
+        "logprob": -3.741,
+        "loglift": 1.4957
+      },
+      {
+        "term": "lernen",
+        "freq": 4.23,
+        "total": 16.94,
+        "logprob": -3.5603,
+        "loglift": 1.423
+      },
+      {
+        "term": "anwendung",
+        "freq": 4.04,
+        "total": 16.25,
+        "logprob": -3.6049,
+        "loglift": 1.4195
+      },
+      {
+        "term": "politisch",
+        "freq": 5.26,
+        "total": 27.02,
+        "logprob": -3.3411,
+        "loglift": 1.1751
+      },
+      {
+        "term": "umgang",
+        "freq": 2.3,
+        "total": 13.65,
+        "logprob": -4.1685,
+        "loglift": 1.0304
+      },
+      {
+        "term": "kulturell",
+        "freq": 2.2,
+        "total": 8.53,
+        "logprob": -4.2153,
+        "loglift": 1.4538
+      }
+    ],
+    "8": [
+      {
+        "term": "basiskonzept",
+        "freq": 7.18,
+        "total": 9.98,
+        "logprob": -2.8783,
+        "loglift": 2.6339
+      },
+      {
+        "term": "gehören",
+        "freq": 5.0,
+        "total": 6.97,
+        "logprob": -3.24,
+        "loglift": 2.6313
+      },
+      {
+        "term": "anpassung",
+        "freq": 3.59,
+        "total": 5.26,
+        "logprob": -3.573,
+        "loglift": 2.5788
+      },
+      {
+        "term": "modellvorstellung",
+        "freq": 3.59,
+        "total": 5.33,
+        "logprob": -3.5726,
+        "loglift": 2.5668
+      },
+      {
+        "term": "sachgerecht",
+        "freq": 3.59,
+        "total": 5.37,
+        "logprob": -3.5723,
+        "loglift": 2.5601
+      },
+      {
+        "term": "ablauf",
+        "freq": 3.58,
+        "total": 6.67,
+        "logprob": -3.5757,
+        "loglift": 2.3392
+      },
+      {
+        "term": "biologie",
+        "freq": 3.58,
+        "total": 6.78,
+        "logprob": -3.5755,
+        "loglift": 2.323
+      },
+      {
+        "term": "komplex",
+        "freq": 3.58,
+        "total": 7.47,
+        "logprob": -3.5741,
+        "loglift": 2.2279
+      },
+      {
+        "term": "darstellung",
+        "freq": 5.69,
+        "total": 12.99,
+        "logprob": -3.1114,
+        "loglift": 2.1375
+      },
+      {
+        "term": "herstellung",
+        "freq": 2.73,
+        "total": 6.53,
+        "logprob": -3.8447,
+        "loglift": 2.0918
+      },
+      {
+        "term": "neu",
+        "freq": 2.72,
+        "total": 6.61,
+        "logprob": -3.8494,
+        "loglift": 2.0752
+      },
+      {
+        "term": "strukturiert",
+        "freq": 3.29,
+        "total": 8.38,
+        "logprob": -3.6593,
+        "loglift": 2.0272
+      },
+      {
+        "term": "biologisch",
+        "freq": 4.36,
+        "total": 11.86,
+        "logprob": -3.3773,
+        "loglift": 1.9622
+      },
+      {
+        "term": "bezogen",
+        "freq": 3.59,
+        "total": 10.15,
+        "logprob": -3.5708,
+        "loglift": 1.9249
+      },
+      {
+        "term": "verändert",
+        "freq": 2.47,
+        "total": 7.33,
+        "logprob": -3.9445,
+        "loglift": 1.8756
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 11.87,
+        "total": 36.61,
+        "logprob": -2.3758,
+        "loglift": 1.8367
+      },
+      {
+        "term": "aufgabe",
+        "freq": 3.52,
+        "total": 11.13,
+        "logprob": -3.5921,
+        "loglift": 1.8114
+      },
+      {
+        "term": "eigenständig",
+        "freq": 3.55,
+        "total": 11.34,
+        "logprob": -3.5837,
+        "loglift": 1.8007
+      },
+      {
+        "term": "datum",
+        "freq": 5.1,
+        "total": 16.86,
+        "logprob": -3.2217,
+        "loglift": 1.7658
+      },
+      {
+        "term": "übung",
+        "freq": 1.9,
+        "total": 6.75,
+        "logprob": -4.2084,
+        "loglift": 1.6941
+      },
+      {
+        "term": "aufgabenstellung",
+        "freq": 3.2,
+        "total": 11.72,
+        "logprob": -3.6874,
+        "loglift": 1.6645
+      },
+      {
+        "term": "anwendung",
+        "freq": 3.6,
+        "total": 16.25,
+        "logprob": -3.568,
+        "loglift": 1.4564
+      },
+      {
+        "term": "methode",
+        "freq": 3.16,
+        "total": 15.62,
+        "logprob": -3.701,
+        "loglift": 1.3631
+      },
+      {
+        "term": "gelernt",
+        "freq": 1.84,
+        "total": 9.64,
+        "logprob": -4.2397,
+        "loglift": 1.3069
+      },
+      {
+        "term": "fragestellung",
+        "freq": 2.21,
+        "total": 13.09,
+        "logprob": -4.0555,
+        "loglift": 1.1851
+      },
+      {
+        "term": "verfahrensweise",
+        "freq": 1.87,
+        "total": 12.82,
+        "logprob": -4.2215,
+        "loglift": 1.04
+      },
+      {
+        "term": "selbstständig",
+        "freq": 1.87,
+        "total": 14.18,
+        "logprob": -4.2235,
+        "loglift": 0.9373
+      },
+      {
+        "term": "übertrag",
+        "freq": 1.87,
+        "total": 16.69,
+        "logprob": -4.2227,
+        "loglift": 0.7753
+      },
+      {
+        "term": "vergleichbar",
+        "freq": 1.87,
+        "total": 16.7,
+        "logprob": -4.2223,
+        "loglift": 0.7752
+      },
+      {
+        "term": "vergleich",
+        "freq": 0.23,
+        "total": 5.93,
+        "logprob": -6.3276,
+        "loglift": -0.2946
+      }
+    ],
+    "9": [
+      {
+        "term": "übertragen",
+        "freq": 2.47,
+        "total": 4.73,
+        "logprob": -2.8235,
+        "loglift": 3.4361
+      },
+      {
+        "term": "teilche",
+        "freq": 4.28,
+        "total": 8.68,
+        "logprob": -2.2758,
+        "loglift": 3.3757
+      },
+      {
+        "term": "veränderung",
+        "freq": 1.87,
+        "total": 4.33,
+        "logprob": -3.1042,
+        "loglift": 3.244
+      },
+      {
+        "term": "demokratisch",
+        "freq": 3.25,
+        "total": 11.51,
+        "logprob": -2.5514,
+        "loglift": 2.8185
+      },
+      {
+        "term": "basis",
+        "freq": 1.27,
+        "total": 4.81,
+        "logprob": -3.4943,
+        "loglift": 2.7488
+      },
+      {
+        "term": "stoff",
+        "freq": 1.87,
+        "total": 10.16,
+        "logprob": -3.1041,
+        "loglift": 2.3907
+      },
+      {
+        "term": "erhalten",
+        "freq": 0.67,
+        "total": 4.75,
+        "logprob": -4.1314,
+        "loglift": 2.1238
+      },
+      {
+        "term": "fertigkeit",
+        "freq": 0.67,
+        "total": 5.07,
+        "logprob": -4.1343,
+        "loglift": 2.0553
+      },
+      {
+        "term": "text",
+        "freq": 0.67,
+        "total": 5.26,
+        "logprob": -4.1321,
+        "loglift": 2.0199
+      },
+      {
+        "term": "grad",
+        "freq": 0.67,
+        "total": 5.3,
+        "logprob": -4.1334,
+        "loglift": 2.0113
+      },
+      {
+        "term": "ordn",
+        "freq": 0.67,
+        "total": 5.7,
+        "logprob": -4.1335,
+        "loglift": 1.9388
+      },
+      {
+        "term": "komplexität",
+        "freq": 0.67,
+        "total": 6.43,
+        "logprob": -4.1334,
+        "loglift": 1.8189
+      },
+      {
+        "term": "analyse",
+        "freq": 0.67,
+        "total": 6.62,
+        "logprob": -4.1316,
+        "loglift": 1.7917
+      },
+      {
+        "term": "beziehungsweise",
+        "freq": 0.67,
+        "total": 6.61,
+        "logprob": -4.1333,
+        "loglift": 1.7912
+      },
+      {
+        "term": "einfach",
+        "freq": 0.67,
+        "total": 6.78,
+        "logprob": -4.1281,
+        "loglift": 1.7705
+      },
+      {
+        "term": "bewertung",
+        "freq": 0.67,
+        "total": 7.2,
+        "logprob": -4.1332,
+        "loglift": 1.7058
+      },
+      {
+        "term": "verändert",
+        "freq": 0.66,
+        "total": 7.33,
+        "logprob": -4.1386,
+        "loglift": 1.6816
+      },
+      {
+        "term": "beziehung",
+        "freq": 0.67,
+        "total": 7.97,
+        "logprob": -4.1306,
+        "loglift": 1.6063
+      },
+      {
+        "term": "setzen",
+        "freq": 0.67,
+        "total": 9.57,
+        "logprob": -4.1322,
+        "loglift": 1.4215
+      },
+      {
+        "term": "berücksichtigen",
+        "freq": 0.67,
+        "total": 9.8,
+        "logprob": -4.1309,
+        "loglift": 1.3996
+      },
+      {
+        "term": "anwenden",
+        "freq": 0.67,
+        "total": 12.66,
+        "logprob": -4.1344,
+        "loglift": 1.1398
+      },
+      {
+        "term": "anwendung",
+        "freq": 0.67,
+        "total": 16.25,
+        "logprob": -4.1336,
+        "loglift": 0.8908
+      },
+      {
+        "term": "datum",
+        "freq": 0.67,
+        "total": 16.86,
+        "logprob": -4.1309,
+        "loglift": 0.8567
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.06,
+        "total": 3.37,
+        "logprob": -6.4858,
+        "loglift": 0.1122
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 0.67,
+        "total": 36.61,
+        "logprob": -4.1322,
+        "loglift": 0.0803
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.06,
+        "total": 3.73,
+        "logprob": -6.4885,
+        "loglift": 0.0084
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.07,
+        "total": 4.02,
+        "logprob": -6.4349,
+        "loglift": -0.0125
+      },
+      {
+        "term": "selektion",
+        "freq": 0.06,
+        "total": 4.41,
+        "logprob": -6.4743,
+        "loglift": -0.1444
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.06,
+        "total": 4.35,
+        "logprob": -6.5046,
+        "loglift": -0.1616
+      },
+      {
+        "term": "droge",
+        "freq": 0.06,
+        "total": 4.43,
+        "logprob": -6.4851,
+        "loglift": -0.1617
+      },
+      {
+        "term": "funktion",
+        "freq": 0.06,
+        "total": 4.45,
+        "logprob": -6.4837,
+        "loglift": -0.1631
+      },
+      {
+        "term": "eindeutig",
+        "freq": 0.07,
+        "total": 5.51,
+        "logprob": -6.4116,
+        "loglift": -0.3054
+      },
+      {
+        "term": "nutzung",
+        "freq": 0.07,
+        "total": 5.56,
+        "logprob": -6.4214,
+        "loglift": -0.324
+      },
+      {
+        "term": "biologie",
+        "freq": 0.07,
+        "total": 6.78,
+        "logprob": -6.4298,
+        "loglift": -0.5313
+      },
+      {
+        "term": "theorie",
+        "freq": 0.07,
+        "total": 5.56,
+        "logprob": -6.454,
+        "loglift": -0.3559
+      },
+      {
+        "term": "unterschiedlich",
+        "freq": 0.07,
+        "total": 12.41,
+        "logprob": -6.4109,
+        "loglift": -1.117
+      },
+      {
+        "term": "möglichkeit",
+        "freq": 0.07,
+        "total": 6.26,
+        "logprob": -6.4493,
+        "loglift": -0.4709
+      },
+      {
+        "term": "synapse",
+        "freq": 0.07,
+        "total": 8.92,
+        "logprob": -6.4409,
+        "loglift": -0.8163
+      },
+      {
+        "term": "gebrauch",
+        "freq": 0.07,
+        "total": 10.28,
+        "logprob": -6.4403,
+        "loglift": -0.9574
+      }
+    ],
+    "10": [
+      {
+        "term": "region",
+        "freq": 8.9,
+        "total": 10.04,
+        "logprob": -2.4187,
+        "loglift": 3.0872
+      },
+      {
+        "term": "welt",
+        "freq": 4.85,
+        "total": 5.99,
+        "logprob": -3.0257,
+        "loglift": 2.9963
+      },
+      {
+        "term": "kulturell",
+        "freq": 5.22,
+        "total": 8.53,
+        "logprob": -2.9515,
+        "loglift": 2.7176
+      },
+      {
+        "term": "sozial",
+        "freq": 6.47,
+        "total": 10.95,
+        "logprob": -2.7379,
+        "loglift": 2.6817
+      },
+      {
+        "term": "leben",
+        "freq": 4.72,
+        "total": 8.08,
+        "logprob": -3.0538,
+        "loglift": 2.6696
+      },
+      {
+        "term": "bild",
+        "freq": 2.83,
+        "total": 5.53,
+        "logprob": -3.5661,
+        "loglift": 2.536
+      },
+      {
+        "term": "basis",
+        "freq": 2.45,
+        "total": 4.81,
+        "logprob": -3.7104,
+        "loglift": 2.5327
+      },
+      {
+        "term": "grenze",
+        "freq": 2.45,
+        "total": 5.24,
+        "logprob": -3.7092,
+        "loglift": 2.4475
+      },
+      {
+        "term": "dimension",
+        "freq": 2.82,
+        "total": 6.12,
+        "logprob": -3.5672,
+        "loglift": 2.4341
+      },
+      {
+        "term": "römer",
+        "freq": 4.47,
+        "total": 9.9,
+        "logprob": -3.1073,
+        "loglift": 2.413
+      },
+      {
+        "term": "römisch",
+        "freq": 2.44,
+        "total": 5.73,
+        "logprob": -3.7111,
+        "loglift": 2.3568
+      },
+      {
+        "term": "geografisch",
+        "freq": 2.45,
+        "total": 5.74,
+        "logprob": -3.7101,
+        "loglift": 2.3559
+      },
+      {
+        "term": "gerecht",
+        "freq": 3.32,
+        "total": 8.78,
+        "logprob": -3.4045,
+        "loglift": 2.2358
+      },
+      {
+        "term": "kooperation",
+        "freq": 2.06,
+        "total": 5.97,
+        "logprob": -3.8801,
+        "loglift": 2.1461
+      },
+      {
+        "term": "möglichkeit",
+        "freq": 2.06,
+        "total": 6.26,
+        "logprob": -3.8796,
+        "loglift": 2.0988
+      },
+      {
+        "term": "deutschland",
+        "freq": 2.45,
+        "total": 7.48,
+        "logprob": -3.7101,
+        "loglift": 2.0898
+      },
+      {
+        "term": "wirtschaftlich",
+        "freq": 2.45,
+        "total": 8.25,
+        "logprob": -3.7102,
+        "loglift": 1.9927
+      },
+      {
+        "term": "prinzip",
+        "freq": 3.32,
+        "total": 11.25,
+        "logprob": -3.4045,
+        "loglift": 1.9878
+      },
+      {
+        "term": "herausforderung",
+        "freq": 3.7,
+        "total": 12.78,
+        "logprob": -3.2956,
+        "loglift": 1.9695
+      },
+      {
+        "term": "politisch",
+        "freq": 5.72,
+        "total": 27.02,
+        "logprob": -2.8602,
+        "loglift": 1.656
+      },
+      {
+        "term": "verschieden",
+        "freq": 2.07,
+        "total": 10.08,
+        "logprob": -3.8795,
+        "loglift": 1.6229
+      },
+      {
+        "term": "staat",
+        "freq": 2.06,
+        "total": 10.44,
+        "logprob": -3.8798,
+        "loglift": 1.5875
+      },
+      {
+        "term": "bedeutung",
+        "freq": 2.09,
+        "total": 11.84,
+        "logprob": -3.8697,
+        "loglift": 1.4712
+      },
+      {
+        "term": "leistung",
+        "freq": 1.68,
+        "total": 10.62,
+        "logprob": -4.0863,
+        "loglift": 1.3635
+      },
+      {
+        "term": "kenntnis",
+        "freq": 2.06,
+        "total": 13.15,
+        "logprob": -3.8797,
+        "loglift": 1.357
+      },
+      {
+        "term": "vergleich",
+        "freq": 0.57,
+        "total": 5.93,
+        "logprob": -5.1647,
+        "loglift": 0.8683
+      },
+      {
+        "term": "nutzung",
+        "freq": 0.42,
+        "total": 5.56,
+        "logprob": -5.4651,
+        "loglift": 0.6323
+      },
+      {
+        "term": "material",
+        "freq": 1.68,
+        "total": 24.54,
+        "logprob": -4.0857,
+        "loglift": 0.5266
+      },
+      {
+        "term": "regel",
+        "freq": 0.42,
+        "total": 6.62,
+        "logprob": -5.4664,
+        "loglift": 0.4557
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 2.06,
+        "total": 36.61,
+        "logprob": -3.8804,
+        "loglift": 0.332
+      }
+    ],
+    "11": [
+      {
+        "term": "biologisch",
+        "freq": 2.16,
+        "total": 11.86,
+        "logprob": -2.3199,
+        "loglift": 3.0195
+      },
+      {
+        "term": "problem",
+        "freq": 1.11,
+        "total": 6.28,
+        "logprob": -2.9872,
+        "loglift": 2.9888
+      },
+      {
+        "term": "übertragen",
+        "freq": 0.58,
+        "total": 4.73,
+        "logprob": -3.6347,
+        "loglift": 2.6249
+      },
+      {
+        "term": "erkenntnisgewinnung",
+        "freq": 0.58,
+        "total": 6.36,
+        "logprob": -3.6366,
+        "loglift": 2.3265
+      },
+      {
+        "term": "analyse",
+        "freq": 0.58,
+        "total": 6.62,
+        "logprob": -3.6367,
+        "loglift": 2.2866
+      },
+      {
+        "term": "lösung",
+        "freq": 0.59,
+        "total": 6.7,
+        "logprob": -3.6256,
+        "loglift": 2.2852
+      },
+      {
+        "term": "fragestellung",
+        "freq": 1.11,
+        "total": 13.09,
+        "logprob": -2.9889,
+        "loglift": 2.2517
+      },
+      {
+        "term": "struktur",
+        "freq": 0.58,
+        "total": 12.09,
+        "logprob": -3.6301,
+        "loglift": 1.6903
+      },
+      {
+        "term": "begründen",
+        "freq": 0.58,
+        "total": 13.96,
+        "logprob": -3.637,
+        "loglift": 1.54
+      },
+      {
+        "term": "sachverhalt",
+        "freq": 0.58,
+        "total": 28.14,
+        "logprob": -3.635,
+        "loglift": 0.8404
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.06,
+        "total": 3.37,
+        "logprob": -5.9687,
+        "loglift": 0.6294
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.06,
+        "total": 3.73,
+        "logprob": -5.9899,
+        "loglift": 0.5069
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.06,
+        "total": 4.02,
+        "logprob": -5.975,
+        "loglift": 0.4474
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 0.06,
+        "total": 4.46,
+        "logprob": -5.8773,
+        "loglift": 0.4414
+      },
+      {
+        "term": "selektion",
+        "freq": 0.06,
+        "total": 4.41,
+        "logprob": -5.9161,
+        "loglift": 0.4139
+      },
+      {
+        "term": "saltatorisch",
+        "freq": 0.06,
+        "total": 4.45,
+        "logprob": -5.9091,
+        "loglift": 0.4105
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.06,
+        "total": 4.52,
+        "logprob": -5.9304,
+        "loglift": 0.3735
+      },
+      {
+        "term": "droge",
+        "freq": 0.06,
+        "total": 4.43,
+        "logprob": -5.9593,
+        "loglift": 0.3641
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.06,
+        "total": 4.35,
+        "logprob": -5.9873,
+        "loglift": 0.3557
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.05,
+        "total": 4.33,
+        "logprob": -6.0091,
+        "loglift": 0.3391
+      },
+      {
+        "term": "gift",
+        "freq": 0.05,
+        "total": 4.46,
+        "logprob": -6.0097,
+        "loglift": 0.309
+      },
+      {
+        "term": "rückmeldung",
+        "freq": 0.05,
+        "total": 4.55,
+        "logprob": -5.993,
+        "loglift": 0.3045
+      },
+      {
+        "term": "funktion",
+        "freq": 0.05,
+        "total": 4.45,
+        "logprob": -6.0165,
+        "loglift": 0.3041
+      },
+      {
+        "term": "vertieft",
+        "freq": 0.06,
+        "total": 4.82,
+        "logprob": -5.952,
+        "loglift": 0.2871
+      },
+      {
+        "term": "chance",
+        "freq": 0.06,
+        "total": 4.78,
+        "logprob": -5.9696,
+        "loglift": 0.2795
+      },
+      {
+        "term": "erregung",
+        "freq": 0.06,
+        "total": 5.1,
+        "logprob": -5.9122,
+        "loglift": 0.2705
+      },
+      {
+        "term": "erhalten",
+        "freq": 0.06,
+        "total": 4.75,
+        "logprob": -5.988,
+        "loglift": 0.2672
+      },
+      {
+        "term": "basis",
+        "freq": 0.06,
+        "total": 4.81,
+        "logprob": -5.9788,
+        "loglift": 0.2643
+      },
+      {
+        "term": "grenze",
+        "freq": 0.06,
+        "total": 5.24,
+        "logprob": -5.9052,
+        "loglift": 0.2515
+      },
+      {
+        "term": "stärken",
+        "freq": 0.06,
+        "total": 4.95,
+        "logprob": -5.9773,
+        "loglift": 0.2355
+      },
+      {
+        "term": "nervenzelle",
+        "freq": 0.06,
+        "total": 5.32,
+        "logprob": -5.9133,
+        "loglift": 0.2278
+      },
+      {
+        "term": "individuell",
+        "freq": 0.06,
+        "total": 5.52,
+        "logprob": -5.9177,
+        "loglift": 0.1861
+      },
+      {
+        "term": "möglichkeit",
+        "freq": 0.06,
+        "total": 6.26,
+        "logprob": -5.9221,
+        "loglift": 0.0563
+      },
+      {
+        "term": "bewertung",
+        "freq": 0.06,
+        "total": 7.2,
+        "logprob": -5.8978,
+        "loglift": -0.0588
+      },
+      {
+        "term": "ablauf",
+        "freq": 0.06,
+        "total": 6.67,
+        "logprob": -5.9146,
+        "loglift": 0.0004
+      },
+      {
+        "term": "anforderungsbereichen",
+        "freq": 0.06,
+        "total": 5.51,
+        "logprob": -5.9642,
+        "loglift": 0.1424
+      },
+      {
+        "term": "gesellschaft",
+        "freq": 0.06,
+        "total": 10.48,
+        "logprob": -5.8932,
+        "loglift": -0.4298
+      },
+      {
+        "term": "synapsen",
+        "freq": 0.06,
+        "total": 7.85,
+        "logprob": -5.925,
+        "loglift": -0.1728
+      },
+      {
+        "term": "gehören",
+        "freq": 0.06,
+        "total": 6.97,
+        "logprob": -5.9394,
+        "loglift": -0.0681
+      },
+      {
+        "term": "undod",
+        "freq": 0.06,
+        "total": 9.67,
+        "logprob": -5.9174,
+        "loglift": -0.3732
+      },
+      {
+        "term": "staat",
+        "freq": 0.06,
+        "total": 10.44,
+        "logprob": -5.914,
+        "loglift": -0.4468
+      },
+      {
+        "term": "information",
+        "freq": 0.06,
+        "total": 13.14,
+        "logprob": -5.9017,
+        "loglift": -0.6647
+      },
+      {
+        "term": "darstellung",
+        "freq": 0.06,
+        "total": 12.99,
+        "logprob": -5.9034,
+        "loglift": -0.6545
+      },
+      {
+        "term": "verwendung",
+        "freq": 0.06,
+        "total": 10.85,
+        "logprob": -5.9143,
+        "loglift": -0.4853
+      },
+      {
+        "term": "schriftlich",
+        "freq": 0.06,
+        "total": 12.38,
+        "logprob": -5.9102,
+        "loglift": -0.6139
+      },
+      {
+        "term": "prinzip",
+        "freq": 0.06,
+        "total": 11.25,
+        "logprob": -5.9224,
+        "loglift": -0.5301
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 0.06,
+        "total": 36.61,
+        "logprob": -5.928,
+        "loglift": -1.7155
+      }
+    ],
+    "12": [
+      {
+        "term": "bearbeite",
+        "freq": 0.03,
+        "total": 3.37,
+        "logprob": -5.545,
+        "loglift": 1.053
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.03,
+        "total": 3.73,
+        "logprob": -5.5652,
+        "loglift": 0.9317
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.03,
+        "total": 4.02,
+        "logprob": -5.5066,
+        "loglift": 0.9158
+      },
+      {
+        "term": "selektion",
+        "freq": 0.03,
+        "total": 4.41,
+        "logprob": -5.5246,
+        "loglift": 0.8053
+      },
+      {
+        "term": "rückmeldung",
+        "freq": 0.03,
+        "total": 4.55,
+        "logprob": -5.4953,
+        "loglift": 0.8022
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.03,
+        "total": 4.33,
+        "logprob": -5.5472,
+        "loglift": 0.801
+      },
+      {
+        "term": "stärken",
+        "freq": 0.03,
+        "total": 4.95,
+        "logprob": -5.4247,
+        "loglift": 0.7881
+      },
+      {
+        "term": "droge",
+        "freq": 0.03,
+        "total": 4.43,
+        "logprob": -5.537,
+        "loglift": 0.7863
+      },
+      {
+        "term": "erweitern",
+        "freq": 0.03,
+        "total": 4.97,
+        "logprob": -5.4263,
+        "loglift": 0.7828
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.03,
+        "total": 4.35,
+        "logprob": -5.5602,
+        "loglift": 0.7827
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 0.03,
+        "total": 4.46,
+        "logprob": -5.5625,
+        "loglift": 0.7563
+      },
+      {
+        "term": "chance",
+        "freq": 0.03,
+        "total": 4.78,
+        "logprob": -5.5006,
+        "loglift": 0.7485
+      },
+      {
+        "term": "gift",
+        "freq": 0.03,
+        "total": 4.46,
+        "logprob": -5.5729,
+        "loglift": 0.7457
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.03,
+        "total": 4.52,
+        "logprob": -5.5627,
+        "loglift": 0.7412
+      },
+      {
+        "term": "funktion",
+        "freq": 0.03,
+        "total": 4.45,
+        "logprob": -5.5893,
+        "loglift": 0.7313
+      },
+      {
+        "term": "saltatorisch",
+        "freq": 0.03,
+        "total": 4.45,
+        "logprob": -5.5909,
+        "loglift": 0.7287
+      },
+      {
+        "term": "erhalten",
+        "freq": 0.03,
+        "total": 4.75,
+        "logprob": -5.5266,
+        "loglift": 0.7286
+      },
+      {
+        "term": "vertieft",
+        "freq": 0.03,
+        "total": 4.82,
+        "logprob": -5.5437,
+        "loglift": 0.6954
+      },
+      {
+        "term": "basis",
+        "freq": 0.03,
+        "total": 4.81,
+        "logprob": -5.5629,
+        "loglift": 0.6802
+      },
+      {
+        "term": "inhaltlich",
+        "freq": 0.03,
+        "total": 4.79,
+        "logprob": -5.5691,
+        "loglift": 0.6774
+      },
+      {
+        "term": "übertragen",
+        "freq": 0.03,
+        "total": 4.73,
+        "logprob": -5.5881,
+        "loglift": 0.6715
+      },
+      {
+        "term": "fertigkeit",
+        "freq": 0.03,
+        "total": 5.07,
+        "logprob": -5.5587,
+        "loglift": 0.6309
+      },
+      {
+        "term": "neuromuskulär",
+        "freq": 0.03,
+        "total": 5.01,
+        "logprob": -5.583,
+        "loglift": 0.6192
+      },
+      {
+        "term": "schaffen",
+        "freq": 0.03,
+        "total": 5.01,
+        "logprob": -5.5867,
+        "loglift": 0.6147
+      },
+      {
+        "term": "vorgegeben",
+        "freq": 0.03,
+        "total": 5.52,
+        "logprob": -5.4932,
+        "loglift": 0.6107
+      },
+      {
+        "term": "modellvorstellung",
+        "freq": 0.03,
+        "total": 5.33,
+        "logprob": -5.5403,
+        "loglift": 0.599
+      },
+      {
+        "term": "erregung",
+        "freq": 0.03,
+        "total": 5.1,
+        "logprob": -5.5926,
+        "loglift": 0.5901
+      },
+      {
+        "term": "grenze",
+        "freq": 0.03,
+        "total": 5.24,
+        "logprob": -5.5697,
+        "loglift": 0.587
+      },
+      {
+        "term": "bild",
+        "freq": 0.03,
+        "total": 5.53,
+        "logprob": -5.5154,
+        "loglift": 0.5867
+      },
+      {
+        "term": "anpassung",
+        "freq": 0.03,
+        "total": 5.26,
+        "logprob": -5.5667,
+        "loglift": 0.5851
+      },
+      {
+        "term": "sinnvoll",
+        "freq": 0.03,
+        "total": 5.48,
+        "logprob": -5.5406,
+        "loglift": 0.5711
+      },
+      {
+        "term": "unterrichtsinhalte",
+        "freq": 0.03,
+        "total": 6.42,
+        "logprob": -5.4507,
+        "loglift": 0.5025
+      },
+      {
+        "term": "erarbeitet",
+        "freq": 0.03,
+        "total": 6.43,
+        "logprob": -5.4532,
+        "loglift": 0.4992
+      },
+      {
+        "term": "lernkontext",
+        "freq": 0.03,
+        "total": 6.42,
+        "logprob": -5.4591,
+        "loglift": 0.4937
+      },
+      {
+        "term": "wirkung",
+        "freq": 0.03,
+        "total": 6.33,
+        "logprob": -5.4677,
+        "loglift": 0.5002
+      },
+      {
+        "term": "welt",
+        "freq": 0.03,
+        "total": 5.99,
+        "logprob": -5.4975,
+        "loglift": 0.5245
+      },
+      {
+        "term": "gewichtung",
+        "freq": 0.03,
+        "total": 7.27,
+        "logprob": -5.4201,
+        "loglift": 0.409
+      },
+      {
+        "term": "gefestigt",
+        "freq": 0.03,
+        "total": 6.41,
+        "logprob": -5.4772,
+        "loglift": 0.4778
+      },
+      {
+        "term": "anordnung",
+        "freq": 0.03,
+        "total": 7.86,
+        "logprob": -5.4343,
+        "loglift": 0.3172
+      },
+      {
+        "term": "zuvor",
+        "freq": 0.04,
+        "total": 11.67,
+        "logprob": -5.3302,
+        "loglift": 0.0258
+      },
+      {
+        "term": "wiederholung",
+        "freq": 0.03,
+        "total": 7.86,
+        "logprob": -5.4357,
+        "loglift": 0.3154
+      },
+      {
+        "term": "erworben",
+        "freq": 0.03,
+        "total": 7.16,
+        "logprob": -5.4748,
+        "loglift": 0.3691
+      },
+      {
+        "term": "lernen",
+        "freq": 0.04,
+        "total": 16.94,
+        "logprob": -5.3072,
+        "loglift": -0.3238
+      },
+      {
+        "term": "bedeutung",
+        "freq": 0.03,
+        "total": 11.84,
+        "logprob": -5.381,
+        "loglift": -0.0401
+      },
+      {
+        "term": "zusammenfassen",
+        "freq": 0.03,
+        "total": 10.28,
+        "logprob": -5.4167,
+        "loglift": 0.066
+      },
+      {
+        "term": "arbeiten",
+        "freq": 0.03,
+        "total": 10.62,
+        "logprob": -5.4204,
+        "loglift": 0.0298
+      },
+      {
+        "term": "datum",
+        "freq": 0.03,
+        "total": 16.86,
+        "logprob": -5.3498,
+        "loglift": -0.3622
+      },
+      {
+        "term": "umfasst",
+        "freq": 0.03,
+        "total": 18.83,
+        "logprob": -5.3599,
+        "loglift": -0.4827
+      },
+      {
+        "term": "beschreibung",
+        "freq": 0.03,
+        "total": 13.7,
+        "logprob": -5.4114,
+        "loglift": -0.2159
+      },
+      {
+        "term": "anforderungsbereich",
+        "freq": 0.04,
+        "total": 57.43,
+        "logprob": -5.2595,
+        "loglift": -1.4972
+      },
+      {
+        "term": "fachbezogen",
+        "freq": 0.03,
+        "total": 11.25,
+        "logprob": -5.4513,
+        "loglift": -0.0585
+      },
+      {
+        "term": "operator",
+        "freq": 0.03,
+        "total": 36.15,
+        "logprob": -5.3527,
+        "loglift": -1.1277
+      },
+      {
+        "term": "eigenständig",
+        "freq": 0.03,
+        "total": 11.34,
+        "logprob": -5.4517,
+        "loglift": -0.0673
+      },
+      {
+        "term": "wissen",
+        "freq": 0.03,
+        "total": 12.43,
+        "logprob": -5.4445,
+        "loglift": -0.1515
+      },
+      {
+        "term": "vergleichbar",
+        "freq": 0.03,
+        "total": 16.7,
+        "logprob": -5.4287,
+        "loglift": -0.4312
+      },
+      {
+        "term": "selbstständig",
+        "freq": 0.03,
+        "total": 14.18,
+        "logprob": -5.4416,
+        "loglift": -0.2807
+      },
+      {
+        "term": "reflexion",
+        "freq": 0.03,
+        "total": 19.45,
+        "logprob": -5.4257,
+        "loglift": -0.5806
+      },
+      {
+        "term": "inhalt",
+        "freq": 0.03,
+        "total": 19.01,
+        "logprob": -5.4304,
+        "loglift": -0.5626
+      },
+      {
+        "term": "ziel",
+        "freq": 0.03,
+        "total": 16.61,
+        "logprob": -5.4373,
+        "loglift": -0.4346
+      },
+      {
+        "term": "wiedergabe",
+        "freq": 0.03,
+        "total": 12.21,
+        "logprob": -5.4563,
+        "loglift": -0.1455
+      },
+      {
+        "term": "historisch",
+        "freq": 0.03,
+        "total": 10.41,
+        "logprob": -5.4645,
+        "loglift": 0.005
+      },
+      {
+        "term": "sachverhalte",
+        "freq": 0.03,
+        "total": 42.69,
+        "logprob": -5.4422,
+        "loglift": -1.3834
+      }
+    ],
+    "13": [
+      {
+        "term": "verwend",
+        "freq": 17.03,
+        "total": 18.15,
+        "logprob": -2.9895,
+        "loglift": 1.9243
+      },
+      {
+        "term": "fachmethode",
+        "freq": 17.03,
+        "total": 18.87,
+        "logprob": -2.9895,
+        "loglift": 1.8857
+      },
+      {
+        "term": "erfahrung",
+        "freq": 9.87,
+        "total": 11.03,
+        "logprob": -3.5353,
+        "loglift": 1.8767
+      },
+      {
+        "term": "entwickeln",
+        "freq": 10.52,
+        "total": 11.76,
+        "logprob": -3.4716,
+        "loglift": 1.8762
+      },
+      {
+        "term": "positionieren",
+        "freq": 9.25,
+        "total": 10.37,
+        "logprob": -3.6001,
+        "loglift": 1.8742
+      },
+      {
+        "term": "abstraktion",
+        "freq": 8.55,
+        "total": 9.66,
+        "logprob": -3.6783,
+        "loglift": 1.8667
+      },
+      {
+        "term": "beherrschen",
+        "freq": 8.55,
+        "total": 9.66,
+        "logprob": -3.6781,
+        "loglift": 1.8666
+      },
+      {
+        "term": "toleranz",
+        "freq": 8.55,
+        "total": 9.66,
+        "logprob": -3.6784,
+        "loglift": 1.8661
+      },
+      {
+        "term": "undod",
+        "freq": 8.55,
+        "total": 9.67,
+        "logprob": -3.6783,
+        "loglift": 1.8659
+      },
+      {
+        "term": "wertvorstellung",
+        "freq": 8.55,
+        "total": 9.67,
+        "logprob": -3.6783,
+        "loglift": 1.8659
+      },
+      {
+        "term": "sachundoder",
+        "freq": 8.55,
+        "total": 9.66,
+        "logprob": -3.6785,
+        "loglift": 1.8659
+      },
+      {
+        "term": "vertreten",
+        "freq": 8.55,
+        "total": 9.66,
+        "logprob": -3.6785,
+        "loglift": 1.8658
+      },
+      {
+        "term": "ablehn",
+        "freq": 8.55,
+        "total": 9.67,
+        "logprob": -3.6784,
+        "loglift": 1.8657
+      },
+      {
+        "term": "revidier",
+        "freq": 8.55,
+        "total": 9.67,
+        "logprob": -3.6786,
+        "loglift": 1.8652
+      },
+      {
+        "term": "routinemäßig",
+        "freq": 8.55,
+        "total": 9.67,
+        "logprob": -3.6783,
+        "loglift": 1.8652
+      },
+      {
+        "term": "werturteile",
+        "freq": 8.55,
+        "total": 9.67,
+        "logprob": -3.6785,
+        "loglift": 1.8651
+      },
+      {
+        "term": "annehmen",
+        "freq": 8.55,
+        "total": 9.67,
+        "logprob": -3.6786,
+        "loglift": 1.8649
+      },
+      {
+        "term": "gebrauch",
+        "freq": 8.55,
+        "total": 10.28,
+        "logprob": -3.6781,
+        "loglift": 1.8048
+      },
+      {
+        "term": "unbekannt",
+        "freq": 8.55,
+        "total": 10.38,
+        "logprob": -3.6788,
+        "loglift": 1.7937
+      },
+      {
+        "term": "zusammenhäng",
+        "freq": 8.55,
+        "total": 10.41,
+        "logprob": -3.6787,
+        "loglift": 1.7909
+      },
+      {
+        "term": "kontext",
+        "freq": 17.17,
+        "total": 22.53,
+        "logprob": -2.9809,
+        "loglift": 1.7172
+      },
+      {
+        "term": "arbeitstechnik",
+        "freq": 8.55,
+        "total": 11.86,
+        "logprob": -3.6785,
+        "loglift": 1.6613
+      },
+      {
+        "term": "anwenden",
+        "freq": 9.12,
+        "total": 12.66,
+        "logprob": -3.6134,
+        "loglift": 1.6608
+      },
+      {
+        "term": "verfahrensweise",
+        "freq": 9.12,
+        "total": 12.82,
+        "logprob": -3.6141,
+        "loglift": 1.6475
+      },
+      {
+        "term": "handlung",
+        "freq": 8.55,
+        "total": 12.45,
+        "logprob": -3.6781,
+        "loglift": 1.6127
+      },
+      {
+        "term": "sach",
+        "freq": 8.55,
+        "total": 13.15,
+        "logprob": -3.6783,
+        "loglift": 1.5584
+      },
+      {
+        "term": "kenntnis",
+        "freq": 8.55,
+        "total": 13.15,
+        "logprob": -3.6784,
+        "loglift": 1.5583
+      },
+      {
+        "term": "umgang",
+        "freq": 8.55,
+        "total": 13.65,
+        "logprob": -3.6784,
+        "loglift": 1.5205
+      },
+      {
+        "term": "begründen",
+        "freq": 8.62,
+        "total": 13.96,
+        "logprob": -3.6699,
+        "loglift": 1.5071
+      },
+      {
+        "term": "vergleichbar",
+        "freq": 8.55,
+        "total": 16.7,
+        "logprob": -3.678,
+        "loglift": 1.3194
+      },
+      {
+        "term": "sachverhalte",
+        "freq": 8.55,
+        "total": 42.69,
+        "logprob": -3.6781,
+        "loglift": 0.3807
+      },
+      {
+        "term": "kritisch",
+        "freq": 8.55,
+        "total": 17.11,
+        "logprob": -3.6786,
+        "loglift": 1.2947
+      },
+      {
+        "term": "übertrag",
+        "freq": 8.55,
+        "total": 16.69,
+        "logprob": -3.6786,
+        "loglift": 1.3194
+      },
+      {
+        "term": "ler",
+        "freq": 8.55,
+        "total": 16.82,
+        "logprob": -3.6786,
+        "loglift": 1.3115
+      }
+    ],
+    "14": [
+      {
+        "term": "vergleichend",
+        "freq": 8.25,
+        "total": 9.38,
+        "logprob": -3.1222,
+        "loglift": 2.4523
+      },
+      {
+        "term": "erregung",
+        "freq": 3.98,
+        "total": 5.1,
+        "logprob": -3.8517,
+        "loglift": 2.331
+      },
+      {
+        "term": "saltatorisch",
+        "freq": 3.33,
+        "total": 4.45,
+        "logprob": -4.0278,
+        "loglift": 2.2918
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 3.34,
+        "total": 4.46,
+        "logprob": -4.027,
+        "loglift": 2.2918
+      },
+      {
+        "term": "droge",
+        "freq": 3.31,
+        "total": 4.43,
+        "logprob": -4.0339,
+        "loglift": 2.2895
+      },
+      {
+        "term": "gift",
+        "freq": 3.3,
+        "total": 4.46,
+        "logprob": -4.0381,
+        "loglift": 2.2806
+      },
+      {
+        "term": "bedeutung",
+        "freq": 8.64,
+        "total": 11.84,
+        "logprob": -3.0761,
+        "loglift": 2.2648
+      },
+      {
+        "term": "synapse",
+        "freq": 6.35,
+        "total": 8.92,
+        "logprob": -3.3839,
+        "loglift": 2.2407
+      },
+      {
+        "term": "stoff",
+        "freq": 7.18,
+        "total": 10.16,
+        "logprob": -3.2609,
+        "loglift": 2.2339
+      },
+      {
+        "term": "kriterium",
+        "freq": 11.19,
+        "total": 17.19,
+        "logprob": -2.8169,
+        "loglift": 2.1515
+      },
+      {
+        "term": "erkenntnisgewinnung",
+        "freq": 3.98,
+        "total": 6.36,
+        "logprob": -3.8519,
+        "loglift": 2.1112
+      },
+      {
+        "term": "einzeln",
+        "freq": 6.25,
+        "total": 10.42,
+        "logprob": -3.3997,
+        "loglift": 2.0693
+      },
+      {
+        "term": "präsentieren",
+        "freq": 2.65,
+        "total": 4.52,
+        "logprob": -4.259,
+        "loglift": 2.0449
+      },
+      {
+        "term": "neuromuskulär",
+        "freq": 2.69,
+        "total": 5.01,
+        "logprob": -4.2444,
+        "loglift": 1.9578
+      },
+      {
+        "term": "modell",
+        "freq": 8.07,
+        "total": 15.15,
+        "logprob": -3.1435,
+        "loglift": 1.951
+      },
+      {
+        "term": "demokratisch",
+        "freq": 5.63,
+        "total": 11.51,
+        "logprob": -3.5045,
+        "loglift": 1.8654
+      },
+      {
+        "term": "wirkung",
+        "freq": 3.01,
+        "total": 6.33,
+        "logprob": -4.1314,
+        "loglift": 1.8365
+      },
+      {
+        "term": "prinzip",
+        "freq": 5.32,
+        "total": 11.25,
+        "logprob": -3.5601,
+        "loglift": 1.8322
+      },
+      {
+        "term": "privat",
+        "freq": 4.82,
+        "total": 11.15,
+        "logprob": -3.6601,
+        "loglift": 1.7413
+      },
+      {
+        "term": "phänomen",
+        "freq": 1.86,
+        "total": 4.35,
+        "logprob": -4.6126,
+        "loglift": 1.7303
+      },
+      {
+        "term": "synapsen",
+        "freq": 3.34,
+        "total": 7.85,
+        "logprob": -4.0277,
+        "loglift": 1.7245
+      },
+      {
+        "term": "kommunikation",
+        "freq": 4.64,
+        "total": 11.1,
+        "logprob": -3.6968,
+        "loglift": 1.7091
+      },
+      {
+        "term": "molekular",
+        "freq": 2.69,
+        "total": 6.47,
+        "logprob": -4.2442,
+        "loglift": 1.702
+      },
+      {
+        "term": "biomoleküle",
+        "freq": 2.69,
+        "total": 6.47,
+        "logprob": -4.2445,
+        "loglift": 1.7009
+      },
+      {
+        "term": "fertigkeit",
+        "freq": 2.03,
+        "total": 5.07,
+        "logprob": -4.5265,
+        "loglift": 1.6631
+      },
+      {
+        "term": "prozeß",
+        "freq": 5.63,
+        "total": 14.56,
+        "logprob": -3.5042,
+        "loglift": 1.6302
+      },
+      {
+        "term": "teilche",
+        "freq": 3.33,
+        "total": 8.68,
+        "logprob": -4.0303,
+        "loglift": 1.6212
+      },
+      {
+        "term": "unterschied",
+        "freq": 2.03,
+        "total": 6.02,
+        "logprob": -4.5256,
+        "loglift": 1.4922
+      },
+      {
+        "term": "verwenden",
+        "freq": 2.03,
+        "total": 6.15,
+        "logprob": -4.5256,
+        "loglift": 1.4702
+      },
+      {
+        "term": "ablauf",
+        "freq": 2.02,
+        "total": 6.67,
+        "logprob": -4.5275,
+        "loglift": 1.3875
+      },
+      {
+        "term": "genetik",
+        "freq": 2.69,
+        "total": 9.15,
+        "logprob": -4.2432,
+        "loglift": 1.3553
+      },
+      {
+        "term": "politisch",
+        "freq": 5.63,
+        "total": 27.02,
+        "logprob": -3.5038,
+        "loglift": 1.0124
+      },
+      {
+        "term": "arbeiten",
+        "freq": 2.86,
+        "total": 10.62,
+        "logprob": -4.1814,
+        "loglift": 1.2688
+      },
+      {
+        "term": "handlung",
+        "freq": 2.86,
+        "total": 12.45,
+        "logprob": -4.1805,
+        "loglift": 1.1103
+      },
+      {
+        "term": "information",
+        "freq": 2.85,
+        "total": 13.14,
+        "logprob": -4.1867,
+        "loglift": 1.0503
+      },
+      {
+        "term": "kritisch",
+        "freq": 2.68,
+        "total": 17.11,
+        "logprob": -4.2452,
+        "loglift": 0.728
+      }
+    ],
+    "15": [
+      {
+        "term": "wis",
+        "freq": 5.63,
+        "total": 6.83,
+        "logprob": -3.2086,
+        "loglift": 2.6833
+      },
+      {
+        "term": "beruflich",
+        "freq": 4.86,
+        "total": 5.99,
+        "logprob": -3.3553,
+        "loglift": 2.6675
+      },
+      {
+        "term": "konkretisieren",
+        "freq": 4.86,
+        "total": 5.99,
+        "logprob": -3.3551,
+        "loglift": 2.667
+      },
+      {
+        "term": "reflexionsfähigkeit",
+        "freq": 4.86,
+        "total": 5.99,
+        "logprob": -3.3554,
+        "loglift": 2.6667
+      },
+      {
+        "term": "lerninhalt",
+        "freq": 4.86,
+        "total": 5.99,
+        "logprob": -3.3555,
+        "loglift": 2.6665
+      },
+      {
+        "term": "abschnitt",
+        "freq": 4.86,
+        "total": 6.0,
+        "logprob": -3.3558,
+        "loglift": 2.666
+      },
+      {
+        "term": "bewältigung",
+        "freq": 4.86,
+        "total": 6.0,
+        "logprob": -3.3555,
+        "loglift": 2.6658
+      },
+      {
+        "term": "sachaspekt",
+        "freq": 4.86,
+        "total": 6.0,
+        "logprob": -3.3554,
+        "loglift": 2.6657
+      },
+      {
+        "term": "repräsentativ",
+        "freq": 4.86,
+        "total": 6.0,
+        "logprob": -3.3553,
+        "loglift": 2.6655
+      },
+      {
+        "term": "gymnasium",
+        "freq": 4.86,
+        "total": 6.01,
+        "logprob": -3.3549,
+        "loglift": 2.6651
+      },
+      {
+        "term": "gymnasial",
+        "freq": 4.86,
+        "total": 6.01,
+        "logprob": -3.3553,
+        "loglift": 2.6643
+      },
+      {
+        "term": "beziehungsweise",
+        "freq": 4.86,
+        "total": 6.61,
+        "logprob": -3.3552,
+        "loglift": 2.5693
+      },
+      {
+        "term": "zielen",
+        "freq": 5.25,
+        "total": 7.16,
+        "logprob": -3.2786,
+        "loglift": 2.5664
+      },
+      {
+        "term": "geeignet",
+        "freq": 5.77,
+        "total": 7.91,
+        "logprob": -3.184,
+        "loglift": 2.5605
+      },
+      {
+        "term": "kompetenzbereiche",
+        "freq": 4.86,
+        "total": 6.72,
+        "logprob": -3.3551,
+        "loglift": 2.5529
+      },
+      {
+        "term": "gesellschaftlich",
+        "freq": 5.25,
+        "total": 7.97,
+        "logprob": -3.2768,
+        "loglift": 2.4603
+      },
+      {
+        "term": "grundsätzlich",
+        "freq": 4.86,
+        "total": 7.44,
+        "logprob": -3.3558,
+        "loglift": 2.4501
+      },
+      {
+        "term": "persönlich",
+        "freq": 5.25,
+        "total": 9.55,
+        "logprob": -3.2772,
+        "loglift": 2.2794
+      },
+      {
+        "term": "auseinander",
+        "freq": 4.86,
+        "total": 9.29,
+        "logprob": -3.3555,
+        "loglift": 2.2286
+      },
+      {
+        "term": "setzen",
+        "freq": 4.86,
+        "total": 9.57,
+        "logprob": -3.3555,
+        "loglift": 2.1983
+      },
+      {
+        "term": "nutzen",
+        "freq": 4.86,
+        "total": 9.98,
+        "logprob": -3.355,
+        "loglift": 2.1568
+      },
+      {
+        "term": "bezogen",
+        "freq": 4.86,
+        "total": 10.15,
+        "logprob": -3.3553,
+        "loglift": 2.1405
+      },
+      {
+        "term": "fachbezogen",
+        "freq": 4.86,
+        "total": 11.25,
+        "logprob": -3.3555,
+        "loglift": 2.0374
+      },
+      {
+        "term": "herausforderung",
+        "freq": 4.86,
+        "total": 12.78,
+        "logprob": -3.3552,
+        "loglift": 1.9098
+      },
+      {
+        "term": "fragestellung",
+        "freq": 4.86,
+        "total": 13.09,
+        "logprob": -3.3555,
+        "loglift": 1.8851
+      },
+      {
+        "term": "kritisch",
+        "freq": 4.86,
+        "total": 17.11,
+        "logprob": -3.3555,
+        "loglift": 1.6177
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.05,
+        "total": 3.37,
+        "logprob": -7.9983,
+        "loglift": -1.4003
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.04,
+        "total": 3.73,
+        "logprob": -8.0504,
+        "loglift": -1.5535
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.04,
+        "total": 4.02,
+        "logprob": -8.0648,
+        "loglift": -1.6424
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.05,
+        "total": 4.33,
+        "logprob": -8.0353,
+        "loglift": -1.687
+      },
+      {
+        "term": "gelingen",
+        "freq": 0.05,
+        "total": 6.45,
+        "logprob": -7.9151,
+        "loglift": -1.9667
+      },
+      {
+        "term": "entwicklung",
+        "freq": 0.05,
+        "total": 6.14,
+        "logprob": -7.9538,
+        "loglift": -1.9554
+      },
+      {
+        "term": "anforderungsbereiche",
+        "freq": 0.05,
+        "total": 6.93,
+        "logprob": -7.9522,
+        "loglift": -2.0756
+      },
+      {
+        "term": "anwendung",
+        "freq": 0.05,
+        "total": 16.25,
+        "logprob": -7.9171,
+        "loglift": -2.8927
+      },
+      {
+        "term": "ziel",
+        "freq": 0.05,
+        "total": 16.61,
+        "logprob": -7.9417,
+        "loglift": -2.9391
+      }
+    ],
+    "16": [
+      {
+        "term": "ebene",
+        "freq": 10.65,
+        "total": 11.76,
+        "logprob": -2.6897,
+        "loglift": 2.6587
+      },
+      {
+        "term": "nervensystem",
+        "freq": 8.63,
+        "total": 9.91,
+        "logprob": -2.9005,
+        "loglift": 2.6188
+      },
+      {
+        "term": "synaptisch",
+        "freq": 7.98,
+        "total": 9.16,
+        "logprob": -2.9788,
+        "loglift": 2.6187
+      },
+      {
+        "term": "chemisch",
+        "freq": 7.3,
+        "total": 9.07,
+        "logprob": -3.0674,
+        "loglift": 2.5408
+      },
+      {
+        "term": "theorie",
+        "freq": 4.41,
+        "total": 5.56,
+        "logprob": -3.572,
+        "loglift": 2.526
+      },
+      {
+        "term": "signal",
+        "freq": 8.08,
+        "total": 10.5,
+        "logprob": -2.9662,
+        "loglift": 2.4952
+      },
+      {
+        "term": "vertieft",
+        "freq": 3.69,
+        "total": 4.82,
+        "logprob": -3.7494,
+        "loglift": 2.4897
+      },
+      {
+        "term": "grad",
+        "freq": 2.98,
+        "total": 5.3,
+        "logprob": -3.9639,
+        "loglift": 2.1809
+      },
+      {
+        "term": "frage",
+        "freq": 3.92,
+        "total": 7.59,
+        "logprob": -3.6899,
+        "loglift": 2.0965
+      },
+      {
+        "term": "nervenzelle",
+        "freq": 2.7,
+        "total": 5.32,
+        "logprob": -4.0622,
+        "loglift": 2.0789
+      },
+      {
+        "term": "entsprechend",
+        "freq": 5.3,
+        "total": 10.56,
+        "logprob": -3.3879,
+        "loglift": 2.0681
+      },
+      {
+        "term": "komplexität",
+        "freq": 2.99,
+        "total": 6.43,
+        "logprob": -3.9602,
+        "loglift": 1.992
+      },
+      {
+        "term": "lernen",
+        "freq": 7.23,
+        "total": 16.94,
+        "logprob": -3.0774,
+        "loglift": 1.906
+      },
+      {
+        "term": "vertiefung",
+        "freq": 3.19,
+        "total": 9.57,
+        "logprob": -3.8968,
+        "loglift": 1.6579
+      },
+      {
+        "term": "wirkung",
+        "freq": 1.84,
+        "total": 6.33,
+        "logprob": -4.4455,
+        "loglift": 1.5224
+      },
+      {
+        "term": "inhalt",
+        "freq": 5.51,
+        "total": 19.01,
+        "logprob": -3.349,
+        "loglift": 1.5188
+      },
+      {
+        "term": "synapsen",
+        "freq": 2.26,
+        "total": 7.85,
+        "logprob": -4.241,
+        "loglift": 1.5112
+      },
+      {
+        "term": "ziel",
+        "freq": 4.65,
+        "total": 16.61,
+        "logprob": -3.5194,
+        "loglift": 1.4833
+      },
+      {
+        "term": "herausforderung",
+        "freq": 3.19,
+        "total": 12.78,
+        "logprob": -3.8965,
+        "loglift": 1.3686
+      },
+      {
+        "term": "modell",
+        "freq": 3.72,
+        "total": 15.15,
+        "logprob": -3.7418,
+        "loglift": 1.3527
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.99,
+        "total": 4.35,
+        "logprob": -5.0687,
+        "loglift": 1.2742
+      },
+      {
+        "term": "biologie",
+        "freq": 1.53,
+        "total": 6.78,
+        "logprob": -4.6296,
+        "loglift": 1.269
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.8,
+        "total": 3.73,
+        "logprob": -5.2745,
+        "loglift": 1.2224
+      },
+      {
+        "term": "selbstständig",
+        "freq": 2.99,
+        "total": 14.18,
+        "logprob": -3.9602,
+        "loglift": 1.2007
+      },
+      {
+        "term": "zeitlich",
+        "freq": 1.54,
+        "total": 7.3,
+        "logprob": -4.6259,
+        "loglift": 1.1987
+      },
+      {
+        "term": "komplex",
+        "freq": 1.53,
+        "total": 7.47,
+        "logprob": -4.6301,
+        "loglift": 1.1719
+      },
+      {
+        "term": "anwendung",
+        "freq": 3.27,
+        "total": 16.25,
+        "logprob": -3.8699,
+        "loglift": 1.1545
+      },
+      {
+        "term": "reflexion",
+        "freq": 3.91,
+        "total": 19.45,
+        "logprob": -3.6931,
+        "loglift": 1.1519
+      },
+      {
+        "term": "methode",
+        "freq": 2.47,
+        "total": 15.62,
+        "logprob": -4.1526,
+        "loglift": 0.9116
+      },
+      {
+        "term": "einzeln",
+        "freq": 1.54,
+        "total": 10.42,
+        "logprob": -4.6258,
+        "loglift": 0.8432
+      },
+      {
+        "term": "politisch",
+        "freq": 3.19,
+        "total": 27.02,
+        "logprob": -3.8955,
+        "loglift": 0.6208
+      },
+      {
+        "term": "begründen",
+        "freq": 1.81,
+        "total": 13.96,
+        "logprob": -4.4625,
+        "loglift": 0.7144
+      }
+    ],
+    "17": [
+      {
+        "term": "zuvor",
+        "freq": 10.56,
+        "total": 11.67,
+        "logprob": -2.8194,
+        "loglift": 2.5366
+      },
+      {
+        "term": "gewichtung",
+        "freq": 6.16,
+        "total": 7.27,
+        "logprob": -3.3597,
+        "loglift": 2.4694
+      },
+      {
+        "term": "gefestigt",
+        "freq": 5.33,
+        "total": 6.41,
+        "logprob": -3.5042,
+        "loglift": 2.4508
+      },
+      {
+        "term": "unterrichtsinhalte",
+        "freq": 5.33,
+        "total": 6.42,
+        "logprob": -3.5044,
+        "loglift": 2.4488
+      },
+      {
+        "term": "lernkontext",
+        "freq": 5.33,
+        "total": 6.42,
+        "logprob": -3.5041,
+        "loglift": 2.4488
+      },
+      {
+        "term": "erarbeitet",
+        "freq": 5.33,
+        "total": 6.43,
+        "logprob": -3.5039,
+        "loglift": 2.4485
+      },
+      {
+        "term": "erworben",
+        "freq": 5.33,
+        "total": 7.16,
+        "logprob": -3.5043,
+        "loglift": 2.3396
+      },
+      {
+        "term": "anordnung",
+        "freq": 5.33,
+        "total": 7.86,
+        "logprob": -3.5039,
+        "loglift": 2.2476
+      },
+      {
+        "term": "wiederholung",
+        "freq": 5.33,
+        "total": 7.86,
+        "logprob": -3.5043,
+        "loglift": 2.2468
+      },
+      {
+        "term": "umfasst",
+        "freq": 10.56,
+        "total": 18.83,
+        "logprob": -2.8195,
+        "loglift": 2.0577
+      },
+      {
+        "term": "zusammenfassen",
+        "freq": 5.33,
+        "total": 10.28,
+        "logprob": -3.5037,
+        "loglift": 1.9789
+      },
+      {
+        "term": "fachbezogen",
+        "freq": 5.33,
+        "total": 11.25,
+        "logprob": -3.5034,
+        "loglift": 1.8894
+      },
+      {
+        "term": "eigenständig",
+        "freq": 5.33,
+        "total": 11.34,
+        "logprob": -3.5035,
+        "loglift": 1.8809
+      },
+      {
+        "term": "einordnen",
+        "freq": 5.33,
+        "total": 11.94,
+        "logprob": -3.5037,
+        "loglift": 1.829
+      },
+      {
+        "term": "wiedergabe",
+        "freq": 5.33,
+        "total": 12.21,
+        "logprob": -3.5036,
+        "loglift": 1.8072
+      },
+      {
+        "term": "selbstständig",
+        "freq": 6.18,
+        "total": 14.18,
+        "logprob": -3.3557,
+        "loglift": 1.8051
+      },
+      {
+        "term": "benennen",
+        "freq": 5.33,
+        "total": 13.23,
+        "logprob": -3.5036,
+        "loglift": 1.7267
+      },
+      {
+        "term": "beschreibung",
+        "freq": 5.33,
+        "total": 13.7,
+        "logprob": -3.504,
+        "loglift": 1.6915
+      },
+      {
+        "term": "übertrag",
+        "freq": 5.33,
+        "total": 16.69,
+        "logprob": -3.5041,
+        "loglift": 1.4939
+      },
+      {
+        "term": "vergleichbar",
+        "freq": 5.33,
+        "total": 16.7,
+        "logprob": -3.504,
+        "loglift": 1.4935
+      },
+      {
+        "term": "operator",
+        "freq": 10.56,
+        "total": 36.15,
+        "logprob": -2.8197,
+        "loglift": 1.4053
+      },
+      {
+        "term": "anforderungsbereich",
+        "freq": 15.8,
+        "total": 57.43,
+        "logprob": -2.4169,
+        "loglift": 1.3454
+      },
+      {
+        "term": "reorganisation",
+        "freq": 5.33,
+        "total": 30.14,
+        "logprob": -3.5036,
+        "loglift": 0.9035
+      },
+      {
+        "term": "sachverhalte",
+        "freq": 5.33,
+        "total": 42.69,
+        "logprob": -3.5043,
+        "loglift": 0.5545
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.09,
+        "total": 3.37,
+        "logprob": -7.566,
+        "loglift": -0.9679
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.1,
+        "total": 4.02,
+        "logprob": -7.5075,
+        "loglift": -1.0851
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.09,
+        "total": 3.73,
+        "logprob": -7.5985,
+        "loglift": -1.1016
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.09,
+        "total": 4.33,
+        "logprob": -7.5393,
+        "loglift": -1.1911
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.1,
+        "total": 4.52,
+        "logprob": -7.5232,
+        "loglift": -1.2193
+      },
+      {
+        "term": "funktion",
+        "freq": 0.09,
+        "total": 4.45,
+        "logprob": -7.5401,
+        "loglift": -1.2195
+      },
+      {
+        "term": "schaffen",
+        "freq": 0.1,
+        "total": 5.01,
+        "logprob": -7.4629,
+        "loglift": -1.2614
+      },
+      {
+        "term": "kriterium",
+        "freq": 0.15,
+        "total": 17.19,
+        "logprob": -7.044,
+        "loglift": -2.0756
+      },
+      {
+        "term": "vergleichend",
+        "freq": 0.12,
+        "total": 9.38,
+        "logprob": -7.3288,
+        "loglift": -1.7542
+      },
+      {
+        "term": "demokratisch",
+        "freq": 0.12,
+        "total": 11.51,
+        "logprob": -7.2907,
+        "loglift": -1.9209
+      },
+      {
+        "term": "einzeln",
+        "freq": 0.12,
+        "total": 10.42,
+        "logprob": -7.3377,
+        "loglift": -1.8688
+      },
+      {
+        "term": "prozeß",
+        "freq": 0.12,
+        "total": 14.56,
+        "logprob": -7.3232,
+        "loglift": -2.1889
+      },
+      {
+        "term": "politisch",
+        "freq": 0.12,
+        "total": 27.02,
+        "logprob": -7.2855,
+        "loglift": -2.7693
+      }
+    ],
+    "18": [
+      {
+        "term": "neuromuskulär",
+        "freq": 1.28,
+        "total": 5.01,
+        "logprob": -3.2623,
+        "loglift": 2.94
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.67,
+        "total": 3.73,
+        "logprob": -3.9068,
+        "loglift": 2.5901
+      },
+      {
+        "term": "synapse",
+        "freq": 1.49,
+        "total": 8.92,
+        "logprob": -3.115,
+        "loglift": 2.5096
+      },
+      {
+        "term": "synapsen",
+        "freq": 1.29,
+        "total": 7.85,
+        "logprob": -3.2611,
+        "loglift": 2.4912
+      },
+      {
+        "term": "übertragen",
+        "freq": 0.67,
+        "total": 4.73,
+        "logprob": -3.9063,
+        "loglift": 2.3533
+      },
+      {
+        "term": "fertigkeit",
+        "freq": 0.67,
+        "total": 5.07,
+        "logprob": -3.9072,
+        "loglift": 2.2825
+      },
+      {
+        "term": "nervenzelle",
+        "freq": 0.69,
+        "total": 5.32,
+        "logprob": -3.8817,
+        "loglift": 2.2593
+      },
+      {
+        "term": "basiskonzept",
+        "freq": 1.28,
+        "total": 9.98,
+        "logprob": -3.2614,
+        "loglift": 2.2507
+      },
+      {
+        "term": "modellvorstellung",
+        "freq": 0.68,
+        "total": 5.33,
+        "logprob": -3.9043,
+        "loglift": 2.235
+      },
+      {
+        "term": "grad",
+        "freq": 0.66,
+        "total": 5.3,
+        "logprob": -3.9222,
+        "loglift": 2.2226
+      },
+      {
+        "term": "ordn",
+        "freq": 0.67,
+        "total": 5.7,
+        "logprob": -3.9114,
+        "loglift": 2.1609
+      },
+      {
+        "term": "biologie",
+        "freq": 0.67,
+        "total": 6.78,
+        "logprob": -3.9055,
+        "loglift": 1.9931
+      },
+      {
+        "term": "verbindlich",
+        "freq": 0.67,
+        "total": 7.06,
+        "logprob": -3.907,
+        "loglift": 1.9512
+      },
+      {
+        "term": "bewertung",
+        "freq": 0.67,
+        "total": 7.2,
+        "logprob": -3.909,
+        "loglift": 1.93
+      },
+      {
+        "term": "chemisch",
+        "freq": 0.67,
+        "total": 9.07,
+        "logprob": -3.9057,
+        "loglift": 1.7025
+      },
+      {
+        "term": "begriff",
+        "freq": 0.68,
+        "total": 9.28,
+        "logprob": -3.9037,
+        "loglift": 1.6815
+      },
+      {
+        "term": "analyse",
+        "freq": 0.48,
+        "total": 6.62,
+        "logprob": -4.252,
+        "loglift": 1.6713
+      },
+      {
+        "term": "berücksichtigen",
+        "freq": 0.68,
+        "total": 9.8,
+        "logprob": -3.8976,
+        "loglift": 1.633
+      },
+      {
+        "term": "nutzen",
+        "freq": 0.68,
+        "total": 9.98,
+        "logprob": -3.9048,
+        "loglift": 1.607
+      },
+      {
+        "term": "verschieden",
+        "freq": 0.68,
+        "total": 10.08,
+        "logprob": -3.9047,
+        "loglift": 1.5977
+      },
+      {
+        "term": "bezogen",
+        "freq": 0.67,
+        "total": 10.15,
+        "logprob": -3.9057,
+        "loglift": 1.5901
+      },
+      {
+        "term": "gebrauch",
+        "freq": 0.67,
+        "total": 10.28,
+        "logprob": -3.9105,
+        "loglift": 1.5724
+      },
+      {
+        "term": "anwenden",
+        "freq": 0.67,
+        "total": 12.66,
+        "logprob": -3.9101,
+        "loglift": 1.364
+      },
+      {
+        "term": "inhalt",
+        "freq": 0.67,
+        "total": 19.01,
+        "logprob": -3.9069,
+        "loglift": 0.9609
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.06,
+        "total": 3.37,
+        "logprob": -6.2637,
+        "loglift": 0.3344
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.06,
+        "total": 4.02,
+        "logprob": -6.2528,
+        "loglift": 0.1696
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.07,
+        "total": 4.52,
+        "logprob": -6.2246,
+        "loglift": 0.0793
+      },
+      {
+        "term": "veränderung",
+        "freq": 0.06,
+        "total": 4.33,
+        "logprob": -6.2747,
+        "loglift": 0.0735
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 0.06,
+        "total": 4.46,
+        "logprob": -6.2516,
+        "loglift": 0.0671
+      },
+      {
+        "term": "selektion",
+        "freq": 0.06,
+        "total": 4.41,
+        "logprob": -6.2666,
+        "loglift": 0.0633
+      },
+      {
+        "term": "chance",
+        "freq": 0.07,
+        "total": 4.78,
+        "logprob": -6.2079,
+        "loglift": 0.0412
+      },
+      {
+        "term": "rückmeldung",
+        "freq": 0.06,
+        "total": 4.55,
+        "logprob": -6.2474,
+        "loglift": 0.0501
+      },
+      {
+        "term": "anwendung",
+        "freq": 0.1,
+        "total": 16.25,
+        "logprob": -5.7941,
+        "loglift": -0.7697
+      },
+      {
+        "term": "beziehung",
+        "freq": 0.08,
+        "total": 7.97,
+        "logprob": -6.0733,
+        "loglift": -0.3364
+      },
+      {
+        "term": "material",
+        "freq": 0.1,
+        "total": 24.54,
+        "logprob": -5.842,
+        "loglift": -1.2296
+      },
+      {
+        "term": "theorie",
+        "freq": 0.07,
+        "total": 5.56,
+        "logprob": -6.2094,
+        "loglift": -0.1113
+      },
+      {
+        "term": "anforderungsbereiche",
+        "freq": 0.07,
+        "total": 6.93,
+        "logprob": -6.1877,
+        "loglift": -0.3111
+      },
+      {
+        "term": "anforderung",
+        "freq": 0.07,
+        "total": 6.95,
+        "logprob": -6.192,
+        "loglift": -0.3186
+      },
+      {
+        "term": "problemlösung",
+        "freq": 0.07,
+        "total": 10.81,
+        "logprob": -6.1853,
+        "loglift": -0.7527
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 0.07,
+        "total": 36.61,
+        "logprob": -6.1765,
+        "loglift": -1.964
+      }
+    ],
+    "19": [
+      {
+        "term": "landwirtschaft",
+        "freq": 5.59,
+        "total": 6.72,
+        "logprob": -2.4263,
+        "loglift": 3.4818
+      },
+      {
+        "term": "selektion",
+        "freq": 2.74,
+        "total": 4.41,
+        "logprob": -3.1385,
+        "loglift": 3.1914
+      },
+      {
+        "term": "nutzung",
+        "freq": 3.4,
+        "total": 5.56,
+        "logprob": -2.923,
+        "loglift": 3.1743
+      },
+      {
+        "term": "genetik",
+        "freq": 5.41,
+        "total": 9.15,
+        "logprob": -2.4593,
+        "loglift": 3.1392
+      },
+      {
+        "term": "chance",
+        "freq": 2.74,
+        "total": 4.78,
+        "logprob": -3.1394,
+        "loglift": 3.1096
+      },
+      {
+        "term": "kommunikation",
+        "freq": 5.41,
+        "total": 11.1,
+        "logprob": -2.4588,
+        "loglift": 2.9471
+      },
+      {
+        "term": "bewertung",
+        "freq": 3.2,
+        "total": 7.2,
+        "logprob": -2.9843,
+        "loglift": 2.8547
+      },
+      {
+        "term": "molekular",
+        "freq": 2.74,
+        "total": 6.47,
+        "logprob": -3.1394,
+        "loglift": 2.8068
+      },
+      {
+        "term": "biomoleküle",
+        "freq": 2.74,
+        "total": 6.47,
+        "logprob": -3.1394,
+        "loglift": 2.8059
+      },
+      {
+        "term": "herstellung",
+        "freq": 2.74,
+        "total": 6.53,
+        "logprob": -3.1388,
+        "loglift": 2.7976
+      },
+      {
+        "term": "verändert",
+        "freq": 2.74,
+        "total": 7.33,
+        "logprob": -3.1387,
+        "loglift": 2.6815
+      },
+      {
+        "term": "staat",
+        "freq": 3.53,
+        "total": 10.44,
+        "logprob": -2.8865,
+        "loglift": 2.5808
+      },
+      {
+        "term": "veränderung",
+        "freq": 1.41,
+        "total": 4.33,
+        "logprob": -3.806,
+        "loglift": 2.5422
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.54,
+        "total": 4.02,
+        "logprob": -4.7594,
+        "loglift": 1.663
+      },
+      {
+        "term": "methode",
+        "freq": 1.41,
+        "total": 15.62,
+        "logprob": -3.8057,
+        "loglift": 1.2585
+      },
+      {
+        "term": "bearbeite",
+        "freq": 0.07,
+        "total": 3.37,
+        "logprob": -6.8133,
+        "loglift": -0.2153
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.07,
+        "total": 3.73,
+        "logprob": -6.7718,
+        "loglift": -0.2749
+      },
+      {
+        "term": "kontinuierlich",
+        "freq": 0.07,
+        "total": 4.46,
+        "logprob": -6.7541,
+        "loglift": -0.4354
+      },
+      {
+        "term": "phänomen",
+        "freq": 0.07,
+        "total": 4.35,
+        "logprob": -6.797,
+        "loglift": -0.4541
+      },
+      {
+        "term": "gift",
+        "freq": 0.07,
+        "total": 4.46,
+        "logprob": -6.786,
+        "loglift": -0.4673
+      },
+      {
+        "term": "saltatorisch",
+        "freq": 0.07,
+        "total": 4.45,
+        "logprob": -6.805,
+        "loglift": -0.4854
+      },
+      {
+        "term": "rückmeldung",
+        "freq": 0.07,
+        "total": 4.55,
+        "logprob": -6.7874,
+        "loglift": -0.4899
+      },
+      {
+        "term": "basis",
+        "freq": 0.07,
+        "total": 4.81,
+        "logprob": -6.7384,
+        "loglift": -0.4953
+      },
+      {
+        "term": "funktion",
+        "freq": 0.07,
+        "total": 4.45,
+        "logprob": -6.8215,
+        "loglift": -0.5008
+      },
+      {
+        "term": "präsentieren",
+        "freq": 0.07,
+        "total": 4.52,
+        "logprob": -6.8156,
+        "loglift": -0.5117
+      },
+      {
+        "term": "droge",
+        "freq": 0.07,
+        "total": 4.43,
+        "logprob": -6.8412,
+        "loglift": -0.5178
+      },
+      {
+        "term": "erhalten",
+        "freq": 0.07,
+        "total": 4.75,
+        "logprob": -6.8009,
+        "loglift": -0.5456
+      },
+      {
+        "term": "inhaltlich",
+        "freq": 0.07,
+        "total": 4.79,
+        "logprob": -6.795,
+        "loglift": -0.5484
+      },
+      {
+        "term": "vertieft",
+        "freq": 0.07,
+        "total": 4.82,
+        "logprob": -6.7879,
+        "loglift": -0.5488
+      },
+      {
+        "term": "übertragen",
+        "freq": 0.07,
+        "total": 4.73,
+        "logprob": -6.8181,
+        "loglift": -0.5584
+      },
+      {
+        "term": "stärken",
+        "freq": 0.07,
+        "total": 4.95,
+        "logprob": -6.7768,
+        "loglift": -0.5639
+      },
+      {
+        "term": "schaffen",
+        "freq": 0.07,
+        "total": 5.01,
+        "logprob": -6.7693,
+        "loglift": -0.5679
+      },
+      {
+        "term": "gelingen",
+        "freq": 0.08,
+        "total": 6.45,
+        "logprob": -6.6634,
+        "loglift": -0.7149
+      },
+      {
+        "term": "grenze",
+        "freq": 0.07,
+        "total": 5.24,
+        "logprob": -6.7607,
+        "loglift": -0.604
+      },
+      {
+        "term": "vergleich",
+        "freq": 0.08,
+        "total": 5.93,
+        "logprob": -6.7229,
+        "loglift": -0.6899
+      },
+      {
+        "term": "fall",
+        "freq": 0.08,
+        "total": 6.22,
+        "logprob": -6.7219,
+        "loglift": -0.7369
+      },
+      {
+        "term": "grundsätzlich",
+        "freq": 0.08,
+        "total": 7.44,
+        "logprob": -6.705,
+        "loglift": -0.8992
+      },
+      {
+        "term": "dimension",
+        "freq": 0.07,
+        "total": 6.12,
+        "logprob": -6.7436,
+        "loglift": -0.7423
+      },
+      {
+        "term": "diagramm",
+        "freq": 0.07,
+        "total": 5.79,
+        "logprob": -6.7543,
+        "loglift": -0.6972
+      },
+      {
+        "term": "entwicklung",
+        "freq": 0.07,
+        "total": 6.14,
+        "logprob": -6.7517,
+        "loglift": -0.7533
+      },
+      {
+        "term": "berücksichtigen",
+        "freq": 0.08,
+        "total": 9.8,
+        "logprob": -6.7021,
+        "loglift": -1.1716
+      },
+      {
+        "term": "geeignet",
+        "freq": 0.08,
+        "total": 7.91,
+        "logprob": -6.7272,
+        "loglift": -0.9826
+      },
+      {
+        "term": "historisch",
+        "freq": 0.08,
+        "total": 10.41,
+        "logprob": -6.7166,
+        "loglift": -1.2471
+      },
+      {
+        "term": "lernen",
+        "freq": 0.08,
+        "total": 16.94,
+        "logprob": -6.6912,
+        "loglift": -1.7078
+      },
+      {
+        "term": "unterschiedlich",
+        "freq": 0.08,
+        "total": 12.41,
+        "logprob": -6.7272,
+        "loglift": -1.4333
+      },
+      {
+        "term": "inhalt",
+        "freq": 0.08,
+        "total": 19.01,
+        "logprob": -6.7161,
+        "loglift": -1.8483
+      },
+      {
+        "term": "wissen",
+        "freq": 0.08,
+        "total": 12.43,
+        "logprob": -6.729,
+        "loglift": -1.4361
+      },
+      {
+        "term": "aufgabenstellung",
+        "freq": 0.08,
+        "total": 11.72,
+        "logprob": -6.7351,
+        "loglift": -1.3832
+      },
+      {
+        "term": "frage",
+        "freq": 0.07,
+        "total": 7.59,
+        "logprob": -6.7479,
+        "loglift": -0.9614
+      },
+      {
+        "term": "gesellschaft",
+        "freq": 0.07,
+        "total": 10.48,
+        "logprob": -6.7458,
+        "loglift": -1.2823
+      }
+    ],
+    "20": [
+      {
+        "term": "diagramm",
+        "freq": 4.6,
+        "total": 5.79,
+        "logprob": -3.0849,
+        "loglift": 2.9722
+      },
+      {
+        "term": "wesentlich",
+        "freq": 3.89,
+        "total": 7.92,
+        "logprob": -3.2526,
+        "loglift": 2.4907
+      },
+      {
+        "term": "strukturiert",
+        "freq": 4.03,
+        "total": 8.38,
+        "logprob": -3.2172,
+        "loglift": 2.4692
+      },
+      {
+        "term": "wiedergabe",
+        "freq": 5.82,
+        "total": 12.21,
+        "logprob": -2.8508,
+        "loglift": 2.4601
+      },
+      {
+        "term": "charakterisier",
+        "freq": 3.89,
+        "total": 8.99,
+        "logprob": -3.2529,
+        "loglift": 2.3643
+      },
+      {
+        "term": "verlangen",
+        "freq": 3.89,
+        "total": 8.99,
+        "logprob": -3.2525,
+        "loglift": 2.3638
+      },
+      {
+        "term": "herausarbeit",
+        "freq": 3.89,
+        "total": 9.0,
+        "logprob": -3.2527,
+        "loglift": 2.3635
+      },
+      {
+        "term": "zusammenfassen",
+        "freq": 3.89,
+        "total": 10.28,
+        "logprob": -3.2526,
+        "loglift": 2.2301
+      },
+      {
+        "term": "information",
+        "freq": 4.87,
+        "total": 13.14,
+        "logprob": -3.028,
+        "loglift": 2.209
+      },
+      {
+        "term": "leistung",
+        "freq": 3.89,
+        "total": 10.62,
+        "logprob": -3.253,
+        "loglift": 2.1968
+      },
+      {
+        "term": "darstellung",
+        "freq": 4.68,
+        "total": 12.99,
+        "logprob": -3.0685,
+        "loglift": 2.1804
+      },
+      {
+        "term": "entwicklung",
+        "freq": 2.13,
+        "total": 6.14,
+        "logprob": -3.8569,
+        "loglift": 2.1414
+      },
+      {
+        "term": "aufgabenstellung",
+        "freq": 4.04,
+        "total": 11.72,
+        "logprob": -3.2157,
+        "loglift": 2.1362
+      },
+      {
+        "term": "sachverhalt",
+        "freq": 9.11,
+        "total": 28.14,
+        "logprob": -2.402,
+        "loglift": 2.0734
+      },
+      {
+        "term": "beschreibung",
+        "freq": 4.08,
+        "total": 13.7,
+        "logprob": -3.2059,
+        "loglift": 1.9896
+      },
+      {
+        "term": "kooperation",
+        "freq": 1.6,
+        "total": 5.97,
+        "logprob": -4.1416,
+        "loglift": 1.8846
+      },
+      {
+        "term": "staat",
+        "freq": 1.6,
+        "total": 10.44,
+        "logprob": -4.1409,
+        "loglift": 1.3264
+      },
+      {
+        "term": "einordnen",
+        "freq": 1.6,
+        "total": 11.94,
+        "logprob": -4.1419,
+        "loglift": 1.1908
+      },
+      {
+        "term": "einordn",
+        "freq": 0.77,
+        "total": 6.58,
+        "logprob": -4.8736,
+        "loglift": 1.0557
+      },
+      {
+        "term": "operator",
+        "freq": 3.89,
+        "total": 36.15,
+        "logprob": -3.2522,
+        "loglift": 0.9729
+      },
+      {
+        "term": "ziel",
+        "freq": 1.64,
+        "total": 16.61,
+        "logprob": -4.1168,
+        "loglift": 0.8859
+      },
+      {
+        "term": "sachverhalte",
+        "freq": 3.89,
+        "total": 42.69,
+        "logprob": -3.2528,
+        "loglift": 0.806
+      },
+      {
+        "term": "anforderungsbereich",
+        "freq": 4.31,
+        "total": 57.43,
+        "logprob": -3.1515,
+        "loglift": 0.6108
+      },
+      {
+        "term": "verändert",
+        "freq": 0.53,
+        "total": 7.33,
+        "logprob": -5.2536,
+        "loglift": 0.5665
+      },
+      {
+        "term": "politisch",
+        "freq": 1.6,
+        "total": 27.02,
+        "logprob": -4.1425,
+        "loglift": 0.3737
+      },
+      {
+        "term": "ausgewählt",
+        "freq": 0.23,
+        "total": 4.02,
+        "logprob": -6.0622,
+        "loglift": 0.3602
+      },
+      {
+        "term": "erkenntnis",
+        "freq": 0.21,
+        "total": 3.73,
+        "logprob": -6.1862,
+        "loglift": 0.3106
+      },
+      {
+        "term": "ordn",
+        "freq": 0.28,
+        "total": 5.7,
+        "logprob": -5.883,
+        "loglift": 0.1892
+      },
+      {
+        "term": "geeignet",
+        "freq": 0.28,
+        "total": 7.91,
+        "logprob": -5.8797,
+        "loglift": -0.1352
+      },
+      {
+        "term": "funktion",
+        "freq": 0.15,
+        "total": 4.45,
+        "logprob": -6.5097,
+        "loglift": -0.1891
+      },
+      {
+        "term": "anwenden",
+        "freq": 0.38,
+        "total": 12.66,
+        "logprob": -5.5831,
+        "loglift": -0.309
+      },
+      {
+        "term": "zusammenhang",
+        "freq": 0.79,
+        "total": 36.61,
+        "logprob": -4.8415,
+        "loglift": -0.629
+      },
+      {
+        "term": "umfasst",
+        "freq": 0.25,
+        "total": 18.83,
+        "logprob": -6.0026,
+        "loglift": -1.1254
+      }
+    ]
+  }
+}

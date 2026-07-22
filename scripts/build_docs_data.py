@@ -52,7 +52,8 @@ KEYWORD_OUT = ROOT / "keyword_search" / "out"
 DOCS_DATA = ROOT / "docs" / "data"
 TXTFILES_SRC = ROOT / "data" / "LP_DE_2026_1_txtfiles"
 
-N_TOPICS_LIST = [5, 7, 10]
+# Keep in sync with lda_topic_modelling/src/lda_topic_model.py's own copy.
+N_TOPICS_LIST = [5, 7, 10, 12, 15, 20]
 
 LDA_FILES_PER_RUN = [
     "topic_terms_{concept}_{k}.csv",

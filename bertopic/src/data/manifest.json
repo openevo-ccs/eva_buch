@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-07-19T08:44:11.600187+00:00",
-  "source_csv_md5": "45b9eb3e05e0babc6ed619943bf5c325",
-  "embedding_model": "all-MiniLM-L6-v2",
+  "generated_at": "2026-07-22T19:57:07.031529+00:00",
+  "source_csv_md5": "99df4798ba23f58b4433b7a871fd5523",
+  "embedding_model": "paraphrase-multilingual-MiniLM-L12-v2",
   "random_seed": 42,
   "concept_order": [
     "Anpassung",
@@ -31,7 +31,7 @@
     "Anpassung": {
       "concept": "Anpassung",
       "n_docs": 738,
-      "n_outliers": 82,
+      "n_outliers": 105,
       "subjects": {
         "Bio": 618,
         "Sozialkunde": 47,
@@ -54,56 +54,54 @@
         "Berlin": 27,
         "Hamburg": 25,
         "Thüringen": 19,
-        "Unbekannt": 10,
+        "KMK": 10,
         "Bremen": 6
       },
       "topics": {
-        "Fortpflanzung · Lebensraum · Kompetenzen": 192,
-        "Evolutionstheorie · Evolution · Entstehung": 89,
-        "Kein Thema (Ausreißer)": 82,
-        "Sek · Variabilitt · Individuelle": 55,
-        "Sachkompetenz · Charakterisieren · Leben": 54,
-        "Fotosynthese · Stoffwechsel · Zusammenhang": 41,
-        "Kologie · Arten · Wechselwirkungen": 31,
-        "Fitness · Genpool · Kologische": 30,
-        "Umweltfaktoren · Kologische · Kosystem": 26,
-        "Tieren · Pflanzen · Angepasstheit Tieren": 24,
-        "Umwelt · Bau Funktion · Umwelt Angepasst": 23,
-        "Bildung · Fach · Schuljahrgnge": 22,
-        "Sonne · Tiere · Pflanzen": 20,
-        "Oberstufe · Gymnasiale Oberstufe · Macht": 18,
-        "Umweltfaktor · Licht · Fotosynthese": 16,
-        "Sinnesorgane · Ohr · Auge Ohr": 15
+        "Individuelle · Verschiedenen · Jahrgang": 155,
+        "Kein Thema (Ausreißer)": 105,
+        "Nationalsozialismus · Widerstand · Weltkrieg": 101,
+        "Reproduktiven · Reproduktiven Fitness · Stellen": 61,
+        "Ethikunterricht · Kologische · Gesellschaft": 57,
+        "Anregungen · Bakterien · Kologische": 42,
+        "Entstehung · Kologische · Halle": 38,
+        "Wechselwirkung · Anwenden · Krpertemperatur": 32,
+        "Osva · Osva Osva · Iva": 32,
+        "Marktwirtschaft · Anregungen · Beurteilungskompetenz": 29,
+        "Lebensweise Lebensraum · Lebensweise · Konsum": 25,
+        "Einfhrungsphase · Angepasst · Fhren": 24,
+        "Erkenntnisgewinnung Kommunikation · Kologie · Widerstand": 19,
+        "Fragestellungen · Variabilitt Organismen · Kosystemen": 18
       },
       "bbox_2d": [
         [
-          2.7688,
-          17.454
+          -1.0348,
+          13.7909
         ],
         [
-          -1.895,
-          7.812
+          4.8536,
+          12.1636
         ]
       ],
       "bbox_3d": [
         [
-          6.1455,
-          14.5192
+          -1.2728,
+          10.558
         ],
         [
-          -5.0674,
-          4.5462
+          3.207,
+          9.397
         ],
         [
-          3.1486,
-          10.137
+          -1.4856,
+          5.4377
         ]
       ]
     },
     "Anthropologie": {
       "concept": "Anthropologie",
       "n_docs": 312,
-      "n_outliers": 84,
+      "n_outliers": 69,
       "subjects": {
         "Ethik, Philo": 282,
         "Bio": 13,
@@ -114,7 +112,7 @@
       "states": {
         "Rheinland-Pfalz": 96,
         "Mecklenburg-Vorpommern": 42,
-        "Unbekannt": 32,
+        "KMK": 32,
         "Niedersachsen": 24,
         "Baden-Württemberg": 19,
         "Saarland": 18,
@@ -130,43 +128,44 @@
         "Hamburg": 2
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 84,
-        "Knnen · Selbstverstndnis · Rahmenthema": 68,
-        "Hinweiseaspektebeispiele · Philosophie Themen · Hinweiseaspektebeispiele Themen": 50,
-        "Reflexionsbereich · Reflexionsbereiche · Reflexionsbereiche Anthropologie": 43,
-        "Kants · Verknpfungen · Antworten": 27,
-        "Unterrichtliche · Erkennen · Konstruktivismus": 22,
-        "Position · Kulturwesen · Kultur": 18
+        "Reflexionsbereiche · Auseinandersetzung · Geschichte Gesellschaft": 91,
+        "Kein Thema (Ausreißer)": 69,
+        "Gott · Kommunikation · Freiheit": 38,
+        "Freiheit · Rahmenthema · Gott": 38,
+        "Grundfragen · Ideologieideologiekritik · Philosophie Hinweiseaspektebeispiele": 23,
+        "Arbeitsbereiche · Arbeitsbereichen · Politische": 21,
+        "Verbindliche · Reflexionsbereiche · Geschichte Gesellschaft": 16,
+        "Begrndung · Themenbereich · Erkenntnistheorie Ethik": 16
       },
       "bbox_2d": [
         [
-          -11.5528,
-          -5.5381
+          0.309,
+          7.0733
         ],
         [
-          -4.0897,
-          3.6203
+          1.7514,
+          8.143
         ]
       ],
       "bbox_3d": [
         [
-          -6.4663,
-          -2.1146
+          2.982,
+          6.597
         ],
         [
-          2.5744,
-          7.1027
+          1.4474,
+          6.2152
         ],
         [
-          2.2805,
-          7.163
+          -4.2093,
+          1.3106
         ]
       ]
     },
     "Bedürfnis": {
       "concept": "Bedürfnis",
       "n_docs": 640,
-      "n_outliers": 130,
+      "n_outliers": 105,
       "subjects": {
         "Ethik, Philo": 380,
         "Sozialkunde": 158,
@@ -187,58 +186,58 @@
         "Sachsen": 27,
         "Hamburg": 24,
         "Sachsen-Anhalt": 22,
-        "Unbekannt": 20,
+        "KMK": 20,
         "Mecklenburg-Vorpommern": 14,
         "Berlin": 13,
         "Bremen": 3
       },
       "topics": {
-        "Interessen · Handeln · Interessen Bedrfnisse": 131,
-        "Kein Thema (Ausreißer)": 130,
-        "Kompetenz · Empfindung · Wahrnehmung Empfindung": 43,
-        "Liebe · Lebensformen · Akzeptanz Lebensformen": 34,
-        "Lernenden · Emotionen · Realitt": 32,
-        "Eigene · Entwickeln · Konfliktsituationen": 32,
-        "Verbunden · Dar · Bezglich": 31,
-        "Fhigkeiten · Sehen · Verantwortlich": 27,
-        "Gemeinschaft · Bedrfnis · Frage": 26,
-        "Wnsche · Bedrfnisse Wnsche · Kriterien": 26,
-        "Verhalten · Situationen · Art": 25,
-        "Natrlichen · Deutungen · Analysieren": 24,
-        "Sucht · Bedrfnisse Sucht · Abhngigkeit": 24,
-        "Familie · Eth · Individualitt": 23,
-        "Chancen · Risiken · Internet": 16,
-        "Klassenstufen · Diskutieren · Klassenstufe": 16
+        "Kein Thema (Ausreißer)": 105,
+        "Medien · Gesellschaftliche · Gestaltet": 93,
+        "Lebens · Ethik · Gemeinschaft": 56,
+        "Wirtschaft · Marktwirtschaft · Gem": 51,
+        "Privaten · Glck · Grundbedrfnis": 50,
+        "Auseinandersetzung · Menschenbild · Gter": 35,
+        "Sucht · Inhaltsbezogene · Inhaltsbezogene Methodischdidaktische": 35,
+        "Empfindung Bedrfnisse · Wahrnehmung Empfindung · Empfindung": 31,
+        "Bedrfnissen Regeln · Zusammenhang · Bedrfnisse Bedrfnisse": 30,
+        "Themenfelder · Fhigkeiten · Aktiv": 28,
+        "Bewegung · Wnsche Medien · Medienanalyse": 24,
+        "Eth · Gesellschaft · Solidaritt": 23,
+        "Prinzipien · Datenschutz · Konsequenzen": 22,
+        "Begriffe · Philosophieunterricht · Konsum": 22,
+        "Wahrzunehmen · Deuten · Weise": 19,
+        "Ddr · Zentralverwaltungswirtschaft · Marktwirtschaft Zentralverwaltungswirtschaft": 16
       },
       "bbox_2d": [
         [
-          -19.5778,
-          21.3371
+          -4.3551,
+          2.7273
         ],
         [
-          -5.4049,
-          16.6753
+          -5.4661,
+          3.6544
         ]
       ],
       "bbox_3d": [
         [
-          -2.1803,
-          16.2441
+          3.9107,
+          8.9254
         ],
         [
-          -7.442,
-          12.5446
+          10.0627,
+          17.9542
         ],
         [
-          -0.7721,
-          17.3523
+          11.466,
+          17.1564
         ]
       ]
     },
     "Emotion": {
       "concept": "Emotion",
       "n_docs": 267,
-      "n_outliers": 12,
+      "n_outliers": 17,
       "subjects": {
         "Ethik, Philo": 114,
         "Psychologie": 54,
@@ -250,7 +249,7 @@
         "Saarland": 59,
         "Hessen": 41,
         "Baden-Württemberg": 22,
-        "Unbekannt": 21,
+        "KMK": 21,
         "Bayern": 21,
         "Rheinland-Pfalz": 15,
         "Mecklenburg-Vorpommern": 14,
@@ -265,39 +264,40 @@
         "Sachsen-Anhalt": 5
       },
       "topics": {
-        "Knnen · Reflektieren · Beschreiben": 227,
-        "Emotionen · Emotionale · Adressaten": 28,
-        "Kein Thema (Ausreißer)": 12
+        "Natur · Chancen · Stellen Grenzen": 111,
+        "Kognition · Kognition Motivation · Angst": 92,
+        "Eingehen · Adressaten · Zustand Adressaten": 47,
+        "Kein Thema (Ausreißer)": 17
       },
       "bbox_2d": [
         [
-          -19.9997,
-          12.4176
+          -6.1149,
+          2.5754
         ],
         [
-          4.8836,
-          13.9735
+          1.926,
+          8.0604
         ]
       ],
       "bbox_3d": [
         [
-          -9.7802,
-          16.1208
+          -2.5127,
+          2.0759
         ],
         [
-          -4.2941,
-          3.2629
+          -3.8642,
+          3.9198
         ],
         [
-          9.9048,
-          22.7546
+          5.1702,
+          10.0056
         ]
       ]
     },
     "Evolution": {
       "concept": "Evolution",
       "n_docs": 1085,
-      "n_outliers": 242,
+      "n_outliers": 217,
       "subjects": {
         "Bio": 1035,
         "Ethik, Philo": 34,
@@ -319,63 +319,63 @@
         "Niedersachsen": 41,
         "Thüringen": 34,
         "Mecklenburg-Vorpommern": 33,
-        "Unbekannt": 22,
+        "KMK": 22,
         "Bremen": 21
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 242,
-        "Basiskonzepte · Entwickeln · Biologieunterricht": 116,
-        "Fossilien · Belege Evolution · Evolutionstheorie": 109,
-        "Fitness · Isolation · Reproduktive": 80,
-        "Lebewesen · Systeme · Individualentwicklung": 58,
-        "Entstehung · Zelle · Eukaryoten": 57,
-        "Dna · Genetischer · Genetischen": 49,
-        "Evolution Menschen · Menschenaffen · Kulturelle": 41,
-        "Stammesgeschichtliche · Stammesgeschichtliche Entwicklung · Arten": 39,
-        "Wirbeltieren · Pflanzen · Sek": 28,
-        "Modernen Menschen · Modernen · Anhand": 26,
-        "Anthropologie · Freiheit · Evolution Menschen": 25,
-        "Konzept · Kologie · Kologische": 25,
-        "Klassen · Abbildung · Tabelle": 23,
-        "Informationsverarbeitung · Evolution Informationsverarbeitung · Neurobiologie": 22,
-        "Biologischen · Biologischen Kulturellen · Art": 21,
-        "Fortpflanzung · Variation · Genetische": 20,
-        "Lebewesen · Vielfalt · Vielfalt Lebewesen": 19,
-        "Beobachten Beschreiben · Organismen · Stammesgeschichtliche Verwandtschaft": 18,
-        "Bewertung · Wirkung · Evolutive Prozesse": 18,
-        "Mensch · Gesellschaft · Produkt": 17,
-        "Stammesgeschichtlichen Entwicklung · Funktion · Stammesgeschichtlichen": 17,
-        "Reproduktion · Lassen · Evolutionsprozesse": 15
+        "Kein Thema (Ausreißer)": 217,
+        "Erlutern · Basiskonzepte · Wirbeltiere": 162,
+        "Vernderungen · Mechanismen · Grundkurs": 106,
+        "Vorschlge · Leben · Biologie": 87,
+        "Funktion · Erlutern · Prozent": 69,
+        "Anregungen · Entwicklung Vielfalt · Klassenstufen": 54,
+        "Leistungsfach · Anregungen · Stammbumen": 32,
+        "Erlutern · Genetik · Kologischen": 31,
+        "Wahlbereich · Lernbereich · Bertragen": 30,
+        "Beispiels · Modernen Menschen · Modernen": 28,
+        "Abstammung Verwandtschaft · Primaten · Abstammung": 28,
+        "Fitness · Reproduktive · Zellen": 27,
+        "Igv · Klassen · Biodiversitt": 26,
+        "Erkenntnisgewinnung Kommunikation · Erkenntnisgewinnung · Erlutern": 25,
+        "Freiheit · Ethik · Moralphilosophie": 23,
+        "Jahrgang · Ebene · Funktion": 21,
+        "Basiskonzepts · Einfhrungsphase Evolutionskologie · Evolutionskologie": 20,
+        "Basiskonzepts · Eukaryotischen Zelle · Eukaryotischen": 19,
+        "Themenfelder · Niveau · Kologische": 18,
+        "Mutationen · Genetischer · Hnlichkeiten": 16,
+        "Klasse · Unterrichtsprinzip · Alltagsvorstellungen": 16,
+        "Osgv · Osgv Osgv · Organismen Erklren": 15,
+        "Quellen · Biologischer · Biodiversitt Verschiedenen": 15
       },
       "bbox_2d": [
         [
-          -5.0088,
-          15.3063
+          0.0919,
+          13.1164
         ],
         [
-          -5.3852,
-          12.977
+          1.9324,
+          9.9761
         ]
       ],
       "bbox_3d": [
         [
-          -5.3908,
-          12.9929
+          1.245,
+          10.945
         ],
         [
-          -2.198,
-          9.2782
+          0.4039,
+          9.2084
         ],
         [
-          -5.0535,
-          1.4368
+          4.6726,
+          12.6679
         ]
       ]
     },
     "Freiheit": {
       "concept": "Freiheit",
       "n_docs": 1236,
-      "n_outliers": 231,
+      "n_outliers": 310,
       "subjects": {
         "Ethik, Philo": 773,
         "Sozialkunde": 226,
@@ -391,7 +391,7 @@
         "Hessen": 97,
         "Hamburg": 81,
         "Sachsen-Anhalt": 58,
-        "Unbekannt": 56,
+        "KMK": 56,
         "Mecklenburg-Vorpommern": 51,
         "Bayern": 50,
         "Sachsen": 49,
@@ -402,49 +402,60 @@
         "Thüringen": 17
       },
       "topics": {
-        "Ethik · Freiheit Verantwortung · Gerechtigkeit": 666,
-        "Kein Thema (Ausreißer)": 231,
-        "Politik · Menschenwrde Freiheit · Grundlagen": 66,
-        "Revolution · Franzsischen · Franzsischen Revolution": 53,
-        "Digitalisierung · Knnen · Identifizieren": 36,
-        "Ziel · Unterricht · Erreicht": 33,
-        "Marktwirtschaft · Sozialen · Ausgleich": 32,
-        "Herrschaft · Republik · Freiheit Gleichheit": 24,
-        "Demokratischen · Grundordnung · Demokratischer": 22,
-        "Technik · Natur · Umgangs": 21,
-        "Europischen · Europa · Europische": 20,
-        "Theoriebezug · Theoriebezug Perspektive · Strukturierende": 16,
-        "Fhrt · Revolution · Kmpfen": 16
+        "Kein Thema (Ausreißer)": 310,
+        "Beitrag · Iii · Leitperspektive": 96,
+        "Allgemeine Ethik · Allgemeine · Ethisch": 90,
+        "Kants · Moralphilosophie · Erarbeiten": 85,
+        "Perspektive · Strukturierende · Dimensionen": 69,
+        "Eth · Eth Anthropologie · Gott": 65,
+        "Revolution · Kmpfen · Protest": 62,
+        "Solidaritt · Menschenwrde Gleichheit · Gleichheit Solidaritt": 55,
+        "Digitale · Eth Verantwortung · Digitale Welt": 42,
+        "Glck · Mgliche · Aufdecken": 38,
+        "Revolution · Franzsischen Revolution · Franzsischen": 35,
+        "Wrde · Anspruch · Anspruch Achtung": 31,
+        "Entfaltung Persnlichkeit · Wahrnehmen Erfahrungen · Bercksichtigen Differenzierendes": 31,
+        "Verantwortung Aufzeigen · Soziale Beziehungen · Beziehungen": 30,
+        "Wre · Gegenber · Sinn": 24,
+        "Rolle Spielen · Sichtbar · Spielen": 24,
+        "Ideologien · Toleranz · Autoritt": 23,
+        "Schutz · Friedenssicherung · Religionen Weltanschauungen": 22,
+        "Stunden · Willensfreiheit · Utilitarismus": 21,
+        "Inneren · Inneren Ueren · Willens": 19,
+        "Reflexionsbereich · Glaube · Natur Mensch": 18,
+        "Eth · Zwischenkriegszeit · Rechtliche Stellung": 16,
+        "Partnerschaft · Sexualitt · Max": 15,
+        "Einflsse · Einflsse Entscheidungen · Mglichkeit": 15
       },
       "bbox_2d": [
         [
-          -6.3112,
-          9.9373
+          -2.7508,
+          14.0243
         ],
         [
-          -2.9756,
-          7.6791
+          -1.3611,
+          6.3923
         ]
       ],
       "bbox_3d": [
         [
-          -8.3226,
-          7.4819
+          -3.3343,
+          9.729
         ],
         [
-          -2.5342,
-          4.4043
+          -0.653,
+          8.2999
         ],
         [
-          -3.8867,
-          4.1713
+          2.4118,
+          9.2552
         ]
       ]
     },
     "Gefühl": {
       "concept": "Gefühl",
       "n_docs": 354,
-      "n_outliers": 63,
+      "n_outliers": 13,
       "subjects": {
         "Ethik, Philo": 289,
         "Geschichte": 21,
@@ -458,7 +469,7 @@
         "Baden-Württemberg": 32,
         "Bayern": 25,
         "Rheinland-Pfalz": 23,
-        "Unbekannt": 15,
+        "KMK": 15,
         "Berlin": 12,
         "Sachsen": 12,
         "Nordrhein-Westfalen": 9,
@@ -471,46 +482,40 @@
         "Schleswig-Holstein": 1
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 63,
-        "Moralische · Moralisch · Beispiel": 53,
-        "Lernenden · Bedrfnisse · Fhigkeiten": 48,
-        "Gedanken · Verndern · Sammeln": 34,
-        "Ethisch · Geschichte · Perspektive": 31,
-        "Freundschaft · Probleme · Quellen": 30,
-        "Vorurteile · Klassenstufen · Unterscheiden": 29,
-        "Mglichkeiten · Situation · Gefhls": 25,
-        "Denen · Hilfe · Perspektiven Gefhle": 24,
-        "Individualitt · Gefhl Vernunft · Vernunft": 17
+        "Gedanken · Situationen · Mensch": 293,
+        "Bedeutung · Mensch · Sagen": 24,
+        "Bedrfnisse · Gefhle Bedrfnisse · Soziale": 24,
+        "Kein Thema (Ausreißer)": 13
       },
       "bbox_2d": [
         [
-          17.0052,
-          24.9871
+          10.075,
+          16.8739
         ],
         [
-          4.3816,
-          13.6979
+          8.206,
+          14.6069
         ]
       ],
       "bbox_3d": [
         [
-          10.2837,
-          18.8525
+          2.9356,
+          6.7093
         ],
         [
-          13.6104,
-          18.3937
+          4.0856,
+          8.9846
         ],
         [
-          6.2264,
-          14.6719
+          16.819,
+          22.0532
         ]
       ]
     },
     "Gen": {
       "concept": "Gen",
       "n_docs": 991,
-      "n_outliers": 218,
+      "n_outliers": 150,
       "subjects": {
         "Bio": 926,
         "Geschichte": 28,
@@ -533,60 +538,58 @@
         "Mecklenburg-Vorpommern": 42,
         "Berlin": 41,
         "Niedersachsen": 31,
-        "Unbekannt": 23,
+        "KMK": 23,
         "Bremen": 16
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 218,
-        "Vererbung · Chromosomen · Meiose": 125,
-        "Evolution · Erklren · Evolutionstheorie": 80,
-        "Proteinen · Gen · Lernenden Knnen": 60,
-        "Klassen · Neurobiologie · Kologie": 58,
-        "Soziale · Verfahren · Geschichte": 57,
-        "Lebewesen · Systeme · Lebende Systeme": 45,
-        "Medien · Experimentieren · Digitaler": 39,
-        "Transkriptionsfaktoren · Eukaryoten · Epigenoms": 39,
-        "Genetische Variation · Variation · Selektion": 37,
-        "Mutationen · Trisomie · Mendelsche": 36,
-        "Dna · Einfhrungsphase · Hauptphase": 35,
-        "Dominant Rezessiv · Dominant · Mutationen": 31,
-        "Transkription · Ablauf · Information Erlutern": 28,
-        "Welt · Verfahren · Verantwortung": 20,
-        "Kosysteme · Artenvielfalt · Biodiversitt": 19,
-        "Verfahren · Organismen · Plasmide": 18,
-        "Gentests · Gene · Hinweise Gene": 16,
-        "Genetische Variation · Variation · Evolutive Entwicklung": 15,
-        "Hauptphase · Prozent · Entstehung": 15
+        "Ursachen · Regulation · Gentests": 165,
+        "Kein Thema (Ausreißer)": 150,
+        "Regulation · Erkenntnisgewinnung · Fortpflanzung Entwicklung": 141,
+        "Anregungen · Molekulargenetik · Leitthema": 102,
+        "Basiskonzept · Lebens Biologie · Code Lebens": 80,
+        "Wiederholung · Aminosuresequenz · Merkmal": 59,
+        "Klassenstufe · Klassische · Themenfeld": 42,
+        "Molekulare · Biomolekle · Biomolekle Molekulare": 34,
+        "Fachinhalte · Individualitt · Zellzyklus": 31,
+        "Verbindliche Vorschlge · Basisbegriffe Verbindliche · Inhalte Basisbegriffe": 30,
+        "Entscheidungen · Fachinhalte · Nervenzellen": 29,
+        "Niveau · Leistungskurs · Angepasstheit": 26,
+        "Modifikationen · Phnotyp · Jahrgang": 19,
+        "Transgener Organismen · Transgener · Biomolekle": 18,
+        "Themenfelder · Reproduktion · Klassen": 17,
+        "Proteine · Chromosomen Dna · Basiskonzept": 17,
+        "Entscheidungsfindung · Tests · Risiken": 16,
+        "Erschlieungsfelder · Wahlbereich · Genotyp Phnotyp": 15
       },
       "bbox_2d": [
         [
-          -0.0424,
-          11.6143
+          2.0476,
+          15.2479
         ],
         [
-          -6.5554,
-          1.9397
+          1.6711,
+          7.2839
         ]
       ],
       "bbox_3d": [
         [
-          0.796,
-          9.0015
+          -1.6195,
+          10.1612
         ],
         [
-          4.5701,
-          10.9159
+          7.4194,
+          11.0166
         ],
         [
-          1.1706,
-          6.2275
+          -5.1383,
+          1.3168
         ]
       ]
     },
     "Gerechtigkeit": {
       "concept": "Gerechtigkeit",
       "n_docs": 1343,
-      "n_outliers": 385,
+      "n_outliers": 277,
       "subjects": {
         "Ethik, Philo": 826,
         "Sozialkunde": 399,
@@ -601,7 +604,7 @@
         "Saarland": 132,
         "Rheinland-Pfalz": 120,
         "Niedersachsen": 110,
-        "Unbekannt": 82,
+        "KMK": 82,
         "Nordrhein-Westfalen": 62,
         "Sachsen-Anhalt": 62,
         "Bayern": 52,
@@ -613,67 +616,67 @@
         "Schleswig-Holstein": 18
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 385,
-        "Soziale · Sozialer · Sozialer Gerechtigkeit": 63,
-        "Glck · Ethik · Freiheit": 63,
-        "Werte Normen · Legalitt · Normen": 62,
-        "Iii · Formen Gerechtigkeit · Bezogen": 62,
-        "Marktwirtschaft · Sozialen Marktwirtschaft · Sozialen": 52,
-        "Partizipation · Verantwortliches Handeln · Verteilungsgerechtigkeit": 46,
-        "Recht · Recht Gerechtigkeit · Funktionen": 44,
-        "Unterricht · Fcherverbindenden · Bereiche": 44,
-        "Medial · Entscheiden · Beurteilen Entscheiden": 41,
-        "Verantwortungsvollen · Gerechten Verantwortungsvollen · Hinblick": 34,
-        "Moralischen · Eigene · Moral": 33,
-        "Politik · Politischen · Politische": 33,
-        "Freiheit · Philosophische · Verantwortung": 32,
-        "Themenfelder · Klassenstufe · Strken": 29,
-        "Behandlung · Gerechtes Handeln · Werte": 28,
-        "Ziel · Handeln · Miteinander": 27,
-        "Strafe · Menschenrechte · Strafen": 27,
-        "Freundschaft · Herausarbeiten · Erfolg": 24,
-        "Neue · Digitalen · Digitale": 24,
-        "Leistung · Begriffe Gerechtigkeit · Verhltnis": 23,
-        "Medien Kommunikation · Kommunikation · Gestaltet": 22,
-        "Iii · Ethik Iii · Iii Gerechtigkeit": 19,
-        "Europischen · Globalisierung · Union": 19,
-        "Afb · Standards · Anforderungen Gerecht": 16,
-        "Methodenkompetenz · Eth Gerechtigkeit · Eth": 16,
-        "Lediglich · Einzelner · Allein": 15,
-        "Bergang · Oberstufe · Gymnasium": 15,
-        "Courage · Begriffe · Definieren": 15,
-        "Gerechtigkeit Fairness · Ungleichheit · Merkmale": 15,
-        "Sozialstaates · Leistungsgerechtigkeit · Zugleich": 15
+        "Kein Thema (Ausreißer)": 277,
+        "Strafe · Ungerecht · Gesetze": 94,
+        "Wahrnehmen · Sozialer · Wahrnehmen Hineinversetzen": 93,
+        "Mensch · Begriffe · Leben": 83,
+        "Grundrechte · Wahlbereich · Eth": 72,
+        "Moral · Allgemeine Ethik · Allgemeine": 60,
+        "Formen · Wohlstandsverteilung · Wahlbereich": 59,
+        "Medien Kommunikation · Kommunikation · Konflikte": 56,
+        "Bezug · Ordnungsmanahmen · Familie": 40,
+        "Politischen · Versus · Fachkonzepts": 38,
+        "Iii · Ethik Iii · Achtung": 37,
+        "Behandelten · Demokratie · Revolution": 30,
+        "Konfliktregelung · Begrndungen · Sprache": 30,
+        "Staatlicher Herrschaft · Begrndung · Staatlicher": 29,
+        "Hinblick · Welt Ethischmoralische · Entscheiden Handeln": 28,
+        "Wahrnehmen Hineinversetzen · Hineinversetzen · Hineinversetzen Interpretieren": 25,
+        "Anforderungen · Fcher · Natur": 24,
+        "Vermittelten · Konzepte · Medial Vermittelten": 24,
+        "Klassenstufe · Kenntnisse · Prfung": 23,
+        "Konomischen · Partizipationsmglichkeiten · Marktwirtschaft": 23,
+        "Problemlagen · Kontroversen · Entscheidungen": 22,
+        "Freundschaft · Konflikt · Verantwortung Ehrlichkeit": 21,
+        "Marktwirtschaft · Sozialen Marktwirtschaft · Aktiv": 20,
+        "Bestimmung · Prfen · Nehmen": 19,
+        "Lebensverhltnisse · Lebensverhltnisse Lebensumfeld · Entscheidung": 19,
+        "Bewusst · Rechts · Blick": 19,
+        "Konfliktbewltigung Interessenausgleich · Konfliktbewltigung · Akteure": 17,
+        "Einfhrungsphase · Arbeit · Strken": 16,
+        "Tugenden · Moralphilosophie · Angewandten Ethik": 15,
+        "Kategorien · Wasser · Prognosen": 15,
+        "Themenbereich · Wirtschaftlichen · Politische": 15
       },
       "bbox_2d": [
         [
-          -2.4597,
-          9.3486
+          4.9129,
+          15.6556
         ],
         [
-          -3.581,
-          18.5447
+          4.4574,
+          12.397
         ]
       ],
       "bbox_3d": [
         [
-          -2.6568,
-          7.209
+          10.864,
+          18.383
         ],
         [
-          1.3964,
-          15.2067
+          5.5169,
+          11.4885
         ],
         [
-          2.4451,
-          15.0825
+          0.7758,
+          7.5563
         ]
       ]
     },
     "Glück": {
       "concept": "Glück",
       "n_docs": 661,
-      "n_outliers": 134,
+      "n_outliers": 181,
       "subjects": {
         "Ethik, Philo": 656,
         "Sozialkunde": 3,
@@ -685,7 +688,7 @@
         "Niedersachsen": 52,
         "Mecklenburg-Vorpommern": 50,
         "Sachsen-Anhalt": 41,
-        "Unbekannt": 24,
+        "KMK": 24,
         "Bayern": 23,
         "Hessen": 22,
         "Hamburg": 21,
@@ -698,54 +701,51 @@
         "Nordrhein-Westfalen": 2
       },
       "topics": {
-        "Moral · Glck Moral · Analysieren": 145,
-        "Kein Thema (Ausreißer)": 134,
-        "Glcksvorstellungen · Glcklich · Gut": 51,
-        "Wnsche · Bedrfnisse · Wohlstand": 35,
-        "Sinn · Beitrag Leitperspektive · Leitperspektive": 30,
-        "Konsum · Glck Konsum · Dinge": 30,
-        "Ende · Kompetenzerwerb · Zukunft": 26,
-        "Definieren · Sachkompetenz · Selbstverwirklichung Glck": 24,
-        "Eher · Zufriedenheit · Zufall": 23,
-        "Selbstverwirklichung · Fremdbestimmung · Zunchst": 22,
-        "Glck Glck · Leben Glck · Heute": 22,
-        "Lust · Aristoteles · Hedonismus": 21,
-        "Diskutieren · Prfen · Kultur": 19,
-        "Gute Leben · Gute · Leben Antike": 17,
-        "Glcklich · Glck Glcklich · Gefhl": 16,
-        "Lebenskunst · Auseinandersetzung · Sprachphilosophie": 16,
-        "Wahlbereich · Eigener · Mrchen": 15,
-        "Unglck · Untersuchen · Glcklich": 15
+        "Kein Thema (Ausreißer)": 181,
+        "Glck Glcklich · Etc · Glckliches Leben": 69,
+        "Aristoteles · Eher · Philosophie": 64,
+        "Religionen · Weltanschauungen · Religionen Weltanschauungen": 51,
+        "Wege · Wege Glck · Wnsche": 50,
+        "Antike · Darstellung · Glck Leben": 39,
+        "Werteorientierung · Lust · Moralisch": 39,
+        "Konsum · Glck Konsum · Dinge": 32,
+        "Wohlstand · Armut Wohlstand · Armut": 29,
+        "Contra · Grenzen · Aristoteles Epikur": 21,
+        "Umgang · Endlichkeit · Ziel": 21,
+        "Sinn · Beitrag Leitperspektive · Leitperspektive": 18,
+        "Zusammenlebens · Kontext · Glck Moral": 16,
+        "Verschiedenen · Grundbegriffe · Quellen Mrchen": 16,
+        "Glaube · Vielfalt · Lebensgestaltung": 15
       },
       "bbox_2d": [
         [
-          -8.8927,
-          5.7878
+          -13.1836,
+          -5.4685
         ],
         [
-          6.0014,
-          17.1374
+          1.3794,
+          9.77
         ]
       ],
       "bbox_3d": [
         [
-          -7.8776,
-          7.6561
+          -5.2324,
+          0.0237
         ],
         [
-          8.3245,
-          16.6854
+          7.7075,
+          13.4909
         ],
         [
-          1.7853,
-          9.3776
+          -11.6788,
+          -6.6246
         ]
       ]
     },
     "Handeln": {
       "concept": "Handeln",
       "n_docs": 3849,
-      "n_outliers": 1173,
+      "n_outliers": 815,
       "subjects": {
         "Ethik, Philo": 1640,
         "Sozialkunde": 1294,
@@ -767,125 +767,72 @@
         "Mecklenburg-Vorpommern": 156,
         "Berlin": 148,
         "Schleswig-Holstein": 98,
-        "Unbekannt": 88,
+        "KMK": 88,
         "Sachsen": 84,
         "Bremen": 70
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 1173,
-        "Politische · Politik · Politischen": 111,
-        "Biologie · Entwicklung · Evolution": 108,
-        "Gerechtigkeit · Gewalt · Konfliktregelung": 99,
-        "Naturwissenschaftliche · Natur · Naturwissenschaftlichen": 78,
-        "Digitalen · Digitale · Werkzeuge": 58,
-        "Konomische · Konomischen · Konomischer": 57,
-        "Verantwortung · Freiheit · Handelt": 53,
-        "Freiheit · Handlungsfreiheit · Willens": 53,
-        "Regeln · Gebote · Moralisch": 52,
-        "Gegenwart · Historischer · Vergangenheit": 50,
-        "Arbeit · Dabei · Arbeiten": 49,
-        "Religisen · Religion · Religionen": 48,
-        "Kapitel · Gegenstnde · Mittleren": 47,
-        "Argumente · Argumentieren Urteilen · Folgen Eigenen": 46,
-        "Basis · Unterschiedlichen Kontexten · Schlern": 44,
-        "Ethik · Deskriptive · Normative": 44,
-        "Kompetenzbereiche · Kompetenzen · Fnf Kompetenzbereiche": 43,
-        "Hemmende Handlungen · Hemmende · Nachhaltigkeitsfrdernde": 43,
-        "Handeln Menschen · Bercksichtigung · Beurteilen Historische": 43,
-        "Guten Handeln · Themenfelder · Fragen": 40,
-        "Beschreiben · Handlungen Entscheidungen · Personen": 38,
-        "Familie · Jugendstrafrechts · Handlung": 37,
-        "Schwerpunkte · Wirtschaftliches · Unten Aufgefhrten": 37,
-        "Verbraucherinnen · Verbraucher · Verbraucherinnen Verbraucher": 36,
-        "Potenziale · Dimensionen · Aspekten": 35,
-        "Denkmodelle · Philosophieunterricht · Rechtfertigen": 34,
-        "Klassenstufen · Relevanz · Knnen Relevanz": 34,
-        "Btv · Wertorientiertes · Wertorientiertes Handeln": 34,
-        "Konflikten · Interpretieren · Analysieren Interpretieren": 33,
-        "Wissen · Lernsituationen · Kompetenzzuwachs": 32,
-        "Ungleichheit · Sozialer · Sozialer Ungleichheit": 31,
-        "Sichorientieren · Sichorientieren Handeln · Auseinandersetzungen": 31,
-        "Schlerin · Eigene · Organisiert": 30,
-        "Bewertung · Risiken · Ernhrung": 30,
-        "Motive · Definieren · Analysieren Motive": 29,
-        "Systemisches · Globalen · Kologie": 28,
-        "Wirtschaftliches Handeln · Wirtschaftliches · Wirtschaft Recht": 27,
-        "Lernkompetenz · Angemessener · Gelingt": 27,
-        "Medial · Vermittelten · Medial Vermittelten": 27,
-        "Informationen · Zusammenfassen · Zuhren": 27,
-        "Reales Handeln · Simulatives · Gestalten": 27,
-        "Junge Menschen · Gymnasialen · Junge": 26,
-        "Dimension · Normative · Urteils Argumentationskompetenz": 26,
-        "Beurteilungskompetenz · Wirtschaftlichen · Wirtschaftlichen Handelns": 26,
-        "Orientierung Eigene · Ethische Normen · Handeln Ethische": 25,
-        "Verbinden · Gesellschaftswissenschaftliche · Lehren": 25,
-        "Urteilsbildung · Urteilsfhigkeit · Ethischer": 24,
-        "Ethischmoralischen · Ethikunterricht · Situationen": 24,
-        "Verantwortungsethik · Kant · Pflichtethik": 24,
-        "Sustainable · Nachhaltige · Nachhaltige Entwicklung": 24,
-        "Raum Zeit · Zeit Knnen · Politischen Gesellschaftlichen": 22,
-        "Europische · Europa · Europas": 22,
-        "Nichtregierungsorganisationen · Gesellschaftlicher Strukturen · Lebenswelten": 22,
-        "Region · Wirtschaftlichen · Soziale Marktwirtschaft": 22,
-        "Schwerpunkte · Pflanzen · Tiere": 21,
-        "Sucht · Bedrfnisse · Handlungskonzepte": 21,
-        "Psychologischen · Selbstkompetenz · Psychologische": 21,
-        "Weshalb · Folgen Handlung · Bedenken": 21,
-        "Brger · Staat · Brgerinnen": 21,
-        "Ordnungen · Problemorientiertes · Aktivitten": 21,
-        "Fachlichen · Entlang · Rolle Spielt": 20,
-        "Glck · Moral Analysieren · Wege": 20,
-        "Nationalsozialismus · Ideologie · Zweiter": 20,
-        "Verorten · Umfeld Erproben · Schulischen Umfeld": 20,
-        "Revolution · Franzsischen Revolution · Franzsischen": 20,
-        "Lebendigen · Groen · Eigenen Gesundheit": 20,
-        "Geschichte · Orientierung Handeln · Mgliche Orientierung": 19,
-        "Menschen Verschiedenen · Identitten · Einschlielich": 19,
-        "Sollen · Fhigkeiten · Einzuschtzen": 19,
-        "Solidaritt · Aufmerksam · Teamfhigkeit": 19,
-        "Ethik · Faches Ethik · Fach Ethik": 18,
-        "Internationalen · Kriege · Internationale": 18,
-        "Prgung · Wahr · Demokratischen": 17,
-        "Politik · Gesellschaftliche Teilhabe · Handeln Fach": 17,
-        "Stattfindet · Wirtschaftliches Handeln · Wirtschaftliches": 17,
-        "Normen Ethik · Sollen Moralisches · Normen": 16,
-        "Verstehen Deuten · Verantwortung · Untersuchen Zergliedern": 16,
-        "Motivation · Moralisch · Moralisch Relevanten": 16,
-        "Gewaltprvention · Erkannt · Adquat": 16,
-        "Person Deren · Nachfolgende · Bedrfnisse Achten": 16,
-        "Zusammenleben · Vlker · Ausbildung": 15,
-        "Welt · Besuch · Islam Judentum": 15,
-        "Spannungsfeld · Situationen · Normativitt Analysieren": 15
+        "Kein Thema (Ausreißer)": 815,
+        "Politischen · Wirtschaftliches · Wirtschaft": 447,
+        "Motive · Ethik · Situationen": 371,
+        "Ethik · Relevanz · Werte Normen": 332,
+        "Unternehmerisches · Wirtschaftlichen · Medien Eth": 210,
+        "Rechtlichen · Wirtschaft · Politischen": 191,
+        "Historischen · Historischer · Geschichte": 152,
+        "Guten · Sinn · Freiheit": 133,
+        "Naturwissenschaftliche · Politik · Kenntnisse": 117,
+        "Frage · Mensch · Lebens": 109,
+        "Theoriegeleitet · Fremden · Grunderfahrungen": 105,
+        "Wertorientiertes · Raumwirksamkeit Wirtschaftlichen · Raumwirksamkeit": 104,
+        "Bewertung · Aes · Historische": 97,
+        "Sprache · Wahlbereich · Wirklichkeit": 95,
+        "Situationen · Gerechtigkeit · Nationalsozialismus": 93,
+        "Vernunft · Freiheit · Relevanz": 85,
+        "Kriterien · Bne Kriterien · Kriterien Nachhaltigkeitsfrdernde": 62,
+        "Kriterien · Bne Kriterien · Nachhaltigkeitsfrdernde Hemmende": 62,
+        "Wirtschaftliches · Nutzen · Wirtschaftliches Bedarf": 33,
+        "Historischen · Gruppen · Akteure Gruppen": 31,
+        "Wirtschaftspolitik · Prozesse · Politischen": 24,
+        "Informationen · Menschenwrde · Leitidee": 23,
+        "Ethik · Normen Ethik · Moralisches Werte": 22,
+        "Vergangenheit · Menschliches · Gegenwart": 21,
+        "Ungleichheit · Sozialer Ungleichheit · Sozialer": 19,
+        "Methoden · Politischer · Akteure": 19,
+        "Wirtschaftliches · Wirtschaftliches Bedarf · Technologien": 16,
+        "Konomische · Konomischen · Wirtschaftlichen": 16,
+        "Wirtschaftlichen Minderheitenschutz · Kinderrechte Geo · Kinderrechte": 15,
+        "Sprache Denken · Psy · Freiheit": 15,
+        "Methoden Anwenden · Methoden · Anwenden": 15
       },
       "bbox_2d": [
         [
-          -8.5995,
-          28.9193
+          -3.3543,
+          9.2672
         ],
         [
-          -10.7092,
-          24.7247
+          3.85,
+          13.9939
         ]
       ],
       "bbox_3d": [
         [
-          -8.2597,
-          31.9412
+          0.4207,
+          11.4164
         ],
         [
-          -7.5891,
-          12.4749
+          -1.436,
+          5.7934
         ],
         [
-          -7.3758,
-          15.6385
+          4.3953,
+          10.6112
         ]
       ]
     },
     "Konkurrenz": {
       "concept": "Konkurrenz",
       "n_docs": 268,
-      "n_outliers": 7,
+      "n_outliers": 0,
       "subjects": {
         "Sozialkunde": 139,
         "Bio": 72,
@@ -907,44 +854,43 @@
         "Hamburg": 11,
         "Bayern": 10,
         "Sachsen": 10,
-        "Unbekannt": 9,
+        "KMK": 9,
         "Thüringen": 4,
         "Bremen": 2
       },
       "topics": {
-        "Wettbewerb · Konkurrenz · Marktwirtschaft": 194,
-        "Konkurrenz · Kologische · Beziehungen": 67,
-        "Kein Thema (Ausreißer)": 7
+        "Erlutern · Beziehungen · Kologische": 205,
+        "Marktwirtschaft · Kologische · Faktoren": 63
       },
       "bbox_2d": [
         [
-          -4.9487,
-          12.4728
+          1.6378,
+          10.5607
         ],
         [
-          -7.1771,
-          4.1471
+          1.5937,
+          7.4687
         ]
       ],
       "bbox_3d": [
         [
-          -6.4388,
-          11.4717
+          1.3027,
+          8.6594
         ],
         [
-          -3.956,
-          3.4722
+          1.7991,
+          9.383
         ],
         [
-          0.262,
-          9.3503
+          -1.879,
+          1.3711
         ]
       ]
     },
     "Kooperation": {
       "concept": "Kooperation",
       "n_docs": 569,
-      "n_outliers": 170,
+      "n_outliers": 110,
       "subjects": {
         "Sozialkunde": 236,
         "Geschichte": 122,
@@ -966,54 +912,52 @@
         "Saarland": 26,
         "Hamburg": 25,
         "Sachsen-Anhalt": 17,
-        "Unbekannt": 11,
+        "KMK": 11,
         "Bremen": 11,
         "Schleswig-Holstein": 2
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 170,
-        "Lernenden · Solidaritt · Teamfhigkeit": 49,
-        "Themen · Fchern · Geschichte": 46,
-        "Internationalen · Internationale · Internationaler": 40,
-        "Europischen · Deutschland · Integration": 39,
-        "Sozialkompetenz · Methodenkompetenz · Sachkompetenz": 38,
-        "Bewertung · Leistungen · Leistung": 36,
-        "Medien · Digitaler · Digitalen": 34,
-        "Demokratischen · Fachspezifischen · Fragen": 33,
-        "Kooperationen · Fachlichen · Schritten Kumulativen": 26,
-        "Anspruch · Ermglichen · Lerngruppe": 25,
-        "Herausarbeiten · Schule · Gewalt": 17,
-        "Frdern · Lernarrangements · Arbeitsformen": 16
+        "Sozialen · Soziale · Frdern": 124,
+        "Kein Thema (Ausreißer)": 110,
+        "Herausarbeiten · Gewalt · Erklrungsanstze": 63,
+        "Niveaustufen · Einzelnen · Jahrgangsstufe Niveaustufen": 55,
+        "Kalten · Integration · Europische": 55,
+        "Solidaritt · Rcksichtnahme · Rcksichtnahme Solidaritt": 47,
+        "Auswertung · Mndliche · Schriftliche": 38,
+        "Selbstregulation · Orientierungskompetenz Kommunikation · Orientierungskompetenz": 21,
+        "Modelle · Alltag · Digitaler": 20,
+        "Einzelnen · Kommunikation Alltagskonsum · Alltagskonsum": 18,
+        "Niveaustufen · Jahrgangsstufe Niveaustufen · Kommunikation Alltagskonsum": 18
       },
       "bbox_2d": [
         [
-          -10.2475,
-          19.4943
+          -4.2396,
+          4.0946
         ],
         [
-          -18.0543,
-          9.9184
+          10.3598,
+          18.1627
         ]
       ],
       "bbox_3d": [
         [
-          -7.7182,
-          17.8867
+          -1.0964,
+          4.1272
         ],
         [
-          -8.7015,
-          13.6724
+          3.4983,
+          10.1787
         ],
         [
-          -3.519,
-          17.7457
+          -0.0245,
+          6.6439
         ]
       ]
     },
     "Kultur": {
       "concept": "Kultur",
       "n_docs": 1466,
-      "n_outliers": 408,
+      "n_outliers": 130,
       "subjects": {
         "Geschichte": 636,
         "Ethik, Philo": 421,
@@ -1035,72 +979,63 @@
         "Sachsen-Anhalt": 68,
         "Thüringen": 66,
         "Berlin": 53,
-        "Unbekannt": 43,
+        "KMK": 43,
         "Schleswig-Holstein": 29,
         "Bremen": 13
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 408,
-        "Natur · Mensch · Technik": 90,
-        "Historische · Historischer · Gegenwart": 76,
-        "Stadt · Wirtschaftliche · Arbeiten": 69,
-        "Ministerium Bildung · Ministerium · Bildung Wissenschaft": 61,
-        "Politische · Politische Kultur · Politischen": 55,
-        "Internet · Vielfalt · Ethik": 46,
-        "Antike · Antike Kultur · Antike Kulturen": 46,
-        "Islam · Beschreiben · Ausbreitung": 45,
-        "Weimarer · Republik · Weimarer Republik": 40,
-        "Leben Ethik · Gemeinschaft Leben · Gemeinschaft": 38,
-        "Europa · Europischen · Europas": 35,
-        "Lebensverhltnisse · Diversitt · Inklusion": 34,
-        "Darstellungen · Verschiedener Kulturen · Quellen": 33,
-        "Religionsunterricht · Englisch · Musik": 33,
-        "Eigenen Identitt · Urteilsbildung · Orientierungs": 32,
-        "Leben Mitin · Mitin · Mitin Kulturen": 32,
-        "Polis · Freier · Gtterwelt": 27,
-        "Grundlagen · Europischen · Antike": 26,
-        "Bilder · Jeweiligen · Kunst": 25,
-        "Zusammenleben · Religion Kultur · Reichtum": 24,
-        "Religionen Weltanschauungen · Religionen · Weltanschauungen": 22,
-        "Schlern · Leistungsbewertung · Lesen": 21,
-        "Zielen · Interkulturellen Bildung · Erbe": 21,
-        "Revolution · Franzsischen Revolution · Franzsischen": 20,
-        "Weltbildern · Pluralitt · Religionen": 19,
-        "Perspektiven · Bereiche · Thematische": 18,
-        "Lernbereich · Wahlbereich · Ustd": 18,
-        "Beurteilen · Verschiedenen Epochen · Ergebnisse": 18,
-        "Wahr · Prgung · Nehmen": 17,
-        "Erkenntnis · Individuum · Historischen": 17
+        "Landes · Kulturkreis · Politisches": 211,
+        "Grundschule · Ethik · Umgang": 174,
+        "Polis · Antike · Beispielen": 150,
+        "Kein Thema (Ausreißer)": 130,
+        "Armut · Unterschiedliche · Religionen Weltanschauungen": 118,
+        "Religionsunterricht · Antike · Bezge": 100,
+        "Wahlbereich · Weimarer · Hellenismus": 97,
+        "Fragen · Weltbilder · Perspektive": 79,
+        "Beispiele · Lernziel · Frhen": 49,
+        "Antike · Erlutern · Gott": 40,
+        "Normen · Perspektiven · Individualitt": 36,
+        "Mitin · Leben Mitin · Ethik": 34,
+        "Lebensverhltnisse · Diversitt · Inklusion": 32,
+        "Moderne · Lernbereich · Wertewandel": 30,
+        "Religionsunterricht · Englisch · Deutsch": 28,
+        "Lernbereich · Heutiger · Schlern": 28,
+        "Griechen · Rmer · Antike": 26,
+        "Wirklichkeit · Weltanschauungen · Fragen": 25,
+        "Fcher · Einschtzen · Weiterbildung": 25,
+        "Mitin · Leben Mitin · Sozialer": 20,
+        "Fragen · Besuch · Historische": 18,
+        "Anthropologie · Kontroversen · Feste": 16
       },
       "bbox_2d": [
         [
-          -6.6544,
-          17.2472
+          -0.2128,
+          11.1073
         ],
         [
-          -8.0441,
-          13.2767
+          -1.9351,
+          8.2524
         ]
       ],
       "bbox_3d": [
         [
-          -6.0181,
-          18.2748
+          -4.3465,
+          5.9499
         ],
         [
-          -4.1121,
-          15.1912
+          7.2405,
+          14.0539
         ],
         [
-          -3.6818,
-          5.1935
+          -2.147,
+          5.8653
         ]
       ]
     },
     "Mensch": {
       "concept": "Mensch",
       "n_docs": 4852,
-      "n_outliers": 1051,
+      "n_outliers": 1067,
       "subjects": {
         "Ethik, Philo": 2159,
         "Bio": 1287,
@@ -1120,131 +1055,76 @@
         "Sachsen": 270,
         "Niedersachsen": 256,
         "Hamburg": 245,
-        "Unbekannt": 207,
+        "KMK": 207,
         "Sachsen-Anhalt": 192,
         "Thüringen": 189,
         "Berlin": 188,
         "Bremen": 132
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 1051,
-        "Evolution · Evolution Menschen · Entwicklung": 382,
-        "Moral · Ethik · Argumentieren": 215,
-        "Revolution · Brgerrechte · Menschen Brgerrechte": 188,
-        "Quellen · Quellen Darstellungen · Knnen": 134,
-        "Geschichte · Gegenwart · Geschichtsbewusstsein": 127,
-        "Tieren · Tiere · Tier": 122,
-        "Religionen · Religion · Religise": 104,
-        "Kosystem · Kosysteme · Kosystemen": 104,
-        "Demokratie · Politik · Demokratischen": 91,
-        "Natur · Mensch Natur · Umgangs": 84,
-        "Menschenrechte · Menschenwrde · Rechte Menschen": 81,
-        "Wirtschaft · Lebenswelt · Ddr": 79,
-        "Psychologie · Erleben · Verhalten": 76,
-        "Wirtschaftlichen · Politischen · Soziokulturellen": 61,
-        "Sexualitt · Hygiene · Pubertt": 61,
-        "Philosophie · Frage · Fragen": 58,
-        "Mensch System · Blutgruppen · Erkrankungen": 56,
-        "Bestimmung · Kulturwesen · Anthropologie": 49,
-        "Biologischer · Aspekt · Systeme": 48,
-        "Region · Klima · Klimawandel": 48,
-        "Glck · Glcklich · Schpfungsmythen": 47,
-        "Vergangenheit · Vergangenheit Stellen · Gegenwart": 46,
-        "Systemebenen · Funktion · Organe": 45,
-        "Themenbereich · Stunden · Themenbereich Iii": 44,
-        "Inhaltsfelder · Inhaltsfeld · Aktiven": 43,
-        "Technik · Natur Technik · Natur": 43,
-        "Biologie · Natur · Erhaltung": 41,
-        "Lernziele · Jahrgangsstufe · Orientierung": 40,
-        "Argumentativen · Willensfreiheit · Perspektiven": 39,
-        "Arbeit · Freizeit · Unterscheiden": 37,
-        "Teilhabe · Streben · Herrschaft": 37,
-        "Schpfung · Weltbilder · Gottes": 34,
-        "Lebewesen · Mensch Lebewesen · Lebewesen Mensch": 33,
-        "Pluralistischen · Gesellschaft · Pluralistischen Gesellschaft": 33,
-        "Raum · Nutzung · Entstehen": 33,
-        "Medien · Digitale · Digitalen": 32,
-        "Begegnen · Argumentativ · Urteilen": 31,
-        "Vermittelten Welt · Vermittelten · Medial Vermittelten": 31,
-        "Stadt · Mittelalterlichen · Lndlichen": 31,
-        "Modul · Kompetenzschwerpunkte · Kompetenzentwicklung": 29,
-        "Anthropologie · Themen · Religionsunterricht": 28,
-        "Geschichten · Erklrungen · Erfassen": 28,
-        "Technik · Technischer · Macht": 26,
-        "Digitalisierung · Intelligenz · Digitaler": 26,
-        "Gefhle · Ende Schuljahrgang · Schuljahrgang": 25,
-        "Handeln Menschen · Historischen · Bercksichtigung": 24,
-        "Anspruch · Achtung · Menschen Eigene": 23,
-        "Verpflichtet · Bestimmungen · Recht": 22,
-        "Wahlbereich · Ustd · Lernbereich": 22,
-        "Liebe · Sexualitt · Liebe Sexualitt": 22,
-        "Wrde · Wrde Menschen · Menschenwrde": 22,
-        "Handelt · Verantwortung · Bercksichtigung": 21,
-        "Individualitt · Personseinpersonalitt · Gefhl": 21,
-        "Erwerben Fhigkeit · Grundfragen · Leitfrage": 21,
-        "Verhaltensweisen · Menschen Soziale · Sexualverhalten": 21,
-        "Naturwissenschaftliche · Naturwissenschaftlichen · Rationalitt": 21,
-        "Fragen · Sinn · Fragen Menschen": 20,
-        "Wertschtzung · Verschiedenen Kulturen · Prgenden": 20,
-        "Themenfelder · Themenfeld · Erlass": 20,
-        "Respekt Gegenber · Zhlen · Kooperieren": 20,
-        "Lebenswelten · Inhaltsfeld · Antike": 20,
-        "Kultur · Kategorisieren · Kulturwesen": 19,
-        "Regionalen Globalen · Einzigartigkeit · Umwelt Wirtschaft": 19,
-        "Lernen · Lernens · Nachgehen": 19,
-        "Tollen · Tollen Menschen · Reaktionen": 19,
-        "Erkenntnis · Wissen · Erkennen": 19,
-        "Rollen · Geschlechterrollen · Familie": 19,
-        "Krfte · Lebensrume · Blutkreislauf": 19,
-        "Lebewesen · Organen · Sek": 18,
-        "Alten · Mythen · Entstanden": 17,
-        "Kritisch Reflektieren · Ausgehend · Entwickeln Fhigkeit": 17,
-        "Menschen Analysieren · Rumliche · Normen Entscheidungssituationen": 17,
-        "Vertreten · Formulieren · Spannungsverhltnis": 17,
-        "Metallzeit · Jungsteinzeit · Nutzbarmachung": 17,
-        "Grundfragen · Mensch Welt · Geht Mensch": 17,
-        "Prgung · Realisieren · Aufgeschlossen": 17,
-        "Neurobiologie · Gentechnik · Reproduktionsmedizin": 17,
-        "Qualitt · Kriterien · Aufgabenstellungen": 16,
-        "Reduziert · Selbstbewusst · Getragen": 16,
-        "Sachverhalten · Inhaltsfelder · Nutzung Fachlicher": 16,
-        "Nervensystem · Sinnesorgane · Bau Funktion": 16,
-        "Rolle Spielen · Spielen · Lgen": 15,
-        "Nietzsche · Jahrhunderts · Kants": 15,
-        "Land · Hunger · Wasser": 15,
-        "Gegenber Natur · Exkursion · Teil": 15
+        "Kein Thema (Ausreißer)": 1067,
+        "Tier · Moral · Natur Technik": 663,
+        "Funktion · System · Einfluss": 571,
+        "Erde · Abhngigkeit · Modernen": 433,
+        "Revolution · Brgerrechte · Historischen": 290,
+        "Vergangenheit · Quellen · Gegenwart": 234,
+        "Basiskonzepts · Einfluss · Grundlegende": 198,
+        "Denken · Schwerpunkte · Jahrgangsstufe": 182,
+        "Probleme · Sprache · Bezge": 158,
+        "Homo · Wahrnehmen · Medien": 150,
+        "Wrde · Positionen · Heit": 112,
+        "Themenbereich · Stellen · Anthropologie": 109,
+        "Religion · Bse · Liebe": 83,
+        "Evolutive · Evolutive Entwicklung · Lernbereich": 78,
+        "Wasser · Naturraum · Auswerten": 61,
+        "Region · Modernen · Siegermchte": 57,
+        "Historischen · Historischen Welt · Revolution": 52,
+        "Religion · Energie · Antworten": 48,
+        "Entstehung · Erbinformation · Fortpflanzung": 46,
+        "Geschlecht · Meiose · Bestimmt": 40,
+        "Seuchen · Bakterien · Stunden": 33,
+        "Gefhle · Siegermchte · Bildquellen": 30,
+        "Immunsystem · Gesundheitsfrderung · Lernabschnitt": 21,
+        "Bnt Denk · Interpretieren Glckliches · Umwelt Bnt": 20,
+        "Philosophie · Philosophie Hinweiseaspektebeispiele · Musik": 18,
+        "Gottes · Gott · Sohn": 18,
+        "Resultierende · Pgw · Zusammenlebens Kulturen": 18,
+        "Grundfragen · Goldenen Regel · Philosophie": 16,
+        "Homo · Sinnfrage · Dimensionen Menschseins": 16,
+        "Ethisch · Stellenwert Technik · Stellenwert": 15,
+        "Mittelpunkt Inhaltsfeldes · Inhaltsfeldes · Mittelpunkt": 15
       },
       "bbox_2d": [
         [
-          -2.2744,
-          19.5173
+          -2.1995,
+          12.1724
         ],
         [
-          -5.181,
-          10.2024
+          -3.5503,
+          7.0877
         ]
       ],
       "bbox_3d": [
         [
-          -4.2556,
-          15.0539
+          0.7485,
+          11.12
         ],
         [
-          3.9502,
-          16.6946
+          -4.3783,
+          4.1961
         ],
         [
-          -3.572,
-          5.4421
+          1.152,
+          8.9063
         ]
       ]
     },
     "Moral": {
       "concept": "Moral",
-      "n_docs": 1265,
-      "n_outliers": 314,
+      "n_docs": 1264,
+      "n_outliers": 180,
       "subjects": {
-        "Ethik, Philo": 1176,
+        "Ethik, Philo": 1175,
         "Geschichte": 30,
         "Sozialkunde": 27,
         "Bio": 25,
@@ -1255,11 +1135,11 @@
         "Baden-Württemberg": 269,
         "Hessen": 119,
         "Niedersachsen": 101,
-        "Rheinland-Pfalz": 91,
+        "Rheinland-Pfalz": 90,
         "Sachsen-Anhalt": 65,
         "Bayern": 62,
         "Berlin": 51,
-        "Unbekannt": 41,
+        "KMK": 41,
         "Schleswig-Holstein": 40,
         "Bremen": 31,
         "Hamburg": 29,
@@ -1269,62 +1149,62 @@
         "Thüringen": 5
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 314,
-        "Recht · Gerechtigkeit · Recht Moral": 119,
-        "Religionen · Weltanschauungen · Religionen Weltanschauungen": 91,
-        "Unterscheiden · Normative · Deskriptive": 69,
-        "Glck · Glck Moral · Grundbegriffe": 61,
-        "Argumentieren Reflektieren · Hineinversetzen · Wahrnehmen Hineinversetzen": 50,
-        "Urteilsbildung · Absicht · Lebenswelt": 48,
-        "Pflicht · Pflichten · Kants": 35,
-        "Moralische Werte · Werte Normen · Regeln": 34,
-        "Bercksichtigung · Instanz · Wesen": 33,
-        "Angewandten · Angewandten Ethik · Bewerten": 32,
-        "Orientierung · Position · Ethischmoralischen": 32,
-        "Syllogismus · Beschftigung · Wichtigen Beitrag": 31,
-        "Ethik Moral · Ethik Ethik · Perspektiven": 31,
-        "Einordnen · Bewerten · Wertvorstellungen": 30,
-        "Ethik Hauptphase · Moral Moral · Begrndung Moral": 29,
-        "Natur · Natur Umweltschutzes · Ethik Natur": 29,
-        "Kompetenz · Hermeneutische · Hermeneutische Kompetenz": 28,
-        "Moralischer Argumentation · Argumentation · Prinzip": 27,
-        "Argumentativ · Sachverhalte · Problematisieren": 27,
-        "Dimension · Wahrheit · Lge": 25,
-        "Dilemmata · Miteinander · Friedlichen": 21,
-        "Sexualitt · Fragen · Liebe Sexualitt": 19,
-        "Themen · Frage Problemstellungen · Frage": 18,
-        "Kunst · Diskursethik · Schule": 16,
-        "Urteilsfhigkeit · Urteilen · Wer": 16
+        "Kein Thema (Ausreißer)": 180,
+        "Vernunft · Perspektive · Vorstellungen": 125,
+        "Phnomenologische · Religisen · Hermeneutische": 85,
+        "Medial Vermittelten · Vermittelten · Vermittelten Welt": 80,
+        "Wertvorstellungen · Schuljahrgang · Wirklichkeit": 77,
+        "Stunden · Lust · Frage": 63,
+        "Zusammenhngen · Leistungskurs · Historischen": 59,
+        "Verhltnisses · Pflichten · Verhltnisses Glck": 50,
+        "Dimension · Moralvorstellungen · Guten Lebens": 49,
+        "Staat · Historischer · Bundesrepublik": 42,
+        "Entscheidung · Entscheidungen · Pflicht": 41,
+        "Allgemeine Ethik · Diskurs · Allgemeine": 40,
+        "Regel · Goldene · Goldene Regel": 39,
+        "Fortschritt · Stehen · Mittelpunkt": 37,
+        "Religionen Weltanschauungen · Weltanschauungen · Religionen": 36,
+        "Recherchieren · Perspektive · Religiser": 35,
+        "Interpretieren Argumentieren · Interpretieren · Hineinversetzen Interpretieren": 32,
+        "Begriff Guten · Gewissen Vernunft · Voneinander Abgrenzen": 31,
+        "Ethischmoralischen · Menschenwrde Menschenrechte · Normen Menschenwrde": 28,
+        "Themenbereich · Urteilsbildung · Prozess": 27,
+        "Moralitt · Antike · Etc": 22,
+        "Einordnen · Wertvorstellungen Historischen · Zusammenhngen Einordnen": 20,
+        "Fragen Ethik · Kommunikation · Chancen": 18,
+        "Pflichten · Status · Schuld": 17,
+        "Glck Bio · Argumentieren Glck · Bio": 16,
+        "Aussagen · Sachverhalte · Deskriptive": 15
       },
       "bbox_2d": [
         [
-          -6.0119,
-          13.0164
+          4.1723,
+          12.0695
         ],
         [
-          -4.77,
-          13.9909
+          2.8287,
+          12.1336
         ]
       ],
       "bbox_3d": [
         [
-          -5.4737,
-          12.5904
+          -4.4915,
+          2.3811
         ],
         [
-          -5.8131,
-          13.7843
+          -1.7118,
+          5.0453
         ],
         [
-          -4.6482,
-          7.2638
+          5.9397,
+          13.457
         ]
       ]
     },
     "Norm": {
       "concept": "Norm",
       "n_docs": 1134,
-      "n_outliers": 320,
+      "n_outliers": 211,
       "subjects": {
         "Ethik, Philo": 731,
         "Sozialkunde": 178,
@@ -1346,70 +1226,68 @@
         "Schleswig-Holstein": 33,
         "Sachsen": 27,
         "Hessen": 26,
-        "Unbekannt": 20,
+        "KMK": 20,
         "Bremen": 20,
         "Sachsen-Anhalt": 18
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 320,
-        "Moralische · Moral · Moralischen": 143,
-        "Philosophie · Erster · Bringen": 45,
-        "Wirklichkeit · Auseinandersetzung · Verstndnis": 43,
-        "Jeweiligen · Konomischen · Verstehen": 39,
-        "Knnen · Schule · Unterschiedlichen": 38,
-        "Bewertungskriterien · Entscheidungen · Handlungsoptionen": 36,
-        "Politischen · Politische · Demokratie": 35,
-        "Sozialisation · Verhaltensregeln · Gruppe": 34,
-        "Ber · Sozialen · Iii": 33,
-        "Religise · Fach · Religisen": 33,
-        "Sachverhalte · Persnlich · Herkunft": 33,
-        "Regeln · Regeln Normen · Rituale": 28,
-        "Handeln Werte · Moralisches Handeln · Guten": 28,
-        "Kerncurriculum · Genannten · Abiturprfung": 25,
-        "Werturteile · Werturteile Anhand · Geltender Normen": 25,
-        "Technische · Mgliche · Bereiche": 24,
-        "Gerechtigkeit · Grundgesetz · Rechtliche Normen": 23,
-        "Btv Konfliktbewltigung · Konfliktbewltigung Interessenausgleich · Konfliktbewltigung": 21,
-        "Schuljahrgnge · Rolle · Insofern": 19,
-        "Bezug Unterricht · Gesellschaftswissenschaftlicher · Unterricht": 19,
-        "Ethik · Anthropologie · Reflexionsbereich": 19,
-        "Nachdenklichkeit · Religis · Bewusst": 18,
-        "Materialien · Leistungen · Technischen": 18,
-        "Historischer · Angemessenheit · Innere": 18,
-        "Argumente · Ethischen · Berprfen": 17
+        "Kein Thema (Ausreißer)": 211,
+        "Bne · Politische · Institutionen": 150,
+        "Regeln · Schuljahrgnge · Nmlich": 83,
+        "Europische · Regeln · Verschiedenen": 64,
+        "Handlungsoptionen · Bewertungskriterien · Aussagen": 61,
+        "Moralisches · Reflexionsbereich · Gelten": 53,
+        "Regeln · Verschiedenen · Religionen": 49,
+        "Menschenwrde · Wahrnehmen Hineinversetzen · Hineinversetzen": 49,
+        "Moralische Werte · Technische · Werte Inhaltsbezogene": 43,
+        "Lernbereich · Philosophie · Gltigkeit": 40,
+        "Syllogismus · Glck · Praktische Syllogismus": 38,
+        "Religion · Religion Werte · Sozialisation": 37,
+        "Werturteile · Differenziert · Besitzen": 28,
+        "Gewissen · Bewertungsrelevanten · Bewertungsrelevanten Sachverhalten": 27,
+        "Bne Werte · Werte Entscheidungssituationen · Entscheidungssituationen": 25,
+        "Berprfung Fhigkeiten · Einschtzung Berprfung · Einschtzung": 23,
+        "Konventionen · Rechtliche Moralische · Moralische Konventionen": 22,
+        "Auseinandersetzung · Ethischer · Wirklichkeit Wahrheitsansprchen": 21,
+        "Geschichte · Umgang Konflikten · Grundlegende Werte": 21,
+        "Regeln · Rituale · Regeln Rituale": 20,
+        "Verfassen · Gelten · Individualitt": 19,
+        "Rahmenthema · Gymnasium · Verwendung": 17,
+        "Widerstand · Homo · Europische": 17,
+        "Regeln · Tod · Hflichkeit": 16
       },
       "bbox_2d": [
         [
-          -4.2913,
-          14.1604
+          -1.2943,
+          8.3371
         ],
         [
-          -4.3076,
-          20.2669
+          -6.8214,
+          2.9083
         ]
       ],
       "bbox_3d": [
         [
-          -3.6562,
-          11.6336
+          -1.2987,
+          5.5163
         ],
         [
-          1.1906,
-          16.9742
+          10.706,
+          17.9002
         ],
         [
-          -9.1157,
-          6.3354
+          -1.0004,
+          5.5852
         ]
       ]
     },
     "Rationalität": {
       "concept": "Rationalität",
-      "n_docs": 283,
-      "n_outliers": 21,
+      "n_docs": 279,
+      "n_outliers": 52,
       "subjects": {
-        "Ethik, Philo": 108,
         "Sozialkunde": 107,
+        "Ethik, Philo": 104,
         "Geschichte": 29,
         "Bio": 25,
         "Psychologie": 14
@@ -1417,8 +1295,8 @@
       "states": {
         "Hessen": 38,
         "Sachsen": 36,
-        "Rheinland-Pfalz": 30,
-        "Unbekannt": 28,
+        "KMK": 28,
+        "Rheinland-Pfalz": 26,
         "Niedersachsen": 25,
         "Schleswig-Holstein": 21,
         "Hamburg": 20,
@@ -1433,42 +1311,44 @@
         "Thüringen": 2
       },
       "topics": {
-        "Welt · Wissenschaft · Mensch": 77,
-        "Positionen · Urteile · Rahmen": 76,
-        "Entwickeln · Fhigkeit · Interessen": 70,
-        "Entscheidungen · Kologie · Formulieren": 22,
-        "Kein Thema (Ausreißer)": 21,
-        "Auseinandersetzung · Inhalte · Bereich": 17
+        "Position · Fragen · Diskurse": 64,
+        "Kein Thema (Ausreißer)": 52,
+        "Setzen · Weiterentwicklung · Identitt": 37,
+        "Interessen Denkweisen · Denkweisen · Urteilsfhigkeit": 35,
+        "Sinnvorstellungen · Rationalitt · Deutungsmuster": 34,
+        "Wissenschaft · Begrndete · Kritik": 25,
+        "Kriterien · Politische Wirtschaftliche · Kologie Reflektierte": 17,
+        "Kologie Reflektierte · Formulieren Vertreten · Reflektierte Politische": 15
       },
       "bbox_2d": [
         [
-          2.2059,
-          11.8781
+          5.96,
+          12.2633
         ],
         [
-          0.485,
-          7.2232
+          -9.9075,
+          -1.3898
         ]
       ],
       "bbox_3d": [
         [
-          3.1764,
-          7.6546
+          2.2225,
+          8.841
         ],
         [
-          3.8599,
-          7.9606
+          3.7865,
+          8.2168
         ],
         [
-          5.4624,
-          12.7408
+          12.0034,
+          16.2162
         ]
       ]
     },
     "Ursache": {
       "concept": "Ursache",
       "n_docs": 1277,
-      "n_outliers": 249,
+      "n_outliers": 281,
       "subjects": {
         "Sozialkunde": 514,
         "Geschichte": 364,
@@ -1490,76 +1370,70 @@
         "Sachsen": 49,
         "Sachsen-Anhalt": 47,
         "Berlin": 44,
-        "Unbekannt": 36,
+        "KMK": 36,
         "Mecklenburg-Vorpommern": 35,
         "Schleswig-Holstein": 28
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 249,
-        "Globalisierung · Wirtschaft · Konomische": 112,
-        "Gesellschaftliche · Ungleichheit · Debatten": 60,
-        "Revolution · Franzsischen · Franzsischen Revolution": 53,
-        "Imperialismus · Weltkrieg · Weltkriegs": 51,
-        "Symptome · Behandlung · Ursachen Symptome": 49,
-        "Migration · Wandels · Wandel": 43,
-        "Demokratie · Politischen · Parteien": 39,
-        "Terrorismus · Internationalen · Konflikt": 38,
-        "Variabilitt · Mutation · Lernenden Knnen": 35,
-        "Historischer · Ereignisse · Ereignisse Prozesse": 33,
-        "Biodiversitt · Nutzung · Nachhaltige": 28,
-        "Variation · Genetische · Fortpflanzung": 28,
-        "Religion · Reformation · Folgen": 27,
-        "Darstellung · Undoder · Materialien": 26,
-        "Historischen · Argumentation · Geschichte": 25,
-        "Zuwanderung Deutschland · Zuwanderung · Push Pullfaktoren": 25,
-        "Geeignete · Daten · Modelle": 25,
-        "Organismen · Lebewesen · Abstammung": 24,
-        "Historische · Reform · Fortschritt": 23,
-        "Union · Europischen · Europischen Union": 23,
-        "Gewalt · Konflikten · Dafr": 22,
-        "Jugendlichen · Formen · Sachkompetenz Erklren": 22,
-        "Bercksichtigen · Differenzierte · Langfristige": 21,
-        "Inflation · Beurteilungskompetenz · Geldes": 21,
-        "Konflikten · Diskriminierung · Ursachen Konflikten": 20,
-        "Sozialverhalten · Fitness · Exogene": 20,
-        "Verhalten · Proximate · Ultimate Ursachen": 20,
-        "Antisemitismus · Nationalsozialismus · Israel": 19,
-        "Industrialisierung · Industrielle · Revolution": 18,
-        "Nato · Bundeswehr · Uno": 17,
-        "Lebensbedingungen · Historischer · Gesellschaften": 16,
-        "Angst · Erklrungen · Identifizieren": 15,
-        "Iii · Zusammenhang · Begrnden": 15,
-        "Arbeitslosigkeit · Arbeit · Weiteren": 15
+        "Kein Thema (Ausreißer)": 281,
+        "Revolution · Merkmale · Gewalt": 100,
+        "Kalten · Revolution · Kreuzzge": 88,
+        "Ebene · Variabilitt · Verhalten": 78,
+        "Evolution · Biodiversitt · Information": 68,
+        "Identifizieren · Gewalt · Konflikten": 57,
+        "Legen · Erwerben · Erwerben Fachkompetenz": 53,
+        "Benennen · Revolution · Kommunikation Bewertung": 49,
+        "Historischer · Anlsse Verlaufsformen · Historischen": 39,
+        "Kausale · Funktionale · Verhalten": 34,
+        "Revolution · Darstellung · Ziele": 32,
+        "Kommunikation · Historischer · Verteilung": 29,
+        "Behandlung · Symptome · Prvention": 29,
+        "Verhalten · Proximate Ultimate · Proximate": 28,
+        "Aggression · Neid · Nationalistische": 27,
+        "Iii · Problem · Migration": 26,
+        "Armut · Bne · Zuwanderung": 25,
+        "Kologischen · Umweltpolitik · Umwelt": 25,
+        "Konflikte · Beurteilungskompetenz · Klimanderungen": 25,
+        "Verschiebungen · Grafen · Jeweiligen Grafen": 25,
+        "Variabilitt · Merkmalen · Variabilitt Erlutern": 22,
+        "Erklren Sonnenknig · Sonnenknig · Revolution Erklren": 20,
+        "Motive · Differenziert · Urteilen": 19,
+        "Kinderrechte · Jugendkriminalitt · Unterschiedliche": 18,
+        "Stunden · Geeignete · Geeignete Modelle": 18,
+        "Anstze · Fremdenfeindlichkeit · Anstze Konfliktlsung": 17,
+        "Internationalen · Sachverhalt · Sachverhalte": 15,
+        "Motivation · Nervensystem · Kommunikation": 15,
+        "Grundzgen · Theorie · Globalisierung": 15
       },
       "bbox_2d": [
         [
-          -6.0213,
-          5.9414
+          -3.5747,
+          10.0014
         ],
         [
-          -3.3832,
-          5.3509
+          7.698,
+          13.7813
         ]
       ],
       "bbox_3d": [
         [
-          -3.8579,
-          5.221
+          1.6278,
+          13.2427
         ],
         [
-          1.3192,
-          7.2022
+          1.7291,
+          7.3514
         ],
         [
-          -4.0937,
-          2.296
+          0.0052,
+          5.1884
         ]
       ]
     },
     "Verhalten": {
       "concept": "Verhalten",
       "n_docs": 1155,
-      "n_outliers": 0,
+      "n_outliers": 308,
       "subjects": {
         "Bio": 445,
         "Psychologie": 244,
@@ -1577,7 +1451,7 @@
         "Sachsen": 79,
         "Berlin": 69,
         "Baden-Württemberg": 65,
-        "Unbekannt": 63,
+        "KMK": 63,
         "Nordrhein-Westfalen": 58,
         "Thüringen": 53,
         "Mecklenburg-Vorpommern": 52,
@@ -1586,40 +1460,59 @@
         "Niedersachsen": 36
       },
       "topics": {
-        "Menschen · Beschreiben · Eigene": 1087,
-        "Lernen · Menschen · Handelns": 30,
-        "Fhigkeiten · Lernen · Angemessen": 19,
-        "Angemessen · Fhigkeiten · Gegenber": 19
+        "Kein Thema (Ausreißer)": 308,
+        "Erleben · Anwenden · Verantwortung": 79,
+        "Stoffgebundene · Ethik · Handeln": 62,
+        "Evolution · Lernbereich · Interessen": 57,
+        "Psychologie · Politischen · Bewertung": 56,
+        "Manahmen · Fortpflanzung · Bau": 53,
+        "Sozialer · Ursachen · Individuellen": 51,
+        "Gesundheit · Bewertung · Historische": 46,
+        "Auswirkungen · Ableiten · Krper": 43,
+        "Verwandtschaft · Evolution · Anregungen": 40,
+        "Nahrungserwerb · Berleben Individuums · Berleben": 40,
+        "Aggression · Ableiten · Interpretieren": 35,
+        "Psychologie · Analogen Digitalen · Analogen": 30,
+        "Theorien · Kognitive · Lerntheorien": 29,
+        "Tradition · Ethik · Werten": 28,
+        "Argumentativ · Mechanik · Fremden": 28,
+        "Erklrungen · Ursachen · Kausale": 28,
+        "Ableiten · Interessen · Argumentativ": 28,
+        "Psychologie · Theoriebildung · Forschungstechniken": 28,
+        "Verfahren · Entstehung · Evolution": 26,
+        "Politischen · Interessen · Schutz": 21,
+        "Lernbereich · Lebensrumen · Tiere": 20,
+        "Abweichenden · Ebene · Ursachen": 19
       },
       "bbox_2d": [
         [
-          -8.2961,
-          18.3231
+          -2.7869,
+          10.7363
         ],
         [
-          -16.3596,
-          21.4184
+          3.2746,
+          10.3987
         ]
       ],
       "bbox_3d": [
         [
-          -8.1599,
-          16.1639
+          -0.0705,
+          10.7689
         ],
         [
-          -5.3847,
-          11.6289
+          -0.4004,
+          8.7073
         ],
         [
-          -4.1817,
-          15.765
+          5.5817,
+          9.923
         ]
       ]
     },
     "Vorurteil": {
       "concept": "Vorurteil",
       "n_docs": 285,
-      "n_outliers": 0,
+      "n_outliers": 19,
       "subjects": {
         "Ethik, Philo": 177,
         "Sozialkunde": 47,
@@ -1644,38 +1537,39 @@
         "Mecklenburg-Vorpommern": 2
       },
       "topics": {
-        "Vorurteilen · Vorurteile · Klischees": 270,
-        "Kritisch · Historische · Haltungen": 15
+        "Klischees · Formen · Formen Stereotypen": 209,
+        "Hinblick · Vernderung · Soziale": 57,
+        "Kein Thema (Ausreißer)": 19
       },
       "bbox_2d": [
         [
-          0.3993,
-          8.3651
+          10.0609,
+          16.8485
         ],
         [
-          7.2388,
-          16.3804
+          6.7407,
+          13.4613
         ]
       ],
       "bbox_3d": [
         [
-          -10.2658,
-          -2.5173
+          9.0734,
+          13.9087
         ],
         [
-          -5.3112,
-          -0.0185
+          -1.4413,
+          3.7432
         ],
         [
-          3.1203,
-          8.9958
+          -0.2709,
+          3.2205
         ]
       ]
     },
     "Wert": {
       "concept": "Wert",
       "n_docs": 2135,
-      "n_outliers": 556,
+      "n_outliers": 507,
       "subjects": {
         "Ethik, Philo": 1003,
         "Bio": 498,
@@ -1693,7 +1587,7 @@
         "Sachsen-Anhalt": 104,
         "Nordrhein-Westfalen": 87,
         "Mecklenburg-Vorpommern": 78,
-        "Unbekannt": 75,
+        "KMK": 75,
         "Hessen": 75,
         "Berlin": 70,
         "Bremen": 59,
@@ -1702,104 +1596,62 @@
         "Schleswig-Holstein": 31
       },
       "topics": {
-        "Kein Thema (Ausreißer)": 556,
-        "Experiment · Fhren · Enzymaktivitt": 100,
-        "Politischen · Demokratie · Politischer": 99,
-        "Prinzipien · Argumente · Ethischen": 71,
-        "Informationen · Digitale · Medien": 64,
-        "Aussagen · Normative Aussagen · Sachverhalte": 54,
-        "Sinn · Sittlichen · Handeln Knnen": 49,
-        "Freundschaft · Wirtschaftliche · Liebe": 48,
-        "Gesellschaft · Unterricht · Pluralistischen": 46,
-        "Religionen · Religisen · Weltanschauungen": 46,
-        "Europischen · Union · Europische": 44,
-        "Geschichte · Historische · Quellen": 43,
-        "Moralvorstellungen · Wert Moralvorstellungen · Judentum": 42,
-        "Ber · Fach Werte · Obwohl": 40,
-        "Verhalten · Evolution · Ursachen": 38,
-        "Erschlieen · Freiheit Gerechtigkeit · Eigene Wertvorstellungen": 36,
-        "Moralisches Handeln · Handeln Werte · Wichtig Werte": 35,
-        "Entscheidungen · Gesellschaftlicher · Sachinformationen Werten": 32,
-        "Biologische · Biologischen · Biologische Sachverhalte": 32,
-        "Religionsunterricht · Englisch · Katholischer": 31,
-        "Natur · Technik · Arten": 30,
-        "Menschenwrde · Wrde · Idee": 30,
-        "Medial · Vermittelten · Argumentieren Reflektieren": 29,
-        "Ausgewertet · Persnlich Relevanten · Relevanten Werten": 29,
-        "Angewandten · Angewandten Ethik · Eigenen": 27,
-        "Kosystem · Nutzung · Erfassen": 27,
-        "Freundschaft · Konfliktsituationen · Herausarbeiten": 26,
-        "Sozialisation · Mensch · Jahrgangsstufe": 24,
-        "Dadurch · Frdert · Verwendung": 24,
-        "Wandel · Gesellschaft · Nachfolgenden": 23,
-        "Beitrag Leitperspektive · Leitperspektive · Beitrag": 23,
-        "Glck · Glcksvorstellungen · Leben": 22,
-        "Niederschsischen · Demokratischen Grundordnung · Erleben": 22,
-        "Konomischen · Formuliert · Konkretisiert": 22,
-        "Wirksamkeit · Grundgesetz · Konzepte": 22,
-        "Diskutieren · Beitrag Leitperspektive · Beitrag": 22,
-        "Inklusion · Diversitt · Lebensverhltnisse": 21,
-        "Philosophie · Phi · Denken": 20,
-        "Beteiligt · Personen · Oberstufe": 19,
-        "Gelten · Lernen · Gelingendes Leben": 18,
-        "Biologie · Bercksichtigt · Forschung": 18,
-        "Herstellung · Mithilfe · Erkenntnisprozesse": 18,
-        "Religion Werte · Sexualitt · Religion": 17,
-        "Kriterien · Beziehen · Zusammenhngen": 17,
-        "Religise · Fach · Religisen Weltanschaulichen": 16,
-        "Daten · Gesetzmigkeiten · Trends": 16,
-        "Zielen · Kultur · Region": 16,
-        "Kindern · Unserer · Kindern Jugendlichen": 16,
-        "Immanuel · Elementare · Gesellschaftswissenschaften": 15
+        "Kein Thema (Ausreißer)": 507,
+        "Sachverhalte · Fhren · Handlungsoptionen": 298,
+        "Ethik · Schuljahrgnge · Freiheit": 170,
+        "Fragen · Ethik · Regeln": 168,
+        "Daten · Gesellschaftlicher · Verhalten": 116,
+        "Moralische · Moralische Normen · Moral": 80,
+        "Religionsunterricht · Deutsch · Katholischer Religionsunterricht": 64,
+        "Leitperspektive · Personale · Beitrag Leitperspektive": 53,
+        "Selbstbestimmung · Wahrnehmen Hineinversetzen · Hineinversetzen": 50,
+        "Religionsunterricht · Traditionen · Katholischer Religionsunterricht": 50,
+        "Konsumgter · Ernhrung · Zugrundeliegenden Normen": 45,
+        "Sachverhalte · Bewertungsrelevante · Bewertungsrelevante Sachverhalte": 44,
+        "Handlungsoptionen · Bewertungskriterien · Folgen": 42,
+        "Versus · Daten · Verfahren": 40,
+        "Religionsunterricht · Geschichte · Latein": 38,
+        "Politischen · Deutschland · Fuabdruck": 38,
+        "Lebensverhltnisse · Diversitt Inklusion · Governance": 33,
+        "Moralvorstellungen · Islam Judentum · Judentum": 30,
+        "Moralischen Normen · Moralischen · Herausarbeiten": 28,
+        "Sprache · Schuljahrgnge · Freiheit": 28,
+        "Technik · Mglichkeiten · Welt": 25,
+        "Prinzipien · Regeln Untersuchen · Handeln Regeln": 24,
+        "Traditionen · Sachverhalten · Entscheidungsprozesse": 23,
+        "Experiment · Hemmung · Phwert": 23,
+        "Erfassung · Arten · Planen": 22,
+        "Vergangenheit · Historische · Fotosynthese": 20,
+        "Regeln Normen · Regeln · Mobbing": 16,
+        "Sinn · Weltanschauungen · Stunden": 15,
+        "Anforderungsniveau · Beitrag Leitperspektive · Leitperspektive": 15,
+        "Lernbereich · Wahrheit · Pflichtmodul": 15,
+        "Fachwissen · Wechselwirkung · Fotosyntheserate": 15
       },
       "bbox_2d": [
         [
-          -7.7874,
-          13.9899
+          2.0206,
+          13.407
         ],
         [
-          -4.9612,
-          9.8589
+          -4.3081,
+          4.0891
         ]
       ],
       "bbox_3d": [
         [
-          -4.2655,
-          19.7993
+          4.4942,
+          13.1118
         ],
         [
-          -6.9021,
-          6.9336
+          -6.1717,
+          1.8536
         ],
         [
-          -1.5202,
-          12.4077
+          -0.1824,
+          6.3295
         ]
       ]
     }
-  },
-  "bbox_2d_global": [
-    [
-      -14.1212,
-      21.381
-    ],
-    [
-      -14.7091,
-      25.0979
-    ]
-  ],
-  "bbox_3d_global": [
-    [
-      -12.484,
-      20.7909
-    ],
-    [
-      -11.0943,
-      19.5854
-    ],
-    [
-      -12.2042,
-      20.1738
-    ]
-  ]
+  }
 }

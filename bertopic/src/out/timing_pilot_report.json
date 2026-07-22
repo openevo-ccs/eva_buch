@@ -1,0 +1,146 @@
+[
+  {
+    "concept": "Vorurteil",
+    "n_docs": 285,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.4770974267740729,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.44263289416651325,
+        "agreement_jaccard": 0.04093567251461988
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.4505777755199805,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4370881810901808,
+        "agreement_jaccard": 0.07309941520467837
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.6222321629097074,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.4337721358978566,
+        "agreement_jaccard": 0.0604288499025341
+      },
+      "12": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.6202707041979796,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.5031731891900459,
+        "agreement_jaccard": 0.09108187134502925
+      },
+      "15": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.6202707041979796,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.5046440603044405,
+        "agreement_jaccard": 0.13105435156518747
+      },
+      "20": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.6202707041979796,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4647439810080427,
+        "agreement_jaccard": 0.10883212934296524
+      }
+    }
+  },
+  {
+    "concept": "Kultur",
+    "n_docs": 1466,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.4269609381925479,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.39756134492458395,
+        "agreement_jaccard": 0.11977554179566563
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.4012616197031824,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.40762881074521,
+        "agreement_jaccard": 0.047930283224400884
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.5174884798569427,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.46740591737562776,
+        "agreement_jaccard": 0.09238237205213468
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.5462992879721092,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4351033114812574,
+        "agreement_jaccard": 0.07558557713356474
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.6162841455916022,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.45024804957219217,
+        "agreement_jaccard": 0.08877586122168166
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.6275481883580531,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.43465021178845326,
+        "agreement_jaccard": 0.10150181956439085
+      }
+    }
+  },
+  {
+    "concept": "Mensch",
+    "n_docs": 4852,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.46536765185982687,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.385693852308083,
+        "agreement_jaccard": 0.05555555555555558
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.5583182744759362,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.42891133696676986,
+        "agreement_jaccard": 0.09836887971562895
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.6497403196602032,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.36246526461442613,
+        "agreement_jaccard": 0.10472805106448035
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.7068344303943292,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.38185858176787435,
+        "agreement_jaccard": 0.09487622800316299
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.6653815072977735,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.3656343224912514,
+        "agreement_jaccard": 0.09270111553393286
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.668520350363406,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.40110619764420585,
+        "agreement_jaccard": 0.08505784585302265
+      }
+    }
+  }
+]

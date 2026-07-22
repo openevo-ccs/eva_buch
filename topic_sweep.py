@@ -211,25 +211,55 @@ def sweep_concept(
     return report
 
 
+def _load_existing_reports(out_path: Optional[Path]) -> dict[str, dict[str, Any]]:
+    if out_path is None or not out_path.exists():
+        return {}
+    with open(out_path, "r", encoding="utf-8") as f:
+        existing = json.load(f)
+    return {r["concept"]: r for r in existing if "concept" in r}
+
+
+def _write_reports(out_path: Path, reports_by_concept: dict[str, dict[str, Any]]) -> None:
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    tmp_path = out_path.with_suffix(out_path.suffix + ".tmp")
+    with open(tmp_path, "w", encoding="utf-8") as f:
+        json.dump(list(reports_by_concept.values()), f, ensure_ascii=False, indent=2)
+    tmp_path.replace(out_path)
+
+
 def run_full_sweep(
     concepts: list[str],
     csv_path: Path,
     k_values: tuple[int, ...] = DEFAULT_K_VALUES,
     cache_dir: Path = ROOT / "bertopic" / "src" / "cache",
+    out_path: Optional[Path] = None,
+    resume: bool = True,
 ) -> list[dict[str, Any]]:
     """Run sweep_concept() across multiple concepts, reusing one global
     embeddings matrix (the expensive shared step) across all of them.
+
+    If out_path is given, the report is written after every concept
+    (not just once at the end) so a mid-run interruption loses at most
+    one concept's worth of work. If resume is True and out_path already
+    holds results, concepts already present there are skipped.
     """
     log = _null_logger()
     df = bt.load_source_csv(csv_path, log)
     embeddings_all = bt.compute_or_load_embeddings(
         df[bt.COLUMN_MAP["text"]].astype(str).tolist(), cache_dir, log, force=False,
     )
-    reports = []
+    reports_by_concept = _load_existing_reports(out_path) if resume else {}
     for concept in concepts:
+        if concept in reports_by_concept:
+            print(f"--- skipping {concept} (already in {out_path}) ---")
+            continue
         print(f"--- sweeping {concept} ---")
-        reports.append(sweep_concept(concept, df, embeddings_all, k_values, cache_dir, log))
-    return reports
+        reports_by_concept[concept] = sweep_concept(
+            concept, df, embeddings_all, k_values, cache_dir, log,
+        )
+        if out_path is not None:
+            _write_reports(out_path, reports_by_concept)
+    return [reports_by_concept[c] for c in concepts if c in reports_by_concept]
 
 
 def main() -> None:
@@ -240,6 +270,8 @@ def main() -> None:
                     help="Comma-separated topic counts to sweep.")
     p.add_argument("--csv", type=Path, default=ROOT / "keyword_search" / "out" / "results.csv")
     p.add_argument("--out", type=Path, default=ROOT / "bertopic" / "src" / "out" / "topic_sweep_report.json")
+    p.add_argument("--no-resume", action="store_true",
+                    help="Ignore any existing --out file and re-sweep every requested concept.")
     args = p.parse_args()
 
     concepts = bt.DEFAULT_CONCEPTS if args.concepts == "all" else [
@@ -247,11 +279,7 @@ def main() -> None:
     ]
     k_values = tuple(int(k) for k in args.k_values.split(",") if k.strip())
 
-    reports = run_full_sweep(concepts, args.csv, k_values)
-
-    args.out.parent.mkdir(parents=True, exist_ok=True)
-    with open(args.out, "w", encoding="utf-8") as f:
-        json.dump(reports, f, ensure_ascii=False, indent=2)
+    run_full_sweep(concepts, args.csv, k_values, out_path=args.out, resume=not args.no_resume)
     print(f"Wrote sweep report -> {args.out}")
 
 

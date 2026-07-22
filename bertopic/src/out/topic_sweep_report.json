@@ -1,0 +1,1058 @@
+[
+  {
+    "concept": "Anpassung",
+    "n_docs": 738,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.43330872648414515,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.4658870824729801,
+        "agreement_jaccard": 0.07043343653250772
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.41702976358896787,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4872977433389544,
+        "agreement_jaccard": 0.06798245614035085
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.39755598940582926,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.4724300526158459,
+        "agreement_jaccard": 0.05393112410656268
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.4035532527244787,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.46729595173055244,
+        "agreement_jaccard": 0.040497857835319125
+      },
+      "15": {
+        "bertopic_n_real_topics": 13,
+        "bertopic_coherence_cv": 0.3898633239937892,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.4409801335867169,
+        "agreement_jaccard": 0.04498425551057127
+      },
+      "20": {
+        "bertopic_n_real_topics": 13,
+        "bertopic_coherence_cv": 0.3898633239937892,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.5088063333727314,
+        "agreement_jaccard": 0.04641316715620119
+      }
+    }
+  },
+  {
+    "concept": "Anthropologie",
+    "n_docs": 312,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.38719738942563925,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.486811287317743,
+        "agreement_jaccard": 0.10139318885448917
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.399610938319045,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.503274629484819,
+        "agreement_jaccard": 0.06547414287352367
+      },
+      "10": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.430277560242264,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.5065398020076507,
+        "agreement_jaccard": 0.10854341736694681
+      },
+      "12": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.430277560242264,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.499003993846915,
+        "agreement_jaccard": 0.09818664307828394
+      },
+      "15": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.430277560242264,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.5289113162642781,
+        "agreement_jaccard": 0.10952626664700969
+      },
+      "20": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.430277560242264,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4765246095733686,
+        "agreement_jaccard": 0.12539928252002558
+      }
+    }
+  },
+  {
+    "concept": "Bedürfnis",
+    "n_docs": 640,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.4147775500133077,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.48446640512202704,
+        "agreement_jaccard": 0.07565789473684209
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.361269706076341,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.46280425527713226,
+        "agreement_jaccard": 0.01754385964912279
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.4186975320569656,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.4350639686989116,
+        "agreement_jaccard": 0.04873294346978558
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.40278435884729585,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.466179704938461,
+        "agreement_jaccard": 0.03349282296650714
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.44502997378526626,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.4279453699761489,
+        "agreement_jaccard": 0.04594820384294066
+      },
+      "20": {
+        "bertopic_n_real_topics": 15,
+        "bertopic_coherence_cv": 0.46115656368731517,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4811203928871553,
+        "agreement_jaccard": 0.062057103543171635
+      }
+    }
+  },
+  {
+    "concept": "Emotion",
+    "n_docs": 267,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.5523890940426818,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.5310799589303641,
+        "agreement_jaccard": 0.05458089668615984
+      },
+      "7": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.5523890940426818,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.538378979509921,
+        "agreement_jaccard": 0.09161793372319689
+      },
+      "10": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.5523890940426818,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.4671366447441622,
+        "agreement_jaccard": 0.13289760348583882
+      },
+      "12": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.5523890940426818,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4983013397754099,
+        "agreement_jaccard": 0.11340442609792456
+      },
+      "15": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.5523890940426818,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.49431275562362986,
+        "agreement_jaccard": 0.07407407407407411
+      },
+      "20": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.5523890940426818,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.49650836702863127,
+        "agreement_jaccard": 0.11111111111111116
+      }
+    }
+  },
+  {
+    "concept": "Evolution",
+    "n_docs": 1085,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.5247035309841519,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.3947776316336412,
+        "agreement_jaccard": 0.02631578947368418
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.4151190827831414,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4322213069484086,
+        "agreement_jaccard": 0.02631578947368418
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.38078026510983726,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.4493757559506756,
+        "agreement_jaccard": 0.02339181286549705
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.4333960736747109,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.44930027537647005,
+        "agreement_jaccard": 0.019138755980861222
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.4451419816763535,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.39516399774846983,
+        "agreement_jaccard": 0.05096073517126149
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.5069694286608349,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.436363012842777,
+        "agreement_jaccard": 0.06184255789111579
+      }
+    }
+  },
+  {
+    "concept": "Freiheit",
+    "n_docs": 1236,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.3834325108935984,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.33649319677058753,
+        "agreement_jaccard": 0.05409356725146197
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.30621207709359066,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.3822143010549115,
+        "agreement_jaccard": 0.05670221304896228
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.4137925703760046,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.3792661492303476,
+        "agreement_jaccard": 0.05014715437832054
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.4555459651985538,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.41297786586261725,
+        "agreement_jaccard": 0.06611001657441284
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.4838240980515229,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.3885676073127587,
+        "agreement_jaccard": 0.06781660032434025
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.5442508125618848,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.42055172753047093,
+        "agreement_jaccard": 0.05791827349591729
+      }
+    }
+  },
+  {
+    "concept": "Gefühl",
+    "n_docs": 354,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.40584994264913316,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.4686293160796315,
+        "agreement_jaccard": 0.03508771929824558
+      },
+      "7": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.40584994264913316,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.49483381341920085,
+        "agreement_jaccard": 0.05458089668615984
+      },
+      "10": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.40584994264913316,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.4722506531399662,
+        "agreement_jaccard": 0.07407407407407411
+      },
+      "12": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.40584994264913316,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4388631834087629,
+        "agreement_jaccard": 0.09161793372319689
+      },
+      "15": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.40584994264913316,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.4487888606047908,
+        "agreement_jaccard": 0.03508771929824558
+      },
+      "20": {
+        "bertopic_n_real_topics": 3,
+        "bertopic_coherence_cv": 0.40584994264913316,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4347827785553801,
+        "agreement_jaccard": 0.07636738906088751
+      }
+    }
+  },
+  {
+    "concept": "Gen",
+    "n_docs": 991,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.44168770974608773,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.47490302121077743,
+        "agreement_jaccard": 0.05409356725146197
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.2871654911355545,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.5068685249512932,
+        "agreement_jaccard": 0.02729044834307992
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.3773491472496695,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.5031845891208746,
+        "agreement_jaccard": 0.05534533501509764
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.3676289464230546,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.48225128481461627,
+        "agreement_jaccard": 0.05122431747818743
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.36213684668151574,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.4679857537280581,
+        "agreement_jaccard": 0.05437613641948004
+      },
+      "20": {
+        "bertopic_n_real_topics": 17,
+        "bertopic_coherence_cv": 0.4196141553072068,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4587976600149111,
+        "agreement_jaccard": 0.05475626783221027
+      }
+    }
+  },
+  {
+    "concept": "Gerechtigkeit",
+    "n_docs": 1343,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.5159207878796985,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.42103660661783665,
+        "agreement_jaccard": 0.04093567251461988
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.4905062116704318,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4372697372070075,
+        "agreement_jaccard": 0.03606237816764132
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.38074626302863607,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.42046221397181627,
+        "agreement_jaccard": 0.05393112410656268
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.3645562684951231,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4145421170023768,
+        "agreement_jaccard": 0.04412546517809674
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.3967662061118659,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.42695213004936655,
+        "agreement_jaccard": 0.05103444886726619
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.3940585477589502,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.43954310873120106,
+        "agreement_jaccard": 0.06461264099360886
+      }
+    }
+  },
+  {
+    "concept": "Glück",
+    "n_docs": 661,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.5334588118487905,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.4002229487907905,
+        "agreement_jaccard": 0.03947368421052627
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.3919995004120757,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.41011432394274766,
+        "agreement_jaccard": 0.03606237816764132
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.4314430756406516,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.41263828538781955,
+        "agreement_jaccard": 0.041585445094216994
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.46238173770279084,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.3786997454295194,
+        "agreement_jaccard": 0.04891015417331204
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.44569543234632075,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.43056523893829796,
+        "agreement_jaccard": 0.07484397267679001
+      },
+      "20": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.44569543234632075,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.5137354368141347,
+        "agreement_jaccard": 0.07902108211705736
+      }
+    }
+  },
+  {
+    "concept": "Handeln",
+    "n_docs": 3849,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.3450345026275765,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.4104418016775074,
+        "agreement_jaccard": 0.01315789473684209
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.34339738060505515,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.3944027390382159,
+        "agreement_jaccard": 0.008771929824561394
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.40341619063039785,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.3795588545501326,
+        "agreement_jaccard": 0.042999656002751956
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.4549289291607897,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4038198156488038,
+        "agreement_jaccard": 0.04475091471995494
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.49741950505297206,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.40385653326941956,
+        "agreement_jaccard": 0.039338542434517655
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.4848240357189617,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.42083302159710395,
+        "agreement_jaccard": 0.054840403382036086
+      }
+    }
+  },
+  {
+    "concept": "Konkurrenz",
+    "n_docs": 268,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 2,
+        "bertopic_coherence_cv": 0.5107405293217817,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.5214469144977747,
+        "agreement_jaccard": 0.14379084967320266
+      },
+      "7": {
+        "bertopic_n_real_topics": 2,
+        "bertopic_coherence_cv": 0.5107405293217817,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4213482230065867,
+        "agreement_jaccard": 0.11111111111111116
+      },
+      "10": {
+        "bertopic_n_real_topics": 2,
+        "bertopic_coherence_cv": 0.5107405293217817,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.42292041221273413,
+        "agreement_jaccard": 0.11111111111111116
+      },
+      "12": {
+        "bertopic_n_real_topics": 2,
+        "bertopic_coherence_cv": 0.5107405293217817,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4527923515997208,
+        "agreement_jaccard": 0.11111111111111116
+      },
+      "15": {
+        "bertopic_n_real_topics": 2,
+        "bertopic_coherence_cv": 0.5107405293217817,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.46529652251261666,
+        "agreement_jaccard": 0.11111111111111116
+      },
+      "20": {
+        "bertopic_n_real_topics": 2,
+        "bertopic_coherence_cv": 0.5107405293217817,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.466405322440483,
+        "agreement_jaccard": 0.11111111111111116
+      }
+    }
+  },
+  {
+    "concept": "Kooperation",
+    "n_docs": 569,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.4805535808567969,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.41515026438034264,
+        "agreement_jaccard": 0.01315789473684209
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.43165391664093805,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.3938229652171468,
+        "agreement_jaccard": 0.02631578947368418
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.3861084696179391,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.410888271843829,
+        "agreement_jaccard": 0.042235217673814156
+      },
+      "12": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.442086700227852,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4011650831502738,
+        "agreement_jaccard": 0.010526315789473672
+      },
+      "15": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.442086700227852,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.4629950955857777,
+        "agreement_jaccard": 0.01578947368421051
+      },
+      "20": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.442086700227852,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4349740329245318,
+        "agreement_jaccard": 0.02631578947368418
+      }
+    }
+  },
+  {
+    "concept": "Kultur",
+    "n_docs": 1466,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.4269609381925479,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.39756134492458395,
+        "agreement_jaccard": 0.11977554179566563
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.4012616197031824,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.40762881074521,
+        "agreement_jaccard": 0.047930283224400884
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.5174884798569427,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.46740591737562776,
+        "agreement_jaccard": 0.09238237205213468
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.5462992879721092,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4351033114812574,
+        "agreement_jaccard": 0.07558557713356474
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.6162841455916022,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.45024804957219217,
+        "agreement_jaccard": 0.08877586122168166
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.6275481883580531,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.43465021178845326,
+        "agreement_jaccard": 0.10150181956439085
+      }
+    }
+  },
+  {
+    "concept": "Mensch",
+    "n_docs": 4852,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.46536765185982687,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.385693852308083,
+        "agreement_jaccard": 0.05555555555555558
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.5583182744759362,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.42891133696676986,
+        "agreement_jaccard": 0.09836887971562895
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.6497403196602032,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.36246526461442613,
+        "agreement_jaccard": 0.10472805106448035
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.7068344303943292,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.38185858176787435,
+        "agreement_jaccard": 0.09487622800316299
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.6653815072977735,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.3656343224912514,
+        "agreement_jaccard": 0.09270111553393286
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.668520350363406,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.40110619764420585,
+        "agreement_jaccard": 0.08505784585302265
+      }
+    }
+  },
+  {
+    "concept": "Moral",
+    "n_docs": 1264,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.3080563661798986,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.3511431209372192,
+        "agreement_jaccard": 0.08505331957344342
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.3258121024924009,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.36718127717345955,
+        "agreement_jaccard": 0.044834307992202706
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.4369505444076299,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.38365752683367194,
+        "agreement_jaccard": 0.07418873982341474
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.5035910660364452,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.3853211580341949,
+        "agreement_jaccard": 0.07142633768020765
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.49493332826892206,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.400381702867226,
+        "agreement_jaccard": 0.05855324585974738
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.4559081020805944,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.423961410602158,
+        "agreement_jaccard": 0.05791827349591729
+      }
+    }
+  },
+  {
+    "concept": "Norm",
+    "n_docs": 1134,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.5646678996651107,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.41464324819145526,
+        "agreement_jaccard": 0.05409356725146197
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.44048092918621834,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4708457187755549,
+        "agreement_jaccard": 0.02631578947368418
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.510264500248344,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.44555812165480163,
+        "agreement_jaccard": 0.029239766081871312
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.4850588693238793,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4317344277130326,
+        "agreement_jaccard": 0.03880914407230194
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.5503849978165649,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.42657963221457523,
+        "agreement_jaccard": 0.038847117794486206
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.566844947620042,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4070424814993891,
+        "agreement_jaccard": 0.03970452446906739
+      }
+    }
+  },
+  {
+    "concept": "Rationalität",
+    "n_docs": 279,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.5814113587472594,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.49525952390564426,
+        "agreement_jaccard": 0.05555555555555558
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.5896371345276815,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4330898488762811,
+        "agreement_jaccard": 0.047930283224400884
+      },
+      "10": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.4930893875746461,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.44838512004385545,
+        "agreement_jaccard": 0.054302422723475345
+      },
+      "12": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.4930893875746461,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4843289685426448,
+        "agreement_jaccard": 0.07115828787655411
+      },
+      "15": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.4930893875746461,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.42540513139508174,
+        "agreement_jaccard": 0.06363949088407292
+      },
+      "20": {
+        "bertopic_n_real_topics": 7,
+        "bertopic_coherence_cv": 0.4930893875746461,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.43165056602660457,
+        "agreement_jaccard": 0.07017543859649122
+      }
+    }
+  },
+  {
+    "concept": "Ursache",
+    "n_docs": 1277,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.2807816052364645,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.434010680915686,
+        "agreement_jaccard": 0.0
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.3232943178896012,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.41347225100750423,
+        "agreement_jaccard": 0.008771929824561394
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.35865499473161033,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.42425914376663976,
+        "agreement_jaccard": 0.01754385964912279
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.33531654484307355,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4048239877376851,
+        "agreement_jaccard": 0.03880914407230194
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.3510458061134791,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.4510210280562968,
+        "agreement_jaccard": 0.04218880534670006
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.3092010251084668,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.455158915505023,
+        "agreement_jaccard": 0.05140043090181593
+      }
+    }
+  },
+  {
+    "concept": "Verhalten",
+    "n_docs": 1155,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.33979202580228507,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.3817294471130147,
+        "agreement_jaccard": 0.06871345029239767
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.3406942541250242,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.42224936831714405,
+        "agreement_jaccard": 0.01754385964912279
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.39188901825202765,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.45090914799161536,
+        "agreement_jaccard": 0.02469135802469137
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.3862960863066066,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.4163574963064522,
+        "agreement_jaccard": 0.054226475279106845
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.35659106687988823,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.454772928525537,
+        "agreement_jaccard": 0.043024227234753555
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.34443353496453133,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4175090598934247,
+        "agreement_jaccard": 0.07089964332916918
+      }
+    }
+  },
+  {
+    "concept": "Vorurteil",
+    "n_docs": 285,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.4770974267740729,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.44263289416651325,
+        "agreement_jaccard": 0.04093567251461988
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.4505777755199805,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4370881810901808,
+        "agreement_jaccard": 0.07309941520467837
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.6222321629097074,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.4337721358978566,
+        "agreement_jaccard": 0.0604288499025341
+      },
+      "12": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.6202707041979796,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.5031731891900459,
+        "agreement_jaccard": 0.09108187134502925
+      },
+      "15": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.6202707041979796,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.5046440603044405,
+        "agreement_jaccard": 0.13105435156518747
+      },
+      "20": {
+        "bertopic_n_real_topics": 10,
+        "bertopic_coherence_cv": 0.6202707041979796,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.4647439810080427,
+        "agreement_jaccard": 0.10883212934296524
+      }
+    }
+  },
+  {
+    "concept": "Wert",
+    "n_docs": 2135,
+    "k_values": {
+      "5": {
+        "bertopic_n_real_topics": 4,
+        "bertopic_coherence_cv": 0.3703710012288766,
+        "lda_n_topics": 5,
+        "lda_coherence_cv": 0.41930023666853733,
+        "agreement_jaccard": 0.04093567251461988
+      },
+      "7": {
+        "bertopic_n_real_topics": 6,
+        "bertopic_coherence_cv": 0.43046627139546395,
+        "lda_n_topics": 7,
+        "lda_coherence_cv": 0.4274175090973832,
+        "agreement_jaccard": 0.02729044834307992
+      },
+      "10": {
+        "bertopic_n_real_topics": 9,
+        "bertopic_coherence_cv": 0.32424915751097877,
+        "lda_n_topics": 10,
+        "lda_coherence_cv": 0.3884000499664936,
+        "agreement_jaccard": 0.04873294346978558
+      },
+      "12": {
+        "bertopic_n_real_topics": 11,
+        "bertopic_coherence_cv": 0.3857747946093459,
+        "lda_n_topics": 12,
+        "lda_coherence_cv": 0.44422858977728535,
+        "agreement_jaccard": 0.04475091471995494
+      },
+      "15": {
+        "bertopic_n_real_topics": 14,
+        "bertopic_coherence_cv": 0.3863674108715739,
+        "lda_n_topics": 15,
+        "lda_coherence_cv": 0.4236150374654456,
+        "agreement_jaccard": 0.05855324585974738
+      },
+      "20": {
+        "bertopic_n_real_topics": 19,
+        "bertopic_coherence_cv": 0.42676195272751055,
+        "lda_n_topics": 20,
+        "lda_coherence_cv": 0.43531147991130953,
+        "agreement_jaccard": 0.06486611265004616
+      }
+    }
+  }
+]

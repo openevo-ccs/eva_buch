@@ -250,6 +250,8 @@ Legend for subjects and topics on the right side.
 >   
 > **Notes about the BERTopic data analysis:**  
 > Why are there only three topics for the concept “Verhalten”? Make sure it is 10 topics.
+>
+> **2026-07-22 deviation, approved by Dustin — needs Susan's sign-off:** the "only three topics for Verhalten" bug is now root-caused: the original English-trained embedding model was producing undifferentiated clusters (fixed by switching to a genuinely multilingual model, METHODOLOGY.md §3). A full topic-count sweep (METHODOLOGY.md §4.4) then found Verhalten's true natural topic count is 22, not 10 — and the same undercounting affected nearly every concept above ~1,000 documents (Mensch's natural count is 90, for example). Rather than force everything down to 10, the production ceiling was raised to "up to 30 real topics + 1 outlier"; Verhalten and Evolution now run fully uncapped at their natural 22. This exceeds the "no more than ten" line above — flagging explicitly rather than silently overriding it. If Susan prefers the literal 10-topic cap after seeing the richer results, this is a one-line config change to revert (`DEFAULT_NR_TOPICS_CEILING` in `bertopic_pipeline_v2.py`).
 
 ---
 

@@ -1,0 +1,750 @@
+[
+  {
+    "concept": "Anpassung",
+    "n_docs": 738,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 13,
+      "20": 13
+    },
+    "bt_coh_by_k": {
+      "5": 0.433,
+      "7": 0.417,
+      "10": 0.398,
+      "12": 0.404,
+      "15": 0.39,
+      "20": 0.39
+    },
+    "lda_coh_by_k": {
+      "5": 0.466,
+      "7": 0.487,
+      "10": 0.472,
+      "12": 0.467,
+      "15": 0.441,
+      "20": 0.509
+    },
+    "bt_natural_topic_count": 13,
+    "bt_plateau_reached_at_K": 15,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 20,
+    "lda_best_coherence": 0.509,
+    "avg_agreement": 0.054
+  },
+  {
+    "concept": "Anthropologie",
+    "n_docs": 312,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 7,
+      "12": 7,
+      "15": 7,
+      "20": 7
+    },
+    "bt_coh_by_k": {
+      "5": 0.387,
+      "7": 0.4,
+      "10": 0.43,
+      "12": 0.43,
+      "15": 0.43,
+      "20": 0.43
+    },
+    "lda_coh_by_k": {
+      "5": 0.487,
+      "7": 0.503,
+      "10": 0.507,
+      "12": 0.499,
+      "15": 0.529,
+      "20": 0.477
+    },
+    "bt_natural_topic_count": 7,
+    "bt_plateau_reached_at_K": 10,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 15,
+    "lda_best_coherence": 0.529,
+    "avg_agreement": 0.101
+  },
+  {
+    "concept": "Bedürfnis",
+    "n_docs": 640,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 15
+    },
+    "bt_coh_by_k": {
+      "5": 0.415,
+      "7": 0.361,
+      "10": 0.419,
+      "12": 0.403,
+      "15": 0.445,
+      "20": 0.461
+    },
+    "lda_coh_by_k": {
+      "5": 0.484,
+      "7": 0.463,
+      "10": 0.435,
+      "12": 0.466,
+      "15": 0.428,
+      "20": 0.481
+    },
+    "bt_natural_topic_count": 15,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 5,
+    "lda_best_coherence": 0.484,
+    "avg_agreement": 0.047
+  },
+  {
+    "concept": "Emotion",
+    "n_docs": 267,
+    "bt_real_by_k": {
+      "5": 3,
+      "7": 3,
+      "10": 3,
+      "12": 3,
+      "15": 3,
+      "20": 3
+    },
+    "bt_coh_by_k": {
+      "5": 0.552,
+      "7": 0.552,
+      "10": 0.552,
+      "12": 0.552,
+      "15": 0.552,
+      "20": 0.552
+    },
+    "lda_coh_by_k": {
+      "5": 0.531,
+      "7": 0.538,
+      "10": 0.467,
+      "12": 0.498,
+      "15": 0.494,
+      "20": 0.497
+    },
+    "bt_natural_topic_count": 3,
+    "bt_plateau_reached_at_K": 5,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 7,
+    "lda_best_coherence": 0.538,
+    "avg_agreement": 0.096
+  },
+  {
+    "concept": "Evolution",
+    "n_docs": 1085,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.525,
+      "7": 0.415,
+      "10": 0.381,
+      "12": 0.433,
+      "15": 0.445,
+      "20": 0.507
+    },
+    "lda_coh_by_k": {
+      "5": 0.395,
+      "7": 0.432,
+      "10": 0.449,
+      "12": 0.449,
+      "15": 0.395,
+      "20": 0.436
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 10,
+    "lda_best_coherence": 0.449,
+    "avg_agreement": 0.035
+  },
+  {
+    "concept": "Freiheit",
+    "n_docs": 1236,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.383,
+      "7": 0.306,
+      "10": 0.414,
+      "12": 0.456,
+      "15": 0.484,
+      "20": 0.544
+    },
+    "lda_coh_by_k": {
+      "5": 0.336,
+      "7": 0.382,
+      "10": 0.379,
+      "12": 0.413,
+      "15": 0.389,
+      "20": 0.421
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 20,
+    "lda_best_coherence": 0.421,
+    "avg_agreement": 0.059
+  },
+  {
+    "concept": "Gefühl",
+    "n_docs": 354,
+    "bt_real_by_k": {
+      "5": 3,
+      "7": 3,
+      "10": 3,
+      "12": 3,
+      "15": 3,
+      "20": 3
+    },
+    "bt_coh_by_k": {
+      "5": 0.406,
+      "7": 0.406,
+      "10": 0.406,
+      "12": 0.406,
+      "15": 0.406,
+      "20": 0.406
+    },
+    "lda_coh_by_k": {
+      "5": 0.469,
+      "7": 0.495,
+      "10": 0.472,
+      "12": 0.439,
+      "15": 0.449,
+      "20": 0.435
+    },
+    "bt_natural_topic_count": 3,
+    "bt_plateau_reached_at_K": 5,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 7,
+    "lda_best_coherence": 0.495,
+    "avg_agreement": 0.061
+  },
+  {
+    "concept": "Gen",
+    "n_docs": 991,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 17
+    },
+    "bt_coh_by_k": {
+      "5": 0.442,
+      "7": 0.287,
+      "10": 0.377,
+      "12": 0.368,
+      "15": 0.362,
+      "20": 0.42
+    },
+    "lda_coh_by_k": {
+      "5": 0.475,
+      "7": 0.507,
+      "10": 0.503,
+      "12": 0.482,
+      "15": 0.468,
+      "20": 0.459
+    },
+    "bt_natural_topic_count": 17,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 7,
+    "lda_best_coherence": 0.507,
+    "avg_agreement": 0.05
+  },
+  {
+    "concept": "Gerechtigkeit",
+    "n_docs": 1343,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.516,
+      "7": 0.491,
+      "10": 0.381,
+      "12": 0.365,
+      "15": 0.397,
+      "20": 0.394
+    },
+    "lda_coh_by_k": {
+      "5": 0.421,
+      "7": 0.437,
+      "10": 0.42,
+      "12": 0.415,
+      "15": 0.427,
+      "20": 0.44
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 20,
+    "lda_best_coherence": 0.44,
+    "avg_agreement": 0.048
+  },
+  {
+    "concept": "Glück",
+    "n_docs": 661,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 14
+    },
+    "bt_coh_by_k": {
+      "5": 0.533,
+      "7": 0.392,
+      "10": 0.431,
+      "12": 0.462,
+      "15": 0.446,
+      "20": 0.446
+    },
+    "lda_coh_by_k": {
+      "5": 0.4,
+      "7": 0.41,
+      "10": 0.413,
+      "12": 0.379,
+      "15": 0.431,
+      "20": 0.514
+    },
+    "bt_natural_topic_count": 14,
+    "bt_plateau_reached_at_K": 15,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 20,
+    "lda_best_coherence": 0.514,
+    "avg_agreement": 0.053
+  },
+  {
+    "concept": "Handeln",
+    "n_docs": 3849,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.345,
+      "7": 0.343,
+      "10": 0.403,
+      "12": 0.455,
+      "15": 0.497,
+      "20": 0.485
+    },
+    "lda_coh_by_k": {
+      "5": 0.41,
+      "7": 0.394,
+      "10": 0.38,
+      "12": 0.404,
+      "15": 0.404,
+      "20": 0.421
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 20,
+    "lda_best_coherence": 0.421,
+    "avg_agreement": 0.034
+  },
+  {
+    "concept": "Konkurrenz",
+    "n_docs": 268,
+    "bt_real_by_k": {
+      "5": 2,
+      "7": 2,
+      "10": 2,
+      "12": 2,
+      "15": 2,
+      "20": 2
+    },
+    "bt_coh_by_k": {
+      "5": 0.511,
+      "7": 0.511,
+      "10": 0.511,
+      "12": 0.511,
+      "15": 0.511,
+      "20": 0.511
+    },
+    "lda_coh_by_k": {
+      "5": 0.521,
+      "7": 0.421,
+      "10": 0.423,
+      "12": 0.453,
+      "15": 0.465,
+      "20": 0.466
+    },
+    "bt_natural_topic_count": 2,
+    "bt_plateau_reached_at_K": 5,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 5,
+    "lda_best_coherence": 0.521,
+    "avg_agreement": 0.117
+  },
+  {
+    "concept": "Kooperation",
+    "n_docs": 569,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 10,
+      "15": 10,
+      "20": 10
+    },
+    "bt_coh_by_k": {
+      "5": 0.481,
+      "7": 0.432,
+      "10": 0.386,
+      "12": 0.442,
+      "15": 0.442,
+      "20": 0.442
+    },
+    "lda_coh_by_k": {
+      "5": 0.415,
+      "7": 0.394,
+      "10": 0.411,
+      "12": 0.401,
+      "15": 0.463,
+      "20": 0.435
+    },
+    "bt_natural_topic_count": 10,
+    "bt_plateau_reached_at_K": 12,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 15,
+    "lda_best_coherence": 0.463,
+    "avg_agreement": 0.022
+  },
+  {
+    "concept": "Kultur",
+    "n_docs": 1466,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.427,
+      "7": 0.401,
+      "10": 0.517,
+      "12": 0.546,
+      "15": 0.616,
+      "20": 0.628
+    },
+    "lda_coh_by_k": {
+      "5": 0.398,
+      "7": 0.408,
+      "10": 0.467,
+      "12": 0.435,
+      "15": 0.45,
+      "20": 0.435
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 10,
+    "lda_best_coherence": 0.467,
+    "avg_agreement": 0.088
+  },
+  {
+    "concept": "Mensch",
+    "n_docs": 4852,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.465,
+      "7": 0.558,
+      "10": 0.65,
+      "12": 0.707,
+      "15": 0.665,
+      "20": 0.669
+    },
+    "lda_coh_by_k": {
+      "5": 0.386,
+      "7": 0.429,
+      "10": 0.362,
+      "12": 0.382,
+      "15": 0.366,
+      "20": 0.401
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 7,
+    "lda_best_coherence": 0.429,
+    "avg_agreement": 0.089
+  },
+  {
+    "concept": "Moral",
+    "n_docs": 1264,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.308,
+      "7": 0.326,
+      "10": 0.437,
+      "12": 0.504,
+      "15": 0.495,
+      "20": 0.456
+    },
+    "lda_coh_by_k": {
+      "5": 0.351,
+      "7": 0.367,
+      "10": 0.384,
+      "12": 0.385,
+      "15": 0.4,
+      "20": 0.424
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 20,
+    "lda_best_coherence": 0.424,
+    "avg_agreement": 0.065
+  },
+  {
+    "concept": "Norm",
+    "n_docs": 1134,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.565,
+      "7": 0.44,
+      "10": 0.51,
+      "12": 0.485,
+      "15": 0.55,
+      "20": 0.567
+    },
+    "lda_coh_by_k": {
+      "5": 0.415,
+      "7": 0.471,
+      "10": 0.446,
+      "12": 0.432,
+      "15": 0.427,
+      "20": 0.407
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 7,
+    "lda_best_coherence": 0.471,
+    "avg_agreement": 0.038
+  },
+  {
+    "concept": "Rationalität",
+    "n_docs": 279,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 7,
+      "12": 7,
+      "15": 7,
+      "20": 7
+    },
+    "bt_coh_by_k": {
+      "5": 0.581,
+      "7": 0.59,
+      "10": 0.493,
+      "12": 0.493,
+      "15": 0.493,
+      "20": 0.493
+    },
+    "lda_coh_by_k": {
+      "5": 0.495,
+      "7": 0.433,
+      "10": 0.448,
+      "12": 0.484,
+      "15": 0.425,
+      "20": 0.432
+    },
+    "bt_natural_topic_count": 7,
+    "bt_plateau_reached_at_K": 10,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 5,
+    "lda_best_coherence": 0.495,
+    "avg_agreement": 0.06
+  },
+  {
+    "concept": "Ursache",
+    "n_docs": 1277,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.281,
+      "7": 0.323,
+      "10": 0.359,
+      "12": 0.335,
+      "15": 0.351,
+      "20": 0.309
+    },
+    "lda_coh_by_k": {
+      "5": 0.434,
+      "7": 0.413,
+      "10": 0.424,
+      "12": 0.405,
+      "15": 0.451,
+      "20": 0.455
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 20,
+    "lda_best_coherence": 0.455,
+    "avg_agreement": 0.026
+  },
+  {
+    "concept": "Verhalten",
+    "n_docs": 1155,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.34,
+      "7": 0.341,
+      "10": 0.392,
+      "12": 0.386,
+      "15": 0.357,
+      "20": 0.344
+    },
+    "lda_coh_by_k": {
+      "5": 0.382,
+      "7": 0.422,
+      "10": 0.451,
+      "12": 0.416,
+      "15": 0.455,
+      "20": 0.418
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 15,
+    "lda_best_coherence": 0.455,
+    "avg_agreement": 0.047
+  },
+  {
+    "concept": "Vorurteil",
+    "n_docs": 285,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 10,
+      "15": 10,
+      "20": 10
+    },
+    "bt_coh_by_k": {
+      "5": 0.477,
+      "7": 0.451,
+      "10": 0.622,
+      "12": 0.62,
+      "15": 0.62,
+      "20": 0.62
+    },
+    "lda_coh_by_k": {
+      "5": 0.443,
+      "7": 0.437,
+      "10": 0.434,
+      "12": 0.503,
+      "15": 0.505,
+      "20": 0.465
+    },
+    "bt_natural_topic_count": 10,
+    "bt_plateau_reached_at_K": 12,
+    "bt_still_growing_at_K20": false,
+    "lda_best_k": 15,
+    "lda_best_coherence": 0.505,
+    "avg_agreement": 0.084
+  },
+  {
+    "concept": "Wert",
+    "n_docs": 2135,
+    "bt_real_by_k": {
+      "5": 4,
+      "7": 6,
+      "10": 9,
+      "12": 11,
+      "15": 14,
+      "20": 19
+    },
+    "bt_coh_by_k": {
+      "5": 0.37,
+      "7": 0.43,
+      "10": 0.324,
+      "12": 0.386,
+      "15": 0.386,
+      "20": 0.427
+    },
+    "lda_coh_by_k": {
+      "5": 0.419,
+      "7": 0.427,
+      "10": 0.388,
+      "12": 0.444,
+      "15": 0.424,
+      "20": 0.435
+    },
+    "bt_natural_topic_count": 19,
+    "bt_plateau_reached_at_K": 20,
+    "bt_still_growing_at_K20": true,
+    "lda_best_k": 12,
+    "lda_best_coherence": 0.444,
+    "avg_agreement": 0.048
+  }
+]

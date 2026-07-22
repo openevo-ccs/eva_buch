@@ -146,18 +146,29 @@ DEFAULT_CONCEPTS: list[str] = [
 # 19% outliers under this one -- see METHODOLOGY.md SS3 for the full pilot).
 EMBEDDING_MODEL_NAME = "paraphrase-multilingual-MiniLM-L12-v2"
 
-# Topic-count CEILING (approved 2026-07-21, "Strategy B", METHODOLOGY.md
-# section 4): app_specs.md requires "no more than ten topics plus one
-# outlier topic" per concept. BERTopic's nr_topics/_reduce_topics() counts
-# the outlier bucket (-1) toward this total when outliers exist, so 11 ->
-# up to 10 real topics + 1 outlier. Critically, reduce_topics only MERGES
-# DOWN when a concept's natural topic count exceeds this value -- it never
-# inflates a concept that naturally settles below it (self._outliers is
-# subtracted before AgglomerativeClustering(n=nr_topics - outliers) runs,
-# and reduction is skipped entirely when nr_topics >= the natural count).
-# So passing this uniformly is already the full "ceiling not target"
-# behavior -- no extra custom logic needed on top of BERTopic's own.
-DEFAULT_NR_TOPICS_CEILING = 11
+# Topic-count CEILING. app_specs_SH_notes.md originally specified "no more
+# than ten topics plus one outlier topic" (ceiling=11); a full 5-20 sweep
+# plus reading each concept's true *uncapped* natural topic count off its
+# cached base fit (METHODOLOGY.md section 4.4) showed that cap was crushing
+# nearly every concept above ~1,000 documents to roughly a third of its
+# natural richness (natural counts range 2-90 across the 22 concepts) --
+# not just the 3 originally flagged as under-differentiated. Raised to 31
+# (up to 30 real topics + 1 outlier) 2026-07-22, approved by Dustin as a
+# deviation from the written spec pending Susan's sign-off -- see the
+# annotated note in app_specs_SH_notes.md and METHODOLOGY.md section 4.4
+# for full rationale and the per-concept natural-count table.
+#
+# BERTopic's nr_topics/_reduce_topics() counts the outlier bucket (-1)
+# toward this total when outliers exist, so the ceiling -> up to
+# (ceiling - 1) real topics + 1 outlier. Critically, reduce_topics only
+# MERGES DOWN when a concept's natural topic count exceeds this value --
+# it never inflates a concept that naturally settles below it
+# (self._outliers is subtracted before
+# AgglomerativeClustering(n=nr_topics - outliers) runs, and reduction is
+# skipped entirely when nr_topics >= the natural count). So passing this
+# uniformly is already the full "ceiling not target" behavior -- no extra
+# custom logic needed on top of BERTopic's own.
+DEFAULT_NR_TOPICS_CEILING = 31
 
 
 def embedding_model_slug() -> str:
