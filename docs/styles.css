@@ -161,6 +161,20 @@ tr:hover td { background: rgba(255,255,255,0.04); }
 .tab-panel { display: none; }
 .tab-panel.is-active { display: block; animation: fadeUp 0.35s ease both; }
 
+/* ── Kohärenz dashboard ──────────────────────────────────────────────── */
+.koharenz-metric-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); margin-bottom: 8px; }
+.koharenz-band-list { display: flex; flex-direction: column; gap: 8px; }
+.koharenz-band-row { display: grid; grid-template-columns: 110px 1fr 40px; align-items: center; gap: 10px; }
+.koharenz-band-label { font-size: 0.86rem; color: var(--muted); }
+.koharenz-band-count { font-size: 0.86rem; text-align: right; }
+.koharenz-topic-list { display: flex; flex-direction: column; gap: 14px; }
+.koharenz-topic-row { padding: 12px 14px; border-radius: 14px; background: var(--panel-strong); border: 1px solid var(--border); }
+.koharenz-topic-label { font-weight: 700; margin-bottom: 4px; }
+.koharenz-topic-meta { font-size: 0.8rem; color: var(--muted); margin-bottom: 8px; }
+.koharenz-subject-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.koharenz-subject-chip { display: inline-block; padding: 3px 10px; border-radius: 999px; font-size: 0.76rem; font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.35); }
+.koharenz-related-btn { cursor: pointer; }
+
 /* ── BERTopic: concept picker, panel grid, legend, tooltip ─────────────── */
 .concept-picker { display: flex; flex-wrap: wrap; gap: 8px; }
 .concept-btn {

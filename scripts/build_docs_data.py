@@ -5,7 +5,8 @@ output folders, in one command, so the deployed GitHub Pages site can't
 silently drift from the underlying analysis again.
 
 Copies:
-  bertopic/src/data/{*.json, manifest.json, color_maps.json}
+  bertopic/src/data/{*.json, manifest.json, color_maps.json,
+  coherence_dashboard.json}
     -> docs/data/bertopic/
   lda_topic_modelling/out/{concept}/{5,7,10}/{topic_terms, term_frequency_matrix,
   ldavis_data, topic_distribution_by_subject, stats/*}
@@ -35,6 +36,7 @@ Prerequisites (run once beforehand, or after re-running the pipelines):
   python bertopic/src/viz_umap_2d_v2.py --force-color-maps
   python lda_topic_modelling/src/lda_topic_model.py
   python lda_topic_modelling/src/compute_cross_concept_analytics.py
+  python scripts/build_coherence_dashboard_data.py
 
 Usage:
   python scripts/build_docs_data.py
@@ -77,7 +79,7 @@ def build_bertopic_data() -> list[str]:
     if not manifest_path.exists():
         raise SystemExit(f"[FATAL] {manifest_path} not found -- run bertopic_pipeline_v2.py first.")
 
-    for name in ("manifest.json", "color_maps.json"):
+    for name in ("manifest.json", "color_maps.json", "coherence_dashboard.json"):
         src = BERTOPIC_DATA / name
         if src.exists():
             shutil.copy2(src, target / name)

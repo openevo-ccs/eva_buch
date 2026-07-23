@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kohärenz</title>
+    <meta name="description" content="Kohärenz-Dashboard: wo Konzepte über Fächer und Jahrgangsstufen hinweg verbunden sind – und wo sie isoliert bleiben." />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body data-page="koharenz">
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="brand">
+          <h1>OpenEvo - Lehrplananalyse</h1>
+        </div>
+        <nav class="nav-links" aria-label="Hauptnavigation">
+          <a href="./index.html">Home</a>
+          <a href="./dokumente.html">Lehrplandokumente</a>
+          <a href="./schlagwortsuche.html">Schlagwortsuche</a>
+          <a href="./bertopic.html">BERTopic</a>
+          <a href="./lda.html">LDA</a>
+          <a href="./koharenz.html" class="is-active">Kohärenz</a>
+        </nav>
+        <div class="header-actions">
+          <button id="theme-toggle" class="secondary-button" type="button">☀️ Hellmodus</button>
+        </div>
+      </header>
+
+      <section class="hero">
+        <div class="hero-card">
+          <p class="eyebrow">Kohärenz-Dashboard</p>
+          <h2>Wo verbindet sich ein Konzept über Fächer hinweg – und wo bleibt es isoliert?</h2>
+          <p>Curricular <em>Kohärenz</em> – vertikal über Jahrgangsstufen, horizontal über Fächer hinweg – ist die zentrale Fragestellung dieses Buchs. Diese Ansicht bündelt, was BERTopic, LDA und die Schlagwortsuche für ein Konzept bereits einzeln zeigen, zu einer einzigen Diagnose: Deckung, Verteilung über Jahrgangsstufen, und Themen, deren Dokumente mehrere Fächer gleichzeitig betreffen ("Brückenthemen") gegenüber Themen, die auf ein einzelnes Fach beschränkt bleiben ("isolierte Themen").</p>
+        </div>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Auswahl</p>
+            <h3>Konzept</h3>
+          </div>
+        </div>
+        <div id="koharenz-concept-picker" class="concept-picker"></div>
+      </section>
+
+      <section id="koharenz-content"></section>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
