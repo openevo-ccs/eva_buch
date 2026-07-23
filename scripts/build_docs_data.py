@@ -14,7 +14,7 @@ Copies:
   lda_topic_modelling/out/concept_cooccurrence.json
     -> docs/data/lda/concept_cooccurrence.json
   keyword_search/out/{results.csv, doc_word_counts.csv,
-  state_subject_count_matrix.csv}
+  state_subject_count_matrix.csv, term_count.csv}
     -> docs/data/
   data/LP_DE_2026_1_txtfiles/
     -> docs/data/txtfiles/ (raw corpus mirror, so the Lehrplandokumente table
@@ -148,7 +148,7 @@ def build_lda_data(concepts: list[str]) -> None:
 
 def build_keyword_search_data() -> None:
     DOCS_DATA.mkdir(parents=True, exist_ok=True)
-    files = ["results.csv", "doc_word_counts.csv", "state_subject_count_matrix.csv"]
+    files = ["results.csv", "doc_word_counts.csv", "state_subject_count_matrix.csv", "term_count.csv"]
     copied = 0
     for name in files:
         src = KEYWORD_OUT / name

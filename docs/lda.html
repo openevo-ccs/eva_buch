@@ -28,6 +28,17 @@
       <section class="section-card card">
         <div class="section-head">
           <div>
+            <p class="eyebrow">Methodik</p>
+            <h3>Was ist LDA-Themenmodellierung?</h3>
+          </div>
+        </div>
+        <p>Latent Dirichlet Allocation (LDA) ist ein statistisches Verfahren zur Themenmodellierung. Es durchsucht eine große Textsammlung nach Wörtern, die häufig gemeinsam auftreten, und fasst sie zu Themen ("Topics") zusammen, ohne dass diese Themen vorab festgelegt werden. Jedes Thema wird als Wahrscheinlichkeitsverteilung über Wörter beschrieben, jedes Dokument wiederum als Mischung mehrerer Themen.</p>
+        <p>Für diese Analyse wurden die extrahierten Textstellen der Schlagwortsuche je Konzept lemmatisiert, um Stoppwörter bereinigt und in ein Bag-of-Words-Modell überführt. Auf dieser Grundlage berechnete scikit-learns LDA-Implementierung für jedes Konzept mehrere Modelle mit unterschiedlicher Themenzahl, zwischen denen Sie unten wählen können. Die Visualisierung des Themenraums basiert auf einer angepassten Version von pyLDAvis: Ähnliche Themen liegen im Diagramm näher beieinander, ihre Größe spiegelt ihre Häufigkeit im Textkorpus wider. Da LDA ausschließlich auf Worthäufigkeiten beruht und Wörter nicht in ihrem Bedeutungskontext erfasst, ergänzt diese App die Ergebnisse um das kontextsensitivere BERTopic-Verfahren auf einer eigenen Seite.</p>
+      </section>
+
+      <section class="section-card card">
+        <div class="section-head">
+          <div>
             <p class="eyebrow">Auswahl</p>
             <h3>Konzept und Modellgröße</h3>
           </div>

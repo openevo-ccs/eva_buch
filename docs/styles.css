@@ -96,6 +96,30 @@ body::before {
 .metric-card strong { display: block; font-size: 1.2rem; margin-bottom: 4px; }
 .metric-card span { color: var(--muted); }
 
+/* ── Home page: intro card (~2/3 width) + stat buttons/word cloud column ── */
+.home-hero { grid-template-columns: 2fr 1fr; }
+.home-intro-card p:last-child { margin-bottom: 0; }
+.home-side-col { display: flex; flex-direction: column; gap: 16px; }
+.home-stat-list { display: flex; flex-direction: column; gap: 12px; }
+.home-stat-card {
+  width: 100%; padding: 20px; border-radius: 18px; text-align: center; color: #fff; border: none;
+  background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: var(--shadow);
+}
+.home-stat-card strong { display: block; font-size: 1.6rem; font-family: Nunito, sans-serif; font-weight: 800; }
+.home-stat-card span { display: block; margin-top: 4px; font-size: 0.9rem; opacity: 0.9; }
+.home-wordcloud-card {
+  padding: 20px; border-radius: 24px; background: var(--panel); border: 1px solid var(--border); box-shadow: var(--shadow);
+  display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.home-wordcloud-card h3 { margin: 0; }
+.home-wordcloud-circle {
+  position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 50%;
+  background: var(--panel-strong); border: 1px solid var(--border); overflow: hidden;
+}
+@media (max-width: 900px) {
+  .home-hero { grid-template-columns: 1fr; }
+}
+
 .section-card { margin-top: 24px; padding: 24px; }
 .section-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 16px; }
 .section-head h3 { margin: 6px 0 0; font-size: 1.2rem; font-family: Nunito, sans-serif; font-weight: 800; }
@@ -205,6 +229,8 @@ tr:hover td { background: rgba(255,255,255,0.04); }
   display: flex; justify-content: space-between; align-items: center; padding: 10px 14px;
   border-bottom: 1px solid var(--border); font-weight: 700; font-size: 0.9rem;
 }
+.bt-panel-head-actions { display: flex; align-items: center; gap: 6px; }
+.bt-panel-export { min-width: 0; padding: 4px 8px; font-size: 0.76rem; border-radius: 8px; }
 .bt-panel-remove { background: none; border: none; color: var(--muted); cursor: pointer; font-size: 1rem; line-height: 1; padding: 4px 8px; }
 .bt-panel-remove:hover { color: var(--text); }
 .bt-panel-plot { flex: 1; min-height: 0; }
@@ -232,13 +258,13 @@ details.legend-group[open] > summary.legend-group-title { margin-bottom: 6px; }
 .legend-count { color: var(--muted); font-variant-numeric: tabular-nums; font-size: 0.8rem; }
 
 .bt-tooltip {
-  position: fixed; z-index: 100; max-width: 320px; padding: 12px 14px; border-radius: 14px;
+  position: fixed; z-index: 100; max-width: 360px; padding: 12px 14px; border-radius: 14px;
   background: var(--panel-strong); border: 1px solid var(--border); box-shadow: var(--shadow);
   pointer-events: none; font-size: 0.82rem; line-height: 1.5;
 }
 .bt-tooltip .bt-tooltip-meta { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 6px; font-weight: 700; color: var(--accent-3); }
 .bt-tooltip .bt-tooltip-excerpt {
-  color: var(--text); display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden;
+  color: var(--text); display: -webkit-box; -webkit-line-clamp: 8; -webkit-box-orient: vertical; overflow: hidden;
 }
 
 /* ── LDA: Wortwolken (word clouds) ───────────────────────────────────────── */

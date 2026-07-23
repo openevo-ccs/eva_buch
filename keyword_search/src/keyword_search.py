@@ -7,12 +7,14 @@ import pandas as pd
 import re
 import unicodedata
 import sys
+from collections import Counter
 from pathlib import Path
 import pymupdf
 
 sys.path.append(str(Path(__file__).parent.parent.parent))
 from config import KW_IN, KW_OUT as OUT_DIR, DATA_DIR, RESULT_PATH as OUT_PATH
 from utils import pdf_dir_to_txt, remap_font_encoding_artifacts
+from shared_state_normalization import canonicalize_state
 
 print("All libraries successfully imported!")
 
@@ -40,11 +42,16 @@ GRADE_LEVELS = [
 # School-type labels checked before falling back to suffix matching
 SCHOOL_TYPES = ["Gym", "Gymnasium", "GemS", "Regionale Schule"]
 
-# State name normalisations applied during metadata extraction
-STATE_ALIASES = {
+# Filename-specific quirks (not general abbreviations) applied before the
+# shared canonicalize_state() pass below.
+FILENAME_STATE_QUIRKS = {
     "BerlinBB":   "Berlin",
     "RheinPfalz": "Rheinland-Pfalz",
 }
+
+# Unmapped raw state tokens encountered during get_meta(), for review --
+# mirrors bertopic_pipeline_v2.py's state_tracker/unmapped_states.txt pattern.
+UNMAPPED_STATES = Counter()
 
 # Unicode characters treated as hyphens during text normalisation
 DASH_CHARS = [
@@ -182,10 +189,11 @@ def get_meta(filename: str) -> dict | bool:
 
     parts = filename.split()
     if parts[0] == "KMK":
-        state = "None"
+        state = "KMK"
     else:
-        state = parts[1]
-        state = STATE_ALIASES.get(state, state)
+        raw_state = parts[1]
+        raw_state = FILENAME_STATE_QUIRKS.get(raw_state, raw_state)
+        state = canonicalize_state(raw_state, UNMAPPED_STATES)
 
     return {
         "file":        filename,
@@ -499,7 +507,7 @@ def load_concept_dict(keyword_path: Path) -> dict[str, list[str]]:
     Returns:
         Dict mapping lemma → list of all variants (including the lemma itself).
     """
-    with open(keyword_path, "r") as f:
+    with open(keyword_path, "r", encoding="utf-8") as f:
         lines = [line.strip() for line in f if line.strip()]
     return {
         line.split(",")[0].strip(): [item.strip() for item in line.split(",")]
@@ -688,6 +696,13 @@ def main() -> None:
 
     # Step 6 — Word counts per document
     word_counts = count_words(data_path)
+
+    if UNMAPPED_STATES:
+        unmapped_path = OUT_DIR / "unmapped_states.txt"
+        with open(unmapped_path, "w", encoding="utf-8") as f:
+            for state, count in UNMAPPED_STATES.most_common():
+                f.write(f"{count:>6}  {state}\n")
+        print(f"[WARN] {len(UNMAPPED_STATES)} unmapped state value(s) logged -> {unmapped_path}")
 
 
 if __name__ == "__main__":

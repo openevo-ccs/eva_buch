@@ -151,6 +151,14 @@ function bindEvents() {
     appState.bertopic.orbit.elevation = Number(event.target.value);
     if (!appState.bertopic.orbit.enabled) applyBerTopicCameraToAllPanels();
   });
+  document.getElementById('bertopic-deselect-all')?.addEventListener('click', () => {
+    appState.bertopic.active = [];
+    appState.bertopic.selection = null;
+    renderBerTopicConceptPicker();
+    syncBerTopicPanelGrid();
+    renderBerTopicLegend();
+  });
+  document.getElementById('bertopic-reset-view')?.addEventListener('click', resetAllBerTopicViews);
   document.getElementById('keyword-dimension-a')?.addEventListener('change', renderKeywordPage);
   document.getElementById('keyword-dimension-b')?.addEventListener('change', renderKeywordPage);
   document.getElementById('keyword-filter-dimension')?.addEventListener('change', () => {
@@ -210,19 +218,22 @@ function getPlotlyThemeColors() {
 async function loadData() {
   try {
     const needsKeywordData = appState.page === 'schlagwortsuche';
-    const needsDocumentData = appState.page === 'dokumente';
+    const needsDocumentData = appState.page === 'dokumente' || appState.page === 'home';
+    const needsTermCounts = appState.page === 'home';
 
-    const [manifest, keywordRows, keywordWordCounts, documentOverview] = await Promise.all([
+    const [manifest, keywordRows, keywordWordCounts, documentOverview, termCounts] = await Promise.all([
       fetchJson('./data/manifest.json'),
       needsKeywordData ? fetchCsv('./data/results.csv') : Promise.resolve([]),
       needsKeywordData ? fetchCsv('./data/doc_word_counts.csv') : Promise.resolve([]),
-      needsDocumentData ? fetchCsv(encodeURI('./Lehrplandokumente Übersicht.csv')) : Promise.resolve([])
+      needsDocumentData ? fetchCsv(encodeURI('./Lehrplandokumente Übersicht.csv')) : Promise.resolve([]),
+      needsTermCounts ? fetchCsv('./data/term_count.csv') : Promise.resolve([])
     ]);
 
     appState.manifest = manifest;
     appState.keywordRows = keywordRows.map((row) => ({ ...row, state: normalizeState(row.state) }));
     appState.keywordWordCounts = keywordWordCounts.map((row) => ({ ...row, state: normalizeState(row.state) }));
     appState.documentOverview = documentOverview;
+    appState.termCounts = termCounts;
     appState.conceptOrder = manifest.concept_order || [];
 
     populateConceptSelectors();
@@ -308,19 +319,65 @@ function renderPage() {
 }
 
 function renderHomePage() {
-  const concepts = appState.conceptOrder;
-  const totalDocs = concepts.reduce((sum, concept) => sum + (appState.manifest.concepts[concept]?.n_docs || 0), 0);
-  const outliers = concepts.reduce((sum, concept) => sum + (appState.manifest.concepts[concept]?.n_outliers || 0), 0);
-  const subjects = new Set(concepts.flatMap((concept) => Object.keys(appState.manifest.concepts[concept]?.subjects || {})));
+  const documents = appState.documentOverview || [];
+  const subjectCount = new Set(documents.map((row) => row['Fach']).filter(Boolean)).size;
+  const documentCount = documents.length;
+  const excerptCount = (appState.termCounts || []).reduce((sum, row) => sum + (Number(row['Count']) || 0), 0);
 
-  document.getElementById('hero-title').textContent = 'Ein moderner Zugang zur Lehrplananalyse';
-  document.getElementById('hero-copy').textContent = 'Die Oberfläche verbindet Dokumentenübersicht, Schlagwortsuche, BERTopic- und LDA-Analysen in einer klaren, schnellen und gut lesbaren Erfahrung – ideal für GitHub Pages und für die Präsentation wissenschaftlicher Ergebnisse.';
-  document.getElementById('metric-grid').innerHTML = [
-    { label: 'Konzepte im Fokus', value: concepts.length },
-    { label: 'Dokumente im Datensatz', value: totalDocs.toLocaleString('de-DE') },
-    { label: 'Ausreißer insgesamt', value: outliers.toLocaleString('de-DE') },
-    { label: 'Fächer abgedeckt', value: subjects.size }
-  ].map((item) => `<article class="metric-card"><strong>${item.value}</strong><span>${item.label}</span></article>`).join('');
+  const statsEl = document.getElementById('home-stats');
+  if (statsEl) {
+    statsEl.innerHTML = [
+      { value: subjectCount.toLocaleString('de-DE'), label: 'Fächer' },
+      { value: documentCount.toLocaleString('de-DE'), label: 'Lehrplandokumente' },
+      { value: excerptCount.toLocaleString('de-DE'), label: 'extrahierte Textstellen' }
+    ].map((item) => `<div class="home-stat-card"><strong>${item.value}</strong><span>${escapeHtml(item.label)}</span></div>`).join('');
+  }
+
+  const wordcloudEl = document.getElementById('home-wordcloud');
+  if (wordcloudEl) {
+    const terms = (appState.termCounts || [])
+      .map((row) => ({ term: row['Search concept'], weight: Number(row['Count']) || 0 }))
+      .filter((t) => t.term);
+    wordcloudEl.innerHTML = renderHomeWordcloudTerms(terms, wordcloudEl.clientWidth || 340);
+  }
+}
+
+// Home page word cloud: same Archimedean-spiral packer as the LDA Wortwolken
+// tab (wcLayout/wcScaleFontSize), but colored across the OpenEvo brand
+// palette (spec §1.2: --accent/--accent-2/--accent-3) instead of the LDA
+// page's full-spectrum per-term hash, since the two pages have different
+// coloring requirements in the spec.
+function brandGradientColor(term) {
+  const styles = getComputedStyle(document.body);
+  const read = (name, fallback) => styles.getPropertyValue(name).trim() || fallback;
+  const stops = [read('--accent', '#085e65'), read('--accent-3', '#53d1ff'), read('--accent-2', '#272d63')].map(hexToRgb);
+  const hash = fnv1aHash(`home-wordcloud::${term || ''}`);
+  const t = (hash % 1000) / 1000;
+  const segment = t < 0.5 ? 0 : 1;
+  const localT = t < 0.5 ? t / 0.5 : (t - 0.5) / 0.5;
+  const [a, b] = [stops[segment], stops[segment + 1]];
+  const jitter = ((hash >> 10) % 21) - 10;
+  const mix = (i) => a[i] + (b[i] - a[i]) * localT + jitter;
+  return rgbToHex(mix(0), mix(1), mix(2));
+}
+
+function hexToRgb(hex) {
+  const h = hex.replace('#', '');
+  return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+}
+
+function rgbToHex(r, g, b) {
+  const toHex = (x) => Math.max(0, Math.min(255, Math.round(x))).toString(16).padStart(2, '0');
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+function renderHomeWordcloudTerms(termsRaw, size) {
+  const terms = termsRaw.filter((t) => t.weight > 0).sort((a, b) => b.weight - a.weight);
+  if (!terms.length) return '';
+  const maxWeight = Math.max(1, ...terms.map((t) => t.weight));
+  const sized = terms.map((t) => ({ ...t, fontSize: wcScaleFontSize(t.weight, maxWeight) }));
+  wcLayout(sized, size);
+  return sized.map((t) => `<span style="position:absolute;left:${t.x.toFixed(1)}px;top:${t.y.toFixed(1)}px;font-size:${t.fontSize.toFixed(1)}px;color:${brandGradientColor(t.term)};font-family:'Nunito',sans-serif;font-weight:700;white-space:nowrap;line-height:1.15;">${escapeHtml(t.term)}</span>`).join('');
 }
 
 const DOKUMENTE_TABLE_COLUMNS = ['Bundesland', 'Fach', 'Schulart', 'Jahr', 'Gesamtwortzahl'];
@@ -672,11 +729,24 @@ function syncBerTopicPanelGrid() {
       panel.innerHTML = `
         <div class="bt-panel-head">
           <span>${escapeHtml(concept)}</span>
-          <button type="button" class="bt-panel-remove" title="Entfernen">✕</button>
+          <div class="bt-panel-head-actions">
+            <select class="bt-panel-export" title="Als Bilddatei herunterladen">
+              <option value="" selected disabled>Exportieren</option>
+              <option value="png">PNG</option>
+              <option value="jpeg">JPG</option>
+              <option value="tiff">TIFF</option>
+            </select>
+            <button type="button" class="bt-panel-remove" title="Entfernen">✕</button>
+          </div>
         </div>
         <div class="bt-panel-plot"></div>
       `;
       panel.querySelector('.bt-panel-remove').addEventListener('click', () => toggleBerTopicConcept(concept));
+      panel.querySelector('.bt-panel-export').addEventListener('change', (event) => {
+        const format = event.target.value;
+        event.target.value = '';
+        if (format) exportBerTopicPanelImage(concept, format);
+      });
     }
     grid.appendChild(panel);
     ensureBerTopicPanelData(concept);
@@ -804,6 +874,141 @@ function applyBerTopicCameraToAllPanels() {
     const plotEl = panel && panel.querySelector('.bt-panel-plot');
     if (plotEl && plotEl.data) Plotly.relayout(plotEl, { 'scene.camera': camera });
   });
+}
+
+function resetAllBerTopicViews() {
+  appState.bertopic.orbit.theta = 0;
+  appState.bertopic.orbit.elevation = 0.35;
+  const elevationInput = document.getElementById('bertopic-orbit-elevation');
+  if (elevationInput) elevationInput.value = '0.35';
+  const camera = currentBerTopicCameraEye();
+  appState.bertopic.active.forEach((concept) => {
+    const panel = findBerTopicPanel(concept);
+    const plotEl = panel && panel.querySelector('.bt-panel-plot');
+    if (!plotEl || !plotEl.data || typeof Plotly === 'undefined') return;
+    if (appState.bertopic.dimension === '2d') {
+      Plotly.relayout(plotEl, { 'xaxis.autorange': true, 'yaxis.autorange': true });
+    } else {
+      Plotly.relayout(plotEl, { 'scene.camera': camera });
+    }
+  });
+}
+
+// ── Per-panel image export (PNG/JPG native via Plotly; TIFF hand-rolled --
+// Plotly.js only supports png/jpeg/webp/svg, so a minimal uncompressed
+// baseline-TIFF encoder is used instead of pulling in an external library,
+// consistent with this app's existing no-dependency word-cloud/network-graph
+// implementations. ────────────────────────────────────────────────────────
+async function exportBerTopicPanelImage(concept, format) {
+  const panel = findBerTopicPanel(concept);
+  const plotEl = panel && panel.querySelector('.bt-panel-plot');
+  if (!plotEl || typeof Plotly === 'undefined') return;
+  const filename = `bertopic_${concept}`;
+  const width = plotEl.clientWidth || 600;
+  const height = plotEl.clientHeight || 600;
+  if (format === 'tiff') {
+    const dataUrl = await Plotly.toImage(plotEl, { format: 'png', width, height });
+    const blob = await tiffBlobFromPngDataUrl(dataUrl);
+    triggerBlobDownload(blob, `${filename}.tif`);
+  } else {
+    Plotly.downloadImage(plotEl, { format, filename, width, height });
+  }
+}
+
+function triggerBlobDownload(blob, filename) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+}
+
+function tiffBlobFromPngDataUrl(dataUrl) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      canvas.width = img.width;
+      canvas.height = img.height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0);
+      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+      resolve(new Blob([encodeUncompressedTiff(imageData)], { type: 'image/tiff' }));
+    };
+    img.onerror = reject;
+    img.src = dataUrl;
+  });
+}
+
+// Minimal baseline uncompressed RGB TIFF encoder (single strip, no
+// compression) -- enough to satisfy any standard TIFF reader without a
+// third-party encoding library.
+function encodeUncompressedTiff(imageData) {
+  const { width, height, data } = imageData;
+  const rgbBytes = width * height * 3;
+  const ifdOffset = 8;
+  const numEntries = 11;
+  const ifdSize = 2 + numEntries * 12 + 4;
+  const externalStart = ifdOffset + ifdSize;
+  const bitsPerSampleOffset = externalStart;
+  const xResOffset = bitsPerSampleOffset + 6;
+  const yResOffset = xResOffset + 8;
+  const stripOffset = yResOffset + 8;
+  const totalSize = stripOffset + rgbBytes;
+
+  const buffer = new ArrayBuffer(totalSize);
+  const view = new DataView(buffer);
+  const LE = true;
+
+  view.setUint8(0, 0x49);
+  view.setUint8(1, 0x49); // 'II' -- little-endian byte order
+  view.setUint16(2, 42, LE);
+  view.setUint32(4, ifdOffset, LE);
+
+  let entryPos = ifdOffset + 2;
+  view.setUint16(ifdOffset, numEntries, LE);
+
+  const writeEntry = (tag, type, count, valueOrOffset) => {
+    view.setUint16(entryPos, tag, LE);
+    view.setUint16(entryPos + 2, type, LE);
+    view.setUint32(entryPos + 4, count, LE);
+    view.setUint32(entryPos + 8, valueOrOffset, LE);
+    entryPos += 12;
+  };
+
+  writeEntry(256, 4, 1, width);                // ImageWidth (LONG)
+  writeEntry(257, 4, 1, height);                // ImageLength (LONG)
+  writeEntry(258, 3, 3, bitsPerSampleOffset);   // BitsPerSample (SHORT x3)
+  writeEntry(259, 3, 1, 1);                     // Compression = none
+  writeEntry(262, 3, 1, 2);                     // PhotometricInterpretation = RGB
+  writeEntry(273, 4, 1, stripOffset);           // StripOffsets
+  writeEntry(277, 3, 1, 3);                     // SamplesPerPixel = 3
+  writeEntry(278, 4, 1, height);                // RowsPerStrip
+  writeEntry(279, 4, 1, rgbBytes);              // StripByteCounts
+  writeEntry(282, 5, 1, xResOffset);            // XResolution (RATIONAL)
+  writeEntry(283, 5, 1, yResOffset);            // YResolution (RATIONAL)
+  view.setUint32(entryPos, 0, LE); // next IFD offset (none)
+
+  view.setUint16(bitsPerSampleOffset, 8, LE);
+  view.setUint16(bitsPerSampleOffset + 2, 8, LE);
+  view.setUint16(bitsPerSampleOffset + 4, 8, LE);
+
+  view.setUint32(xResOffset, 72, LE);
+  view.setUint32(xResOffset + 4, 1, LE);
+  view.setUint32(yResOffset, 72, LE);
+  view.setUint32(yResOffset + 4, 1, LE);
+
+  let p = stripOffset;
+  for (let i = 0; i < data.length; i += 4) {
+    view.setUint8(p++, data[i]);
+    view.setUint8(p++, data[i + 1]);
+    view.setUint8(p++, data[i + 2]);
+  }
+
+  return buffer;
 }
 
 function seedBerTopicOrbitFromCurrentView() {
@@ -999,6 +1204,7 @@ window.addEventListener('resize', () => {
   clearTimeout(window.__btResizeTimer);
   window.__btResizeTimer = setTimeout(() => {
     if (appState.page === 'bertopic') resizeAllBerTopicPanels();
+    if (appState.page === 'home') renderHomePage();
   }, 200);
 });
 
@@ -1298,7 +1504,7 @@ function wcMeasure(term, fontSize) {
 
 function wcScaleFontSize(weight, maxWeight) {
   const t = maxWeight > 0 ? Math.sqrt(Math.max(weight, 0) / maxWeight) : 0;
-  return 5 + t * (30 - 5);
+  return 4 + t * (40 - 4);
 }
 
 function wcRectsOverlap(a, b) {
@@ -1459,11 +1665,17 @@ async function renderWordclouds() {
       .map((col) => ({ col, total: rows.reduce((sum, row) => sum + Number(row[col] || 0), 0) }))
       .sort((a, b) => b.total - a.total);
 
-    container.className = 'wc-grid wc-cols-4';
-    container.innerHTML = topicTotals.map(({ col }) => {
+    const globalTerms = rows.map((row) => ({ term: row.term, weight: Number(row.total_across_topics || 0) }));
+    const perTopicCards = topicTotals.map(({ col }) => {
       const terms = rows.map((row) => ({ term: row.term, weight: Number(row[col] || 0) }));
       return renderWordCloudCard(col.replace('Topic_', 'Thema '), terms, 220);
     }).join('');
+
+    container.className = 'wc-grid wc-cols-3';
+    container.innerHTML = `
+      <div class="wc-global-wrap">${renderWordCloudCard(`Global (${concept}, alle Themen)`, globalTerms, 300)}</div>
+      ${perTopicCards}
+    `;
   }
 }
 

@@ -4,7 +4,8 @@ root = Path(__file__).resolve().parent
 files = [
     ('keyword_search/out/results.csv', 'docs/data/results.csv'),
     ('keyword_search/out/doc_word_counts.csv', 'docs/data/doc_word_counts.csv'),
-    ('keyword_search/out/state_subject_count_matrix.csv', 'docs/data/state_subject_count_matrix.csv')
+    ('keyword_search/out/state_subject_count_matrix.csv', 'docs/data/state_subject_count_matrix.csv'),
+    ('keyword_search/out/term_count.csv', 'docs/data/term_count.csv'),
 ]
 for src, dst in files:
     srcp = root / src

@@ -45,7 +45,7 @@ log = logging.getLogger(__name__)
 
 def load_keywords(keyword_path: Path) -> list[str]:
     try:
-        with open(keyword_path, 'r') as file:
+        with open(keyword_path, 'r', encoding='utf-8') as file:
             keywords = file.readlines()
             keywords = [word.strip() for word in keywords]
             log.info(f"Loaded {len(keywords)} keywords")
