@@ -87,9 +87,24 @@ def bertopic_terms_at_k(
     re-embedding/re-clustering) and return each real (non-outlier) topic's
     top-N terms. Operates on a deepcopy so repeated calls at different K
     don't compound on the same model instance.
+
+    Skips the reduce_topics() call entirely when k is already >= the
+    model's natural topic count: bertopic 0.16.4's reduce_topics() treats
+    that as a no-op internally (_reduce_topics only calls _reduce_to_n_topics
+    when nr_topics < the current count) but then unconditionally calls
+    _map_probabilities() -> TopicMapper.get_mappings(original_topics=False),
+    which indexes mappings_[:, [-3, -1]] -- a column that only exists once
+    add_mappings() has actually run at least once. On a freshly-fit model
+    (2-column mappings_) that no-op path crashes with
+    "IndexError: index -3 is out of bounds for axis 1 with size 2" instead
+    of leaving the topics untouched. Since there's nothing to reduce in
+    that case anyway, using the natural topics as-is is both crash-free
+    and the semantically correct result for k >= natural topic count.
     """
     reduced = copy.deepcopy(topic_model)
-    reduced.reduce_topics(docs, nr_topics=k)
+    natural_topic_count = len(set(reduced.topics_))  # includes -1 (outliers), matching get_topics()
+    if k < natural_topic_count:
+        reduced.reduce_topics(docs, nr_topics=k)
     term_lists = []
     for topic_id in sorted(set(reduced.topics_)):
         if topic_id == -1:
@@ -254,9 +269,13 @@ def run_full_sweep(
             print(f"--- skipping {concept} (already in {out_path}) ---")
             continue
         print(f"--- sweeping {concept} ---")
-        reports_by_concept[concept] = sweep_concept(
-            concept, df, embeddings_all, k_values, cache_dir, log,
-        )
+        try:
+            reports_by_concept[concept] = sweep_concept(
+                concept, df, embeddings_all, k_values, cache_dir, log,
+            )
+        except Exception as e:
+            print(f"--- {concept} FAILED: {type(e).__name__}: {e} ---")
+            reports_by_concept[concept] = {"concept": concept, "error": f"{type(e).__name__}: {e}"}
         if out_path is not None:
             _write_reports(out_path, reports_by_concept)
     return [reports_by_concept[c] for c in concepts if c in reports_by_concept]
