@@ -29,11 +29,6 @@ const appState = {
     pointSize: 4,
     orbit: { enabled: false, speed: 1, elevation: 0.35, theta: 0, raf: null },
     selection: null
-  },
-  koharenz: {
-    data: null,
-    colorMaps: null,
-    concept: null
   }
 };
 
@@ -242,9 +237,6 @@ async function loadData() {
     if (appState.page === 'bertopic') {
       loadBerTopicManifest();
     }
-    if (appState.page === 'koharenz') {
-      loadKoharenzData();
-    }
   } catch (error) {
     console.error(error);
     const shell = document.querySelector('.page-shell');
@@ -308,9 +300,6 @@ function renderPage() {
       break;
     case 'lda':
       renderLdaPage();
-      break;
-    case 'koharenz':
-      renderKoharenzPage();
       break;
     default:
       renderHomePage();
@@ -1873,178 +1862,6 @@ function parseCsv(text) {
   }
   if (value.length > 0 || row.length) { row.push(value); rows.push(row); }
   return rows;
-}
-
-// ── Kohärenz dashboard ──────────────────────────────────────────────────
-// Deliberately reads only already-computed aggregates (coherence_dashboard.json,
-// built by scripts/build_coherence_dashboard_data.py from BERTopic's own
-// per-topic subject-entropy breakdown) -- this page adds no new analysis,
-// only a different lens on data the BERTopic/LDA pages already have.
-
-async function loadKoharenzData() {
-  try {
-    const [data, colorMaps] = await Promise.all([
-      fetchJson(`${BERTOPIC_DATA_BASE}/coherence_dashboard.json`),
-      appState.koharenz.colorMaps
-        ? Promise.resolve(appState.koharenz.colorMaps)
-        : fetchJson(`${BERTOPIC_DATA_BASE}/color_maps.json`)
-    ]);
-    appState.koharenz.data = data;
-    appState.koharenz.colorMaps = colorMaps;
-    if (!appState.koharenz.concept && appState.conceptOrder.length) {
-      appState.koharenz.concept = appState.conceptOrder[0];
-    }
-    renderKoharenzPage();
-  } catch (error) {
-    console.error(error);
-  }
-}
-
-function renderKoharenzPage() {
-  renderKoharenzConceptPicker();
-  renderKoharenzContent();
-}
-
-function renderKoharenzConceptPicker() {
-  const container = document.getElementById('koharenz-concept-picker');
-  if (!container) return;
-  const concepts = appState.conceptOrder;
-  const active = appState.koharenz.concept;
-  container.innerHTML = concepts.map((concept) =>
-    `<button type="button" class="concept-btn${concept === active ? ' is-active' : ''}" data-concept="${escapeHtml(concept)}">${escapeHtml(concept)}</button>`
-  ).join('');
-  container.querySelectorAll('.concept-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      appState.koharenz.concept = btn.dataset.concept;
-      renderKoharenzPage();
-    });
-  });
-}
-
-function koharenzSubjectColor(subject) {
-  const colorMaps = appState.koharenz.colorMaps || {};
-  return (colorMaps.subject || {})[subject] || hashColor(subject, 'subject');
-}
-
-function koharenzTopicListHtml(topics, emptyMessage) {
-  if (!topics || !topics.length) {
-    return `<p style="color:var(--muted);font-size:0.9rem;">${emptyMessage}</p>`;
-  }
-  return topics.map((t) => {
-    const chips = Object.entries(t.subject_distribution || {})
-      .filter(([, share]) => share > 0)
-      .sort((a, b) => b[1] - a[1])
-      .map(([subject, share]) => `<span class="koharenz-subject-chip" style="background:${koharenzSubjectColor(subject)}" title="${escapeHtml(subject)}">${escapeHtml(subject)} ${Math.round(share * 100)}%</span>`)
-      .join('');
-    return `
-      <div class="koharenz-topic-row">
-        <div class="koharenz-topic-label">${escapeHtml(t.label)}</div>
-        <div class="koharenz-topic-meta">${t.topic_total} Dokumente · ${t.n_subjects_present} Fach/Fächer · Entropie ${t.entropy.toFixed(2)}</div>
-        <div class="koharenz-subject-chips">${chips}</div>
-      </div>`;
-  }).join('');
-}
-
-function renderKoharenzContent() {
-  const el = document.getElementById('koharenz-content');
-  if (!el) return;
-  const data = appState.koharenz.data;
-  const concept = appState.koharenz.concept;
-  if (!data || !concept) {
-    el.innerHTML = '<section class="section-card card"><p style="color:var(--muted);">Daten werden geladen …</p></section>';
-    return;
-  }
-  const d = data[concept];
-  if (!d) {
-    el.innerHTML = '<section class="section-card card"><p style="color:var(--muted);">Keine Daten für dieses Konzept.</p></section>';
-    return;
-  }
-
-  const metrics = [
-    { value: d.n_docs.toLocaleString('de-DE'), label: 'Dokumente' },
-    { value: `${d.n_subjects}/${d.n_subjects_total}`, label: 'Fächer' },
-    { value: `${d.n_states}/${d.n_states_total}`, label: 'Bundesländer' },
-    { value: d.n_topics, label: 'Themen (BERTopic)' }
-  ];
-  const metricGrid = `<div class="metric-grid koharenz-metric-grid">${metrics.map((m) =>
-    `<article class="metric-card"><strong>${m.value}</strong><span>${m.label}</span></article>`
-  ).join('')}</div>`;
-
-  const gradeBandOrder = ['1-4', '5-6', '7-8', '9-10', '11-13'];
-  const bands = d.grade_bands || {};
-  const orderedBands = [
-    ...gradeBandOrder.filter((b) => bands[b]),
-    ...Object.keys(bands).filter((b) => !gradeBandOrder.includes(b))
-  ];
-  const maxBand = Math.max(1, ...Object.values(bands));
-  const gradeBandHtml = orderedBands.map((band) => {
-    const count = bands[band] || 0;
-    const label = band === 'Unbekannt' ? 'Unbekannt' : `Klasse ${band}`;
-    return `
-      <div class="koharenz-band-row">
-        <span class="koharenz-band-label">${escapeHtml(label)}</span>
-        <div class="bar-track"><div class="bar-fill" style="width:${(count / maxBand) * 100}%"></div></div>
-        <span class="koharenz-band-count">${count}</span>
-      </div>`;
-  }).join('');
-
-  const relatedHtml = (d.related_concepts || []).length
-    ? d.related_concepts.map((r) =>
-        `<button type="button" class="concept-btn koharenz-related-btn" data-concept="${escapeHtml(r.concept)}">${escapeHtml(r.concept)}</button>`
-      ).join('')
-    : '<p style="color:var(--muted);font-size:0.9rem;">Keine verwandten Konzepte gefunden.</p>';
-
-  el.innerHTML = `
-    ${metricGrid}
-
-    <section class="section-card card">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Vertikale Kohärenz</p>
-          <h3>Verteilung über Jahrgangsstufen</h3>
-        </div>
-      </div>
-      <div class="koharenz-band-list">${gradeBandHtml || '<p style="color:var(--muted);">Keine Jahrgangsstufen-Angaben vorhanden.</p>'}</div>
-    </section>
-
-    <section class="section-card card">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Horizontale Kohärenz</p>
-          <h3>Brückenthemen — Themen, die mehrere Fächer verbinden</h3>
-        </div>
-      </div>
-      <p style="color:var(--muted);font-size:0.9rem;">Sortiert nach Themen-Entropie über Fächer hinweg (höher = stärker über Fächer verteilt). Der Ausreißer-Cluster ist ausgeschlossen.</p>
-      <div class="koharenz-topic-list">${koharenzTopicListHtml(d.bridge_topics, 'Keine mehrfach-fachübergreifenden Themen gefunden.')}</div>
-    </section>
-
-    <section class="section-card card">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Horizontale Kohärenz</p>
-          <h3>Isolierte Themen — auf ein einzelnes Fach beschränkt</h3>
-        </div>
-      </div>
-      <div class="koharenz-topic-list">${koharenzTopicListHtml(d.siloed_topics, 'Keine auf ein Fach beschränkten Themen gefunden — ein Zeichen für gute Kohärenz bei diesem Konzept.')}</div>
-    </section>
-
-    <section class="section-card card">
-      <div class="section-head">
-        <div>
-          <p class="eyebrow">Verwandte Konzepte</p>
-          <h3>Konzepte, die häufig in den Themen dieses Konzepts auftauchen</h3>
-        </div>
-      </div>
-      <div class="concept-picker">${relatedHtml}</div>
-    </section>
-  `;
-
-  el.querySelectorAll('.koharenz-related-btn').forEach((btn) => {
-    btn.addEventListener('click', () => {
-      appState.koharenz.concept = btn.dataset.concept;
-      renderKoharenzPage();
-    });
-  });
 }
 
 document.addEventListener('DOMContentLoaded', init);

@@ -196,7 +196,7 @@ Beyond the standard rerun, these three (Susan-flagged as needing richer topic di
 
 ---
 
-## 7. Kohärenz dashboard — a new page, added 2026-07-23, pending review
+## 7. Kohärenz dashboard — added 2026-07-23, dropped 2026-07-24
 
 A new page (`docs/koharenz.html`, nav-linked from all pages) reframes the existing per-method views (BERTopic/LDA/keyword-search, each requiring the reader to synthesize a coherence picture themselves) around the book's actual central question directly: for a selected concept, is its treatment across the corpus *fragmented* (isolated to single subjects, no connecting thread) or *coherent* (recurring across subjects, i.e. genuine interdisciplinary presence)?
 
@@ -204,7 +204,7 @@ A new page (`docs/koharenz.html`, nav-linked from all pages) reframes the existi
 
 **Also found and fixed while building this**: `setActiveNav()` (`docs/app.js`) has been stripping the active-nav highlight from every page's own nav link on every load, site-wide, since before this session — its regex stripped a leading `/` but not `./`, and every page's nav links use `./`-prefixed hrefs, so the string comparison driving the highlight always failed. Cosmetic (no console error, no functional break — each page's HTML happens to hardcode the class correctly, and this bug silently removed it on load) and previously uncaught because no QA pass had specifically checked nav-highlight state until this page's own verification did. Fixed with a regex that strips either prefix; verified correct across all 6 pages × both themes.
 
-**Status**: functional, Playwright-verified (zero errors, correct data across a spot-checked large concept and a small one, correct umlaut rendering, correct cross-concept navigation), but this is new scope added per Dustin's direction this session, not something in Susan's written `app_specs.md` — **not yet folded into that spec document**, since that's her domain to review first. Treat as a working prototype for her to react to, not a finished, approved feature.
+**Status**: functional, Playwright-verified (zero errors, correct data across a spot-checked large concept and a small one, correct umlaut rendering, correct cross-concept navigation) as of 2026-07-23. **Dropped 2026-07-24**: Dustin decided directly (this was his own proposed direction, not Susan's spec) to remove it from the live app rather than carry it forward as a pending proposal — `docs/koharenz.html` deleted, nav links and all `docs/app.js`/`docs/styles.css` wiring removed, `coherence_dashboard.json` dropped from the `docs/data/` mirror. `scripts/build_coherence_dashboard_data.py` and the underlying `bertopic/src/data/coherence_dashboard.json` analysis artifact are left in place (harmless, unused by the app) in case this lens is revisited later.
 
 ---
 
