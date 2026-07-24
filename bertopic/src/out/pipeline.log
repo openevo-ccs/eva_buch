@@ -1279,3 +1279,59 @@
 00:19:56 [INFO   ]   [Wert] Merged global coords into 2,135 records -> Wert.json
 00:19:56 [INFO   ] Wrote global bbox -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\manifest.json
 00:19:56 [INFO   ] DONE.
+21:31:18 [INFO   ] ==============================================================================
+21:31:18 [INFO   ]   Evo-Buch Curriculum-Atlas — BERTopic Data Generation Pipeline
+21:31:18 [INFO   ] ==============================================================================
+21:31:18 [INFO   ] CSV:          D:\dev\openevo-ccs-lab\eva_buch\keyword_search\out\results.csv
+21:31:18 [INFO   ] Web data dir: D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data
+21:31:18 [INFO   ] Cache dir:    D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\cache
+21:31:18 [INFO   ] Out dir:      D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\out
+21:31:18 [INFO   ] Concepts:     1 -> ['Rationalität']
+21:31:18 [INFO   ] Source CSV checksum (MD5): b7105014d42ff983b10b3e1decf10dd3
+21:31:18 [INFO   ] Loading source CSV from D:\dev\openevo-ccs-lab\eva_buch\keyword_search\out\results.csv …
+21:31:18 [INFO   ]   Loaded 28,339 rows × 11 columns.
+21:31:18 [INFO   ] No topic-label override file at D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\topic_label_overrides.json (using auto-labels only).
+21:31:18 [INFO   ] Loading global embeddings from cache …
+21:31:18 [INFO   ]   Loaded embeddings: shape (35894, 384)
+21:31:18 [INFO   ] ------------------------------------------------------------------------------
+21:31:18 [INFO   ] CONCEPT: Rationalität
+21:31:18 [INFO   ] ------------------------------------------------------------------------------
+21:31:18 [INFO   ] [Rationalität] 283 matching documents.
+21:31:18 [INFO   ]   [Rationalität] Fitting BERTopic on 283 documents …
+21:31:29 [INFO   ]   [Rationalität] Fitted 8 topic(s) (62 outlier docs).
+21:31:29 [INFO   ]   Fitted + cached UMAP (2D): shape (283, 2) -> umap2d_Rationalität__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:31:30 [INFO   ]   Fitted + cached UMAP (3D): shape (283, 3) -> umap3d_Rationalität__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:31:30 [INFO   ]   [Rationalität] Saved topic/subject distribution diagnostics.
+21:31:30 [INFO   ]   [Rationalität] Wrote 283 records -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\Rationalität.json
+21:31:30 [INFO   ] Wrote manifest -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\manifest.json
+21:31:30 [INFO   ] ==============================================================================
+21:31:30 [INFO   ] DONE. Succeeded: 1/1 concept(s).
+21:31:30 [INFO   ] ==============================================================================
+21:32:08 [INFO   ] Loading global embeddings cache …
+21:32:08 [INFO   ]   Loaded embeddings: shape (35894, 384)
+21:32:08 [INFO   ]   Loaded UMAP cache (2D): shape (35894, 2) <- umap2d_global__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:32:08 [INFO   ]   Loaded UMAP cache (3D): shape (35894, 3) <- umap3d_global__paraphrase-multilingual-MiniLM-L12-v2.npy
+21:32:08 [INFO   ]   [Anpassung] Merged global coords into 738 records -> Anpassung.json
+21:32:08 [INFO   ]   [Anthropologie] Merged global coords into 312 records -> Anthropologie.json
+21:32:08 [INFO   ]   [Bedürfnis] Merged global coords into 640 records -> Bedürfnis.json
+21:32:08 [INFO   ]   [Emotion] Merged global coords into 267 records -> Emotion.json
+21:32:08 [INFO   ]   [Evolution] Merged global coords into 1,085 records -> Evolution.json
+21:32:08 [INFO   ]   [Freiheit] Merged global coords into 1,236 records -> Freiheit.json
+21:32:08 [INFO   ]   [Gefühl] Merged global coords into 354 records -> Gefühl.json
+21:32:09 [INFO   ]   [Gen] Merged global coords into 991 records -> Gen.json
+21:32:09 [INFO   ]   [Gerechtigkeit] Merged global coords into 1,343 records -> Gerechtigkeit.json
+21:32:09 [INFO   ]   [Glück] Merged global coords into 661 records -> Glück.json
+21:32:09 [INFO   ]   [Handeln] Merged global coords into 3,849 records -> Handeln.json
+21:32:09 [INFO   ]   [Konkurrenz] Merged global coords into 268 records -> Konkurrenz.json
+21:32:09 [INFO   ]   [Kooperation] Merged global coords into 569 records -> Kooperation.json
+21:32:09 [INFO   ]   [Kultur] Merged global coords into 1,466 records -> Kultur.json
+21:32:10 [INFO   ]   [Mensch] Merged global coords into 4,852 records -> Mensch.json
+21:32:10 [INFO   ]   [Moral] Merged global coords into 1,264 records -> Moral.json
+21:32:10 [INFO   ]   [Norm] Merged global coords into 1,134 records -> Norm.json
+21:32:10 [INFO   ]   [Rationalität] Merged global coords into 283 records -> Rationalität.json
+21:32:10 [INFO   ]   [Ursache] Merged global coords into 1,277 records -> Ursache.json
+21:32:10 [INFO   ]   [Verhalten] Merged global coords into 1,155 records -> Verhalten.json
+21:32:10 [INFO   ]   [Vorurteil] Merged global coords into 285 records -> Vorurteil.json
+21:32:10 [INFO   ]   [Wert] Merged global coords into 2,135 records -> Wert.json
+21:32:10 [INFO   ] Wrote global bbox -> D:\dev\openevo-ccs-lab\eva_buch\bertopic\src\data\manifest.json
+21:32:10 [INFO   ] DONE.
